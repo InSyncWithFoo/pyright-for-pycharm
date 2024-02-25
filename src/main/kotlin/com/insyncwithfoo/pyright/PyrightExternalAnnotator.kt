@@ -16,6 +16,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
+import com.intellij.xml.util.XmlStringUtil
 import com.jetbrains.python.PythonLanguage
 import com.jetbrains.python.psi.PyFile
 import com.jetbrains.python.psi.impl.PyFileImpl
@@ -71,11 +72,6 @@ private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
 }
 
 
-private fun AnnotationBuilder.annotateRange(range: TextRange) {
-    this.needsUpdateOnTyping().range(range).create()
-}
-
-
 private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
     PyrightDiagnosticSeverity.ERROR -> HighlightSeverity.WARNING
     PyrightDiagnosticSeverity.WARNING -> HighlightSeverity.WEAK_WARNING
@@ -83,14 +79,25 @@ private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
 }
 
 
+private fun String.toPreformattedTooltip(): String {
+    val escapedLines = this.split("\n").map {
+        XmlStringUtil.escapeString(it, true)
+    }
+    
+    return escapedLines.joinToString("<br>")
+}
+
+
 private fun AnnotationHolder.makeBuilderForDiagnostic(diagnostic: PyrightDiagnostic): AnnotationBuilder {
     val (_, severity, message, rule) = diagnostic
-    val suffix = if (rule != null) " (${rule})" else ""
     
-    return newAnnotation(
-        severity.toHighlightSeverity(),
-        "$message$suffix"
-    )
+    val tooltip = message.toPreformattedTooltip()
+    val highlightSeverity = severity.toHighlightSeverity()
+    
+    val suffix = if (rule != null) " (${rule})" else ""
+    val suffixedmessage = "$message$suffix"
+    
+    return newAnnotation(highlightSeverity, suffixedmessage).tooltip(tooltip)
 }
 
 private fun AnnotationHolder.applyDiagnostic(diagnostic: PyrightDiagnostic, document: Document) {
@@ -102,6 +109,11 @@ private fun AnnotationHolder.applyDiagnostic(diagnostic: PyrightDiagnostic, docu
     } catch (_: IndexOutOfBoundsException) {
         return
     }
+}
+
+
+private fun AnnotationBuilder.annotateRange(range: TextRange) {
+    this.needsUpdateOnTyping().range(range).create()
 }
 
 
