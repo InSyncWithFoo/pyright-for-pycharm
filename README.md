@@ -41,7 +41,14 @@ of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 
+## See also
+
+* Its non-working sister plugin for PyCharm Professional,
+  using the experimental LSP API, [Pyright (Experimental)][5].
+
+
   [1]: https://github.com/microsoft/pyright
   [2]: https://plugins.jetbrains.com/
   [3]: https://github.com/koxudaxi/ruff-pycharm-plugin
   [4]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [5]: https://github.com/InSyncWithFoo/pyright-pycharm-plugin
