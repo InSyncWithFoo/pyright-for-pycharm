@@ -7,12 +7,12 @@ import com.insyncwithfoo.pyright.configuration.project.ConfigurationService as P
 
 
 data class PyrightAllConfigurations(
-    val alwaysUseGlobal: Boolean,
-    val globalExecutable: @SystemDependent String?,
-    val globalConfigurationFile: @SystemDependent String?,
+    val alwaysUseGlobal: Boolean = false,
+    val globalExecutable: @SystemDependent String? = null,
+    val globalConfigurationFile: @SystemDependent String? = null,
 
-    val projectExecutable: @SystemDependent String?,
-    val projectConfigurationFile: @SystemDependent String?
+    val projectExecutable: @SystemDependent String? = null,
+    val projectConfigurationFile: @SystemDependent String? = null
 ) {
     
     val executable: @SystemDependent String?
@@ -28,8 +28,6 @@ data class PyrightAllConfigurations(
             projectExecutable != null -> projectConfigurationFile
             else -> projectConfigurationFile ?: globalConfigurationFile
         }
-    
-    companion object
     
 }
 
