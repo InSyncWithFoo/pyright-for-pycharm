@@ -9,6 +9,9 @@ as you edit your Python files.
 It works by saving all your files as-is before running
 the executable provided by you. If you are not OK with that,
 <em>do not</em> install this plugin.
+
+
+  [1]: https://github.com/microsoft/pyright
 <!-- Plugin description end -->
 
 
@@ -43,11 +46,10 @@ generated using Inkscape's autotrace feature.
 
 ## See also
 
-* Its non-working sister plugin for PyCharm Professional,
-  using the experimental LSP API, [Pyright (Experimental)][5].
+* [Pyright (Experimental)][5], its non-working sister plugin
+  for PyCharm Professional, using the experimental LSP API.
 
 
-  [1]: https://github.com/microsoft/pyright
   [2]: https://plugins.jetbrains.com/
   [3]: https://github.com/koxudaxi/ruff-pycharm-plugin
   [4]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png

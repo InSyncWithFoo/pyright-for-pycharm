@@ -13,11 +13,7 @@
 	<!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
 		 Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
 		 Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-	<description><![CDATA[
-		Pyright integration for PyCharm.
-		
-		This is a minimum viable product. Everything is subject to change.
-	]]></description>
+	<!-- <description><![CDATA[]]></description> -->
 	
 	<!-- Product and plugin compatibility requirements.
 		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
