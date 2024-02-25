@@ -100,15 +100,12 @@ private fun AnnotationHolder.makeBuilderForDiagnostic(diagnostic: PyrightDiagnos
     return newAnnotation(highlightSeverity, suffixedmessage).tooltip(tooltip)
 }
 
+
 private fun AnnotationHolder.applyDiagnostic(diagnostic: PyrightDiagnostic, document: Document) {
     val builder = makeBuilderForDiagnostic(diagnostic)
+    val range = document.getStartEndRange(diagnostic.range)
     
-    try {
-        val range = document.getStartEndRange(diagnostic.range)
-        builder.annotateRange(range)
-    } catch (_: IndexOutOfBoundsException) {
-        return
-    }
+    builder.annotateRange(range)
 }
 
 
