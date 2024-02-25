@@ -8,47 +8,51 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="9bf67" class="javax.swing.JCheckBox" binding="alwaysUseGlobalInput">
+      <component id="c533" class="javax.swing.JCheckBox" binding="alwaysUseGlobalInput">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value=""/>
         </properties>
       </component>
-      <component id="a6108" class="javax.swing.JLabel" binding="globalExecutableLabel">
+      <component id="caeec" class="javax.swing.JLabel" binding="globalExecutableLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="74" height="0"/>
+          </grid>
         </constraints>
         <properties>
           <text value=""/>
         </properties>
       </component>
-      <component id="a09b0" class="javax.swing.JLabel" binding="globalConfigurationFileLabel">
+      <component id="ddad3" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="globalExecutableInput">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="16d8a" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="globalConfigurationFileInput">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
-      <vspacer id="bb64f">
+      <component id="2656a" class="javax.swing.JLabel" binding="globalConfigurationFileLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="74" height="0"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="a557d" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="globalConfigurationFileInput">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <vspacer id="5115e">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="48b66" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="globalExecutableInput">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
     </children>
   </grid>
 </form>
