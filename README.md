@@ -8,7 +8,7 @@ as you edit your Python files.
 
 It works by saving all your files as-is before running
 the executable provided by you. If you are not OK with that,
-<em>do not</em> install this plugin.
+please <em>do not</em> install this plugin.
 
 
   [1]: https://github.com/microsoft/pyright
@@ -27,8 +27,8 @@ This is only a minimum viable product.
 * Tests have not been written,
   and manual tests have only been performed on Windows.
 * There are no documentations; the UX might be terrible for some.
-* Since `ExternalAnnotator` implementations are only called after all
-  other annotators have run, expect a major delay between checks.
+* Since `ExternalAnnotator`s are only called after all other annotators
+  have run, expect a major delay (up to a few seconds) between checks.
 
 Use at your own risk.
 
