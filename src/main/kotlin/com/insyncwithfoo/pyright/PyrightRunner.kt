@@ -9,6 +9,7 @@ import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.ui.Messages
 import com.jetbrains.python.packaging.IndicatedProcessOutputListener
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.serializer
 import org.jetbrains.annotations.SystemDependent
 import java.io.File
 
@@ -127,7 +128,7 @@ class PyrightRunner(
         LOGGER.info("Running: $command")
         
         return try {
-            runAndLog(command)
+            runAndLog()
         } catch (_: RunCanceledByUserException) {
             null
         } catch (exception: FatalException) {
@@ -139,9 +140,14 @@ class PyrightRunner(
         }
     }
     
-    private fun runAndLog(command: Command): PyrightOutput {
-        val output = command.run().also { LOGGER.info(it) }
-        return parseOutput(output)
+    private fun runAndLog(): PyrightOutput {
+        val output = command.run()
+        val parsed = parseOutput(output)
+        
+        val minified = Json.encodeToString(serializer(), parsed)
+        LOGGER.info("Output: $minified")
+        
+        return parsed
     }
     
     private fun parseOutput(response: String) =
