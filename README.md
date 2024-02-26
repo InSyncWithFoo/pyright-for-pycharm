@@ -1,7 +1,7 @@
 # Pyright for PyCharm
 
 <!-- Plugin description -->
-![](./.github/readme/demo1.png)
+![](https://raw.githubusercontent.com/InSyncWithFoo/pyright-plugin/master/.github/readme/demo1.png)
 
 Pyright integration for PyCharm.
 
