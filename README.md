@@ -1,8 +1,6 @@
 # Pyright for PyCharm
 
 <!-- Plugin description -->
-![](https://raw.githubusercontent.com/InSyncWithFoo/pyright-plugin/master/.github/readme/demo1.png)
-
 Pyright integration for PyCharm.
 
 This plugin runs [the Pyright type checker][1] on-the-fly
@@ -22,6 +20,18 @@ please <em>do not</em> install this plugin.
 This plugin has not been published to [the Marketplace][2].
 Download the ZIP file manually from <i>Releases</i>
 and follow the instructions described [here][3].
+
+
+## Usage
+
+![](https://raw.githubusercontent.com/InSyncWithFoo/pyright-plugin/master/.github/readme/demo1.png)
+
+Go to <b>Settings</b> | <b>Tools</b> |
+<b>Pyright (Global)</b> / <b>Pyright(Project)</b> and
+set the executable path to your Pyright executable.
+
+Save, return to your file and start making some modifications.
+You should see Pyright annotations in a few seconds.
 
 
 ## Known issues
