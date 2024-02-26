@@ -32,28 +32,30 @@ This is only a minimum viable product.
 * Since `ExternalAnnotator`s are only called after all other annotators
   have run, expect a major delay (up to a few seconds) between checks.
 
-Use at your own risk.
+If you are interested in contributing to this project,
+see [the contributing guide][4].
 
 
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][4].
+Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][5].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG logo is derived from [the README image][5]
+The SVG logo is derived from [the README image][6]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 
 ## See also
 
-* [Pyright (Experimental)][6], its non-working sister plugin
+* [Pyright (Experimental)][7], its non-working sister plugin
   for PyCharm Professional, using the experimental LSP API.
 
 
   [2]: https://plugins.jetbrains.com/
   [3]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
-  [4]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [5]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [6]: https://github.com/InSyncWithFoo/pyright-pycharm-plugin
+  [4]: ./CONTRIBUTING.md
+  [5]: https://github.com/koxudaxi/ruff-pycharm-plugin
+  [6]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [7]: https://github.com/InSyncWithFoo/pyright-pycharm-plugin
