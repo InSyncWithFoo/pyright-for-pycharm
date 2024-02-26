@@ -8,7 +8,7 @@
 <i>This section is currently empty.</i>
 
 
-## [v0.1.0-mvp.1] - 2024-02-26
+## [0.1.0-mvp.1] - 2024-02-26
 
 ### Added
 
