@@ -18,6 +18,8 @@ please <em>do not</em> install this plugin.
 ## Installation
 
 This plugin has not been published to [the Marketplace][2].
+Download the ZIP file manually from <i>Releases</i>
+and follow the instructions described [here][3].
 
 
 ## Known issues
@@ -35,22 +37,23 @@ Use at your own risk.
 
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][3].
+Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][4].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG logo is derived from [the README image][4]
+The SVG logo is derived from [the README image][5]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 
 ## See also
 
-* [Pyright (Experimental)][5], its non-working sister plugin
+* [Pyright (Experimental)][6], its non-working sister plugin
   for PyCharm Professional, using the experimental LSP API.
 
 
   [2]: https://plugins.jetbrains.com/
-  [3]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [4]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [5]: https://github.com/InSyncWithFoo/pyright-pycharm-plugin
+  [3]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
+  [4]: https://github.com/koxudaxi/ruff-pycharm-plugin
+  [5]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [6]: https://github.com/InSyncWithFoo/pyright-pycharm-plugin
