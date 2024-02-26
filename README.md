@@ -1,6 +1,8 @@
 # Pyright for PyCharm
 
 <!-- Plugin description -->
+![](./.github/readme/demo1.png)
+
 Pyright integration for PyCharm.
 
 This plugin runs [the Pyright type checker][1] on-the-fly
