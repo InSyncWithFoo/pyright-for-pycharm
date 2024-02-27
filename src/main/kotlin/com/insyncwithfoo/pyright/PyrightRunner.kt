@@ -14,7 +14,7 @@ import org.jetbrains.annotations.SystemDependent
 import java.io.File
 
 
-private open class PyrightException(message: String) : Exception(message)
+private sealed class PyrightException(message: String) : Exception(message)
 
 
 private class FatalException(message: String) : PyrightException(message)
