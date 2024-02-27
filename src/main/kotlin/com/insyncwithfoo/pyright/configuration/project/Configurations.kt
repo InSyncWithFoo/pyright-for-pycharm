@@ -5,6 +5,7 @@ import org.jetbrains.annotations.SystemDependent
 
 
 class Configurations : BaseState() {
+    
     var projectExecutable by string(null)
     var projectConfigurationFile by string(null)
     
@@ -18,4 +19,5 @@ class Configurations : BaseState() {
                 this.projectConfigurationFile = projectConfigurationFile
             }
     }
+    
 }

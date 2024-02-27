@@ -5,6 +5,7 @@ import org.jetbrains.annotations.SystemDependent
 
 
 class Configurations : BaseState() {
+    
     var alwaysUseGlobal by property(false)
     var globalExecutable by string(null)
     var globalConfigurationFile by string(null)

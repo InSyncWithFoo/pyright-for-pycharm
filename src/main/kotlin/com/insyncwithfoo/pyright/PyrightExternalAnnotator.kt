@@ -120,8 +120,10 @@ private val Project.pyrightConfigurations: PyrightAllConfigurations
     get() = PyrightConfigurationService.getInstance(this).configurations
 
 
-private fun String.toFileIfItExists(): File? =
-    File(this).takeIf { it.exists() }
+private fun String.toFileIfItExists(projectPath: String? = null) =
+    File(this)
+        .let { if (it.isAbsolute) it else File(projectPath, this).canonicalFile }
+        .takeIf { it.exists() }
 
 
 class PyrightExternalAnnotator :
@@ -162,7 +164,7 @@ class PyrightExternalAnnotator :
         val (configurations, file) = collectedInfo ?: return null
         val projectPath = file.project.basePath ?: return null
         
-        val executable = configurations.executable?.toFileIfItExists() ?: return null
+        val executable = configurations.executable?.toFileIfItExists(projectPath) ?: return null
         val target = file.virtualFile.path.toFileIfItExists() ?: return null
         val configurationFile = configurations.configurationFile
         
