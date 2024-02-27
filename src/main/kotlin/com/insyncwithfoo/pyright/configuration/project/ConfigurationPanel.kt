@@ -17,11 +17,12 @@ class ConfigurationPanel(private val project: Project) : PyrightConfigurationPan
     private lateinit var projectConfigurationFileLabel: JLabel
     private lateinit var projectConfigurationFileInput: TextFieldWithBrowseButton
     
+    override val textFieldsWithBrowseButtons: List<TextFieldWithBrowseButton>
+        get() = listOf(projectExecutableInput, projectConfigurationFileInput)
+    
     init {
-        val browseButtons = listOf(projectExecutableInput, projectConfigurationFileInput)
-        
         setLabels()
-        addBrowseButtonListeners(browseButtons)
+        addBrowseButtonListeners()
         applyExistingConfigurations()
     }
     

@@ -19,11 +19,12 @@ class ConfigurationPanel : PyrightConfigurationPanel<Configurations>() {
     private lateinit var globalConfigurationFileLabel: JLabel
     private lateinit var globalConfigurationFileInput: TextFieldWithBrowseButton
     
+    override val textFieldsWithBrowseButtons: List<TextFieldWithBrowseButton>
+        get() = listOf(globalExecutableInput, globalConfigurationFileInput)
+    
     init {
-        val browseButtons = listOf(globalExecutableInput, globalConfigurationFileInput)
-        
         setLabels()
-        addBrowseButtonListeners(browseButtons)
+        addBrowseButtonListeners()
         applyExistingConfigurations()
     }
     
