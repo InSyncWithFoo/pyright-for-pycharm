@@ -61,14 +61,7 @@ private fun Document.getStartEndRange(range: PyrightDiagnosticTextRange): TextRa
 
 
 private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
-    unsavedDocuments.forEach {
-        try {
-            saveDocumentAsIs(it)
-        } catch (_: Exception) {
-            // If a file fails to save, ignore it.
-            // It's better to fail silently (or maybe not).
-        }
-    }
+    unsavedDocuments.forEach { saveDocumentAsIs(it) }
 }
 
 
