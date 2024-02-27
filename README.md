@@ -70,4 +70,4 @@ generated using Inkscape's autotrace feature.
   [4]: ./CONTRIBUTING.md
   [5]: https://github.com/koxudaxi/ruff-pycharm-plugin
   [6]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [7]: https://github.com/InSyncWithFoo/pyright-pycharm-plugin
+  [7]: https://github.com/InSyncWithFoo/pyright-experimental-plugin
