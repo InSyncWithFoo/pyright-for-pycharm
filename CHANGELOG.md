@@ -5,7 +5,9 @@
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* Allow using relative path for executables.
 
 
 ## [0.1.0-mvp.1] - 2024-02-26
