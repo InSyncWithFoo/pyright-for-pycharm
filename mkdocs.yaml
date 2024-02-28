@@ -1,0 +1,50 @@
+site_name: Pyright for PyCharm
+site_description: A PyCharm plugin that runs Pyright as you code
+site_url: https://insyncwithfoo.github.io/pyright-plugin
+
+repo_name: InSyncWithFoo/pyright-plugin
+repo_url: https://github.com/InSyncWithFoo/pyright-plugin
+
+edit_uri: blob/master/docs/content/
+
+exclude_docs: |
+  /requirements.txt
+
+theme:
+  name: material
+  palette:
+    -
+      media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: octicons/sun-16
+        name: "Switch to dark mode"
+    -
+      media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: octicons/moon-16
+        name: "Switch to light mode"
+  favicon: img/icon.svg
+  logo: img/icon-outline-10-white.svg
+
+markdown_extensions:
+  - admonition:
+  - codehilite:
+  - toc:
+      permalink: '#'
+
+nav:
+  - Overview: index.md
+  - Configurations: configurations.md
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+
+strict: true

@@ -1,9 +1,11 @@
 .gradle
 build/
+site/
+venv/
+TODO.md
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-TODO.md
 
 ### IntelliJ IDEA ###
 .idea/**

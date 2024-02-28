@@ -10,24 +10,27 @@ It works by saving all your files as-is before running
 the executable provided by you. If you are not OK with that,
 please <em>do not</em> install this plugin.
 
+User documentation can be found [here][2].
+
 
   [1]: https://github.com/microsoft/pyright
+  [2]: https://insyncwithfoo.github.io/pyright-plugin/
 <!-- Plugin description end -->
 
 
 ## Installation
 
-This plugin has not been published to [the Marketplace][2].
+This plugin has not been published to [the Marketplace][3].
 Download the ZIP file manually from <i>Releases</i>
-and follow the instructions described [here][3].
+and follow the instructions described [here][4].
 
 
 ## Usage
 
-![](https://raw.githubusercontent.com/InSyncWithFoo/pyright-plugin/master/.github/readme/demo1.png)
+![](./docs/img/demo1.png)
 
 Go to <b>Settings</b> | <b>Tools</b> |
-<b>Pyright (Global)</b> / <b>Pyright(Project)</b> and
+<b>Pyright (Global)</b> / <b>Pyright (Project)</b> and
 set the executable path to your Pyright executable.
 
 Save, return to your file and start making some modifications.
@@ -45,29 +48,36 @@ This is only a minimum viable product.
   have run, expect a major delay (up to a few seconds) between checks.
 
 If you are interested in contributing to this project,
-see [the contributing guide][4].
+see [the contributing guide][5].
+
+
+## Release schedule
+
+Version 0.1.0 will be released once PyCharm 2024.1 is released.
+Until then, a new MVP version is released every Sunday,
+if there are enough changes to justify a release.
 
 
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][5].
+Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][6].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG logo is derived from [the README image][6]
+The SVG logo is derived from [the README image][7]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 
 ## See also
 
-* [Pyright (Experimental)][7], its non-working sister plugin
+* [Pyright (Experimental)][8], its non-working sister plugin
   for PyCharm Professional, using the experimental LSP API.
 
 
-  [2]: https://plugins.jetbrains.com/
-  [3]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
-  [4]: ./CONTRIBUTING.md
-  [5]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [6]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [7]: https://github.com/InSyncWithFoo/pyright-experimental-plugin
+  [3]: https://plugins.jetbrains.com/
+  [4]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
+  [5]: ./CONTRIBUTING.md
+  [6]: https://github.com/koxudaxi/ruff-pycharm-plugin
+  [7]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [8]: https://github.com/InSyncWithFoo/pyright-experimental-plugin
