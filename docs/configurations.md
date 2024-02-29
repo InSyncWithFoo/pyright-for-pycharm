@@ -39,4 +39,13 @@ and configuration file.
 Default: `false`
 
 
+### Use editor font
+
+Check this option to display annotations in your editor font.
+This option is not applied retroactively;
+you might need make an edit to see the effect.
+
+Default: `false`
+
+
   [1]: https://microsoft.github.io/pyright/#/command-line

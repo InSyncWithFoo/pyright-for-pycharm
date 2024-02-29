@@ -19,6 +19,8 @@ class ConfigurationPanel : PyrightConfigurationPanel<Configurations>() {
     private lateinit var globalConfigurationFileLabel: JLabel
     private lateinit var globalConfigurationFileInput: TextFieldWithBrowseButton
     
+    private lateinit var useEditorFontInput: JCheckBox
+    
     override val textFieldsWithBrowseButtons: List<TextFieldWithBrowseButton>
         get() = listOf(globalExecutableInput, globalConfigurationFileInput)
     
@@ -32,12 +34,14 @@ class ConfigurationPanel : PyrightConfigurationPanel<Configurations>() {
         get() = Configurations.create(
             alwaysUseGlobal = alwaysUseGlobalInput.isSelected,
             globalExecutable = globalExecutableInput.text.takeIf { it.isNotBlank() },
-            globalConfigurationFile = globalConfigurationFileInput.text.takeIf { it.isNotBlank() }
+            globalConfigurationFile = globalConfigurationFileInput.text.takeIf { it.isNotBlank() },
+            useEditorFont = useEditorFontInput.isSelected
         )
         set(value) {
             alwaysUseGlobalInput.isSelected = value.alwaysUseGlobal
             globalExecutableInput.text = value.globalExecutable.orEmpty()
             globalConfigurationFileInput.text = value.globalConfigurationFile.orEmpty()
+            useEditorFontInput.isSelected = value.useEditorFont
         }
     
     override fun getService() = ConfigurationService.getInstance()
@@ -46,6 +50,7 @@ class ConfigurationPanel : PyrightConfigurationPanel<Configurations>() {
         alwaysUseGlobalInput.text = "Always use global executable"
         globalExecutableLabel.text = "Global executable:"
         globalConfigurationFileLabel.text = "Configuration file:"
+        useEditorFontInput.text = "Use editor font"
     }
     
 }

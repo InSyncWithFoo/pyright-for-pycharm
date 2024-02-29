@@ -8,6 +8,7 @@
 ### Added
 
 * Allow using relative path for executables.
+* Add "Use editor font" global option
 
 ### Changed
 

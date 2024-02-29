@@ -5,6 +5,7 @@ import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.Document
+import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.util.TextRange
 import com.intellij.xml.util.XmlStringUtil
 
@@ -21,19 +22,6 @@ private fun Document.getStartEndRange(range: PyrightDiagnosticTextRange): TextRa
 }
 
 
-private fun AnnotationHolder.makeBuilderForDiagnostic(diagnostic: PyrightDiagnostic): AnnotationBuilder {
-    val (_, severity, message, rule) = diagnostic
-    
-    val tooltip = message.toPreformattedTooltip()
-    val highlightSeverity = severity.toHighlightSeverity()
-    
-    val suffix = if (rule != null) " (${rule})" else ""
-    val suffixedmessage = "$message$suffix"
-    
-    return newAnnotation(highlightSeverity, suffixedmessage).tooltip(tooltip)
-}
-
-
 private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
     PyrightDiagnosticSeverity.ERROR -> HighlightSeverity.WARNING
     PyrightDiagnosticSeverity.WARNING -> HighlightSeverity.WEAK_WARNING
@@ -41,26 +29,26 @@ private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
 }
 
 
-private fun String.toPreformattedTooltip(): String {
+private fun String.toPreformattedTooltip(font: String? = null): String {
     val escapedLines = this.split("\n").map {
         XmlStringUtil.escapeString(it, true)
     }
+    val rejoined = escapedLines.joinToString("<br>")
     
-    return escapedLines.joinToString("<br>")
+    return if (font != null) {
+        """<div style="font-family: '$font';">$rejoined</div>"""
+    } else {
+        rejoined
+    }
 }
 
 
-private fun AnnotationHolder.applyDiagnostic(diagnostic: PyrightDiagnostic, document: Document) {
-    val builder = makeBuilderForDiagnostic(diagnostic)
-    val range = document.getStartEndRange(diagnostic.range)
-    
-    builder.annotateRange(range)
-}
-
-
-private fun AnnotationBuilder.annotateRange(range: TextRange) {
-    this.needsUpdateOnTyping().range(range).create()
-}
+private val PyrightDiagnostic.suffixedMessage: String
+    get() {
+        val suffix = if (rule != null) " (${rule})" else ""
+        
+        return "$message$suffix"
+    }
 
 
 internal class PyrightAnnotationApplier(
@@ -69,9 +57,27 @@ internal class PyrightAnnotationApplier(
     private val configurations: PyrightAllConfigurations,
     private val holder: AnnotationHolder
 ) {
+    
     fun apply() {
         output.generalDiagnostics.forEach {
-            holder.applyDiagnostic(it, document)
+            val builder = makeBuilder(it)
+            val range = document.getStartEndRange(it.range)
+            
+            builder.needsUpdateOnTyping().range(range).create()
         }
     }
+    
+    private fun makeBuilder(diagnostic: PyrightDiagnostic): AnnotationBuilder {
+        val (_, severity, message) = diagnostic
+        val suffixedMessage = diagnostic.suffixedMessage
+        
+        val useEditorFont = configurations.useEditorFont
+        val font = if (useEditorFont) EditorUtil.getEditorFont().name else null
+        
+        val tooltip = suffixedMessage.toPreformattedTooltip(font)
+        val highlightSeverity = severity.toHighlightSeverity()
+        
+        return holder.newAnnotation(highlightSeverity, message).tooltip(tooltip)
+    }
+    
 }

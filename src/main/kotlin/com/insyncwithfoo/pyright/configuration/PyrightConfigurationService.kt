@@ -10,7 +10,8 @@ data class PyrightAllConfigurations(
     val alwaysUseGlobal: Boolean = false,
     val globalExecutable: @SystemDependent String? = null,
     val globalConfigurationFile: @SystemDependent String? = null,
-
+    val useEditorFont: Boolean = false,
+    
     val projectExecutable: @SystemDependent String? = null,
     val projectConfigurationFile: @SystemDependent String? = null
 ) {
@@ -36,9 +37,9 @@ class PyrightConfigurationService private constructor(
     applicationService: ApplicationConfigurationService,
     projectService: ProjectConfigurationService
 ) {
-
+    
     val configurations: PyrightAllConfigurations
-
+    
     init {
         val applicationConfigurations = applicationService.configurations
         val projectConfigurations = projectService.configurations
@@ -47,12 +48,13 @@ class PyrightConfigurationService private constructor(
             alwaysUseGlobal = applicationConfigurations.alwaysUseGlobal,
             globalExecutable = applicationConfigurations.globalExecutable,
             globalConfigurationFile = applicationConfigurations.globalConfigurationFile,
+            useEditorFont = applicationConfigurations.useEditorFont,
 
             projectExecutable = projectConfigurations.projectExecutable,
             projectConfigurationFile = projectConfigurations.projectConfigurationFile
         )
     }
-
+    
     companion object {
         fun getInstance(project: Project): PyrightConfigurationService {
             val applicationService = ApplicationConfigurationService.getInstance()
@@ -61,5 +63,5 @@ class PyrightConfigurationService private constructor(
             return PyrightConfigurationService(applicationService, projectService)
         }
     }
-
+    
 }
