@@ -23,4 +23,4 @@
 
 
   [Unreleased]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.1..HEAD
-  [v0.1.0-mvp.1]: https://github.com/InSyncWithFoo/pyright-plugin/commits
+  [0.1.0-mvp.1]: https://github.com/InSyncWithFoo/pyright-plugin/commits

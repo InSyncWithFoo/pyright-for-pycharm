@@ -1,5 +1,5 @@
-
 ## Generic
+
 
 ### Executable
 
@@ -30,9 +30,13 @@ If neither paths are specified, the project directory is used.
 
 ## Global
 
+
 ### Always use global
 
-Check this option to always use the global executable and configuration file.
+Check this option to always use the global executable
+and configuration file.
+
+Default: `false`
 
 
   [1]: https://microsoft.github.io/pyright/#/command-line
