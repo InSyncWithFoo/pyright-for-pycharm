@@ -11,9 +11,15 @@ import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.ui.Messages
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.packaging.IndicatedProcessOutputListener
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.serializer
-import org.jetbrains.annotations.SystemDependent
 import java.io.File
 
 
@@ -48,8 +54,28 @@ private enum class PyrightExitCode(val value: Int) {
 }
 
 
+private object FileSerializer : KSerializer<File> {
+    
+    override val descriptor: SerialDescriptor =
+        PrimitiveSerialDescriptor("Color", PrimitiveKind.STRING)
+    
+    override fun serialize(encoder: Encoder, value: File) {
+        val string = value.path
+        encoder.encodeString(string)
+    }
+    
+    override fun deserialize(decoder: Decoder): File {
+        throw NotImplementedError("The deserializer should not be used")
+    }
+    
+}
+
+
+@Serializable
 internal data class Command(
-    val executable: @SystemDependent File,
+    @Serializable(with = FileSerializer::class)
+    val executable: File,
+    @Serializable(with = FileSerializer::class)
     val target: File,
     val projectPath: String,
     val extraArguments: List<String>
@@ -153,10 +179,11 @@ private class PyrightErrorReporter(private val logger: Logger) {
 internal class PyrightRunner(private val command: Command) {
     
     fun run(): PyrightOutput? {
-        LOGGER.info("Running: $command")
+        val serializedCommand = Json.encodeToString(command)
+        LOGGER.info("Running: $serializedCommand")
         
         return try {
-            runAndLog()
+            runAndLogOutput()
         } catch (_: RunCanceledByUserException) {
             null
         } catch (exception: FatalException) {
@@ -168,14 +195,16 @@ internal class PyrightRunner(private val command: Command) {
         }
     }
     
-    private fun runAndLog(): PyrightOutput {
+    private fun runAndLogOutput(): PyrightOutput {
         val output = command.run()
-        val parsed = parseOutput(output)
-        
-        val minified = Json.encodeToString(serializer(), parsed)
-        LOGGER.info("Output: $minified")
+        val parsed = parseOutput(output).also { logOutput(it) }
         
         return parsed
+    }
+    
+    private fun logOutput(parsedOutput: PyrightOutput) {
+        val minified = Json.encodeToString(parsedOutput)
+        LOGGER.info("Output: $minified")
     }
     
     private fun parseOutput(response: String) =
