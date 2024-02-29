@@ -20,7 +20,6 @@ import com.intellij.xml.util.XmlStringUtil
 import com.jetbrains.python.PythonLanguage
 import com.jetbrains.python.psi.PyFile
 import com.jetbrains.python.psi.impl.PyFileImpl
-import java.io.File
 
 
 private val PsiFile.isInjected: Boolean
@@ -48,62 +47,8 @@ private val PsiFile.isApplicable: Boolean
     }
 
 
-private fun Document.getOffset(endpoint: PyrightDiagnosticTextRangeEndpoint) =
-    getLineStartOffset(endpoint.line) + endpoint.character
-
-
-private fun Document.getStartEndRange(range: PyrightDiagnosticTextRange): TextRange {
-    val start = getOffset(range.start)
-    val end = getOffset(range.end)
-    
-    return TextRange(start, end)
-}
-
-
 private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
     unsavedDocuments.forEach { saveDocumentAsIs(it) }
-}
-
-
-private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
-    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity.WARNING
-    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity.WEAK_WARNING
-    PyrightDiagnosticSeverity.INFORMATION -> HighlightSeverity.WEAK_WARNING
-}
-
-
-private fun String.toPreformattedTooltip(): String {
-    val escapedLines = this.split("\n").map {
-        XmlStringUtil.escapeString(it, true)
-    }
-    
-    return escapedLines.joinToString("<br>")
-}
-
-
-private fun AnnotationHolder.makeBuilderForDiagnostic(diagnostic: PyrightDiagnostic): AnnotationBuilder {
-    val (_, severity, message, rule) = diagnostic
-    
-    val tooltip = message.toPreformattedTooltip()
-    val highlightSeverity = severity.toHighlightSeverity()
-    
-    val suffix = if (rule != null) " (${rule})" else ""
-    val suffixedmessage = "$message$suffix"
-    
-    return newAnnotation(highlightSeverity, suffixedmessage).tooltip(tooltip)
-}
-
-
-private fun AnnotationHolder.applyDiagnostic(diagnostic: PyrightDiagnostic, document: Document) {
-    val builder = makeBuilderForDiagnostic(diagnostic)
-    val range = document.getStartEndRange(diagnostic.range)
-    
-    builder.annotateRange(range)
-}
-
-
-private fun AnnotationBuilder.annotateRange(range: TextRange) {
-    this.needsUpdateOnTyping().range(range).create()
 }
 
 
@@ -118,12 +63,6 @@ private fun Project.isPyrightEnabled(file: PsiFile): Boolean {
 
 private val Project.pyrightConfigurations: PyrightAllConfigurations
     get() = PyrightConfigurationService.getInstance(this).configurations
-
-
-private fun String.toFileIfItExists(projectPath: String? = null) =
-    File(this)
-        .let { if (it.isAbsolute) it else File(projectPath, this).canonicalFile }
-        .takeIf { it.exists() }
 
 
 class PyrightExternalAnnotator :
@@ -162,26 +101,21 @@ class PyrightExternalAnnotator :
     
     override fun doAnnotate(collectedInfo: Info?): Result? {
         val (configurations, file) = collectedInfo ?: return null
-        val projectPath = file.project.basePath ?: return null
         
-        val executable = configurations.executable?.toFileIfItExists(projectPath) ?: return null
-        val target = file.virtualFile.path.toFileIfItExists() ?: return null
-        val configurationFile = configurations.configurationFile
+        val command = Command.create(configurations, file) ?: return null
+        val output = PyrightRunner(command).run() ?: return null
         
-        val output = PyrightRunner(executable, target, configurationFile, projectPath).run()
-        
-        return Result(output)
+        return Result(configurations, output)
     }
     
     override fun apply(file: PsiFile, annotationResult: Result?, holder: AnnotationHolder) {
+        val (configurations, output) = annotationResult ?: return
+        
         val project = file.project
         val documentManager = PsiDocumentManager.getInstance(project)
         val document = documentManager.getDocument(file) ?: return
-        val output = annotationResult?.output ?: return
         
-        output.generalDiagnostics.forEach {
-            holder.applyDiagnostic(it, document)
-        }
+        PyrightAnnotationApplier(document, output, configurations, holder).apply()
     }
     
     data class Info(
@@ -189,6 +123,9 @@ class PyrightExternalAnnotator :
         val file: PsiFile
     )
     
-    data class Result(val output: PyrightOutput?)
+    data class Result(
+        val configurations: PyrightAllConfigurations,
+        val output: PyrightOutput
+    )
     
 }

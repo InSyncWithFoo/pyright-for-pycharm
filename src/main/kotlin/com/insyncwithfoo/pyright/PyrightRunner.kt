@@ -1,17 +1,26 @@
 package com.insyncwithfoo.pyright
 
+import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
 import com.intellij.execution.RunCanceledByUserException
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.process.CapturingProcessHandler
 import com.intellij.execution.process.ProcessOutput
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.progress.ProgressManager
+import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.ui.Messages
+import com.intellij.psi.PsiFile
 import com.jetbrains.python.packaging.IndicatedProcessOutputListener
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import org.jetbrains.annotations.SystemDependent
 import java.io.File
+
+
+private fun String.toFileIfItExists(projectPath: String? = null) =
+    File(this)
+        .let { if (it.isAbsolute) it else File(projectPath, this).canonicalFile }
+        .takeIf { it.exists() }
 
 
 private sealed class PyrightException(message: String) : Exception(message)
@@ -53,13 +62,28 @@ internal data class Command(
             target.toString()
         )
     
+    private val handler: CapturingProcessHandler
+        get() = CapturingProcessHandler(getGeneralCommandLine())
+    
     private fun getGeneralCommandLine(): GeneralCommandLine =
         GeneralCommandLine(fragments)
             .withWorkDirectory(projectPath)
             .withCharset(Charsets.UTF_8)
     
-    private val handler: CapturingProcessHandler
-        get() = CapturingProcessHandler(getGeneralCommandLine())
+    private fun runWithIndicator(): ProcessOutput {
+        val indicator = ProgressManager.getInstance().progressIndicator
+        
+        return with(handler) {
+            when {
+                indicator != null -> {
+                    addProcessListener(IndicatedProcessOutputListener(indicator))
+                    runProcessWithProgressIndicator(indicator)
+                }
+                
+                else -> runProcess()
+            }
+        }
+    }
     
     fun run(): String {
         val processOutput = runWithIndicator()
@@ -78,18 +102,29 @@ internal data class Command(
         }
     }
     
-    private fun runWithIndicator(): ProcessOutput {
-        val indicator = ProgressManager.getInstance().progressIndicator
-        
-        return with(handler) {
-            when {
-                indicator != null -> {
-                    addProcessListener(IndicatedProcessOutputListener(indicator))
-                    runProcessWithProgressIndicator(indicator)
-                }
-                
-                else -> runProcess()
-            }
+    companion object {
+        fun create(
+            configurations: PyrightAllConfigurations,
+            file: PsiFile
+        ): Command? {
+            val project = file.project
+            
+            val projectPath = project.basePath ?: return null
+            
+            val executable = configurations.executable?.toFileIfItExists(projectPath) ?: return null
+            val target = file.virtualFile.path.toFileIfItExists() ?: return null
+            val configurationFile = configurations.configurationFile
+            
+            val projectSdk = ProjectRootManager.getInstance(project).projectSdk
+            val pythonExecutable = projectSdk?.homePath ?: return null
+            
+            val extraArguments = listOf(
+                "--outputjson",
+                "--project", configurationFile ?: projectPath,
+                "--pythonpath", pythonExecutable
+            )
+            
+            return Command(executable, target, projectPath, extraArguments)
         }
     }
     
@@ -115,14 +150,7 @@ private class PyrightErrorReporter(private val logger: Logger) {
 }
 
 
-class PyrightRunner(
-    executable: File,
-    target: File,
-    configurationFile: String?,
-    projectPath: String
-) {
-    
-    private val command = makeCommand(executable, target, configurationFile, projectPath)
+internal class PyrightRunner(private val command: Command) {
     
     fun run(): PyrightOutput? {
         LOGGER.info("Running: $command")
@@ -156,20 +184,6 @@ class PyrightRunner(
     companion object {
         private val LOGGER = Logger.getInstance(PyrightRunner::class.java)
         private val ERROR_REPORTER = PyrightErrorReporter(LOGGER)
-        
-        private fun makeCommand(
-            executable: File,
-            target: File,
-            configurationFile: String?,
-            projectPath: String
-        ): Command {
-            val extraArguments = listOf(
-                "--outputjson",
-                "--project", configurationFile ?: projectPath
-            )
-            
-            return Command(executable, target, projectPath, extraArguments)
-        }
     }
     
 }

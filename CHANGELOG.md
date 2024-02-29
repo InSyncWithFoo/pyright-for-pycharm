@@ -9,6 +9,10 @@
 
 * Allow using relative path for executables.
 
+### Changed
+
+* The interpreter of the current project is now recognized correctly.
+
 
 ## [0.1.0-mvp.1] - 2024-02-26
 
