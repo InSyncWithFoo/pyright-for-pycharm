@@ -15,6 +15,10 @@
 * The interpreter of the current project is now recognized correctly.
 * Commands are now logged as JSON.
 
+### Removed
+
+* Drop support for 2023.3.3
+
 
 ## [0.1.0-mvp.1] - 2024-02-26
 
