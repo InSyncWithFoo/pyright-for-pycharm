@@ -41,9 +41,7 @@ You should see Pyright annotations in a few seconds.
 
 This is only a minimum viable product.
 
-* Tests have not been written,
-  and manual tests have only been performed on Windows.
-* There are no documentations; the UX might be terrible for some.
+* There are no tests. Manual checks are only performed on Windows.
 * Since `ExternalAnnotator`s are only called after all other annotators
   have run, expect a major delay (up to a few seconds) between checks.
 

@@ -17,7 +17,7 @@ It would be interpreted as relative to the project directory.
 
 ### Configuration file
 
-Despite being called "file", you can specify a path to a directory
+Despite being called "file", this can be a path to a directory
 containing `pyright-config.json` and/or `pyproject.toml`.
 This path will be passed to the executable via [the `-p` option][1].
 
@@ -25,7 +25,8 @@ This path will be passed to the executable via [the `-p` option][1].
 * If the executable is global, the local path is used if it is specified,
   falling back to the global one.
 
-If neither paths are specified, the project directory is used.
+If the path retrieved using the aforementioned strategy is not specified,
+the project directory is used.
 
 
 ## Global
