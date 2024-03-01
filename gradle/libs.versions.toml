@@ -20,10 +20,26 @@ group = "org.jetbrains.kotlinx"
 name = "kotlinx-serialization-json"
 version.ref = "kotlinxSerialization"
 
-[plugins]
-changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
-gradleIntelliJPlugin = { id = "org.jetbrains.intellij", version.ref = "gradleIntelliJPlugin" }
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-qodana = { id = "org.jetbrains.qodana", version.ref = "qodana" }
-kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+[plugins.changelog]
+id = "org.jetbrains.changelog"
+version.ref = "changelog"
+
+[plugins.gradleIntelliJPlugin]
+id = "org.jetbrains.intellij"
+version.ref = "gradleIntelliJPlugin"
+
+[plugins.kotlin]
+id = "org.jetbrains.kotlin.jvm"
+version.ref = "kotlin"
+
+[plugins.kover]
+id = "org.jetbrains.kotlinx.kover"
+version.ref = "kover"
+
+[plugins.qodana]
+id = "org.jetbrains.qodana"
+version.ref = "qodana"
+
+[plugins.kotlinSerialization]
+id = "org.jetbrains.kotlin.plugin.serialization"
+version.ref = "kotlin"
