@@ -5,6 +5,11 @@
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.1.0-mvp.2] - 2024-03-03
+
 ### Added
 
 * Allow using relative path for executables.
@@ -27,5 +32,6 @@
 * Project initialized
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.1..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.2..HEAD
+  [0.1.0-mvp.2]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.1..v0.1.0-mvp.2
   [0.1.0-mvp.1]: https://github.com/InSyncWithFoo/pyright-plugin/commits
