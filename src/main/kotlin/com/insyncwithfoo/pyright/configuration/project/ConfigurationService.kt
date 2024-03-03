@@ -8,7 +8,6 @@ import com.intellij.openapi.components.Storage
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.util.xmlb.XmlSerializerUtil
-import org.jetbrains.annotations.SystemDependent
 
 
 @State(name = "ProjectConfigurations", storages = [Storage("pyright.xml")])
