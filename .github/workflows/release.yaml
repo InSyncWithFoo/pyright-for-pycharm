@@ -6,7 +6,6 @@ name: Release
 on:
   release:
     types:
-      - prereleased
       - released
 
 jobs:
