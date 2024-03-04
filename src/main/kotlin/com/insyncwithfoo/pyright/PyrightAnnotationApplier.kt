@@ -45,7 +45,7 @@ private fun String.toPreformattedTooltip(font: String? = null): String {
 
 private val PyrightDiagnostic.suffixedMessage: String
     get() {
-        val suffix = if (rule != null) " (${rule})" else ""
+        val suffix = if (rule != null) " ($rule)" else ""
         
         return "$message$suffix"
     }
@@ -72,9 +72,12 @@ internal class PyrightAnnotationApplier(
         val suffixedMessage = diagnostic.suffixedMessage
         
         val useEditorFont = configurations.useEditorFont
-        val font = if (useEditorFont) EditorUtil.getEditorFont().name else null
+        val font = when {
+            useEditorFont -> EditorUtil.getEditorFont()
+            else -> null
+        }
         
-        val tooltip = suffixedMessage.toPreformattedTooltip(font)
+        val tooltip = suffixedMessage.toPreformattedTooltip(font?.name)
         val highlightSeverity = severity.toHighlightSeverity()
         
         return holder.newAnnotation(highlightSeverity, message).tooltip(tooltip)

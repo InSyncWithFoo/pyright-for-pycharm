@@ -60,8 +60,7 @@ private object FileSerializer : KSerializer<File> {
         PrimitiveSerialDescriptor("Color", PrimitiveKind.STRING)
     
     override fun serialize(encoder: Encoder, value: File) {
-        val string = value.path
-        encoder.encodeString(string)
+        encoder.encodeString(value.path)
     }
     
     override fun deserialize(decoder: Decoder): File {
