@@ -2,7 +2,6 @@
 
 <svg
 	version="1.1"
-	id="svg1"
 	width="200"
 	height="200"
 	viewBox="0 0 200 199.99999"
@@ -24,7 +23,8 @@
 				width="169.20653"
 				height="183.62062"
 				x="21.853825"
-				y="29.367157"/>
+				y="29.367157"
+			/>
 		</clipPath>
 	</defs>
 	<g transform="translate(-22,-29.367157)">
