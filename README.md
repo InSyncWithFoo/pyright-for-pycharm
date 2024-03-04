@@ -62,7 +62,7 @@ Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][6].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG logo is derived from [the README image][7]
+The SVG and PNG logos are derived from [the README image][7]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
