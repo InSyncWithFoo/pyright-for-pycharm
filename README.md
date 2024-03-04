@@ -69,7 +69,7 @@ generated using Inkscape's autotrace feature.
 
 ## See also
 
-* [Pyright (Experimental)][8], its non-working sister plugin
+* [Pyright for PyCharm Professional][8], its about-to-be-working sister plugin
   for PyCharm Professional, using the experimental LSP API.
 
 
