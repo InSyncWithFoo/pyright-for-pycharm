@@ -86,6 +86,16 @@ jobs:
         run: ./gradlew buildPlugin
       
       -
+        name: Push ZIP to the "build" branch
+        uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          BRANCH: build
+          FOLDER: build/distributions/
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "{msg} ({sha})"
+      
+      -
         name: Prepare plugin artifact
         id: artifact
         shell: bash
@@ -102,13 +112,3 @@ jobs:
         with:
           name: ${{ steps.artifact.outputs.filename }}
           path: ./build/distributions/content/*/*
-      
-      -
-        name: Push
-        uses: s0/git-publish-subdir-action@v2.6.0
-        env:
-          REPO: self
-          BRANCH: build
-          FOLDER: build/distributions/
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE: "{msg} ({sha})"
