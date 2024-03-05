@@ -10,10 +10,10 @@ Follow the steps below to get started.
 
 ## Coding
 
-Fork this repository:
+Clone the `master` branch:
 
 ```shell
-$ git clone https://github.com/InSyncWithFoo/pyright-plugin
+$ git clone https://github.com/InSyncWithFoo/pyright-plugin -b master
 ```
 
 Then, make your changes. Run the "Run Plugin" run configuration
