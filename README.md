@@ -70,8 +70,9 @@ generated using Inkscape's autotrace feature.
 
 ## See also
 
-* [Pyright for PyCharm Professional][10], its about-to-be-working sister plugin
-  for PyCharm Professional, using the experimental LSP API.
+* [Pyright Language Server for PyCharm Professional][10],
+  its about-to-be-working sister plugin for PyCharm Professional,
+  using the experimental LSP API.
 
 
   [3]: https://plugins.jetbrains.com/
