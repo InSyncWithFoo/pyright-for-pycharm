@@ -2,6 +2,8 @@ package com.insyncwithfoo.pyright
 
 import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
 import com.insyncwithfoo.pyright.configuration.PyrightConfigurationService
+import com.insyncwithfoo.pyright.runner.PyrightCommand
+import com.insyncwithfoo.pyright.runner.PyrightRunner
 import com.intellij.codeInsight.daemon.HighlightDisplayKey
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
@@ -91,7 +93,7 @@ class PyrightExternalAnnotator :
     override fun doAnnotate(collectedInfo: Info?): Result? {
         val (configurations, file) = collectedInfo ?: return null
         
-        val command = Command.create(configurations, file) ?: return null
+        val command = PyrightCommand.create(configurations, file) ?: return null
         val output = PyrightRunner(command).run() ?: return null
         
         return Result(configurations, output)

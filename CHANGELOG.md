@@ -5,7 +5,9 @@
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Fixed
+
+* Correct descriptor name for commands' path serializer
 
 
 ## [0.1.0-mvp.2] - 2024-03-03
