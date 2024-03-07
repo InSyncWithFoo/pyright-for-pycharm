@@ -12,17 +12,20 @@
 
 ### Added
 
-* Allow using relative path for executables.
+* Allow using relative path for executables
 * Add "Use editor font" global option
 
 ### Changed
 
-* The interpreter of the current project is now recognized correctly.
-* Commands are now logged as JSON.
+* Log commands as JSON
 
 ### Removed
 
 * Drop support for 2023.3.3
+
+### Fixed
+
+* Recognize the interpreter of the current project correctly
 
 
 ## [0.1.0-mvp.1] - 2024-02-26
