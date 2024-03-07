@@ -1,5 +1,8 @@
 # Pyright for PyCharm
 
+[![Build](https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/build.yaml/badge.svg)](https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/build.yaml)
+[![Docs](https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/docs.yaml/badge.svg)](https://insyncwithfoo.github.io/pyright-plugin)
+
 <!-- Plugin description -->
 Pyright integration for PyCharm.
 
