@@ -46,7 +46,6 @@ private fun String.toPreformattedTooltip(font: String? = null): String {
 private val PyrightDiagnostic.suffixedMessage: String
     get() {
         val suffix = if (rule != null) " ($rule)" else ""
-        
         return "$message$suffix"
     }
 

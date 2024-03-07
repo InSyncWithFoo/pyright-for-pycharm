@@ -3,6 +3,7 @@ package com.insyncwithfoo.pyright
 import com.intellij.codeInspection.ex.ExternalAnnotatorBatchInspection
 import com.jetbrains.python.inspections.PyInspection
 
+
 class PyrightInspection : PyInspection(), ExternalAnnotatorBatchInspection {
     override fun getShortName() = SHORT_NAME
     

@@ -29,16 +29,10 @@ private val PsiFile.languageIsPython: Boolean
 
 
 private val PsiFile.isApplicable: Boolean
-    get() {
-        if (this !is PyFile || this.isInjected || !this.languageIsPython) {
-            return false
-        }
-        
-        if (this is PyFileImpl && !this.isAcceptedFor(PyrightInspection::class.java)) {
-            return false
-        }
-        
-        return true
+    get() = when {
+        this !is PyFile || this.isInjected || !this.languageIsPython -> false
+        this is PyFileImpl && !this.isAcceptedFor(PyrightInspection::class.java) -> false
+        else -> true
     }
 
 
