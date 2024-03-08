@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright.configuration
+package com.insyncwithfoo.pyright.configuration.common
 
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
@@ -13,7 +13,7 @@ private fun TextFieldWithBrowseButton.addBrowseButtonListener() {
 }
 
 
-abstract class PyrightConfigurationPanel<C> {
+abstract class ConfigurationPanel<C> {
     
     protected abstract var panel: JPanel
     

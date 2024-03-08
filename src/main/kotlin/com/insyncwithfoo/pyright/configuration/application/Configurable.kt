@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.configuration.application
 
-import com.insyncwithfoo.pyright.configuration.PyrightConfigurable
+import com.insyncwithfoo.pyright.configuration.common.PyrightConfigurable
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 

@@ -1,13 +1,13 @@
 package com.insyncwithfoo.pyright.configuration.project
 
-import com.insyncwithfoo.pyright.configuration.PyrightConfigurationPanel
+import com.insyncwithfoo.pyright.configuration.common.ConfigurationPanel
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import javax.swing.JLabel
 import javax.swing.JPanel
 
 
-class ConfigurationPanel(private val project: Project) : PyrightConfigurationPanel<Configurations>() {
+class ConfigurationPanel(private val project: Project) : ConfigurationPanel<Configurations>() {
     
     override lateinit var panel: JPanel
     

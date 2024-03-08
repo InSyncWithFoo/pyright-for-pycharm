@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.configuration.project
 
-import com.insyncwithfoo.pyright.configuration.HasConfigurations
+import com.insyncwithfoo.pyright.configuration.common.HasConfigurations
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.SimplePersistentStateComponent
 import com.intellij.openapi.components.State
