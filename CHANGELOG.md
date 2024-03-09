@@ -5,6 +5,11 @@
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.1.0-mvp.3] - 2024-03-10
+
 ### Changed
 
 * Better error reporting
@@ -41,6 +46,7 @@
 * Project initialized
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.2..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.3..HEAD
+  [0.1.0-mvp.3]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.2..v0.1.0-mvp.3
   [0.1.0-mvp.2]: https://github.com/InSyncWithFoo/pyright-plugin/compare/v0.1.0-mvp.1..v0.1.0-mvp.2
   [0.1.0-mvp.1]: https://github.com/InSyncWithFoo/pyright-plugin/commits
