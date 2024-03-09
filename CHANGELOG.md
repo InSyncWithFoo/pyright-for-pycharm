@@ -5,6 +5,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+* Better error reporting
+
 ### Fixed
 
 * Correct descriptor name for commands' path serializer

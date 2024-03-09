@@ -94,7 +94,7 @@ class PyrightExternalAnnotator :
         val (configurations, file) = collectedInfo ?: return null
         
         val command = PyrightCommand.create(configurations, file) ?: return null
-        val output = PyrightRunner(command).run() ?: return null
+        val output = PyrightRunner(file.project).run(command) ?: return null
         
         return Result(configurations, output)
     }

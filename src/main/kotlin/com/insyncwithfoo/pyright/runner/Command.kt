@@ -87,9 +87,9 @@ data class PyrightCommand(
             }
             
             when (PyrightExitCode.fromInt(exitCode)) {
-                PyrightExitCode.FATAL -> throw FatalException(stdout)
-                PyrightExitCode.INVALID_CONFIG -> throw InvalidConfigurationsException(stdout)
-                PyrightExitCode.INVALID_PARAMETERS -> throw InvalidParametersException(stdout)
+                PyrightExitCode.FATAL -> throw FatalException(stdout, stderr)
+                PyrightExitCode.INVALID_CONFIG -> throw InvalidConfigurationsException(stdout, stderr)
+                PyrightExitCode.INVALID_PARAMETERS -> throw InvalidParametersException(stdout, stderr)
                 else -> stdout
             }
         }
