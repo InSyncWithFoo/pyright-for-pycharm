@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://insyncwithfoo.github.io/pyright-plugin/</loc>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/</loc>
          <lastmod>2024-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://insyncwithfoo.github.io/pyright-plugin/configurations/</loc>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/</loc>
          <lastmod>2024-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
