@@ -13,7 +13,7 @@ Follow the steps below to get started.
 Clone the `master` branch:
 
 ```shell
-$ git clone https://github.com/InSyncWithFoo/pyright-plugin -b master
+$ git clone https://github.com/InSyncWithFoo/pyright-for-pycharm -b master
 ```
 
 Then, make your changes. Run the "Run Plugin" run configuration

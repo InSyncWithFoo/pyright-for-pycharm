@@ -1,7 +1,7 @@
 # Pyright for PyCharm
 
-[![Build](https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/build.yaml/badge.svg)](https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/build.yaml)
-[![Docs](https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/docs.yaml/badge.svg)](https://insyncwithfoo.github.io/pyright-plugin)
+[![Build](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml/badge.svg)](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml)
+[![Docs](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/docs.yaml/badge.svg)](https://insyncwithfoo.github.io/pyright-for-pycharm)
 
 <!-- Plugin description -->
 Pyright integration for PyCharm.
@@ -17,7 +17,7 @@ User documentation can be found [here][2].
 
 
   [1]: https://github.com/microsoft/pyright
-  [2]: https://insyncwithfoo.github.io/pyright-plugin/
+  [2]: https://insyncwithfoo.github.io/pyright-for-pycharm/
 <!-- Plugin description end -->
 
 
@@ -79,8 +79,8 @@ generated using Inkscape's autotrace feature.
 
 
   [3]: https://plugins.jetbrains.com/
-  [4]: https://github.com/InSyncWithFoo/pyright-plugin/tree/build
-  [5]: https://github.com/InSyncWithFoo/pyright-plugin/actions/workflows/build.yaml
+  [4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
+  [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
   [6]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
   [7]: ./CONTRIBUTING.md
   [8]: https://github.com/koxudaxi/ruff-pycharm-plugin

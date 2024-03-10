@@ -127,7 +127,7 @@ internal class InvalidParametersException(
     
     companion object {
         private const val ACTION_TEXT = "Plugin issue tracker"
-        private const val ACTION_LINK = "https://github.com/InSyncWithFoo/pyright-plugin/issues"
+        private const val ACTION_LINK = "https://github.com/InSyncWithFoo/pyright-for-pycharm/issues"
     }
     
 }
