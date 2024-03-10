@@ -87,7 +87,7 @@ jobs:
       
       -
         name: Push ZIP to the "build" branch
-        uses: s0/git-publish-subdir-action@v2.6.0
+        uses: s0/git-publish-subdir-action@develop
         if: github.event_name == 'push'
         env:
           REPO: self
