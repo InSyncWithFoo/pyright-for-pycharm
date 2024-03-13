@@ -500,13 +500,17 @@
 <h3 id="executable">Executable<a class="headerlink" href="#executable" title="Permanent link">#</a></h3>
 <p>For the plugin to work, you need to define at least one executable file
 using either the <b>Global</b> or <b>Project</b> panel.</p>
-<p>Such a file is typically named <code>pyright.exe</code> and can be found in:</p>
+<p>Such a file is typically named <code>pyright</code>/<code>pyright-python</code>
+(preferably the former, if you ave both) and can be found in:</p>
 <ul>
 <li>Global: Your Python interpreter directory</li>
 <li>Virtual environment: <code>/venv/Scripts/</code> (Windows) or <code>/venv/bin</code> (Linux)</li>
 </ul>
 <p>You can also use a relative path.
 It would be interpreted as relative to the project directory.</p>
+<p>The executable is used as-is with no additional checks,
+so the plugin will still work even if, for example,
+it's a wrapper script that outputs the same diagnostics.</p>
 <h3 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">#</a></h3>
 <p>Despite being called "file", this can be a path to a directory
 containing <code>pyright-config.json</code> and/or <code>pyproject.toml</code>.
