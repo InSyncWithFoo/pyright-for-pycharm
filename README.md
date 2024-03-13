@@ -36,6 +36,7 @@ and follow the instructions described [here][6].
 Go to <b>Settings</b> | <b>Tools</b> |
 <b>Pyright (Global)</b> / <b>Pyright (Project)</b> and
 set the executable path to your Pyright executable.
+See [the docs][7] for more information on the configurations.
 
 Save, return to your file and start making some modifications.
 You should see Pyright annotations in a few seconds.
@@ -50,7 +51,7 @@ This is only a minimum viable product.
   have run, expect a major delay (up to a few seconds) between checks.
 
 If you are interested in contributing to this project,
-see [the contributing guide][7].
+see [the contributing guide][8].
 
 
 ## Release schedule
@@ -62,18 +63,18 @@ if there are enough changes to justify a release.
 
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][8].
+Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][9].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG and PNG logos are derived from [the README image][9]
+The SVG and PNG logos are derived from [the README image][10]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 
 ## See also
 
-* [Pyright Language Server for PyCharm Professional][10],
+* [Pyright Language Server for PyCharm Professional][11],
   its about-to-be-working sister plugin for PyCharm Professional,
   using the experimental LSP API.
 
@@ -82,7 +83,8 @@ generated using Inkscape's autotrace feature.
   [4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
   [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
   [6]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
-  [7]: ./CONTRIBUTING.md
-  [8]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [9]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [10]: https://github.com/InSyncWithFoo/pyright-experimental-plugin
+  [7]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/
+  [8]: ./CONTRIBUTING.md
+  [9]: https://github.com/koxudaxi/ruff-pycharm-plugin
+  [10]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [11]: https://github.com/InSyncWithFoo/pyright-experimental-plugin
