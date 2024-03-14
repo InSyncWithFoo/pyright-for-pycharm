@@ -75,8 +75,8 @@ generated using Inkscape's autotrace feature.
 ## See also
 
 * [Pyright Language Server for PyCharm Professional][11],
-  its about-to-be-working sister plugin for PyCharm Professional,
-  using the experimental LSP API.
+  its sister plugin for PyCharm Professional that makes use of
+  the experimental LSP API.
 
 
   [3]: https://plugins.jetbrains.com/
@@ -87,4 +87,4 @@ generated using Inkscape's autotrace feature.
   [8]: ./CONTRIBUTING.md
   [9]: https://github.com/koxudaxi/ruff-pycharm-plugin
   [10]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [11]: https://github.com/InSyncWithFoo/pyright-experimental-plugin
+  [11]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
