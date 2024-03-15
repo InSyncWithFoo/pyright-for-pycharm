@@ -7,14 +7,16 @@ on:
 
 jobs:
   build-deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
+    
     permissions: 
       contents: write
+    
     steps:
       -
         name: Checkout
         uses: actions/checkout@v4
-        # Docs: https://github.com/actions/checkout
       -
         name: Setup Python
         uses: actions/setup-python@v5
