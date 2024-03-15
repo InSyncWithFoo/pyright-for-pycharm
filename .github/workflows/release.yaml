@@ -9,41 +9,33 @@ on:
       - released
 
 jobs:
-  
-  # Prepare and publish the plugin to JetBrains Marketplace repository
   release:
-    name: Publish Plugin
+    name: Publish plugin
     runs-on: ubuntu-latest
+    
     permissions:
       contents: write
       pull-requests: write
+    
     steps:
-      
-      # Check out current repository
       -
-        name: Fetch Sources
+        name: Fetch sources
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.release.tag_name }}
-      
-      # Set up Java environment for the next steps
       -
         name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: zulu
           java-version: 17
-      
-      # Setup Gradle
       -
         name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-home-cache-cleanup: true
-      
-      # Set environment variables
       -
-        name: Export Properties
+        name: Export properties
         id: properties
         shell: bash
         run: |
@@ -52,39 +44,37 @@ jobs:
           EOM
           )"
           
+          # Avoid false positive error that CHANGELOG is not exported
+          # echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
+          
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-      
-      # Update Unreleased section with the current release note
       -
-        name: Patch Changelog
+        name: Patch changelog
         if: ${{ steps.properties.outputs.changelog != '' }}
         env:
           CHANGELOG: ${{ steps.properties.outputs.changelog }}
         run: |
+          chmod +x ./gradlew
           ./gradlew patchChangelog --release-note="$CHANGELOG"
-      
-      # Publish the plugin to JetBrains Marketplace
       -
-        name: Publish Plugin
+        name: Publish plugin
         env:
           PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
           CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
-        run: ./gradlew publishPlugin
-      
-      # Upload artifact as a release asset
+        run: |
+          ./gradlew publishPlugin
       -
-        name: Upload Release Asset
+        name: Upload release asset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ github.event.release.tag_name }} ./build/distributions/*
-      
-      # Create a pull request
+        run: |
+          gh release upload ${{ github.event.release.tag_name }} ./build/distributions/*
       -
-        name: Create Pull Request
+        name: Create pull request
         if: ${{ steps.properties.outputs.changelog != '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
