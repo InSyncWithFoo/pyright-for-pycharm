@@ -5,7 +5,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 
-class PyrightProjectConfigurable internal constructor(project: Project) : PyrightConfigurable<Configurations>() {
+internal class PyrightProjectConfigurable internal constructor(project: Project) :
+    PyrightConfigurable<Configurations>() {
     
     override val service = ConfigurationService.getInstance(project)
     override val panel by lazy { ConfigurationPanel(project) }

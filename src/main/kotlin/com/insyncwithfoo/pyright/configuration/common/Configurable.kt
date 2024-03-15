@@ -3,12 +3,12 @@ package com.insyncwithfoo.pyright.configuration.common
 import com.intellij.openapi.options.Configurable
 
 
-interface HasConfigurations<C> {
+internal interface HasConfigurations<C> {
     var configurations: C
 }
 
 
-abstract class PyrightConfigurable<C> : Configurable {
+internal abstract class PyrightConfigurable<C> : Configurable {
     
     abstract val service: HasConfigurations<C>
     abstract val panel: ConfigurationPanel<C>

@@ -4,7 +4,7 @@ import com.intellij.openapi.components.BaseState
 import org.jetbrains.annotations.SystemDependent
 
 
-class Configurations : BaseState() {
+internal class Configurations : BaseState() {
     
     var alwaysUseGlobal by property(false)
     var globalExecutable by string(null)

@@ -5,7 +5,7 @@ import com.insyncwithfoo.pyright.configuration.application.ConfigurationService 
 import com.insyncwithfoo.pyright.configuration.project.ConfigurationService as ProjectConfigurationService
 
 
-class PyrightConfigurationService private constructor(
+internal class PyrightConfigurationService private constructor(
     applicationService: ApplicationConfigurationService,
     projectService: ProjectConfigurationService
 ) {

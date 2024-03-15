@@ -4,7 +4,7 @@ import com.insyncwithfoo.pyright.configuration.common.PyrightConfigurable
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 
-class PyrightApplicationConfigurable : PyrightConfigurable<Configurations>() {
+internal class PyrightApplicationConfigurable : PyrightConfigurable<Configurations>() {
     
     override val service = ConfigurationService.getInstance()
     override val panel by lazy { ConfigurationPanel() }

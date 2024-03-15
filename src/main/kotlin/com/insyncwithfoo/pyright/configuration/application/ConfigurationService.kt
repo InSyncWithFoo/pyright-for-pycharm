@@ -12,7 +12,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(name = "ApplicationConfigurations", storages = [Storage("pyright.xml", roamingType = RoamingType.DISABLED)])
 @Service(Service.Level.APP)
-class ConfigurationService :
+internal class ConfigurationService :
     SimplePersistentStateComponent<Configurations>(Configurations()),
     HasConfigurations<Configurations> {
     

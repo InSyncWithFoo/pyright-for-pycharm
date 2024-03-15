@@ -12,7 +12,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 
 @State(name = "ProjectConfigurations", storages = [Storage("pyright.xml")])
 @Service(Service.Level.PROJECT)
-class ConfigurationService :
+internal class ConfigurationService :
     SimplePersistentStateComponent<Configurations>(Configurations()),
     HasConfigurations<Configurations> {
     

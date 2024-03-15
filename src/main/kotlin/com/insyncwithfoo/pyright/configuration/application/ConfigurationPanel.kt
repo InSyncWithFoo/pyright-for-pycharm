@@ -7,7 +7,7 @@ import javax.swing.JLabel
 import javax.swing.JPanel
 
 
-class ConfigurationPanel : ConfigurationPanel<Configurations>() {
+internal class ConfigurationPanel : ConfigurationPanel<Configurations>() {
     
     override lateinit var panel: JPanel
     

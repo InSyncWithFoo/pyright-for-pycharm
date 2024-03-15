@@ -13,7 +13,7 @@ private fun TextFieldWithBrowseButton.addBrowseButtonListener() {
 }
 
 
-abstract class ConfigurationPanel<C> {
+internal abstract class ConfigurationPanel<C> {
     
     protected abstract var panel: JPanel
     
