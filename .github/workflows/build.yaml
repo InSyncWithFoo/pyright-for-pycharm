@@ -14,11 +14,9 @@
 
 name: Build
 on:
-  # Trigger the workflow on pushes to only the 'main' branch
-  # (this avoids duplicate checks being run e.g., for dependabot pull requests)
   push:
-    branches: [ master ]
-  # Trigger the workflow on any pull request
+    branches:
+      - master
   pull_request:
   workflow_dispatch:
 
@@ -27,41 +25,36 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  
-  # Prepare environment and build the plugin
   build:
     name: Build
     runs-on: ubuntu-latest
+    
     permissions:
       contents: write
+    
     outputs:
       version: ${{ steps.properties.outputs.version }}
       changelog: ${{ steps.properties.outputs.changelog }}
       pluginVerifierHomeDir: ${{ steps.properties.outputs.pluginVerifierHomeDir }}
+    
     steps:
-      
-      # Check out current repository
       -
         name: Fetch sources
         uses: actions/checkout@v4
-      
       -
-        name: Gradle Wrapper validation
+        name: Gradle wrapper validation
         uses: gradle/wrapper-validation-action@v2.1.1
-      
       -
         name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: zulu
           java-version: 17
-      
       -
         name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-home-cache-cleanup: true
-      
       -
         name: Export properties
         id: properties
@@ -74,17 +67,17 @@ jobs:
           
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "pluginVerifierHomeDir=~/.pluginVerifier" >> $GITHUB_OUTPUT
+          # Avoid false positive error that CHANGELOG is not exported
+          # echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
           
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
           
-          ./gradlew listProductsReleases # prepare list of IDEs for Plugin Verifier
-      
+          ./gradlew listProductsReleases
       -
         name: Build plugin
         run: ./gradlew buildPlugin
-      
       -
         name: Push ZIP to the "build" branch
         uses: s0/git-publish-subdir-action@develop
@@ -95,7 +88,6 @@ jobs:
           FOLDER: build/distributions/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "{msg} ({sha})"
-      
       -
         name: Prepare plugin artifact
         id: artifact
@@ -106,10 +98,120 @@ jobs:
           unzip "$FILENAME" -d content
           
           echo "filename=${FILENAME:0:-4}" >> $GITHUB_OUTPUT
-      
       -
         name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.artifact.outputs.filename }}
           path: ./build/distributions/content/*/*
+  
+  inspect:
+    name: Inspect code
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
+    
+    steps:
+      -
+        name: Maximize build space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          large-packages: false
+      -
+        name: Fetch sources
+        uses: actions/checkout@v4
+      -
+        name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+      -
+        name: Run Qodana
+        uses: JetBrains/qodana-action@v2023.3.1
+        with:
+          cache-default-branch-only: true
+  
+  verify:
+    name: Verify plugin
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    
+    steps:
+      -
+        name: Maximize build space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          large-packages: false
+      -
+        name: Fetch sources
+        uses: actions/checkout@v4
+      -
+        name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+      -
+        name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-home-cache-cleanup: true
+      -
+        name: Setup plugin verifier IDEs cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ needs.build.outputs.pluginVerifierHomeDir }}/ides
+          key: plugin-verifier-${{ hashFiles('build/listProductsReleases.txt') }}
+      -
+        name: Run plugin verification tasks
+        run: |
+          chmod +x ./gradlew
+          ./gradlew runPluginVerifier -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
+      -
+        name: Collect plugin verifier Result
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pluginVerifier-result
+          path: ${{ github.workspace }}/build/reports/pluginVerifier
+  
+  draft:
+    name: Release draft
+    if: github.event_name != 'pull_request'
+    needs: [ build, inspect, verify ]
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      -
+        name: Fetch sources
+        uses: actions/checkout@v4
+      -
+        name: Remove old release drafts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api repos/{owner}/{repo}/releases \
+            --jq '.[] | select(.draft == true) | .id' \
+            | xargs -I '{}' gh api -X DELETE repos/{owner}/{repo}/releases/{}
+      -
+        name: Create release draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ needs.build.outputs.version }}" \
+            --draft \
+            --title "v${{ needs.build.outputs.version }}" \
+            --notes "$(cat << 'EOM'
+          ${{ needs.build.outputs.changelog }}
+          EOM
+          )"
