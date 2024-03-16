@@ -343,9 +343,60 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#what-exactly-is-this-plugin-doing" class="md-nav__link">
+    <span class="md-ellipsis">
+      What exactly is this plugin doing?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#my-code-should-have-nothese-errors-but-it-doesdoesnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      My code should have no/these errors, but it does/doesn't.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#whats-the-difference-between-pyright-and-pyright-python" class="md-nav__link">
     <span class="md-ellipsis">
       What's the difference between pyright and pyright-python?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-does-this-plugin-have-to-perform-saves-so-often" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why does this plugin have to perform saves so often?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-watch-mode-watch-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is watch mode (--watch) supported?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Is watch mode (--watch) supported?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-does-it-take-so-long-to-run-on-my-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why does it take so long to run on my project?
     </span>
   </a>
   
@@ -399,9 +450,60 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#what-exactly-is-this-plugin-doing" class="md-nav__link">
+    <span class="md-ellipsis">
+      What exactly is this plugin doing?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#my-code-should-have-nothese-errors-but-it-doesdoesnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      My code should have no/these errors, but it does/doesn't.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#whats-the-difference-between-pyright-and-pyright-python" class="md-nav__link">
     <span class="md-ellipsis">
       What's the difference between pyright and pyright-python?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-does-this-plugin-have-to-perform-saves-so-often" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why does this plugin have to perform saves so often?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-watch-mode-watch-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is watch mode (--watch) supported?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Is watch mode (--watch) supported?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-does-it-take-so-long-to-run-on-my-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why does it take so long to run on my project?
     </span>
   </a>
   
@@ -433,6 +535,26 @@
   <h1>FAQ</h1>
 
 <h2 id="frequently-asked-questions">Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h2>
+<h3 id="what-exactly-is-this-plugin-doing">What exactly is this plugin doing?<a class="headerlink" href="#what-exactly-is-this-plugin-doing" title="Permanent link">#</a></h3>
+<p>In a nutshell:</p>
+<ul>
+<li>You edit your code.</li>
+<li>This plugin saves your (unsaved) files.</li>
+<li>It then invokes the executable provided by you with some hardcoded arguments.</li>
+<li>The results of which are used to show annotations.</li>
+</ul>
+<p>And that's it.</p>
+<p>It expects two things:</p>
+<ul>
+<li>That the executable you provide accepts said arguments, and</li>
+<li>that it outputs diagnostics in the formats specified <a href="https://microsoft.github.io/pyright/#/command-line?id=json-output">here</a>.</li>
+</ul>
+<p>As long as you respect these <em>requirements</em>,
+you can use your own script, or whatever.
+If you don't, expect some big bad error messages. </p>
+<h3 id="my-code-should-have-nothese-errors-but-it-doesdoesnt">My code should have no/these errors, but it does/doesn't.<a class="headerlink" href="#my-code-should-have-nothese-errors-but-it-doesdoesnt" title="Permanent link">#</a></h3>
+<p>This plugin contains no type checking logic.
+For type checking bugs, please report them to <a href="https://github.com/microsoft/pyright/issues">the Pyright issue tracker</a>.</p>
 <h3 id="whats-the-difference-between-pyright-and-pyright-python">What's the difference between <code>pyright</code> and <code>pyright-python</code>?<a class="headerlink" href="#whats-the-difference-between-pyright-and-pyright-python" title="Permanent link">#</a></h3>
 <p>Pyright is written in TypeScript and published on NPM,
 mainly for the purpose of better integration with VSCode.
@@ -443,11 +565,32 @@ It automatically installs the actual NPM package and
 places the original executables, named <code>pyright</code>/<code>pyright-langserver</code>,
 inside the same virtual environment/directory as its own proxies
 <code>pyright-python</code>/<code>pyright-python-langserver</code>.</p>
-<p>These proxies will simply output the results of the original executables.
-With the correct configurations, the originals will be updated automatically.</p>
+<p>These proxies will re-output the results of the original executables.
+With the correct configurations, running the proxies will also
+update the originals.</p>
 <p>While the command-line interfaces are expected to be the same,
 it might not be the case. Thus, you are recommended to use
-the original if you have them.</p>
+the originals if you have them.</p>
+<h3 id="why-does-this-plugin-have-to-perform-saves-so-often">Why does this plugin have to perform saves so often?<a class="headerlink" href="#why-does-this-plugin-have-to-perform-saves-so-often" title="Permanent link">#</a></h3>
+<p>Pyright does not support passing files from stdin.
+<a href="https://github.com/microsoft/pyright/issues/7282">A feature request</a> was made and quickly rejected.</p>
+<p>Adding an option that makes the plugin run only on "manual" saves
+is counter-productive. You have to save all your files manually,
+or wait until PyCharm saves them automatically. Neither is convenient.</p>
+<p>If you use PyCharm Professional, you should be using
+<a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm">the sister plugin</a> instead. It relies on experimental APIs and
+thus not as stable, but much faster and does not require saving.</p>
+<h2 id="is-watch-mode-watch-supported">Is watch mode (<code>--watch</code>) supported?<a class="headerlink" href="#is-watch-mode-watch-supported" title="Permanent link">#</a></h2>
+<p>Supporting for watch mode is on the roadmap.
+There is no ETA, however.</p>
+<h3 id="why-does-it-take-so-long-to-run-on-my-project">Why does it take so long to run on my project?<a class="headerlink" href="#why-does-it-take-so-long-to-run-on-my-project" title="Permanent link">#</a></h3>
+<p>Since this plugin invokes a CLI tool, it must be registered
+as an <a href="https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator"><code>ExternalAnnotator</code></a>. Inspectors of this kind are only run
+when all other background tasks have finished.</p>
+<p>Unlike Mypy, Pyright does not cache previous results in a hidden directory.
+As such, everytime it runs on a given <em>file</em>, it also has to reprocess
+all other files that file depends on.</p>
+<p>Again, for better performance, <a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm">the sister plugin</a> is recommended.</p>
 
 
 
