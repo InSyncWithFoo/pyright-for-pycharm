@@ -5,7 +5,7 @@ site_url: https://insyncwithfoo.github.io/pyright-for-pycharm
 repo_name: InSyncWithFoo/pyright-for-pycharm
 repo_url: https://github.com/InSyncWithFoo/pyright-for-pycharm
 
-edit_uri: blob/master/docs/content/
+edit_uri: blob/master/docs/
 
 exclude_docs: |
   /requirements.txt
