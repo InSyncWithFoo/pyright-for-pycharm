@@ -175,7 +175,7 @@ jobs:
           chmod +x ./gradlew
           ./gradlew runPluginVerifier -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
       -
-        name: Collect plugin verifier Result
+        name: Collect plugin verifier result
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:

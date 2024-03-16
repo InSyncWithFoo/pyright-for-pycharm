@@ -41,6 +41,7 @@ markdown_extensions:
 nav:
   - Overview: index.md
   - Configurations: configurations.md
+  - FAQ: faq.md
 
 validation:
   omitted_files: warn
