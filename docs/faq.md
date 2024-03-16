@@ -1,13 +1,14 @@
-## Frequently asked questions
+# Frequently asked questions
 
 
-### What exactly is this plugin doing?
+## What exactly is this plugin doing?
 
 In a nutshell:
 
 * You edit your code.
 * This plugin saves your (unsaved) files.
-* It then invokes the executable provided by you with some hardcoded arguments.
+* It then invokes the executable(s) provided by you
+  with some hardcoded arguments.
 * The results of which are used to show annotations.
 
 And that's it.
@@ -22,13 +23,13 @@ you can use your own script, or whatever.
 If you don't, expect some big bad error messages. 
 
 
-### My code should have no/these errors, but it does/doesn't.
+## My code should have no/these errors, but it does/doesn't.
 
 This plugin contains no type checking logic.
 For type checking bugs, please report them to [the Pyright issue tracker][2].
 
 
-### What's the difference between `pyright` and `pyright-python`?
+## What's the difference between `pyright` and `pyright-python`?
 
 Pyright is written in TypeScript and published on NPM,
 mainly for the purpose of better integration with VSCode.
@@ -50,7 +51,7 @@ it might not be the case. Thus, you are recommended to use
 the originals if you have them.
 
 
-### Why does this plugin have to perform saves so often?
+## Why does this plugin have to perform saves so often?
 
 Pyright does not support passing files from stdin.
 [A feature request][4] was made and quickly rejected.
@@ -70,7 +71,7 @@ Supporting for watch mode is on the roadmap.
 There is no ETA, however.
 
 
-### Why does it take so long to run on my project?
+## Why does it take so long to run on my project?
 
 Since this plugin invokes a CLI tool, it must be registered
 as an [`ExternalAnnotator`][6]. Inspectors of this kind are only run
@@ -81,6 +82,22 @@ As such, everytime it runs on a given <em>file</em>, it also has to reprocess
 all other files that file depends on.
 
 Again, for better performance, [the sister plugin][5] is recommended.
+
+
+## Is this plugin affiliated with Microsoft/JetBrains?
+
+No, or at least not in a business or ownership sense.
+
+It was, however, created out of adoration of Pyright and JetBrains IDEs.
+
+
+## I love this plugin. How can I support it?
+
+Please consider sponsoring [the sister plugin][5].
+
+These plugins are similar in many ways and were created by the same author,
+but the development for the other one requires (paid) subscriptions,
+as the experimental LSP APIs are not yet available in PyCharm Community Edition.
 
 
   [1]: https://microsoft.github.io/pyright/#/command-line?id=json-output
