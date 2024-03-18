@@ -5,7 +5,11 @@
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* Saves will no longer be performed if:
+  * The corresponding inspection is disabled, or
+  * The executable is not given
 
 
 ## [0.1.0-mvp.3] - 2024-03-10

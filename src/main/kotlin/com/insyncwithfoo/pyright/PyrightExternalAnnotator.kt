@@ -67,16 +67,9 @@ class PyrightExternalAnnotator :
             return null
         }
         
-        val documentManager = FileDocumentManager.getInstance()
-        
-        // From https://intellij-support.jetbrains.com/hc/en-us/community/posts/17093296321426
-        if (documentManager.unsavedDocuments.isNotEmpty()) {
-            invokeLater { documentManager.saveAllUnsavedDocumentsAsIs() }
-            return null
-        }
-        
         val project = file.project
         
+        // This might not actually be necessary.
         if (!project.isPyrightEnabled(file)) {
             return null
         }
@@ -84,6 +77,14 @@ class PyrightExternalAnnotator :
         val configurations = project.pyrightConfigurations
         
         if (configurations.executable == null) {
+            return null
+        }
+        
+        val documentManager = FileDocumentManager.getInstance()
+        
+        // From https://intellij-support.jetbrains.com/hc/en-us/community/posts/17093296321426
+        if (documentManager.unsavedDocuments.isNotEmpty()) {
+            invokeLater { documentManager.saveAllUnsavedDocumentsAsIs() }
             return null
         }
         
