@@ -49,7 +49,16 @@ Default: `false`
 
 Check this option to display annotations in your editor font.
 This option is not applied retroactively;
-you might need make an edit to see the effect.
+you might need to make an edit to see the effect.
+
+Default: `false`
+
+
+### Add prefix to tooltips
+
+Check this option to prefix tooltips with "Pyright:".
+This option is not applied retroactively;
+you might need to make an edit to see the effect.
 
 Default: `false`
 

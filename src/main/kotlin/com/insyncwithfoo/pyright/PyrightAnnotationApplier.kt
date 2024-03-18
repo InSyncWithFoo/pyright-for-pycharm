@@ -29,7 +29,7 @@ private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
 }
 
 
-private fun String.toPreformattedTooltip(font: String? = null): String {
+private fun String.toPreformatted(font: String? = null): String {
     val escapedLines = this.split("\n").map {
         XmlStringUtil.escapeString(it, true)
     }
@@ -68,7 +68,12 @@ internal class PyrightAnnotationApplier(
     
     private fun makeBuilder(diagnostic: PyrightDiagnostic): AnnotationBuilder {
         val (_, severity, message) = diagnostic
-        val suffixedMessage = diagnostic.suffixedMessage
+        var tooltipMessage = diagnostic.suffixedMessage
+        
+        val addTooltipPrefix = configurations.addTooltipPrefix
+        if (addTooltipPrefix) {
+            tooltipMessage = "Pyright: $tooltipMessage"
+        }
         
         val useEditorFont = configurations.useEditorFont
         val font = when {
@@ -76,7 +81,7 @@ internal class PyrightAnnotationApplier(
             else -> null
         }
         
-        val tooltip = suffixedMessage.toPreformattedTooltip(font?.name)
+        val tooltip = tooltipMessage.toPreformatted(font?.name)
         val highlightSeverity = severity.toHighlightSeverity()
         
         return holder.newAnnotation(highlightSeverity, message).tooltip(tooltip)

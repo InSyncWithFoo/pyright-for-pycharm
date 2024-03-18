@@ -21,6 +21,8 @@ internal class ConfigurationPanel : ConfigurationPanel<Configurations>() {
     
     private lateinit var useEditorFontInput: JCheckBox
     
+    private lateinit var addTooltipPrefixInput: JCheckBox
+    
     override val textFieldsWithBrowseButtons: List<TextFieldWithBrowseButton>
         get() = listOf(globalExecutableInput, globalConfigurationFileInput)
     
@@ -35,13 +37,15 @@ internal class ConfigurationPanel : ConfigurationPanel<Configurations>() {
             alwaysUseGlobal = alwaysUseGlobalInput.isSelected,
             globalExecutable = globalExecutableInput.text.takeIf { it.isNotBlank() },
             globalConfigurationFile = globalConfigurationFileInput.text.takeIf { it.isNotBlank() },
-            useEditorFont = useEditorFontInput.isSelected
+            useEditorFont = useEditorFontInput.isSelected,
+            addTooltipPrefix = addTooltipPrefixInput.isSelected
         )
         set(value) {
             alwaysUseGlobalInput.isSelected = value.alwaysUseGlobal
             globalExecutableInput.text = value.globalExecutable.orEmpty()
             globalConfigurationFileInput.text = value.globalConfigurationFile.orEmpty()
             useEditorFontInput.isSelected = value.useEditorFont
+            addTooltipPrefixInput.isSelected = value.addTooltipPrefix
         }
     
     override fun getService() = ConfigurationService.getInstance()
@@ -50,7 +54,8 @@ internal class ConfigurationPanel : ConfigurationPanel<Configurations>() {
         alwaysUseGlobalInput.text = "Always use global executable"
         globalExecutableLabel.text = "Global executable:"
         globalConfigurationFileLabel.text = "Configuration file:"
-        useEditorFontInput.text = "Use editor font"
+        useEditorFontInput.text = "Use editor font for tooltips"
+        addTooltipPrefixInput.text = """Prefix tooltips with "Pyright:""""
     }
     
 }

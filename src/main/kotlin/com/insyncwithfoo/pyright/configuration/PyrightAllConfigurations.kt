@@ -8,6 +8,7 @@ data class PyrightAllConfigurations(
     val globalExecutable: @SystemDependent String? = null,
     val globalConfigurationFile: @SystemDependent String? = null,
     val useEditorFont: Boolean = false,
+    val addTooltipPrefix: Boolean = false,
     
     val projectExecutable: @SystemDependent String? = null,
     val projectConfigurationFile: @SystemDependent String? = null

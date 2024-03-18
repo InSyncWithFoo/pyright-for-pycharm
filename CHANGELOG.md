@@ -5,6 +5,10 @@
 
 ## [Unreleased]
 
+### Added
+
+* Add "Prefix tooltips" global option
+
 ### Changed
 
 * Saves will no longer be performed if:
@@ -17,10 +21,6 @@
 ### Changed
 
 * Better error reporting
-
-### Fixed
-
-* Correct descriptor name for commands' path serializer
 
 
 ## [0.1.0-mvp.2] - 2024-03-03

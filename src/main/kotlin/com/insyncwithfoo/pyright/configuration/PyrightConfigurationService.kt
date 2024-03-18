@@ -21,6 +21,7 @@ internal class PyrightConfigurationService private constructor(
             globalExecutable = applicationConfigurations.globalExecutable,
             globalConfigurationFile = applicationConfigurations.globalConfigurationFile,
             useEditorFont = applicationConfigurations.useEditorFont,
+            addTooltipPrefix = applicationConfigurations.addTooltipPrefix,
 
             projectExecutable = projectConfigurations.projectExecutable,
             projectConfigurationFile = projectConfigurations.projectConfigurationFile
