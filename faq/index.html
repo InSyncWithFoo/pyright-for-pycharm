@@ -565,16 +565,23 @@ mainly for the purpose of better integration with VSCode.
 This requires a dependency on Node, which Python developers
 might not have on their development machines.</p>
 <p><a href="https://pypi.org/project/pyright/">The <code>pyright</code> package on PyPI</a> was created to solve this problem.
-It automatically installs the actual NPM package and
-places the original executables, named <code>pyright</code>/<code>pyright-langserver</code>,
-inside the same virtual environment/directory as its own proxies
-<code>pyright-python</code>/<code>pyright-python-langserver</code>.</p>
+It will automatically install the actual NPM package and
+places 4 proxy executables in the same virtual environment/directory
+you have your <code>pip</code> in:</p>
+<ul>
+<li><code>pyright</code>/<code>pyright-python</code></li>
+<li><code>pyright-langserver</code>/<code>pyright-python-langserver</code></li>
+</ul>
 <p>These proxies will re-output the results of the original executables.
-With the correct configurations, running the proxies will also
-update the originals.</p>
-<p>While the command-line interfaces are expected to be the same,
-it might not be the case. Thus, you are recommended to use
-the originals if you have them.</p>
+<a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#automatically-keeping-pyright-up-to-date">With the correct configurations</a>,
+these proxies can be automatically updated on run.</p>
+<p>The original executables can typically be found at:</p>
+<ul>
+<li>Windows: <code>%HOMEPATH%/.cache/pyright-python/&lt;version&gt;/node_modules/.bin</code></li>
+<li>Linux: <code>~/.cache/pyright-python/&lt;version&gt;/node_modules/.bin</code></li>
+</ul>
+<p>For more information on how to configure this location,
+see <a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#modify-npm-package-location"><em>Pyright for Python</em>'s documentation</a>.</p>
 <h2 id="why-does-this-plugin-have-to-perform-saves-so-often">Why does this plugin have to perform saves so often?<a class="headerlink" href="#why-does-this-plugin-have-to-perform-saves-so-often" title="Permanent link">#</a></h2>
 <p>Pyright does not support passing files from stdin.
 <a href="https://github.com/microsoft/pyright/issues/7282">A feature request</a> was made and quickly rejected.</p>
@@ -589,8 +596,8 @@ thus not as stable, but much faster and does not require saving.</p>
 There is no ETA, however.</p>
 <h2 id="why-does-it-take-so-long-to-run-on-my-project">Why does it take so long to run on my project?<a class="headerlink" href="#why-does-it-take-so-long-to-run-on-my-project" title="Permanent link">#</a></h2>
 <p>Since this plugin invokes a CLI tool, it must be registered
-as an <a href="https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator"><code>ExternalAnnotator</code></a>. Inspectors of this kind are only run
-when all other background tasks have finished.</p>
+as an <a href="https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator"><code>ExternalAnnotator</code></a>. Inspectors of this kind will
+only run when all other background tasks have finished.</p>
 <p>Unlike Mypy, Pyright does not cache previous results in a hidden directory.
 As such, everytime it runs on a given <em>file</em>, it also has to reprocess
 all other files that file depends on.</p>
