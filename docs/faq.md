@@ -37,31 +37,37 @@ This requires a dependency on Node, which Python developers
 might not have on their development machines.
 
 [The `pyright` package on PyPI][3] was created to solve this problem.
-It automatically installs the actual NPM package and
-places the original executables, named `pyright`/`pyright-langserver`,
-inside the same virtual environment/directory as its own proxies
-`pyright-python`/`pyright-python-langserver`.
+It will automatically install the actual NPM package and
+places 4 proxy executables in the same virtual environment/directory
+you have your `pip` in:
+
+* `pyright`/`pyright-python`
+* `pyright-langserver`/`pyright-python-langserver`
 
 These proxies will re-output the results of the original executables.
-With the correct configurations, running the proxies will also
-update the originals.
+[With the correct configurations][4],
+these proxies can be automatically updated on run.
 
-While the command-line interfaces are expected to be the same,
-it might not be the case. Thus, you are recommended to use
-the originals if you have them.
+The original executables can typically be found at:
+
+* Windows: `%HOMEPATH%/.cache/pyright-python/<version>/node_modules/.bin`
+* Linux: `~/.cache/pyright-python/<version>/node_modules/.bin`
+
+For more information on how to configure this location,
+see [*Pyright for Python*'s documentation][5].
 
 
 ## Why does this plugin have to perform saves so often?
 
 Pyright does not support passing files from stdin.
-[A feature request][4] was made and quickly rejected.
+[A feature request][6] was made and quickly rejected.
 
 Adding an option that makes the plugin run only on "manual" saves
 is counter-productive. You have to save all your files manually,
 or wait until PyCharm saves them automatically. Neither is convenient.
 
 If you use PyCharm Professional, you should be using
-[the sister plugin][5] instead. It relies on experimental APIs and
+[the sister plugin][7] instead. It relies on experimental APIs and
 thus not as stable, but much faster and does not require saving.
 
 
@@ -74,14 +80,14 @@ There is no ETA, however.
 ## Why does it take so long to run on my project?
 
 Since this plugin invokes a CLI tool, it must be registered
-as an [`ExternalAnnotator`][6]. Inspectors of this kind are only run
-when all other background tasks have finished.
+as an [`ExternalAnnotator`][8]. Inspectors of this kind will
+only run when all other background tasks have finished.
 
 Unlike Mypy, Pyright does not cache previous results in a hidden directory.
 As such, everytime it runs on a given <em>file</em>, it also has to reprocess
 all other files that file depends on.
 
-Again, for better performance, [the sister plugin][5] is recommended.
+Again, for better performance, [the sister plugin][7] is recommended.
 
 
 ## Is this plugin affiliated with Microsoft/JetBrains?
@@ -93,7 +99,7 @@ It was, however, created out of adoration of Pyright and JetBrains IDEs.
 
 ## I love this plugin. How can I support it?
 
-Please consider sponsoring [the sister plugin][5].
+Please consider sponsoring [the sister plugin][7].
 
 These plugins are similar in many ways and were created by the same author,
 but the development for the other one requires (paid) subscriptions,
@@ -103,6 +109,8 @@ as the experimental LSP APIs are not yet available in PyCharm Community Edition.
   [1]: https://microsoft.github.io/pyright/#/command-line?id=json-output
   [2]: https://github.com/microsoft/pyright/issues
   [3]: https://pypi.org/project/pyright/
-  [4]: https://github.com/microsoft/pyright/issues/7282
-  [5]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
-  [6]: https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator
+  [4]: https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#automatically-keeping-pyright-up-to-date
+  [5]: https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#modify-npm-package-location
+  [6]: https://github.com/microsoft/pyright/issues/7282
+  [7]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
+  [8]: https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator

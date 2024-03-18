@@ -7,7 +7,7 @@ For the plugin to work, you need to define at least one executable file
 using either the <b>Global</b> or <b>Project</b> panel.
 
 Such a file is typically named `pyright`/`pyright-python`
-(preferably the former, if you have both) and can be found in:
+(see [the FAQ][1] for more information) and can be found in:
 
 * Global: Your Python interpreter directory
 * Virtual environment: `/venv/Scripts/` (Windows) or `/venv/bin` (Linux)
@@ -24,7 +24,7 @@ it's a wrapper script that outputs the same diagnostics.
 
 Despite being called "file", this can be a path to a directory
 containing `pyright-config.json` and/or `pyproject.toml`.
-This path will be passed to the executable via [the `-p` option][1].
+This path will be passed to the executable via [the `-p` option][2].
 
 * If the executable is local, only the local path is used.
 * If the executable is global, the local path is used if it is specified,
@@ -63,4 +63,5 @@ you might need to make an edit to see the effect.
 Default: `false`
 
 
-  [1]: https://microsoft.github.io/pyright/#/command-line
+  [1]: faq.md#whats-the-difference-between-pyright-and-pyright-python
+  [2]: https://microsoft.github.io/pyright/#/command-line
