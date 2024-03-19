@@ -64,7 +64,7 @@ internal class FatalException(
             then report it at Pyright's issue tracker.
         """.trimIndent()
         
-        return group.createErrorNotification(title, content).run {
+        return group.createErrorNotification(title, content).apply {
             addAction(BrowseNotificationAction(ACTION_TEXT, ACTION_LINK))
         }
     }
@@ -84,8 +84,7 @@ internal class InvalidConfigurationsException(
 ) : PyrightException(stdout, stderr, message) {
     
     override fun createNotification(group: NotificationGroup): Notification {
-        // Greedy is necessary since a Linux path may contain double quotes.
-        // For example:
+        // Greedy is necessary since a Linux path may contain double quotes:
         //   Config file "/b"az/pyrightconfig.json" could not be parsed.
         val quoted = "\"(.*)\"".toRegex()
         
@@ -94,7 +93,7 @@ internal class InvalidConfigurationsException(
         val title = "Cannot parse configuration file"
         val content = """The configuration file found at "$configurationFilePath" is invalid."""
         
-        return group.createErrorNotification(title, content).run {
+        return group.createErrorNotification(title, content).apply {
             addAction(OpenFileAction(ACTION_TEXT, configurationFilePath))
         }
     }
@@ -120,7 +119,7 @@ internal class InvalidParametersException(
             Please report this problem to the plugin's issue tracker.
         """.trimIndent()
         
-        return group.createErrorNotification(title, content).run {
+        return group.createErrorNotification(title, content).apply {
             addAction(BrowseNotificationAction(ACTION_TEXT, ACTION_LINK))
         }
     }
