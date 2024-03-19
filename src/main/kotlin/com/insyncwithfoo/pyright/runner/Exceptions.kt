@@ -57,7 +57,7 @@ internal class FatalException(
 ) : PyrightException(stdout, stderr, message) {
     
     override fun createNotification(group: NotificationGroup): Notification {
-        val title = "Pyright: Fatal error encountered"
+        val title = "Fatal error encountered"
         val content = """
             This is presumably a bug in Pyright.<br>
             Please try to narrow the problem as much as possible,
@@ -91,7 +91,7 @@ internal class InvalidConfigurationsException(
         
         val configurationFilePath = quoted.find(stderr)!!.groups[1]!!.value
         
-        val title = "Pyright: Cannot parse configuration file"
+        val title = "Cannot parse configuration file"
         val content = """The configuration file found at "$configurationFilePath" is invalid."""
         
         return group.createErrorNotification(title, content).run {
@@ -113,7 +113,7 @@ internal class InvalidParametersException(
 ) : PyrightException(stdout, stderr, message) {
     
     override fun createNotification(group: NotificationGroup): Notification {
-        val title = "Pyright: Unrecognized CLI options"
+        val title = "Unrecognized CLI options"
         val content = """
             Presumably, you are using a new (or old) version of Pyright,
             which does not support the options this plugin uses.
