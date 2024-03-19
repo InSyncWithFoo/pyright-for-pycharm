@@ -15,6 +15,10 @@
   * The corresponding inspection is disabled, or
   * The executable is not given.
 
+### Removed
+
+* Error notification titles no longer have the "Pyright:" prefix.
+
 
 ## [0.1.0-mvp.3] - 2024-03-10
 
