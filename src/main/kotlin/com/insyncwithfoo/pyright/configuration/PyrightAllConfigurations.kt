@@ -1,6 +1,21 @@
 package com.insyncwithfoo.pyright.configuration
 
 import org.jetbrains.annotations.SystemDependent
+import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
+import com.insyncwithfoo.pyright.configuration.project.Configurations as ProjectConfigurations
+
+
+internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurations) =
+    PyrightAllConfigurations(
+        alwaysUseGlobal = this.alwaysUseGlobal,
+        globalExecutable = this.globalExecutable,
+        globalConfigurationFile = this.globalConfigurationFile,
+        useEditorFont = this.useEditorFont,
+        addTooltipPrefix = this.addTooltipPrefix,
+        
+        projectExecutable = other.projectExecutable,
+        projectConfigurationFile = other.projectConfigurationFile
+    )
 
 
 data class PyrightAllConfigurations(

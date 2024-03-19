@@ -10,23 +10,7 @@ internal class PyrightConfigurationService private constructor(
     projectService: ProjectConfigurationService
 ) {
     
-    val configurations: PyrightAllConfigurations
-    
-    init {
-        val applicationConfigurations = applicationService.configurations
-        val projectConfigurations = projectService.configurations
-
-        configurations = PyrightAllConfigurations(
-            alwaysUseGlobal = applicationConfigurations.alwaysUseGlobal,
-            globalExecutable = applicationConfigurations.globalExecutable,
-            globalConfigurationFile = applicationConfigurations.globalConfigurationFile,
-            useEditorFont = applicationConfigurations.useEditorFont,
-            addTooltipPrefix = applicationConfigurations.addTooltipPrefix,
-
-            projectExecutable = projectConfigurations.projectExecutable,
-            projectConfigurationFile = projectConfigurations.projectConfigurationFile
-        )
-    }
+    val configurations = applicationService.configurations mergeWith projectService.configurations
     
     companion object {
         fun getInstance(project: Project): PyrightConfigurationService {
