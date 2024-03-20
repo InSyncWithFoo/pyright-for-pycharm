@@ -19,14 +19,14 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
 
 
 data class PyrightAllConfigurations(
-    val alwaysUseGlobal: Boolean = false,
-    val globalExecutable: @SystemDependent String? = null,
-    val globalConfigurationFile: @SystemDependent String? = null,
-    val useEditorFont: Boolean = false,
-    val addTooltipPrefix: Boolean = false,
+    val alwaysUseGlobal: Boolean,
+    val globalExecutable: @SystemDependent String?,
+    val globalConfigurationFile: @SystemDependent String?,
+    val useEditorFont: Boolean,
+    val addTooltipPrefix: Boolean,
     
-    val projectExecutable: @SystemDependent String? = null,
-    val projectConfigurationFile: @SystemDependent String? = null
+    val projectExecutable: @SystemDependent String?,
+    val projectConfigurationFile: @SystemDependent String?
 ) {
     
     val executable: @SystemDependent String?

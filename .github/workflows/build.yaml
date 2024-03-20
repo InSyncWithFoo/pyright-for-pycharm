@@ -105,8 +105,41 @@ jobs:
           name: ${{ steps.artifact.outputs.filename }}
           path: ./build/distributions/content/*/*
   
+  test:
+    name: Test
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    
+    steps:
+      -
+        name: Fetch sources
+        uses: actions/checkout@v4
+      -
+        name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+      -
+        name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-home-cache-cleanup: true
+      -
+        name: Run tests
+        run: |
+          chmod +x ./gradlew
+          ./gradlew check
+      -
+        name: Collect result
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-result
+          path: ${{ github.workspace }}/build/reports/tests
+  
   inspect:
-    name: Inspect code
+    name: Inspect
     needs: [ build ]
     runs-on: ubuntu-latest
     
@@ -138,7 +171,7 @@ jobs:
           cache-default-branch-only: true
   
   verify:
-    name: Verify plugin
+    name: Verify
     needs: [ build ]
     runs-on: ubuntu-latest
     
@@ -185,7 +218,7 @@ jobs:
   draft:
     name: Release draft
     if: github.event_name != 'pull_request'
-    needs: [ build, inspect, verify ]
+    needs: [ build, test, inspect, verify ]
     runs-on: ubuntu-latest
     
     permissions:

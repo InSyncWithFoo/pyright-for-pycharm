@@ -20,6 +20,8 @@ Then, make your changes. Run the "Run Plugin" run configuration
 to start PyCharm in a sandbox with the plugin installed.
 It may take a while for the first time.
 
+Note that all tests must not fail.
+Existing tests should be modified to reflect the changes if necessary.
 Open a PR once you are sure that your modifications work correctly.
 
 
