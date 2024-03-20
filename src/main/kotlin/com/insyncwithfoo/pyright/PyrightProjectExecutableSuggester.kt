@@ -25,7 +25,9 @@ private fun Project.findPyrightExecutable(): Path? {
 
 private fun Project.setAsExecutable(executable: Path) {
     val configurationService = PyrightConfigurationService.getInstance(this)
-    configurationService.project.configurations.projectExecutable = executable.toString()
+    val projectConfigurations = configurationService.projectService.configurations
+        
+    projectConfigurations.projectExecutable = executable.toString()
 }
 
 
@@ -44,7 +46,7 @@ internal class PyrightProjectExecutableSuggester : ProjectActivity {
         val notification = pyrightNotificationGroup().createNotification(
             title = "",
             content = """
-                Possibly valid executable is found at "$relativePathToExecutable".
+                Possibly valid Pyright executable is found at "$relativePathToExecutable".
                 Set as project executable?
             """.trimIndent(),
             NotificationType.INFORMATION

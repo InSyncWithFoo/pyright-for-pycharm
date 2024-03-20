@@ -7,13 +7,10 @@ import com.insyncwithfoo.pyright.configuration.project.ConfigurationService as P
 
 internal class PyrightConfigurationService private constructor(
     applicationService: ApplicationConfigurationService,
-    projectService: ProjectConfigurationService
+    val projectService: ProjectConfigurationService
 ) {
     
-    val application = applicationService
-    val project = projectService
-    
-    val configurations = application.configurations mergeWith project.configurations
+    val configurations = applicationService.configurations mergeWith projectService.configurations
     
     companion object {
         fun getInstance(project: Project): PyrightConfigurationService {
