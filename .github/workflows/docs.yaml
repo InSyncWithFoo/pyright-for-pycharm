@@ -10,7 +10,7 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     
-    permissions: 
+    permissions:
       contents: write
     
     steps:

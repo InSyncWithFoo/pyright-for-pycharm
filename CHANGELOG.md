@@ -7,13 +7,16 @@
 
 ### Added
 
-* Add "Prefix tooltips" global option
+* Tooltips can now be prefixed with "Pyright:".
+* Suggest executable for current project if one can be found locally.
 
 ### Changed
 
 * Saves will no longer be performed if:
   * The corresponding inspection is disabled, or
   * The executable is not given.
+* The notification group name is now "*Pyright notifications*"
+  instead of "*Pyright*".
 
 ### Removed
 
@@ -32,7 +35,7 @@
 ### Added
 
 * Relative paths to executables are now recognized.
-* "Use editor font" global option is added.
+* Tooltips can now be displayed in editor font.
 
 ### Changed
 

@@ -10,7 +10,10 @@ internal class PyrightConfigurationService private constructor(
     projectService: ProjectConfigurationService
 ) {
     
-    val configurations = applicationService.configurations mergeWith projectService.configurations
+    val application = applicationService
+    val project = projectService
+    
+    val configurations = application.configurations mergeWith project.configurations
     
     companion object {
         fun getInstance(project: Project): PyrightConfigurationService {

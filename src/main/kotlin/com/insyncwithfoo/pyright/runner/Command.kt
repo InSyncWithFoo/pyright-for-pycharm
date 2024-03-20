@@ -1,12 +1,13 @@
 package com.insyncwithfoo.pyright.runner
 
 import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
+import com.insyncwithfoo.pyright.path
+import com.insyncwithfoo.pyright.sdkPath
 import com.intellij.execution.RunCanceledByUserException
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.process.CapturingProcessHandler
 import com.intellij.execution.process.ProcessOutput
 import com.intellij.openapi.progress.ProgressManager
-import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.packaging.IndicatedProcessOutputListener
 import kotlinx.serialization.KSerializer
@@ -20,9 +21,13 @@ import java.nio.file.Path
 import kotlin.io.path.exists
 
 
-private fun String.toPathIfItExists(base: String? = null) =
+private fun String.toPathIfItExists(base: String = "") =
+    this.toPathIfItExists(Path.of(base))
+
+
+private fun String.toPathIfItExists(base: Path) =
     Path.of(this)
-        .let { Path.of(base ?: "").resolve(it).normalize() }
+        .let { base.resolve(it).normalize() }
         .takeIf { it.exists() }
 
 
@@ -58,9 +63,9 @@ data class PyrightCommand(
         )
     
     private val handler: CapturingProcessHandler
-        get() = CapturingProcessHandler(getGeneralCommandLine())
+        get() = CapturingProcessHandler(getCommandLine())
     
-    private fun getGeneralCommandLine(): GeneralCommandLine =
+    private fun getCommandLine() =
         GeneralCommandLine(fragments)
             .withWorkDirectory(projectPath)
             .withCharset(Charsets.UTF_8)
@@ -101,19 +106,18 @@ data class PyrightCommand(
             file: PsiFile
         ): PyrightCommand? {
             val project = file.project
-            val projectPath = project.basePath ?: return null
+            val projectPath = (project.path ?: return null).toString()
             
-            val executable = configurations.executable?.toPathIfItExists(projectPath) ?: return null
+            val executable = configurations.executable?.toPathIfItExists(base = projectPath) ?: return null
             val target = file.virtualFile.path.toPathIfItExists() ?: return null
             val configurationFile = configurations.configurationFile
             
-            val projectSdk = ProjectRootManager.getInstance(project).projectSdk
-            val pythonExecutable = projectSdk?.homePath ?: return null
+            val pythonExecutable = project.sdkPath ?: return null
             
-            val extraArguments = listOf(
+            val extraArguments: List<String> = listOf(
                 "--outputjson",
                 "--project", configurationFile ?: projectPath,
-                "--pythonpath", pythonExecutable
+                "--pythonpath", pythonExecutable.toString()
             )
             
             return PyrightCommand(executable, target, projectPath, extraArguments)

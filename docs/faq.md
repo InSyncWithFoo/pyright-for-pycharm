@@ -20,7 +20,7 @@ It expects two things:
 
 As long as you respect these <em>requirements</em>,
 you can use your own script, or whatever.
-If you don't, expect some big bad error messages. 
+If you don't, expect some big bad error messages.
 
 
 ## My code should have no/these errors, but it does/doesn't.

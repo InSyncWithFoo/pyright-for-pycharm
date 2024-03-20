@@ -26,7 +26,7 @@
 	<extensions defaultExtensionNs="com.intellij">
 		<notificationGroup
 			displayType="STICKY_BALLOON"
-			id="Pyright"
+			id="Pyright notifications"
 		/>
 		
 		<applicationConfigurable
@@ -58,6 +58,10 @@
 		<externalAnnotator
 			language="Python"
 			implementationClass="com.insyncwithfoo.pyright.PyrightExternalAnnotator"
+		/>
+		
+		<postStartupActivity
+			implementation="com.insyncwithfoo.pyright.PyrightProjectExecutableSuggester"
 		/>
 	</extensions>
 </idea-plugin>
