@@ -25,7 +25,7 @@
 * Configuration constructs are now marked `internal`. (54d74f74)
 * [`CHANGELOG.md`][4-5] is rewritten. (c02db458, 4650c88c, 7516e63d)
 * Notifications-related logic is rewritten. (6b4b8e2a, 6a0cd5ac)
-* Duplicate SVG files are now converted to symlinks.
+* Duplicate SVG files are now converted to symlinks. (e2ed56fa)
   The targets are those in the [`resources/icons`][4-6] directory. (e2ed56fa)
 * Messages are merged into one single bundle. (aeed108d)
 * The "Always use global" option is moved

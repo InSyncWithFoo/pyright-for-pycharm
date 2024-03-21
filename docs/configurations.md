@@ -15,10 +15,10 @@ Such a file is typically named `pyright`/`pyright-python`
 | NPM     | Global | Linux   | `/usr/local/bin`                                   |
 | Pip     | Global | Windows | `%LOCALAPPDATA%\Programs\Python\<version>\Scripts` |
 | Pip     | Global | Linux   | `~/.local/bin`                                     |
-| NPM     | Local  | Windows | `./node_modules/.bin`                              |
+| NPM     | Local  | Windows | `.\node_modules\.bin`                              |
 | NPM     | Local  | Linux   | `./node_modules/.bin`                              |
-| Pip     | Local  | Windows | `./<your-venv>/Scripts/`                           |
-| Pip     | Local  | Linux   | `./<your-venv>/bin/`                               |
+| Pip     | Local  | Windows | `.\<your-venv>\Scripts`                            |
+| Pip     | Local  | Linux   | `./<your-venv>/bin`                                |
 
 If you can't find the executables in the aforementioned locations,
 see the following pages for more information:
