@@ -44,20 +44,17 @@ internal class PyrightProjectExecutableSuggester : ProjectActivity {
         val relativePathToExecutable = projectPath.relativize(executable)
         
         val notification = pyrightNotificationGroup().createNotification(
-            title = "",
-            content = """
-                Possibly valid Pyright executable is found at "$relativePathToExecutable".
-                Set as project executable?
-            """.trimIndent(),
+            title = message("notifications.suggestion.title"),
+            content = message("notifications.suggestion.body", relativePathToExecutable),
             NotificationType.INFORMATION
         )
         
         notification.runThenNotify(project) {
             prettify()
-            addSimpleExpiringAction("Absolute path") {
+            addSimpleExpiringAction(message("notifications.suggestion.action.setAbsolute")) {
                 project.setAsExecutable(executable)
             }
-            addSimpleExpiringAction("Relative path") {
+            addSimpleExpiringAction(message("notifications.suggestion.action.setRelative")) {
                 project.setAsExecutable(relativePathToExecutable)
             }
         }

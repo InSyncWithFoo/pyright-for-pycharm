@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configuration.project
 
 import com.insyncwithfoo.pyright.configuration.common.ConfigurationPanel
+import com.insyncwithfoo.pyright.message
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import javax.swing.JLabel
@@ -39,8 +40,8 @@ internal class ConfigurationPanel(private val project: Project) : ConfigurationP
     override fun getService() = ConfigurationService.getInstance(project)
     
     override fun setLabels() {
-        projectExecutableLabel.text = "Project executable:"
-        projectConfigurationFileLabel.text = "Configuration file:"
+        projectExecutableLabel.text = message("configurations.project.projectExecutable.label")
+        projectConfigurationFileLabel.text = message("configurations.project.projectConfigurationFile.label")
     }
     
 }

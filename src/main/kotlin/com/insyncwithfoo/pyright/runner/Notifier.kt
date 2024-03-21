@@ -2,6 +2,7 @@ package com.insyncwithfoo.pyright.runner
 
 import com.insyncwithfoo.pyright.PyrightInspection
 import com.insyncwithfoo.pyright.addSimpleExpiringAction
+import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.openingPyrightNotifications
 import com.insyncwithfoo.pyright.prettify
 import com.insyncwithfoo.pyright.pyrightNotificationGroup
@@ -41,7 +42,7 @@ internal class Notifier(private val project: Project) {
     private fun notify(notification: Notification) {
         notification.runThenNotify(project) {
             prettify()
-            addSimpleExpiringAction("Disable plugin (project)") {
+            addSimpleExpiringAction(message("notifications.error.action.disablePlugin")) {
                 project.disablePyrightInspection()
             }
         }

@@ -1,5 +1,6 @@
 package com.insyncwithfoo.pyright.runner
 
+import com.insyncwithfoo.pyright.message
 import com.intellij.notification.BrowseNotificationAction
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
@@ -29,13 +30,11 @@ private class OpenFileAction(text: String, private val path: String) : Notificat
     }
     
     fun somethingIsWrong() {
-        val text = MESSAGE_TEXT.format(path)
-        Messages.showErrorDialog(text, MESSAGE_TITLE)
-    }
-    
-    companion object {
-        const val MESSAGE_TITLE = "Something is wrong."
-        const val MESSAGE_TEXT = "The file at %s cannot be opened. Please open it manually."
+        val text = message("notifications.error.action.openConfigurationFile.error.body", path)
+        @Suppress("DialogTitleCapitalization")
+        val title = message("notifications.error.action.openConfigurationFile.error.title")
+        
+        Messages.showErrorDialog(text, title)
     }
     
 }
@@ -57,21 +56,18 @@ internal class FatalException(
 ) : PyrightException(stdout, stderr, message) {
     
     override fun createNotification(group: NotificationGroup): Notification {
-        val title = "Fatal error encountered"
-        val content = """
-            This is presumably a bug in Pyright.<br>
-            Please try to narrow the problem as much as possible,
-            then report it at Pyright's issue tracker.
-        """.trimIndent()
+        val title = message("notifications.error.fatal.title")
+        val content = message("notifications.error.fatal.body")
         
         return group.createErrorNotification(title, content).apply {
-            addAction(BrowseNotificationAction(ACTION_TEXT, ACTION_LINK))
+            val text = message("notifications.error.action.openPyrightIssueTracker")
+            addAction(BrowseNotificationAction(text, PYRIGHT_ISSUE_TRACKER_LINK))
         }
     }
     
     companion object {
-        private const val ACTION_TEXT = "Pyright issue tracker"
-        private const val ACTION_LINK = "https://github.com/microsoft/pyright/issues"
+        private const val PYRIGHT_ISSUE_TRACKER_LINK =
+            "https://github.com/microsoft/pyright/issues"
     }
     
 }
@@ -90,16 +86,13 @@ internal class InvalidConfigurationsException(
         
         val configurationFilePath = quoted.find(stderr)!!.groups[1]!!.value
         
-        val title = "Cannot parse configuration file"
-        val content = """The configuration file found at "$configurationFilePath" is invalid."""
+        val title = message("notifications.error.invalidConfigurations.title")
+        val content = message("notifications.error.invalidConfigurations.body", configurationFilePath)
         
         return group.createErrorNotification(title, content).apply {
-            addAction(OpenFileAction(ACTION_TEXT, configurationFilePath))
+            val text = message("notifications.error.action.openConfigurationFile")
+            addAction(OpenFileAction(text, configurationFilePath))
         }
-    }
-    
-    companion object {
-        private const val ACTION_TEXT = "View file"
     }
     
 }
@@ -112,21 +105,18 @@ internal class InvalidParametersException(
 ) : PyrightException(stdout, stderr, message) {
     
     override fun createNotification(group: NotificationGroup): Notification {
-        val title = "Unrecognized CLI options"
-        val content = """
-            Presumably, you are using a new (or old) version of Pyright,
-            which does not support the options this plugin uses.
-            Please report this problem to the plugin's issue tracker.
-        """.trimIndent()
+        val title = message("notifications.error.invalidCliOptions.title")
+        val content = message("notifications.error.invalidCliOptions.body")
         
         return group.createErrorNotification(title, content).apply {
-            addAction(BrowseNotificationAction(ACTION_TEXT, ACTION_LINK))
+            val text = message("notifications.error.action.openPluginIssueTracker")
+            addAction(BrowseNotificationAction(text, PLUGIN_ISSUE_TRACKER_LINK))
         }
     }
     
     companion object {
-        private const val ACTION_TEXT = "Plugin issue tracker"
-        private const val ACTION_LINK = "https://github.com/InSyncWithFoo/pyright-for-pycharm/issues"
+        private const val PLUGIN_ISSUE_TRACKER_LINK =
+            "https://github.com/InSyncWithFoo/pyright-for-pycharm/issues"
     }
     
 }

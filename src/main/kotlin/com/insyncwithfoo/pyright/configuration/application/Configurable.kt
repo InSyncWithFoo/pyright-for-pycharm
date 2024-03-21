@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configuration.application
 
 import com.insyncwithfoo.pyright.configuration.common.PyrightConfigurable
+import com.insyncwithfoo.pyright.message
 import com.intellij.util.xmlb.XmlSerializerUtil
 
 
@@ -12,10 +13,6 @@ internal class PyrightApplicationConfigurable : PyrightConfigurable<Configuratio
     override val originalConfigurations: Configurations =
         XmlSerializerUtil.createCopy(service.configurations)
     
-    override fun getDisplayName() = DISPLAY_NAME
-    
-    companion object {
-        const val DISPLAY_NAME = "Pyright (Global)"
-    }
+    override fun getDisplayName() = message("configurations.global.displayName")
     
 }

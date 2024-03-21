@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configuration.application
 
 import com.insyncwithfoo.pyright.configuration.common.ConfigurationPanel
+import com.insyncwithfoo.pyright.message
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import javax.swing.JCheckBox
 import javax.swing.JLabel
@@ -51,11 +52,11 @@ internal class ConfigurationPanel : ConfigurationPanel<Configurations>() {
     override fun getService() = ConfigurationService.getInstance()
     
     override fun setLabels() {
-        alwaysUseGlobalInput.text = "Always use global executable"
-        globalExecutableLabel.text = "Global executable:"
-        globalConfigurationFileLabel.text = "Configuration file:"
-        useEditorFontInput.text = "Use editor font for tooltips"
-        addTooltipPrefixInput.text = """Prefix tooltips with "Pyright:""""
+        alwaysUseGlobalInput.text = message("configurations.global.alwaysUseGlobal.label")
+        globalExecutableLabel.text = message("configurations.global.globalExecutable.label")
+        globalConfigurationFileLabel.text = message("configurations.global.globalConfigurationFile.label")
+        useEditorFontInput.text = message("configurations.global.useEditorFont.label")
+        addTooltipPrefixInput.text = message("configurations.global.addTooltipPrefix.label")
     }
     
 }

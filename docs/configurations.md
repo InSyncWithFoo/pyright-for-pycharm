@@ -10,7 +10,9 @@ Such a file is typically named `pyright`/`pyright-python`
 (see [the FAQ][1] for more information) and can be found in:
 
 * Global: Your Python interpreter directory
-* Virtual environment: `/venv/Scripts/` (Windows) or `/venv/bin` (Linux)
+* Virtual environment:
+  * Windows: `/venv/Scripts/` or similar
+  * Linux: `/venv/bin/` or similar
 
 You can also use a relative path.
 It would be interpreted as relative to the project directory.
