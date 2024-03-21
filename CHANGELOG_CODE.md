@@ -20,16 +20,18 @@
   * The `develop` branch of [@s0/git-publish-subdir-action][4-2]
     is used instead of `v2.6.0`. (a8613613)
   * Commit `4eb285e` of [@peaceiris/actions-gh-pages][4-3]
-    is used instead of `v3`. (HEAD)
+    is used instead of `v3`. (1673d71b)
 * The project/repository is renamed from
   `pyright-plugin` to `pyright-for-pycharm`. (d9253998)
 * [The Gradle Qodana plugin][4-4] is updated to 2023.3.1. (aa32c1b9)
 * Configuration constructs are now marked `internal`. (54d74f74)
-* [`CHANGELOG.md`][4-5] is rewritten. (c02db458, 4650c88c, HEAD)
+* [`CHANGELOG.md`][4-5] is rewritten. (c02db458, 4650c88c, 7516e63d)
 * Notifications-related logic is rewritten. (6b4b8e2a, 6a0cd5ac)
 * Duplicate SVG files are now converted to symlinks.
   The targets are those in the [`resources/icons`][4-6] directory. (e2ed56fa)
 * Messages are merged into one single bundle. (aeed108d)
+* The "Always use global" option is moved
+  to the second column of the second row. (HEAD)
 
 ### Fixed
 

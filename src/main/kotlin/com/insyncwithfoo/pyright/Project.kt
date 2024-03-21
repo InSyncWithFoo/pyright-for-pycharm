@@ -15,20 +15,12 @@ internal val Project.path: Path?
     get() = basePath?.let { Path.of(it) }
 
 
-internal val Project.sdk: Sdk?
+private val Project.sdk: Sdk?
     get() = ProjectRootManager.getInstance(this).projectSdk
 
 
 internal val Project.sdkPath: Path?
     get() = sdk?.homePath?.let { Path.of(it) }
-
-
-internal val Project.sdkIsLocal: Boolean
-    get() = when {
-        path == null -> false
-        sdkPath == null -> false
-        else -> sdkPath!!.startsWith(path!!)
-    }
 
 
 internal val Project.pyrightConfigurations: PyrightAllConfigurations

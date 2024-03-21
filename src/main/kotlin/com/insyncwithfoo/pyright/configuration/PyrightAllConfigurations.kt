@@ -14,7 +14,8 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
         addTooltipPrefix = this.addTooltipPrefix,
         
         projectExecutable = other.projectExecutable,
-        projectConfigurationFile = other.projectConfigurationFile
+        projectConfigurationFile = other.projectConfigurationFile,
+        autoSuggestExecutable = other.autoSuggestExecutable
     )
 
 
@@ -26,7 +27,8 @@ data class PyrightAllConfigurations(
     val addTooltipPrefix: Boolean,
     
     val projectExecutable: @SystemDependent String?,
-    val projectConfigurationFile: @SystemDependent String?
+    val projectConfigurationFile: @SystemDependent String?,
+    val autoSuggestExecutable: Boolean
 ) {
     
     val executable: @SystemDependent String?

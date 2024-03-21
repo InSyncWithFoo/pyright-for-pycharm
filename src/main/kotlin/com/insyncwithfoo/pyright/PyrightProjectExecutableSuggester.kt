@@ -9,9 +9,23 @@ import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.nameWithoutExtension
 
 
+private val Project.sdkIsLocal: Boolean
+    get() = when {
+        path == null -> false
+        sdkPath == null -> false
+        else -> sdkPath!!.startsWith(path!!)
+    }
+
+
 private fun Project.executableShouldBeSuggested(): Boolean {
     val configurations = pyrightConfigurations
-    return configurations.projectExecutable == null && !configurations.alwaysUseGlobal
+    
+    val suggestionIsEnabled = configurations.autoSuggestExecutable
+    val noProjectExecutableGiven = configurations.projectExecutable == null
+    val globalExcutableIsPreferred = configurations.alwaysUseGlobal
+    
+    
+    return suggestionIsEnabled && noProjectExecutableGiven && !globalExcutableIsPreferred
 }
 
 
@@ -31,6 +45,14 @@ private fun Project.setAsExecutable(executable: Path) {
 }
 
 
+private fun Project.disableSuggester() {
+    val configurationService = PyrightConfigurationService.getInstance(this)
+    val projectConfigurations = configurationService.projectService.configurations
+    
+    projectConfigurations.autoSuggestExecutable = false
+}
+
+
 internal class PyrightProjectExecutableSuggester : ProjectActivity {
     
     override suspend fun execute(project: Project) {
@@ -41,11 +63,11 @@ internal class PyrightProjectExecutableSuggester : ProjectActivity {
     
     private fun suggest(project: Project, executable: Path) {
         val projectPath = project.path ?: return
-        val relativePathToExecutable = projectPath.relativize(executable)
+        val executableRelativized = projectPath.relativize(executable)
         
         val notification = pyrightNotificationGroup().createNotification(
             title = message("notifications.suggestion.title"),
-            content = message("notifications.suggestion.body", relativePathToExecutable),
+            content = message("notifications.suggestion.body", executableRelativized),
             NotificationType.INFORMATION
         )
         
@@ -55,7 +77,10 @@ internal class PyrightProjectExecutableSuggester : ProjectActivity {
                 project.setAsExecutable(executable)
             }
             addSimpleExpiringAction(message("notifications.suggestion.action.setRelative")) {
-                project.setAsExecutable(relativePathToExecutable)
+                project.setAsExecutable(executableRelativized)
+            }
+            addSimpleExpiringAction(message("notifications.error.action.disableSuggester")) {
+                project.disableSuggester()
             }
         }
     }

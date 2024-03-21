@@ -45,20 +45,25 @@ class ConfigurationFieldsTest : TestCase() {
         
         assertEquals(5, applicationFields().size)
         
-        assertEquals(false, configurations.alwaysUseGlobal)
-        assertEquals(null, configurations.globalExecutable)
-        assertEquals(null, configurations.globalConfigurationFile)
-        assertEquals(false, configurations.useEditorFont)
-        assertEquals(false, configurations.addTooltipPrefix)
+        configurations.run {
+            assertEquals(false, alwaysUseGlobal)
+            assertEquals(null, globalExecutable)
+            assertEquals(null, globalConfigurationFile)
+            assertEquals(false, useEditorFont)
+            assertEquals(false, addTooltipPrefix)
+        }
     }
     
     fun `test defaults - project`() {
         val configurations = ProjectConfigurations()
         
-        assertEquals(2, projectFields().size)
+        assertEquals(3, projectFields().size)
         
-        assertEquals(null, configurations.projectExecutable)
-        assertEquals(null, configurations.projectConfigurationFile)
+        configurations.run {
+            assertEquals(null, projectExecutable)
+            assertEquals(null, projectConfigurationFile)
+            assertEquals(true, autoSuggestExecutable)
+        }
     }
     
     fun `test delegate - application`() {

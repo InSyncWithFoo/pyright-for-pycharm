@@ -20,7 +20,7 @@
   * The executable is not given.
 * The notification group name is now "*Pyright notifications*"
   instead of "*Pyright*".
-* Some UI messages are slightly changed.
+* UI components and messages are slightly changed.
 
 ### Removed
 

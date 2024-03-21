@@ -11,3 +11,12 @@ as the executable for that project is shown if and only if:
   among the siblings of the interpreter.
 * The project executable is not yet given.
 * The global executable is not preferred.
+
+Available actions:
+
+* Absolute path: Set the absolute path.
+* Relative path: Set the relative path (no leading dot).
+* Do not suggest: Turn off [the corresponding option][1].
+
+
+  [1]: configurations.md#auto-suggest-executable
