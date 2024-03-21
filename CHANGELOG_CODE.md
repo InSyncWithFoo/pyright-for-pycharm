@@ -11,7 +11,7 @@
 * A list of frequently asked questions is added to the docs.
   (99cb7753, 233aca23, 4e3d921a, b1c782bf)
 * Global option "Prefix tooltips" is added. (a3f9ca46)
-* Project option "Auto-suggest executable" is added. (6a0cd5ac, HEAD)
+* Project option "Auto-suggest executable" is added. (6a0cd5ac, 624ce941)
 * Configuration field tests are added. (28f88c04)
 
 ### Changed
@@ -19,8 +19,6 @@
 * Node 16 to 20 transition:
   * The `develop` branch of [@s0/git-publish-subdir-action][4-2]
     is used instead of `v2.6.0`. (a8613613)
-  * Commit `4eb285e` of [@peaceiris/actions-gh-pages][4-3]
-    is used instead of `v3`. (1673d71b)
 * The project/repository is renamed from
   `pyright-plugin` to `pyright-for-pycharm`. (d9253998)
 * [The Gradle Qodana plugin][4-4] is updated to 2023.3.1. (aa32c1b9)
@@ -31,7 +29,7 @@
   The targets are those in the [`resources/icons`][4-6] directory. (e2ed56fa)
 * Messages are merged into one single bundle. (aeed108d)
 * The "Always use global" option is moved
-  to the second column of the second row. (HEAD)
+  to the second column of the second row. (624ce941)
 
 ### Fixed
 
