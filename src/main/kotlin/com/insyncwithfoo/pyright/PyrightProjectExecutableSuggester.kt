@@ -24,7 +24,6 @@ private fun Project.executableShouldBeSuggested(): Boolean {
     val noProjectExecutableGiven = configurations.projectExecutable == null
     val globalExcutableIsPreferred = configurations.alwaysUseGlobal
     
-    
     return suggestionIsEnabled && noProjectExecutableGiven && !globalExcutableIsPreferred
 }
 
@@ -56,7 +55,7 @@ private fun Project.disableSuggester() {
 internal class PyrightProjectExecutableSuggester : ProjectActivity {
     
     override suspend fun execute(project: Project) {
-        if (project.executableShouldBeSuggested() && project.sdkIsLocal) {
+        if (project.run { isPyrightInspectionEnabled() && executableShouldBeSuggested() && sdkIsLocal }) {
             suggest(project, project.findPyrightExecutable() ?: return)
         }
     }
@@ -79,7 +78,7 @@ internal class PyrightProjectExecutableSuggester : ProjectActivity {
             addSimpleExpiringAction(message("notifications.suggestion.action.setRelative")) {
                 project.setAsExecutable(executableRelativized)
             }
-            addSimpleExpiringAction(message("notifications.error.action.disableSuggester")) {
+            addSimpleExpiringAction(message("notifications.suggestion.action.disableSuggester")) {
                 project.disableSuggester()
             }
         }

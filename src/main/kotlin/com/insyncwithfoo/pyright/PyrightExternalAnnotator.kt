@@ -3,11 +3,14 @@ package com.insyncwithfoo.pyright
 import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
 import com.insyncwithfoo.pyright.runner.PyrightCommand
 import com.insyncwithfoo.pyright.runner.PyrightRunner
+import com.intellij.codeInsight.daemon.HighlightDisplayKey
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
 import com.intellij.lang.injection.InjectedLanguageManager
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.fileEditor.FileDocumentManager
+import com.intellij.openapi.project.Project
+import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.PythonLanguage
@@ -32,6 +35,16 @@ private val PsiFile.isApplicable: Boolean
         this is PyFileImpl && !this.isAcceptedFor(PyrightInspection::class.java) -> false
         else -> true
     }
+
+
+// This might not actually be necessary.
+internal fun Project.isPyrightEnabled(file: PsiFile): Boolean {
+    val profileManager = InspectionProjectProfileManager.getInstance(this)
+    val profile = profileManager.currentProfile
+    val key = HighlightDisplayKey.find(PyrightInspection.SHORT_NAME)
+    
+    return key != null && profile.isToolEnabled(key, file)
+}
 
 
 private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
