@@ -41,14 +41,14 @@ It will automatically install the actual NPM package and
 places 4 proxy executables in the same virtual environment/directory
 you have your `pip` in:
 
-* `pyright`/`pyright-python`
-* `pyright-langserver`/`pyright-python-langserver`
+* `pyright`/`pyright-langserver` (these have the same names as the originals)
+* `pyright-python`/`pyright-python-langserver`
 
 These proxies will re-output the results of the original executables.
 [With the correct configurations][4],
-these proxies can be automatically updated on run.
+new versions can be automatically installed at runtime.
 
-The original executables can typically be found at:
+If you use this package, the original executables can typically be found at:
 
 * Windows: `%HOMEPATH%/.cache/pyright-python/<version>/node_modules/.bin`
 * Linux: `~/.cache/pyright-python/<version>/node_modules/.bin`

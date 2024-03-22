@@ -32,7 +32,7 @@
 ### Added
 
 * Distributions can now be downloaded from [the `build` branch][3-1],
-  [the *Actions* tab][3-2], or [the *Releases* tab][3-3].
+  [the <i>Actions</i> tab][3-2], or [the <i>Releases</i> tab][3-3].
 
 ### Changed
 

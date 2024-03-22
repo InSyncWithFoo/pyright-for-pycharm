@@ -24,15 +24,15 @@ If you can't find the executables in the aforementioned locations,
 see the following pages for more information:
 
 * *[Where does npm install packages?][1.0]* - *Stack Overflow*
-  * [NPM folders guide][1.1]
 * *[Where does pip install its packages?][1.2]* - *Stack Overflow*
+* [NPM folders guide][1.1]
 
 You can also use a relative path.
 It would be interpreted as relative to the project directory.
 
 The executable is used as-is with no additional checks,
 so the plugin will still work even if, for example,
-it's a wrapper script that outputs the same diagnostics.
+it's a wrapper script that outputs diagnostics in the expected format.
 
 
 ### Configuration file

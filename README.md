@@ -24,9 +24,9 @@ User documentation can be found [here][2].
 ## Installation
 
 This plugin has not been published to [the Marketplace][3].
-Download the ZIP file(s) manually from <i>Releases</i>,
-[the `build` branch][4] or [the *Actions* tab][5]
-and follow the instructions described [here][6].
+Download the ZIP file(s) manually from [the <i>Releases</i> tab][4],
+[the `build` branch][5] or [the <i>Actions</i> tab][6]
+and follow the instructions described [here][7].
 
 
 ## Usage
@@ -35,8 +35,8 @@ and follow the instructions described [here][6].
 
 Go to <b>Settings</b> | <b>Tools</b> |
 <b>Pyright (Global)</b> / <b>Pyright (Project)</b> and
-set the executable path to your Pyright executable.
-See [the docs][7] for more information on the configurations.
+set the path to your Pyright executable.
+See [the docs][8] for more information on the configurations.
 
 Save, return to your file and start making some modifications.
 You should see Pyright annotations in a few seconds.
@@ -51,7 +51,7 @@ This is only a minimum viable product.
   have run, expect a major delay (up to a few seconds) between checks.
 
 If you are interested in contributing to this project,
-see [the contributing guide][8].
+see [the contributing guide][9].
 
 
 ## Release schedule
@@ -63,28 +63,29 @@ if there are enough changes to justify a release.
 
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][9].
+Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][10].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG and PNG logos are derived from [the README image][10]
+The SVG and PNG logos are derived from [the README image][11]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 
 ## See also
 
-* [Pyright Language Server for PyCharm Professional][11],
+* [Pyright Language Server for PyCharm Professional][12],
   its sister plugin for PyCharm Professional that makes use of
   the experimental LSP API.
 
 
   [3]: https://plugins.jetbrains.com/
-  [4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
-  [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
-  [6]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
-  [7]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/
-  [8]: ./CONTRIBUTING.md
-  [9]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [10]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [11]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
+  [4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/releases
+  [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
+  [6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
+  [7]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
+  [8]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/
+  [9]: ./CONTRIBUTING.md
+  [10]: https://github.com/koxudaxi/ruff-pycharm-plugin
+  [11]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [12]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm

@@ -12,7 +12,7 @@
   (99cb7753, 233aca23, 4e3d921a, b1c782bf)
 * Global option "Prefix tooltips" is added. (a3f9ca46)
 * Project option "Auto-suggest executable" is added.
-  (6a0cd5ac, 624ce941, HEAD)
+  (6a0cd5ac, 624ce941, ff9b6d92)
 * Configuration field tests are added. (28f88c04)
 
 ### Changed
