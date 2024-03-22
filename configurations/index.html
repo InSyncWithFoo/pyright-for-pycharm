@@ -679,14 +679,14 @@ using either the <b>Global</b> or <b>Project</b> panel.</p>
 see the following pages for more information:</p>
 <ul>
 <li><em><a href="https://stackoverflow.com/q/5926672">Where does npm install packages?</a></em> - <em>Stack Overflow</em></li>
-<li><a href="https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables">NPM folders guide</a></li>
 <li><em><a href="https://stackoverflow.com/q/29980798">Where does pip install its packages?</a></em> - <em>Stack Overflow</em></li>
+<li><a href="https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables">NPM folders guide</a></li>
 </ul>
 <p>You can also use a relative path.
 It would be interpreted as relative to the project directory.</p>
 <p>The executable is used as-is with no additional checks,
 so the plugin will still work even if, for example,
-it's a wrapper script that outputs the same diagnostics.</p>
+it's a wrapper script that outputs diagnostics in the expected format.</p>
 <h3 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">#</a></h3>
 <p>Despite being called "file", this can be a path to a directory
 containing <code>pyright-config.json</code> and/or <code>pyproject.toml</code>.

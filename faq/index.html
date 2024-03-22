@@ -589,13 +589,13 @@ It will automatically install the actual NPM package and
 places 4 proxy executables in the same virtual environment/directory
 you have your <code>pip</code> in:</p>
 <ul>
-<li><code>pyright</code>/<code>pyright-python</code></li>
-<li><code>pyright-langserver</code>/<code>pyright-python-langserver</code></li>
+<li><code>pyright</code>/<code>pyright-langserver</code> (these have the same names as the originals)</li>
+<li><code>pyright-python</code>/<code>pyright-python-langserver</code></li>
 </ul>
 <p>These proxies will re-output the results of the original executables.
 <a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#automatically-keeping-pyright-up-to-date">With the correct configurations</a>,
-these proxies can be automatically updated on run.</p>
-<p>The original executables can typically be found at:</p>
+new versions can be automatically installed at runtime.</p>
+<p>If you use this package, the original executables can typically be found at:</p>
 <ul>
 <li>Windows: <code>%HOMEPATH%/.cache/pyright-python/&lt;version&gt;/node_modules/.bin</code></li>
 <li>Linux: <code>~/.cache/pyright-python/&lt;version&gt;/node_modules/.bin</code></li>
