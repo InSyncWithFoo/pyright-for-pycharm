@@ -53,7 +53,7 @@
 
 ### Removed
 
-* Dropped support for 2023.3.3.
+* 2023.3.3 is no longer supported.
 
 ### Fixed
 

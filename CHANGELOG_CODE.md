@@ -31,6 +31,7 @@
 * Messages are merged into one single bundle. (aeed108d)
 * The "Always use global" option is moved
   to the second column of the second row. (624ce941)
+* Gradle is updated to 8.7. (HEAD)
 
 ### Fixed
 
@@ -82,6 +83,9 @@
 * Add "Build" run configuration. (a073dccb)
 * Annotation-applying logic is extracted to a dedicated class. (83587afe)
 * Commands are now logged as JSON. (b3426911)
+
+### Removed
+
 * Support for 2023.3.3 is discontinued. (9c8981d4)
 
 ### Fixed
