@@ -14,6 +14,7 @@
 * Project option "Auto-suggest executable" is added.
   (6a0cd5ac, 624ce941, ff9b6d92)
 * Configuration field tests are added. (28f88c04)
+* The inspection display name is changed. (HEAD)
 
 ### Changed
 

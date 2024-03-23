@@ -21,6 +21,8 @@
 * The notification group name is now "*Pyright notifications*"
   instead of "*Pyright*".
 * UI components and messages are slightly changed.
+* The inspection name is changed from "Pyright inspection"
+  to "Pyright inspection<b>s</b>".
 
 ### Removed
 
