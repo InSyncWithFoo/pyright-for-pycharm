@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://insyncwithfoo.github.io/pyright-for-pycharm/faq/">
       
       
-        <link rel="prev" href="../features/">
+        <link rel="prev" href="../problems/">
       
       
       
@@ -296,6 +296,26 @@
   
   <span class="md-ellipsis">
     Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Problems
   </span>
   
 
@@ -606,8 +626,8 @@ see <a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md
 <p>Pyright does not support passing files from stdin.
 <a href="https://github.com/microsoft/pyright/issues/7282">A feature request</a> was made and quickly rejected.</p>
 <p>Adding an option that makes the plugin run only on "manual" saves
-is counter-productive. You have to save all your files manually,
-or wait until PyCharm saves them automatically. Neither is convenient.</p>
+(the <em>Save All</em> action) is counter-productive, since that don't guarantee
+the annotator class is called. This is <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10">a known limitation</a>.</p>
 <p>If you use PyCharm Professional, you should be using
 <a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm">the sister plugin</a> instead. It relies on experimental APIs and
 thus not as stable, but much faster and does not require saving.</p>

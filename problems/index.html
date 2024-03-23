@@ -10,26 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://insyncwithfoo.github.io/pyright-for-pycharm/">
+        <link rel="canonical" href="https://insyncwithfoo.github.io/pyright-for-pycharm/problems/">
       
       
+        <link rel="prev" href="../features/">
       
-        <link rel="next" href="configurations/">
+      
+        <link rel="next" href="../faq/">
       
       
-      <link rel="icon" href="img/icon.svg">
+      <link rel="icon" href="../img/icon.svg">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
     
     
       
-        <title>Pyright for PyCharm</title>
+        <title>Problems - Pyright for PyCharm</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pyright-for-pycharm-user-documentation" class="md-skip">
+        <a href="#problems-and-solutions" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Pyright for PyCharm" class="md-header__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
+    <a href=".." title="Pyright for PyCharm" class="md-header__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
       
-  <img src="img/icon-outline-10-white.svg" alt="logo">
+  <img src="../img/icon-outline-10-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Problems
             
           </span>
         </div>
@@ -222,9 +224,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Pyright for PyCharm" class="md-nav__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
+    <a href=".." title="Pyright for PyCharm" class="md-nav__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
       
-  <img src="img/icon-outline-10-white.svg" alt="logo">
+  <img src="../img/icon-outline-10-white.svg" alt="logo">
 
     </a>
     Pyright for PyCharm
@@ -248,6 +250,66 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -264,18 +326,18 @@
           
   
   <span class="md-ellipsis">
-    Overview
+    Problems
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Overview
+    Problems
   </span>
   
 
@@ -297,9 +359,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#screenshots" class="md-nav__link">
+  <a href="#no-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Screenshots
+      No annotations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fatal-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fatal error
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-parse-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot parse configuration file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unrecognized-cli-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unrecognized CLI options
     </span>
   </a>
   
@@ -320,67 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="configurations/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Configurations
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="features/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Features
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="problems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Problems
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="faq/" class="md-nav__link">
+      <a href="../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -420,9 +449,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#screenshots" class="md-nav__link">
+  <a href="#no-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Screenshots
+      No annotations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fatal-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fatal error
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-parse-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot parse configuration file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unrecognized-cli-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unrecognized CLI options
     </span>
   </a>
   
@@ -443,7 +499,7 @@
                   
 
   
-    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/problems.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -451,10 +507,58 @@
   
 
 
-<h1 id="pyright-for-pycharm-user-documentation">Pyright for PyCharm user documentation<a class="headerlink" href="#pyright-for-pycharm-user-documentation" title="Permanent link">#</a></h1>
-<p>This plugin provides Pyright integration for PyCharm.</p>
-<h2 id="screenshots">Screenshots<a class="headerlink" href="#screenshots" title="Permanent link">#</a></h2>
-<p><img alt="" src="img/demo1.png" /></p>
+<h1 id="problems-and-solutions">Problems and solutions<a class="headerlink" href="#problems-and-solutions" title="Permanent link">#</a></h1>
+<h2 id="no-annotations">No annotations<a class="headerlink" href="#no-annotations" title="Permanent link">#</a></h2>
+<p>Make sure that:</p>
+<ul>
+<li>
+<p>Your project has the correct interpreter set
+  (<b>Project</b> | <b>Python Interpreter</b>, or a cell in the status bar).</p>
+</li>
+<li>
+<p>The executable is given
+  (<b>Tools</b> | <b>Pyright (Global)</b> / <b>Pyright (Project)</b>)
+  and <a href="../configurations/#executable">is correct</a>.</p>
+</li>
+<li>
+<p>The plugin itself is enabled (<b>Plugins</b>).</p>
+</li>
+<li>
+<p>The inspection is enabled
+  (<b>Editor</b> | <b>Inspections</b> -&gt; <i>Pyright inspections</i>).</p>
+</li>
+<li>
+<p>The file is an actual Python file on disk, not an injected fragment
+  (see <a href="../faq/#why-does-this-plugin-have-to-perform-saves-so-often">the FAQ</a> for more information).</p>
+</li>
+</ul>
+<p>Other things to try:</p>
+<ul>
+<li>Reinstalling the plugin or update to the latest version.</li>
+<li>Reopen the files or restart the IDE.</li>
+<li>Restart your machine.</li>
+</ul>
+<p>If the problem persists, please report it to <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues">the issue tracker</a>.</p>
+<h2 id="fatal-error">Fatal error<a class="headerlink" href="#fatal-error" title="Permanent link">#</a></h2>
+<p>This most likely suggests a Pyright bug.</p>
+<p>Disable the plugin immediately to avoid hardware problems.
+Try to narrow the problem as much as possible,
+then report it to <a href="https://github.com/microsoft/pyright/issues">Pyright's issue tracker</a>.</p>
+<h2 id="cannot-parse-configuration-file">Cannot parse configuration file<a class="headerlink" href="#cannot-parse-configuration-file" title="Permanent link">#</a></h2>
+<p>This most likely means that the configuration file is invalid in some way.</p>
+<p>To know which file is being used, see <a href="../configurations/#executable">the configuration docs</a>.
+Alternatively, use the "Open file" action to directly open the file
+which is reported to be invalid by Pyright.</p>
+<h2 id="unrecognized-cli-options">Unrecognized CLI options<a class="headerlink" href="#unrecognized-cli-options" title="Permanent link">#</a></h2>
+<p>This most likely means that the executable you provide
+doesn't support the options this plugin uses.</p>
+<p>If you are using <a href="https://www.npmjs.com/package/pyright">the official NPM package</a> or
+<a href="https://pypi.org/project/pyright/">the community-maintained PyPI package</a>,
+please report the problem to the issue tracker along with
+the version of Pyright you are using, which can be retrieved
+by running <code>&lt;path-to-pyright&gt; --version</code> in your terminal.</p>
+<p>If the executable is something you come up with,
+check <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/master/src/main/kotlin/com/insyncwithfoo/pyright/runner/Command.kt">the source code</a> for expected options.</p>
 
 
 
@@ -501,10 +605,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.action.edit"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.bd41221c.min.js"></script>
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   </body>

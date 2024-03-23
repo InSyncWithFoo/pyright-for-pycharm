@@ -448,6 +448,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../faq/" class="md-nav__link">
         
   
@@ -689,7 +709,8 @@ so the plugin will still work even if, for example,
 it's a wrapper script that outputs diagnostics in the expected format.</p>
 <h3 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">#</a></h3>
 <p>Despite being called "file", this can be a path to a directory
-containing <code>pyright-config.json</code> and/or <code>pyproject.toml</code>.
+containing a <code>pyright-config.json</code> and/or a <code>pyproject.toml</code>
+(the former takes precedence if both are present).
 This path will be passed to the executable via <a href="https://microsoft.github.io/pyright/#/command-line">the <code>--project</code> option</a>.</p>
 <ul>
 <li>If the executable is local, only the local path is used.</li>
