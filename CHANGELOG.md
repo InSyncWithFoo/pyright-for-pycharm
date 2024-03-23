@@ -2,6 +2,12 @@
 
 # Changelog
 
+This page documents user-facing changes.
+For code changes, see [CHANGELOG_CODE.md][_-1].
+
+
+  [_-1]: ./CHANGELOG_CODE.md
+
 
 ## [Unreleased]
 

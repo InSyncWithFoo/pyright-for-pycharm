@@ -29,7 +29,7 @@ private class OpenFileAction(text: String, private val path: String) : Notificat
         fileEditorManager.openFileEditor(OpenFileDescriptor(project, virtualFile), true)
     }
     
-    fun somethingIsWrong() {
+    private fun somethingIsWrong() {
         val text = message("notifications.error.action.openConfigurationFile.error.body", path)
         @Suppress("DialogTitleCapitalization")
         val title = message("notifications.error.action.openConfigurationFile.error.title")

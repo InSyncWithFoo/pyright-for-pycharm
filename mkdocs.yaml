@@ -44,6 +44,7 @@ nav:
   - Overview: index.md
   - Configurations: configurations.md
   - Features: features.md
+  - Problems: problems.md
   - FAQ: faq.md
 
 validation:

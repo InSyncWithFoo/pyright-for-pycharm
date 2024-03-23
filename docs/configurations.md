@@ -38,7 +38,8 @@ it's a wrapper script that outputs diagnostics in the expected format.
 ### Configuration file
 
 Despite being called "file", this can be a path to a directory
-containing `pyright-config.json` and/or `pyproject.toml`.
+containing a `pyright-config.json` and/or a `pyproject.toml`
+(the former takes precedence if both are present).
 This path will be passed to the executable via [the `--project` option][2].
 
 * If the executable is local, only the local path is used.
