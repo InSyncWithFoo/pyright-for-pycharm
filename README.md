@@ -28,6 +28,9 @@ Download the ZIP file(s) manually from [the <i>Releases</i> tab][4],
 [the `build` branch][5] or [the <i>Actions</i> tab][6]
 and follow the instructions described [here][7].
 
+Currently supported versions:
+2023.3.4 (build 233.14475.56) - 2024.1.* (build 241.*).
+
 
 ## Usage
 

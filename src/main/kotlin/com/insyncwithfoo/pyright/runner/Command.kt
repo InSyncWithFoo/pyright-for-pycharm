@@ -66,9 +66,10 @@ data class PyrightCommand(
         get() = CapturingProcessHandler(getCommandLine())
     
     private fun getCommandLine() =
-        GeneralCommandLine(fragments)
-            .withWorkDirectory(projectPath)
-            .withCharset(Charsets.UTF_8)
+        GeneralCommandLine(fragments).apply {
+            withWorkDirectory(projectPath)
+            withCharset(Charsets.UTF_8)
+        }
     
     private fun runWithIndicator(): ProcessOutput {
         val indicator = ProgressManager.getInstance().progressIndicator

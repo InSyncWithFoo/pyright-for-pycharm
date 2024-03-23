@@ -33,5 +33,9 @@ However, good tests are most appreciated.
 
 ## Feedback
 
-You can also help by installing the unreleased version of the plugin
+You can also help by installing unreleased versions
+(which are automatically generated as [<i>Actions</i> artifacts][1])
 and report bugs as you come across them.
+
+
+  [1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml

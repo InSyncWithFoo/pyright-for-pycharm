@@ -7,7 +7,11 @@ import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.util.TextRange
-import com.intellij.xml.util.XmlStringUtil
+import com.intellij.openapi.util.text.HtmlChunk
+
+
+private fun <T> T.applyIf(condition: Boolean, block: T.() -> T): T =
+    if (condition) block() else this
 
 
 private fun Document.getOffset(endpoint: PyrightDiagnosticTextRangeEndpoint) =
@@ -29,18 +33,10 @@ private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
 }
 
 
-private fun String.toPreformatted(font: String? = null): String {
-    val escapedLines = this.split("\n").map {
-        XmlStringUtil.escapeString(it, true)
-    }
-    val rejoined = escapedLines.joinToString("<br>")
-    
-    return if (font != null) {
-        """<div style="font-family: '$font';">$rejoined</div>"""
-    } else {
-        rejoined
-    }
-}
+private fun String.toPreformatted(font: String? = null) =
+    HtmlChunk.div()
+        .applyIf(font != null) { style("font-family: '$font'") }
+        .child(HtmlChunk.text(this)).toString()
 
 
 private val PyrightDiagnostic.suffixedMessage: String

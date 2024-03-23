@@ -31,7 +31,10 @@
 * Messages are merged into one single bundle. (aeed108d)
 * The "Always use global" option is moved
   to the second column of the second row. (624ce941)
-* Gradle is updated to 8.7. (HEAD)
+* [@gradle/wrapper-validation-action][4-7] is updated to 2.1.2. (c9c27dda)
+* Gradle is updated to 8.7. (ce835b88)
+* `PyrightExternalAnnotator.kt`/`String.toPreformatted()`
+  is refactored to use `HtmlChunk`. (HEAD)
 
 ### Fixed
 
@@ -46,6 +49,7 @@
   [4-4]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [4-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CHANGELOG.md
   [4-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/resources/icons
+  [4-7]: https://github.com/gradle/wrapper-validation-action
 
 
 ## [0.1.0-mvp.3] - 2024-03-10

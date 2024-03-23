@@ -35,8 +35,10 @@ class ConfigurationFieldsTest : TestCase() {
         assertEquals(allFields.keys, applicationFields().keys + projectFields().keys)
         
         (applicationParameters() + projectParameters()).forEach { (name, parameter) ->
-            assertEquals(parameter.type.annotations, allFields[name]!!.type.annotations)
-            assertEquals(parameter.type, allFields[name]!!.type)
+            val correspondingField = allFields[name]!!
+            
+            assertEquals(parameter.type, correspondingField.type)
+            assertEquals(parameter.type.annotations, correspondingField.type.annotations)
         }
     }
     
