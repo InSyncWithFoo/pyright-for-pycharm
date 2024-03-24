@@ -3,13 +3,18 @@
 # Changelog
 
 This page documents user-facing changes.
-For code changes, see [CHANGELOG_CODE.md][_-1].
+For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 
   [_-1]: ./CHANGELOG_CODE.md
 
 
 ## [Unreleased]
+
+<i>This section is currently empty.</i>
+
+
+## [0.1.0-mvp.4] - 2024-03-24
 
 ### Added
 
@@ -75,7 +80,8 @@ For code changes, see [CHANGELOG_CODE.md][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.3..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.4..HEAD
+  [0.1.0-mvp.4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.3..v0.1.0-mvp.4
   [0.1.0-mvp.3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.2..v0.1.0-mvp.3
   [0.1.0-mvp.2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.1..v0.1.0-mvp.2
   [0.1.0-mvp.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/commits
