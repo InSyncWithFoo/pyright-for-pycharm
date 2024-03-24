@@ -41,7 +41,7 @@ jobs:
       
       # Set up Java environment for the next steps
       -
-        name: Setup Java
+        name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: zulu
@@ -49,7 +49,7 @@ jobs:
       
       # Setup Gradle
       -
-        name: Setup Gradle
+        name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-home-cache-cleanup: true

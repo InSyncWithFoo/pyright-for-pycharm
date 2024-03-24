@@ -12,7 +12,17 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* The [`build.yaml`][5-1] workflow now:
+  * Edits old releases when the changelogs are changed, and
+  * Upload corresponding artifacts as new drafts are created.
+  
+  The two helper Python scripts are added under [`.scripts`][5-2]. (HEAD)
+
+
+  [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
+  [5-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.scripts/
 
 
 ## [0.1.0-mvp.4] - 2024-03-24
@@ -73,19 +83,21 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Changed
 
-* `release.yaml` no longer runs on prereleases. (ed9ce98d)
+* [`release.yaml`][3-1] no longer runs on prereleases. (ed9ce98d)
 * SVG files are reformatted. (c9512f44)
-* [`foojay-resolver-convention`][3-1] is updated to 0.8.0. (1f0d9a04)
+* [`foojay-resolver-convention`][3-2] is updated to 0.8.0. (1f0d9a04)
 * Kotlin is updated to 1.9.23. (6a0e537b)
 * The `configuration` module is refactored. (9c1d5a05, a328920d)
 * Error-reporting logic is added. (61fbb0bc)
 
 ### Fixed
 
-* `build.yaml` now works correctly. (6349cddf, a2c6fb83)
+* [`build.yaml`][3-3] now works correctly. (6349cddf, a2c6fb83)
 
 
-  [3-1]: https://plugins.gradle.org/plugin/org.gradle.toolchains.foojay-resolver-convention
+  [3-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/release.yaml
+  [3-2]: https://plugins.gradle.org/plugin/org.gradle.toolchains.foojay-resolver-convention
+  [3-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
 
 
 ## [0.1.0-mvp.2] - 2024-03-03
