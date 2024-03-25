@@ -18,11 +18,17 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   * Edits old releases when the changelogs are changed, and
   * Upload corresponding artifacts as new drafts are created.
   
-  The two helper Python scripts are added under [`.scripts`][5-2]. (HEAD)
+  The two helper Python scripts are added under [`.scripts`][5-2].
+  (e9500f03)
+
+* [The Qodana Gradle plugin][5-3] and its corresponding action
+  [@JetBrains/qodana-action][5-4] are updated to 2023.3.2. (HEAD)
 
 
   [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
   [5-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.scripts/
+  [5-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
+  [5-4]: https://github.com/JetBrains/qodana-action
 
 
 ## [0.1.0-mvp.4] - 2024-03-24
