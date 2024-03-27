@@ -13,7 +13,7 @@ private fun loadColoredIcon(size: String) = loadIcon("icons/colored-$size.svg")
 
 
 @Suppress("unused")
-object PyrightIcon {
+internal object PyrightIcon {
     val COLORED_MEDIUM = loadColoredIcon("medium")
     val COLORED_SMALL = loadColoredIcon("small")
     

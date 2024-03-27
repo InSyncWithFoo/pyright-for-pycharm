@@ -5,19 +5,19 @@ import com.insyncwithfoo.pyright.configuration.application.ConfigurationService 
 import com.insyncwithfoo.pyright.configuration.project.ConfigurationService as ProjectConfigurationService
 
 
-internal class PyrightConfigurationService private constructor(
+internal class ConfigurationService private constructor(
     applicationService: ApplicationConfigurationService,
     val projectService: ProjectConfigurationService
 ) {
     
-    val configurations = applicationService.configurations mergeWith projectService.configurations
+    val state = applicationService.state mergeWith projectService.state
     
     companion object {
-        fun getInstance(project: Project): PyrightConfigurationService {
+        fun getInstance(project: Project): ConfigurationService {
             val applicationService = ApplicationConfigurationService.getInstance()
             val projectService = ProjectConfigurationService.getInstance(project)
             
-            return PyrightConfigurationService(applicationService, projectService)
+            return ConfigurationService(applicationService, projectService)
         }
     }
     

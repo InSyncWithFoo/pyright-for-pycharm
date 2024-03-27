@@ -11,7 +11,9 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* UI hints are added to ease the process of setting paths.
 
 
 ## [0.1.0-mvp.4] - 2024-03-24

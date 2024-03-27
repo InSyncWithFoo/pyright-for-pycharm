@@ -6,7 +6,7 @@ import com.insyncwithfoo.pyright.configuration.project.Configurations as Project
 
 
 internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurations) =
-    PyrightAllConfigurations(
+    AllConfigurations(
         alwaysUseGlobal = this.alwaysUseGlobal,
         globalExecutable = this.globalExecutable,
         globalConfigurationFile = this.globalConfigurationFile,
@@ -19,7 +19,7 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
     )
 
 
-data class PyrightAllConfigurations(
+internal data class AllConfigurations(
     val alwaysUseGlobal: Boolean,
     val globalExecutable: @SystemDependent String?,
     val globalConfigurationFile: @SystemDependent String?,

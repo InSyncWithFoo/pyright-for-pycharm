@@ -23,9 +23,9 @@ Such a file is typically named `pyright`/`pyright-python`
 If you can't find the executables in the aforementioned locations,
 see the following pages for more information:
 
-* *[Where does npm install packages?][1.0]* - *Stack Overflow*
-* *[Where does pip install its packages?][1.2]* - *Stack Overflow*
-* [NPM folders guide][1.1]
+* *[Where does npm install packages?][2]* - *Stack Overflow*
+* *[Where does pip install its packages?][3]* - *Stack Overflow*
+* [NPM folders guide][4]
 
 You can also use a relative path.
 It would be interpreted as relative to the project directory.
@@ -40,7 +40,7 @@ it's a wrapper script that outputs diagnostics in the expected format.
 Despite being called "file", this can be a path to a directory
 containing a `pyright-config.json` and/or a `pyproject.toml`
 (the former takes precedence if both are present).
-This path will be passed to the executable via [the `--project` option][2].
+This path will be passed to the executable via [the `--project` option][5].
 
 * If the executable is local, only the local path is used.
 * If the executable is global, the local path is used if it is specified,
@@ -86,14 +86,26 @@ Default: `false`
 
 Check this option to automatically find and
 suggest an executable for the current project on open.
-See [the corresponding feature][3] for more information.
+See [the corresponding feature][6] for more information.
 
 Default: `true`
 
 
+## Related
+
+
+### UI hints
+
+As you edit a path field, the small hint under the field
+will show whether the path is valid or invalid.
+
+This is only used to give a general hint;
+a path can still be saved even if it is marked as invalid.
+
+
   [1]: faq.md#whats-the-difference-between-pyright-and-pyright-python
-  [1.0]: https://stackoverflow.com/q/5926672
-  [1.1]: https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables
-  [1.2]: https://stackoverflow.com/q/29980798
-  [2]: https://microsoft.github.io/pyright/#/command-line
-  [3]: features.md#executable-suggestion
+  [2]: https://stackoverflow.com/q/5926672
+  [4]: https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables
+  [3]: https://stackoverflow.com/q/29980798
+  [5]: https://microsoft.github.io/pyright/#/command-line
+  [6]: features.md#executable-suggestion

@@ -1,7 +1,7 @@
 package com.insyncwithfoo.pyright
 
-import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
-import com.insyncwithfoo.pyright.configuration.PyrightConfigurationService
+import com.insyncwithfoo.pyright.configuration.AllConfigurations
+import com.insyncwithfoo.pyright.configuration.ConfigurationService
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.roots.ProjectRootManager
@@ -21,8 +21,8 @@ internal val Project.sdkPath: Path?
     get() = sdk?.homePath?.let { Path.of(it) }
 
 
-internal val Project.pyrightConfigurations: PyrightAllConfigurations
-    get() = PyrightConfigurationService.getInstance(this).configurations
+internal val Project.pyrightConfigurations: AllConfigurations
+    get() = ConfigurationService.getInstance(this).state
 
 
 internal fun Project.isPyrightInspectionEnabled(): Boolean {

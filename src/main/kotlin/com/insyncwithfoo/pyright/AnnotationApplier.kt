@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright
 
-import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
+import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.HighlightSeverity
@@ -46,10 +46,10 @@ private val PyrightDiagnostic.suffixedMessage: String
     }
 
 
-internal class PyrightAnnotationApplier(
+internal class AnnotationApplier(
     private val document: Document,
     private val output: PyrightOutput,
-    private val configurations: PyrightAllConfigurations,
+    private val configurations: AllConfigurations,
     private val holder: AnnotationHolder
 ) {
     

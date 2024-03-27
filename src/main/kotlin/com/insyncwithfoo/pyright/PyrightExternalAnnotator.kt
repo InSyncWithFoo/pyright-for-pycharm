@@ -1,16 +1,13 @@
 package com.insyncwithfoo.pyright
 
-import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
+import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.runner.PyrightCommand
 import com.insyncwithfoo.pyright.runner.PyrightRunner
-import com.intellij.codeInsight.daemon.HighlightDisplayKey
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
 import com.intellij.lang.injection.InjectedLanguageManager
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.fileEditor.FileDocumentManager
-import com.intellij.openapi.project.Project
-import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.PythonLanguage
@@ -37,39 +34,34 @@ private val PsiFile.isApplicable: Boolean
     }
 
 
-// This might not actually be necessary.
-internal fun Project.isPyrightEnabled(file: PsiFile): Boolean {
-    val profileManager = InspectionProjectProfileManager.getInstance(this)
-    val profile = profileManager.currentProfile
-    val key = HighlightDisplayKey.find(PyrightInspection.SHORT_NAME)
-    
-    return key != null && profile.isToolEnabled(key, file)
-}
-
-
 private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
     unsavedDocuments.forEach { saveDocumentAsIs(it) }
 }
 
 
-class PyrightExternalAnnotator :
-    ExternalAnnotator<PyrightExternalAnnotator.Info, PyrightExternalAnnotator.Result>() {
+internal data class AnnotationInfo(
+    val configurations: AllConfigurations,
+    val file: PsiFile
+)
+
+
+internal data class AnnotationResult(
+    val configurations: AllConfigurations,
+    val output: PyrightOutput
+)
+
+
+internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, AnnotationResult>() {
     
     override fun getPairedBatchInspectionShortName() =
         PyrightInspection.SHORT_NAME
     
-    override fun collectInformation(file: PsiFile): Info? {
+    override fun collectInformation(file: PsiFile): AnnotationInfo? {
         if (!file.isApplicable) {
             return null
         }
         
         val project = file.project
-        
-        // This might not actually be necessary.
-        if (!project.isPyrightEnabled(file)) {
-            return null
-        }
-        
         val configurations = project.pyrightConfigurations
         
         if (configurations.executable == null) {
@@ -84,36 +76,26 @@ class PyrightExternalAnnotator :
             return null
         }
         
-        return Info(configurations, file)
+        return AnnotationInfo(configurations, file)
     }
     
-    override fun doAnnotate(collectedInfo: Info?): Result? {
+    override fun doAnnotate(collectedInfo: AnnotationInfo?): AnnotationResult? {
         val (configurations, file) = collectedInfo ?: return null
         
         val command = PyrightCommand.create(configurations, file) ?: return null
         val output = PyrightRunner(file.project).run(command) ?: return null
         
-        return Result(configurations, output)
+        return AnnotationResult(configurations, output)
     }
     
-    override fun apply(file: PsiFile, annotationResult: Result?, holder: AnnotationHolder) {
+    override fun apply(file: PsiFile, annotationResult: AnnotationResult?, holder: AnnotationHolder) {
         val (configurations, output) = annotationResult ?: return
         
         val project = file.project
         val documentManager = PsiDocumentManager.getInstance(project)
         val document = documentManager.getDocument(file) ?: return
         
-        PyrightAnnotationApplier(document, output, configurations, holder).apply()
+        AnnotationApplier(document, output, configurations, holder).apply()
     }
-    
-    data class Info(
-        val configurations: PyrightAllConfigurations,
-        val file: PsiFile
-    )
-    
-    data class Result(
-        val configurations: PyrightAllConfigurations,
-        val output: PyrightOutput
-    )
     
 }

@@ -28,7 +28,7 @@ private fun ExceptionInfo(exception: PyrightException): ExceptionInfo {
 }
 
 
-class PyrightRunner(project: Project) {
+internal class PyrightRunner(project: Project) {
     
     private val notifier = Notifier(project)
     

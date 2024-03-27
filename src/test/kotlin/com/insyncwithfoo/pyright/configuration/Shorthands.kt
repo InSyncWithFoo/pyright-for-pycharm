@@ -20,13 +20,5 @@ internal fun projectFields() =
     ProjectConfigurations::class.declaredMemberProperties.makeAccessible().associateBy { it.name }
 
 
-internal fun applicationParameters() =
-    ApplicationConfigurations.Companion::create.parameters.associateBy { it.name!! }
-
-
-internal fun projectParameters() =
-    ProjectConfigurations.Companion::create.parameters.associateBy { it.name!! }
-
-
 internal fun allFields() =
-    PyrightAllConfigurations::class.primaryConstructor!!.parameters.associateBy { it.name }
+    AllConfigurations::class.primaryConstructor!!.parameters.associateBy { it.name }

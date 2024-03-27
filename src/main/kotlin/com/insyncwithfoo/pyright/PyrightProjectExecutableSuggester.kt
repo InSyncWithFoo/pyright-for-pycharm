@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright
 
-import com.insyncwithfoo.pyright.configuration.PyrightConfigurationService
+import com.insyncwithfoo.pyright.configuration.ConfigurationService
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
@@ -37,16 +37,16 @@ private fun Project.findPyrightExecutable(): Path? {
 
 
 private fun Project.setAsExecutable(executable: Path) {
-    val configurationService = PyrightConfigurationService.getInstance(this)
-    val projectConfigurations = configurationService.projectService.configurations
+    val configurationService = ConfigurationService.getInstance(this)
+    val projectConfigurations = configurationService.projectService.state
         
     projectConfigurations.projectExecutable = executable.toString()
 }
 
 
 private fun Project.disableSuggester() {
-    val configurationService = PyrightConfigurationService.getInstance(this)
-    val projectConfigurations = configurationService.projectService.configurations
+    val configurationService = ConfigurationService.getInstance(this)
+    val projectConfigurations = configurationService.projectService.state
     
     projectConfigurations.autoSuggestExecutable = false
 }

@@ -32,13 +32,13 @@
 		<applicationConfigurable
 			groupId="tools"
 			displayName="Pyright (Global)"
-			instance="com.insyncwithfoo.pyright.configuration.application.PyrightApplicationConfigurable"
+			instance="com.insyncwithfoo.pyright.configuration.application.Configurable"
 		/>
 		
 		<projectConfigurable
 			groupId="tools"
 			displayName="Pyright (Project)"
-			instance="com.insyncwithfoo.pyright.configuration.project.PyrightProjectConfigurable"
+			instance="com.insyncwithfoo.pyright.configuration.project.Configurable"
 		/>
 		
 		<localInspection

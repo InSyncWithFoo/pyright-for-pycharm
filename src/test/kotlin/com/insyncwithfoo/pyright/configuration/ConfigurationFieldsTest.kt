@@ -7,38 +7,15 @@ import com.insyncwithfoo.pyright.configuration.project.Configurations as Project
 
 class ConfigurationFieldsTest : TestCase() {
     
-    fun `test shape - application`() {
-        val fields = applicationFields()
-        val parameters = applicationParameters()
-        
-        assertEquals(fields.keys, parameters.keys)
-        
-        fields.forEach { (name, property) ->
-            assertEquals(property.returnType, parameters[name]!!.type)
-        }
-    }
-    
-    fun `test shape - project`() {
-        val fields = projectFields()
-        val parameters = projectParameters()
-        
-        assertEquals(fields.keys, parameters.keys)
-        
-        fields.forEach { (name, property) ->
-            assertEquals(property.returnType, parameters[name]!!.type)
-        }
-    }
-    
     fun `test shape - all`() {
         val allFields = allFields()
         
         assertEquals(allFields.keys, applicationFields().keys + projectFields().keys)
         
-        (applicationParameters() + projectParameters()).forEach { (name, parameter) ->
-            val correspondingField = allFields[name]!!
+        (applicationFields() + projectFields()).forEach { (name, field) ->
+            val correspondingFieldInAll = allFields[name]!!
             
-            assertEquals(parameter.type, correspondingField.type)
-            assertEquals(parameter.type.annotations, correspondingField.type.annotations)
+            assertEquals(field.returnType, correspondingFieldInAll.type)
         }
     }
     

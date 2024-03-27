@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.runner
 
-import com.insyncwithfoo.pyright.configuration.PyrightAllConfigurations
+import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.sdkPath
 import com.intellij.execution.RunCanceledByUserException
@@ -46,7 +46,7 @@ private object PathSerializer : KSerializer<Path> {
 
 
 @Serializable
-data class PyrightCommand(
+internal data class PyrightCommand(
     @Serializable(with = PathSerializer::class)
     val executable: Path,
     @Serializable(with = PathSerializer::class)
@@ -103,7 +103,7 @@ data class PyrightCommand(
     
     companion object {
         fun create(
-            configurations: PyrightAllConfigurations,
+            configurations: AllConfigurations,
             file: PsiFile
         ): PyrightCommand? {
             val project = file.project

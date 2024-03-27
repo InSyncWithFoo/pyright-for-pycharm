@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class PyrightOutput(
+internal data class PyrightOutput(
     val version: String,
     val time: String,
     val generalDiagnostics: List<PyrightDiagnostic>,
@@ -14,7 +14,7 @@ data class PyrightOutput(
 
 
 @Serializable
-data class PyrightDiagnostic(
+internal data class PyrightDiagnostic(
     val file: String,
     val severity: PyrightDiagnosticSeverity,
     val message: String,
@@ -23,7 +23,7 @@ data class PyrightDiagnostic(
 )
 
 
-enum class PyrightDiagnosticSeverity {
+internal enum class PyrightDiagnosticSeverity {
     @SerialName("error") ERROR,
     @SerialName("warning") WARNING,
     @SerialName("information") INFORMATION
@@ -31,21 +31,21 @@ enum class PyrightDiagnosticSeverity {
 
 
 @Serializable
-data class PyrightDiagnosticTextRange(
+internal data class PyrightDiagnosticTextRange(
     val start: PyrightDiagnosticTextRangeEndpoint,
     val end: PyrightDiagnosticTextRangeEndpoint
 )
 
 
 @Serializable
-data class PyrightDiagnosticTextRangeEndpoint(
+internal data class PyrightDiagnosticTextRangeEndpoint(
     val line: Int,
     val character: Int
 )
 
 
 @Serializable
-data class PyrightOutputSummary(
+internal data class PyrightOutputSummary(
     val filesAnalyzed: Int,
     val errorCount: Int,
     val warningCount: Int,

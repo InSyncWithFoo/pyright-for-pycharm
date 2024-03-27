@@ -12,23 +12,41 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+### Added
+
+* [`PathResolvingHint.kt`][5-1], [corresponding testcases][5-2]
+  and test resources are added. (HEAD)
+
 ### Changed
 
-* The [`build.yaml`][5-1] workflow now:
+* The [`build.yaml`][5-3] workflow now:
   * Edits old releases when the changelogs are changed, and
-  * Upload corresponding artifacts as new drafts are created.
+  * Uploads corresponding artifacts as new drafts are created.
   
-  The two helper Python scripts are added under [`.scripts`][5-2].
+  The two helper Python scripts are added under [`.scripts`][5-4].
   (e9500f03)
 
-* [The Qodana Gradle plugin][5-3] and its corresponding action
-  [@JetBrains/qodana-action][5-4] are updated to 2023.3.2. (HEAD)
+* [The Qodana Gradle plugin][5-5] and its corresponding action
+  [@JetBrains/qodana-action][5-6] are updated to 2023.3.2. (caca9092)
+* UI-related code is rewritten to use [Kotlin UI DSL][5-7]. (HEAD)
+* All APIs are now either internal or private. (HEAD)
+  * Some of them no longer have the prefix `Pyright` in their names. (HEAD)
 
 
-  [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
-  [5-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.scripts/
-  [5-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
-  [5-4]: https://github.com/JetBrains/qodana-action
+### Changed
+
+* The `configuration.common` module is removed
+  in favor of [`PyrightConfigurable.kt`][5-8]. (HEAD)
+
+
+  [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
+  [5-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/test/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHintTest.kt
+  [5-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
+  [5-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.scripts/
+  [5-5]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
+  [5-6]: https://github.com/JetBrains/qodana-action
+  [5-7]: https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl-version-2.html
+  [5-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.4] - 2024-03-24
