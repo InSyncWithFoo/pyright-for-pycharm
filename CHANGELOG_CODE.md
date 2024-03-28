@@ -15,7 +15,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * [`PathResolvingHint.kt`][5-1], [corresponding testcases][5-2]
-  and test resources are added. (HEAD)
+  and test resources are added. (6e4f8c7c)
 
 ### Changed
 
@@ -28,15 +28,14 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * [The Qodana Gradle plugin][5-5] and its corresponding action
   [@JetBrains/qodana-action][5-6] are updated to 2023.3.2. (caca9092)
-* UI-related code is rewritten to use [Kotlin UI DSL][5-7]. (HEAD)
-* All APIs are now either internal or private. (HEAD)
-  * Some of them no longer have the prefix `Pyright` in their names. (HEAD)
-
+* UI-related code is rewritten to use [Kotlin UI DSL][5-7]. (6e4f8c7c)
+* All APIs are now either internal or private. (6e4f8c7c)
+  * Some of them no longer have the prefix `Pyright` in their names. (6e4f8c7c)
 
 ### Changed
 
 * The `configuration.common` module is removed
-  in favor of [`PyrightConfigurable.kt`][5-8]. (HEAD)
+  in favor of [`PyrightConfigurable.kt`][5-8]. (6e4f8c7c)
 
 
   [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt

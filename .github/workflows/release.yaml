@@ -3,6 +3,7 @@
 # See https://plugins.jetbrains.com/docs/intellij/plugin-signing.html for more information.
 
 name: Release
+
 on:
   release:
     types:
@@ -44,9 +45,8 @@ jobs:
           EOM
           )"
           
-          # Avoid false positive error that CHANGELOG is not exported
+          # Avoid "not exported" false positive error
           # echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
-          
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT

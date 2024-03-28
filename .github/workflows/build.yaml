@@ -1,18 +1,5 @@
-# GitHub Actions Workflow is created for testing and preparing the plugin release in the following steps:
-# - Validate Gradle Wrapper.
-# - Run 'test' and 'verifyPlugin' tasks.
-# - Run Qodana inspections.
-# - Run the 'buildPlugin' task and prepare artifact for further tests.
-# - Run the 'runPluginVerifier' task.
-# - Create a draft release.
-#
-# The workflow is triggered on push and pull_request events.
-#
-# GitHub Actions reference: https://help.github.com/en/actions
-#
-## JBIJPPTPL
-
 name: Build
+
 on:
   push:
     branches:
@@ -25,6 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -73,7 +61,7 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "pluginVerifierHomeDir=~/.pluginVerifier" >> $GITHUB_OUTPUT
           
-          # Avoid false positive error that CHANGELOG is not exported
+          # Avoid "not exported" false positive error
           # echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGELOG" >> $GITHUB_OUTPUT
@@ -82,7 +70,8 @@ jobs:
           ./gradlew listProductsReleases
       -
         name: Build plugin
-        run: ./gradlew buildPlugin
+        run: |
+          ./gradlew buildPlugin
       -
         name: Push ZIP to the "build" branch
         uses: s0/git-publish-subdir-action@develop
@@ -161,8 +150,8 @@ jobs:
           chmod +x ./gradlew
           ./gradlew check
       -
-        name: Collect result
-        if: ${{ failure() }}
+        name: Upload result
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: tests-result
@@ -227,18 +216,18 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
       -
-        name: Set up plugin verifier IDEs cache
+        name: Set up IDEs cache
         uses: actions/cache@v4
         with:
           path: ${{ needs.build.outputs.pluginVerifierHomeDir }}/ides
           key: plugin-verifier-${{ hashFiles('build/listProductsReleases.txt') }}
       -
-        name: Run plugin verification tasks
+        name: Run verifier
         run: |
           chmod +x ./gradlew
           ./gradlew runPluginVerifier -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
       -
-        name: Collect plugin verifier result
+        name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -269,7 +258,7 @@ jobs:
             --jq '.[] | select(.draft == true) | .id' \
             | xargs -I '{}' gh api -X DELETE repos/{owner}/{repo}/releases/{}
       -
-        name: Create release draft
+        name: Create new release draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
