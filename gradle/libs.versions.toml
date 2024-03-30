@@ -6,7 +6,7 @@ kotlinxSerialization = "1.6.3"
 # plugins
 kotlin = "1.9.23"
 changelog = "2.2.0"
-gradleIntelliJPlugin = "1.17.2"
+gradleIntelliJPlugin = "1.17.3"
 qodana = "2023.3.2"
 kover = "0.7.6"
 

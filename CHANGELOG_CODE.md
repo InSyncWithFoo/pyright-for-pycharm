@@ -31,11 +31,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * UI-related code is rewritten to use [Kotlin UI DSL][5-7]. (6e4f8c7c)
 * All APIs are now either internal or private. (6e4f8c7c)
   * Some of them no longer have the prefix `Pyright` in their names. (6e4f8c7c)
+* [The IntelliJ Platform Gradle plugin][5-8] is updated to 1.17.3 (HEAD).
 
 ### Changed
 
 * The `configuration.common` module is removed
-  in favor of [`PyrightConfigurable.kt`][5-8]. (6e4f8c7c)
+  in favor of [`PyrightConfigurable.kt`][5-9]. (6e4f8c7c)
 
 
   [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
@@ -45,7 +46,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [5-5]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [5-6]: https://github.com/JetBrains/qodana-action
   [5-7]: https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl-version-2.html
-  [5-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [5-8]: https://github.com/JetBrains/intellij-platform-gradle-plugin
+  [5-9]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.4] - 2024-03-24

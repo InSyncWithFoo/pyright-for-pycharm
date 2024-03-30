@@ -23,6 +23,13 @@ private fun randomPlaceholder(): String {
 }
 
 
+internal fun <T : JComponent> Cell<T>.ensureComment() = this.apply {
+    comment(NO_LABEL)
+    // Whether this actually does anything noticeable is a subject of wonder.
+    comment!!.maximumSize = this.component.size
+}
+
+
 internal fun Row.secondColumnPathInput() = textFieldWithBrowseButton().apply {
     ensureComment()
     
@@ -40,13 +47,6 @@ internal fun <T : JComponent> Row.makeCellReturnComponent(block: Row.() -> Cell<
 
 internal fun <T : TextFieldWithBrowseButton> Cell<T>.bindText(property: KMutableProperty0<String?>) =
     this.bindText({ property.get().orEmpty() }, property::set)
-
-
-internal fun <T : JComponent> Cell<T>.ensureComment() = this.apply {
-    comment(NO_LABEL)
-    // Whether this actually does anything noticeable is a subject of wonder.
-    comment!!.maximumSize = this.component.size
-}
 
 
 internal fun <T : TextFieldWithBrowseButton> Cell<T>.onInput(block: Cell<T>.(String) -> Unit) {
