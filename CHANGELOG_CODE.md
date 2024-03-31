@@ -12,6 +12,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.1.0-mvp.5] - 2024-03-31
+
 ### Added
 
 * [`PathResolvingHint.kt`][5-1], [corresponding testcases][5-2]
@@ -31,7 +36,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * UI-related code is rewritten to use [Kotlin UI DSL][5-7]. (6e4f8c7c)
 * All APIs are now either internal or private. (6e4f8c7c)
   * Some of them no longer have the prefix `Pyright` in their names. (6e4f8c7c)
-* [The IntelliJ Platform Gradle plugin][5-8] is updated to 1.17.3 (HEAD).
+* [The IntelliJ Platform Gradle plugin][5-8] is updated to 1.17.3. (26fae6a3)
 
 ### Changed
 
@@ -167,7 +172,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.4..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.5..HEAD
+  [0.1.0-mvp.5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.4..v0.1.0-mvp.5
   [0.1.0-mvp.4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.3..v0.1.0-mvp.4
   [0.1.0-mvp.3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.2..v0.1.0-mvp.3
   [0.1.0-mvp.2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.1..v0.1.0-mvp.2
