@@ -29,12 +29,12 @@ private fun Row.makeProjectExecutableInput(block: Cell<TextFieldWithBrowseButton
     makeCellReturnComponent { secondColumnPathInput().apply(block) }
 
 
-private fun Row.makeAutoSuggestExecutableInput() =
-    checkBox(message("configurations.project.autoSuggestExecutable.label"))
-
-
 private fun Row.makeProjectConfigurationFileInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
     makeCellReturnComponent { secondColumnPathInput().apply(block) }
+
+
+private fun Row.makeAutoSuggestExecutableInput() =
+    checkBox(message("configurations.project.autoSuggestExecutable.label"))
 
 
 internal fun Configurable.configurationPanel(state: Configurations) = panel {

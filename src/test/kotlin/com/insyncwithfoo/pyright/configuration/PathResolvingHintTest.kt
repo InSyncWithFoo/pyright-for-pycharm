@@ -53,14 +53,14 @@ class PathResolvingHintTest : TestCase() {
     }
     
     fun `test configurationFilePathResolvingHint - directory, with pyrightconfig`() {
-        val path = testRoot / "testData" / "configuration2" / "PathResolvingHintTest1"
+        val path = testRoot / "testData" / "configuration" / "PathResolvingHintTest1"
         val hint = configurationFilePathResolvingHint(path)
         
         assertTrue(hint.icon === HintIcon.Success)
     }
     
     fun `test configurationFilePathResolvingHint - directory, with pyproject`() {
-        val path = testRoot / "testData" / "configuration2" / "PathResolvingHintTest2"
+        val path = testRoot / "testData" / "configuration" / "PathResolvingHintTest2"
         val hint = configurationFilePathResolvingHint(path)
         
         assertTrue(hint.icon === HintIcon.Success)
