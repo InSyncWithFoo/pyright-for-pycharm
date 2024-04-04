@@ -12,17 +12,22 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+### Changed
+
+* [`mkdocs-material`][6-1] is updated to 9.5.17. (HEAD)
+
 ### Fixed
 
 * A `panel.apply()` call is added to
-  [`PyrightConfigurable.isModified()`][6-1].
+  [`PyrightConfigurable.isModified()`][6-2].
   This ensures that the state of panel is synchronized
   before being compared with the original state,
   which was not the case in v0.1.0-mvp.5. (6ac49d29)
-* The test module `configuration2` is renamed to `configuration`. (HEAD)
+* The test module `configuration2` is renamed to `configuration`. (6ac49d29)
 
 
-  [6-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [6-1]: https://github.com/squidfunk/mkdocs-material
+  [6-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.5] - 2024-03-31
