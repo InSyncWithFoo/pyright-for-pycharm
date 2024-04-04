@@ -17,7 +17,10 @@ internal abstract class PyrightConfigurable<State : BaseState> : Configurable {
     
     override fun createComponent() = panel
     
-    override fun isModified() = originalState != state
+    override fun isModified(): Boolean {
+        panel.apply()
+        return originalState != state
+    }
     
     override fun apply() {
         XmlSerializerUtil.copyBean(state, service.state)

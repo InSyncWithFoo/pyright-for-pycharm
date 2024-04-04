@@ -12,7 +12,15 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Fixed
+
+* A `panel.apply()` call is added to [`PyrightConfigurable.isModified()`][6-1].
+  This ensures that the state of panel is synchronized
+  before being compared with the original state,
+  which was not the case in v0.1.0-mvp.5. (HEAD)
+
+
+  [6-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.5] - 2024-03-31

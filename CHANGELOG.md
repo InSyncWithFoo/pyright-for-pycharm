@@ -11,7 +11,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Fixed
+
+* v0.1.0-mvp.5 has a bug causing the configurations to not be saved.
+  This has been fixed.
 
 
 ## [0.1.0-mvp.5] - 2024-03-31
