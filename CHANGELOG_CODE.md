@@ -15,11 +15,13 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Changed
 
 * [`mkdocs-material`][6-1] is updated to 9.5.17. (HEAD)
+* [`pluginIcon.svg`][6-2] is resized to 40 by 40 to comply with
+  [the Approval Guidelines][6-3]. (HEAD)
 
 ### Fixed
 
 * A `panel.apply()` call is added to
-  [`PyrightConfigurable.isModified()`][6-2].
+  [`PyrightConfigurable.isModified()`][6-4].
   This ensures that the state of panel is synchronized
   before being compared with the original state,
   which was not the case in v0.1.0-mvp.5. (6ac49d29)
@@ -27,7 +29,9 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 
   [6-1]: https://github.com/squidfunk/mkdocs-material
-  [6-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [6-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/resources/META-INF/pluginIcon.svg
+  [6-3]: https://plugins.jetbrains.com/legal/approval-guidelines
+  [6-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.5] - 2024-03-31
