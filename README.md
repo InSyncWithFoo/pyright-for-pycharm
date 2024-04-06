@@ -3,6 +3,8 @@
 [![Build](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml/badge.svg)](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml)
 [![Docs](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/docs.yaml/badge.svg)](https://insyncwithfoo.github.io/pyright-for-pycharm)
 
+![](./docs/img/demo1.png)
+
 <!-- Plugin description -->
 Pyright integration for PyCharm.
 
@@ -18,8 +20,6 @@ Note: If you use PyCharm Professional, install
 
 
 ## Usage
-
-![](https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/img/demo1.png)
 
 Go to <b>Settings</b> | <b>Tools</b> |
 <b>Pyright (Global)</b> / <b>Pyright (Project)</b>

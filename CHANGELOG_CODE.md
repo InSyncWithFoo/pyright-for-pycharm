@@ -28,15 +28,17 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   This ensures that the state of panel is synchronized
   before being compared with the original state,
   which was not the case in v0.1.0-mvp.5. (6ac49d29)
-* The test module `configuration2` is renamed to `configuration`. (6ac49d29)
+* The test module `configuration2` is renamed to [`configuration`][6-7].
+  (8f558f9d)
 
 
   [6-1]: https://github.com/squidfunk/mkdocs-material
-  [6-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/resources/META-INF/pluginIcon.svg
+  [6-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/caf56f68/src/main/resources/META-INF/pluginIcon.svg
   [6-3]: https://plugins.jetbrains.com/legal/approval-guidelines
-  [6-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/README.md
-  [6-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml 
-  [6-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [6-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fd655b50/README.md
+  [6-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/c309ad98/.github/workflows/build.yaml 
+  [6-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/6ac49d29/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [6-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/8f558f9d/src/test/kotlin/com/insyncwithfoo/pyright/configuration
 
 
 ## [0.1.0-mvp.5] - 2024-03-31
@@ -68,15 +70,15 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   in favor of [`PyrightConfigurable.kt`][5-9]. (6e4f8c7c)
 
 
-  [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
-  [5-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/test/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHintTest.kt
-  [5-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
-  [5-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.scripts/
+  [5-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/6e4f8c7c/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
+  [5-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/6e4f8c7c/src/test/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHintTest.kt
+  [5-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e9500f03/.github/workflows/build.yaml
+  [5-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e9500f03/.scripts/
   [5-5]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [5-6]: https://github.com/JetBrains/qodana-action
   [5-7]: https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl-version-2.html
   [5-8]: https://github.com/JetBrains/intellij-platform-gradle-plugin
-  [5-9]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [5-9]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/6e4f8c7c/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.4] - 2024-03-24
@@ -122,14 +124,14 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * `invokeLater()` is now only called if an executable is given. (cc7a4c66)
 
 
-  [4-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/faq.md
-  [4-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/features.md
-  [4-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/problems.md
-  [4-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/FUNDING.yaml
+  [4-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dbe24020/docs/faq.md
+  [4-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dbe24020/docs/features.md
+  [4-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dbe24020/docs/problems.md
+  [4-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/6a536243/.github/FUNDING.yaml
   [4-5]: https://github.com/s0/git-publish-subdir-action/tree/develop
   [4-6]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
-  [4-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CHANGELOG.md
-  [4-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/resources/icons
+  [4-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7516e63d/CHANGELOG.md
+  [4-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e2ed56fa/src/main/resources/icons
   [4-9]: https://github.com/gradle/wrapper-validation-action
 
 
@@ -149,9 +151,9 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [`build.yaml`][3-3] now works correctly. (6349cddf, a2c6fb83)
 
 
-  [3-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/release.yaml
+  [3-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/ed9ce98d/.github/workflows/release.yaml
   [3-2]: https://plugins.gradle.org/plugin/org.gradle.toolchains.foojay-resolver-convention
-  [3-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml
+  [3-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/a2c6fb83/.github/workflows/build.yaml
 
 
 ## [0.1.0-mvp.2] - 2024-03-03
@@ -184,7 +186,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   allowing the corresponding packages to be recognized correctly. (83587afe)
 
 
-  [2-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CODE_OF_CONDUCT.md
+  [2-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/048ad24e/CODE_OF_CONDUCT.md
   [2-2]: https://insyncwithfoo.github.io/pyright-for-pycharm/
   [2-3]: https://github.com/JetBrains/intellij-platform-plugin-template
 
