@@ -17,7 +17,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [`mkdocs-material`][6-1] is updated to 9.5.17. (371c02c1)
 * [`pluginIcon.svg`][6-2] is resized to 40 by 40 to comply with
   [the Approval Guidelines][6-3]. (caf56f68)
-* [`README.md`][6-4] is rewritten to alter the plugin description. (HEAD)
+* [`README.md`][6-4] is rewritten to alter the plugin description. (fd655b50)
 
 ### Fixed
 

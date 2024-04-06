@@ -1,6 +1,8 @@
 name: Bug report
 description: Something happened but it shouldn't, or vice versa.
 labels: [ "bug" ]
+assignees:
+  - InSyncWithFoo
 
 body:
   -
@@ -9,6 +11,14 @@ body:
     attributes:
       label: What happened?
       description: A description of the bug.
+    validations:
+      required: true
+  -
+    type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What to do to reproduce the behavior.
     validations:
       required: true
   -
@@ -22,14 +32,6 @@ body:
         
         *This will be automatically formatted into code, so there is no need for backticks.*
       render: text
-  -
-    type: textarea
-    id: steps
-    attributes:
-      label: Steps to reproduce
-      description: What to do to reproduce the behavior.
-    validations:
-      required: true
   -
     type: dropdown
     id: os
