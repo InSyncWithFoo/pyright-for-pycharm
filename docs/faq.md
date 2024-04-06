@@ -79,15 +79,29 @@ There is no ETA, however.
 
 ## Why does it take so long to run on my project?
 
+There are multiple possible reasons for this.
+
+### Other inspections are taking too long
+
 Since this plugin invokes a CLI tool, it must be registered
 as an [`ExternalAnnotator`][9]. Inspectors of this kind will
 only run when all other background tasks have finished.
+
+Check your other plugins to see if this is the case.
+
+### There are a lot of files/things to process
 
 Unlike Mypy, Pyright does not cache previous results in a hidden directory.
 As such, everytime it runs on a given <em>file</em>, it also has to reprocess
 all other files that file depends on.
 
 Again, for better performance, [the sister plugin][8] is recommended.
+
+### Your code triggers a Pyright bug
+
+In some rare cases, Pyright might get itself into an infinite loop or similar.
+
+If this seems to be the case, treat it as [a fatal error][10].
 
 
 ## Is this plugin affiliated with Microsoft/JetBrains?
@@ -99,11 +113,10 @@ It was, however, created out of adoration of Pyright and JetBrains IDEs.
 
 ## I love this plugin. How can I support it?
 
-Please consider sponsoring [the sister plugin][8].
+You can consider [sponsoring it][8].
 
-These plugins are similar in many ways and were created by the same author,
-but the development for the other one requires (paid) subscriptions,
-as the experimental LSP APIs are not yet available in PyCharm Community Edition.
+If you are feeling generous, see [`CONTRIBUTING.md`][11]
+for how to contribute non-financially.
 
 
   [1]: https://microsoft.github.io/pyright/#/command-line?id=json-output
@@ -113,5 +126,7 @@ as the experimental LSP APIs are not yet available in PyCharm Community Edition.
   [5]: https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#modify-npm-package-location
   [6]: https://github.com/microsoft/pyright/issues/7282
   [7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10
-  [8]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
+  [8]: https://github.com/sponsors/InSyncWithFoo
   [9]: https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator
+  [10]: problems.md#fatal-error
+  [11]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md

@@ -19,7 +19,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [the Approval Guidelines][6-3]. (caf56f68)
 * [`README.md`][6-4] is rewritten to alter the plugin description. (fd655b50)
 * Bug reports and feature requests now have automatic assignees. (0f8ead3a)
-* [`build.yaml`][6-5] now runs tests on all three platforms. (HEAD)
+* [`build.yaml`][6-5] now runs tests on all three platforms. (c309ad98)
 
 ### Fixed
 
