@@ -7,6 +7,10 @@ TODO.md
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+.scripts/
+!.scripts/changelog.py
+!.scripts/edit_releases.py
+
 ### IntelliJ IDEA ###
 .idea/**
 !.idea/gradle.xml

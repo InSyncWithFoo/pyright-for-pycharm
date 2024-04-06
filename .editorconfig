@@ -120,6 +120,10 @@ indent_style = space
 [docs/*.md]
 indent_size = 4
 
+[*.py]
+indent_size = 4
+indent_style = tab
+
 [*.toml]
 ij_continuation_indent_size = 4
 ij_toml_keep_indents_on_empty_lines = true
