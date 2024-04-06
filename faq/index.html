@@ -428,6 +428,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Why does it take so long to run on my project?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-inspections-are-taking-too-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other inspections are taking too long
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#there-are-a-lot-of-filesthings-to-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      There are a lot of files/things to process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-code-triggers-a-pyright-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your code triggers a Pyright bug
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -534,6 +567,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Why does it take so long to run on my project?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-inspections-are-taking-too-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other inspections are taking too long
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#there-are-a-lot-of-filesthings-to-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      There are a lot of files/things to process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-code-triggers-a-pyright-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your code triggers a Pyright bug
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -629,27 +695,33 @@ see <a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md
 (the <em>Save All</em> action) is counter-productive, since that don't guarantee
 the annotator class is called. This is <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10">a known limitation</a>.</p>
 <p>If you use PyCharm Professional, you should be using
-<a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm">the sister plugin</a> instead. It relies on experimental APIs and
+<a href="https://github.com/sponsors/InSyncWithFoo">the sister plugin</a> instead. It relies on experimental APIs and
 thus not as stable, but much faster and does not require saving.</p>
 <h2 id="is-watch-mode-watch-supported">Is watch mode (<code>--watch</code>) supported?<a class="headerlink" href="#is-watch-mode-watch-supported" title="Permanent link">#</a></h2>
 <p>Supporting for watch mode is on the roadmap.
 There is no ETA, however.</p>
 <h2 id="why-does-it-take-so-long-to-run-on-my-project">Why does it take so long to run on my project?<a class="headerlink" href="#why-does-it-take-so-long-to-run-on-my-project" title="Permanent link">#</a></h2>
+<p>There are multiple possible reasons for this.</p>
+<h3 id="other-inspections-are-taking-too-long">Other inspections are taking too long<a class="headerlink" href="#other-inspections-are-taking-too-long" title="Permanent link">#</a></h3>
 <p>Since this plugin invokes a CLI tool, it must be registered
 as an <a href="https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator"><code>ExternalAnnotator</code></a>. Inspectors of this kind will
 only run when all other background tasks have finished.</p>
+<p>Check your other plugins to see if this is the case.</p>
+<h3 id="there-are-a-lot-of-filesthings-to-process">There are a lot of files/things to process<a class="headerlink" href="#there-are-a-lot-of-filesthings-to-process" title="Permanent link">#</a></h3>
 <p>Unlike Mypy, Pyright does not cache previous results in a hidden directory.
 As such, everytime it runs on a given <em>file</em>, it also has to reprocess
 all other files that file depends on.</p>
-<p>Again, for better performance, <a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm">the sister plugin</a> is recommended.</p>
+<p>Again, for better performance, <a href="https://github.com/sponsors/InSyncWithFoo">the sister plugin</a> is recommended.</p>
+<h3 id="your-code-triggers-a-pyright-bug">Your code triggers a Pyright bug<a class="headerlink" href="#your-code-triggers-a-pyright-bug" title="Permanent link">#</a></h3>
+<p>In some rare cases, Pyright might get itself into an infinite loop or similar.</p>
+<p>If this seems to be the case, treat it as <a href="../problems/#fatal-error">a fatal error</a>.</p>
 <h2 id="is-this-plugin-affiliated-with-microsoftjetbrains">Is this plugin affiliated with Microsoft/JetBrains?<a class="headerlink" href="#is-this-plugin-affiliated-with-microsoftjetbrains" title="Permanent link">#</a></h2>
 <p>No, or at least not in a business or ownership sense.</p>
 <p>It was, however, created out of adoration of Pyright and JetBrains IDEs.</p>
 <h2 id="i-love-this-plugin-how-can-i-support-it">I love this plugin. How can I support it?<a class="headerlink" href="#i-love-this-plugin-how-can-i-support-it" title="Permanent link">#</a></h2>
-<p>Please consider sponsoring <a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm">the sister plugin</a>.</p>
-<p>These plugins are similar in many ways and were created by the same author,
-but the development for the other one requires (paid) subscriptions,
-as the experimental LSP APIs are not yet available in PyCharm Community Edition.</p>
+<p>You can consider <a href="https://github.com/sponsors/InSyncWithFoo">sponsoring it</a>.</p>
+<p>If you are feeling generous, see <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>
+for how to contribute non-financially.</p>
 
 
 
