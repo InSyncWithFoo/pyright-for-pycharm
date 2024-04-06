@@ -18,11 +18,13 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [`pluginIcon.svg`][6-2] is resized to 40 by 40 to comply with
   [the Approval Guidelines][6-3]. (caf56f68)
 * [`README.md`][6-4] is rewritten to alter the plugin description. (fd655b50)
+* Bug reports and feature requests now have automatic assignees. (0f8ead3a)
+* [`build.yaml`][6-5] now runs tests on all three platforms. (HEAD)
 
 ### Fixed
 
 * A `panel.apply()` call is added to
-  [`PyrightConfigurable.isModified()`][6-5].
+  [`PyrightConfigurable.isModified()`][6-6].
   This ensures that the state of panel is synchronized
   before being compared with the original state,
   which was not the case in v0.1.0-mvp.5. (6ac49d29)
@@ -33,7 +35,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [6-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/resources/META-INF/pluginIcon.svg
   [6-3]: https://plugins.jetbrains.com/legal/approval-guidelines
   [6-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/README.md
-  [6-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [6-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/.github/workflows/build.yaml 
+  [6-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.5] - 2024-03-31
