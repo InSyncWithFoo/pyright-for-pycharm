@@ -54,7 +54,7 @@ doesn't support the options this plugin uses.
 
 If you are using [the official NPM package][5] or
 [the community-maintained PyPI package][6],
-please report the problem to the issue tracker along with
+please report the problem to [the issue tracker][3] along with
 the version of Pyright you are using, which can be retrieved
 by running `<path-to-pyright> --version` in your terminal.
 

@@ -4,7 +4,7 @@
 ## Executable suggestion
 
 When a project is opened, a suggestion to set a file
-as the executable for that project is shown if and only if:
+as the executable for that project is shown if:
 
 * The interpreter of the project exists and is located inside it.
 * There is a file named `pyright` (with or without extension)
