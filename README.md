@@ -45,13 +45,7 @@ Download the ZIP file(s) manually from [the <i>Releases</i> tab][5],
 and follow the instructions described [here][8].
 
 Currently supported versions:
-2023.3.4 (build 233.14475.56) - 2024.1.* (build 241.*).
-
-### Release schedule
-
-Version 0.1.0 will be released once PyCharm 2024.1 is released.
-Until then, a new MVP version is released every Sunday,
-if there are enough changes to justify a release.
+2024.1 (build 241.14494.241) - 2024.1.* (build 241.*).
 
 
 ## Known issues
