@@ -153,12 +153,18 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Fixed
 
-* [`build.yaml`][3-3] now works correctly. (6349cddf, a2c6fb83)
+* [`build.yaml`][3-3] now works correctly.
+  Distributions can now be downloaded from [the `build` branch][3-4],
+  [the <i>Actions</i> tab][3-5], or [the <i>Releases</i> tab][3-6].
+  (6349cddf, a2c6fb83)
 
 
   [3-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/ed9ce98d/.github/workflows/release.yaml
   [3-2]: https://plugins.gradle.org/plugin/org.gradle.toolchains.foojay-resolver-convention
   [3-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/a2c6fb83/.github/workflows/build.yaml
+  [3-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
+  [3-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
+  [3-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/releases
 
 
 ## [0.1.0-mvp.2] - 2024-03-03

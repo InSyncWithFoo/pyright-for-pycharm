@@ -57,19 +57,9 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [0.1.0-mvp.3] - 2024-03-10
 
-### Added
-
-* Distributions can now be downloaded from [the `build` branch][3-1],
-  [the <i>Actions</i> tab][3-2], or [the <i>Releases</i> tab][3-3].
-
 ### Changed
 
 * Errors are now reported as notifications.
-
-
-  [3-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
-  [3-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
-  [3-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/releases
 
 
 ## [0.1.0-mvp.2] - 2024-03-03
