@@ -12,7 +12,18 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* [`LICENSE_TEMPLATE.txt`][10-1] is added. (e4b257e5)
+
+### Changed
+
+* `released.yaml` is renamed to [`publish.yml`][10-2].
+  Steps overlapping with other jobs are removed. (HEAD)
+
+
+  [10-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e4b257e5/LICENSE_TEMPLATE.txt
+  [10-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/.github/workflows/publish.yaml
 
 
 ## [0.1.0-mvp.6] - 2024-04-07
