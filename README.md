@@ -16,7 +16,7 @@ the executable provided by you. If you are not OK with that,
 please <em>do not</em> install this plugin.
 
 Note: If you use PyCharm Professional, install
-[the <i>Pyright language server</i> plugin][2] instead.
+[the <i>Pyright Language Server</i> plugin][2] instead.
 
 
 ## Usage
@@ -70,6 +70,9 @@ The SVG and PNG logos are derived from [the README image][11]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
+Some other files are based on or copied directly from
+[@JetBrains/intellij-platform-plugin-template][12].
+
 
   [4]: https://plugins.jetbrains.com/
   [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/releases
@@ -79,3 +82,4 @@ generated using Inkscape's autotrace feature.
   [9]: ./CONTRIBUTING.md
   [10]: https://github.com/koxudaxi/ruff-pycharm-plugin
   [11]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [12]: https://github.com/JetBrains/intellij-platform-plugin-template
