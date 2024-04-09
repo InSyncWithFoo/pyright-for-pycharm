@@ -19,11 +19,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Changed
 
 * `released.yaml` is renamed to [`publish.yml`][10-2].
-  Steps overlapping with other jobs are removed. (HEAD)
+  Steps overlapping with other jobs are removed. (aff01a5e)
+* Highlight severities are now the same as sister's. (HEAD)
 
 
   [10-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e4b257e5/LICENSE_TEMPLATE.txt
-  [10-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/.github/workflows/publish.yaml
+  [10-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/aff01a5e/.github/workflows/publish.yaml
 
 
 ## [0.1.0-mvp.6] - 2024-04-07

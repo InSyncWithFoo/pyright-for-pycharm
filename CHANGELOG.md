@@ -11,7 +11,11 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* Default highlight severities are now "Error", "Warning" and "Weak warning"
+  instead of "Warning", "Weak warning" and "Weak warning".
+  A future release will allow configuring these severities.
 
 
 ## [0.1.0-mvp.6] - 2024-04-07

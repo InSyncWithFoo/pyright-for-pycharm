@@ -10,7 +10,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.util.text.HtmlChunk
 
 
-private fun <T> T.applyIf(condition: Boolean, block: T.() -> T): T =
+private fun <T> T.runIf(condition: Boolean, block: T.() -> T): T =
     if (condition) block() else this
 
 
@@ -27,15 +27,15 @@ private fun Document.getStartEndRange(range: PyrightDiagnosticTextRange): TextRa
 
 
 private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
-    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity.WARNING
-    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity.WEAK_WARNING
+    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity.ERROR
+    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity.WARNING
     PyrightDiagnosticSeverity.INFORMATION -> HighlightSeverity.WEAK_WARNING
 }
 
 
 private fun String.toPreformatted(font: String? = null) =
     HtmlChunk.div()
-        .applyIf(font != null) { style("font-family: '$font'") }
+        .runIf(font != null) { style("font-family: '$font'") }
         .child(HtmlChunk.text(this)).toString()
 
 
