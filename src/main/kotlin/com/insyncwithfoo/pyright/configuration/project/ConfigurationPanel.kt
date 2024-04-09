@@ -40,6 +40,10 @@ private fun Row.makeAutoSuggestExecutableInput() =
 internal fun Configurable.configurationPanel(state: Configurations) = panel {
     // FIXME: The onInput() callbacks are too deeply nested.
     
+    row {
+        makeAutoSuggestExecutableInput().bindSelected(state::autoSuggestExecutable)
+    }
+    
     row(message("configurations.project.projectExecutable.label")) {
         makeProjectExecutableInput {
             onInput(::displayPathHint) { path ->
@@ -53,9 +57,7 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
             bindText(state::projectExecutable)
         }
     }
-    row(NO_LABEL) {
-        makeAutoSuggestExecutableInput().bindSelected(state::autoSuggestExecutable)
-    }
+    
     row(message("configurations.project.projectConfigurationFile.label")) {
         makeProjectConfigurationFileInput {
             onInput(::displayPathHint) { path ->
@@ -74,4 +76,5 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
             }
         }
     }
+    
 }

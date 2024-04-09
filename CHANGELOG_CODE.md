@@ -21,6 +21,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * `released.yaml` is renamed to [`publish.yml`][10-2].
   Steps overlapping with other jobs are removed. (aff01a5e)
 * Highlight severities are now the same as sister's. (5fccec40)
+* The "Always use global" and "Auto-suggest executable" are moved back
+  to the first column of the first row. (HEAD)
 
 ### Fixed
 

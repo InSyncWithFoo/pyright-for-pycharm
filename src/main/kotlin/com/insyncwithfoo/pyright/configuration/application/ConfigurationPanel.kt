@@ -45,6 +45,10 @@ private fun Row.makeAddTooltipPrefixInput() =
 internal fun configurationPanel(state: Configurations) = panel {
     // FIXME: The onInput() callbacks are too deeply nested.
     
+    row {
+        makeAlwaysUseGlobalInput().bindSelected(state::alwaysUseGlobal)
+    }
+    
     row(message("configurations.global.globalExecutable.label")) {
         makeGlobalExecutableInput {
             onInput(::displayPathHint) { path ->
@@ -58,9 +62,7 @@ internal fun configurationPanel(state: Configurations) = panel {
             bindText(state::globalExecutable)
         }
     }
-    row(NO_LABEL) {
-        makeAlwaysUseGlobalInput().bindSelected(state::alwaysUseGlobal)
-    }
+    
     row(message("configurations.global.globalConfigurationFile.label")) {
         makeGlobalConfigurationFileInput {
             onInput(::displayPathHint) { path ->
@@ -83,4 +85,5 @@ internal fun configurationPanel(state: Configurations) = panel {
             makeAddTooltipPrefixInput().bindSelected(state::addTooltipPrefix)
         }
     }
+    
 }

@@ -18,6 +18,7 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
   A future release will allow configuring these severities.
 * v0.1.0-mvp.5 has a bug causing the configurations to be always unresetable.
   This has been fixed.
+* Configuration panels are slightly changed.
 
 
 ## [0.1.0-mvp.6] - 2024-04-07
@@ -52,7 +53,7 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
   * The executable is not given.
 * The notification group name is now "*Pyright notifications*"
   instead of "*Pyright*".
-* UI components and messages are slightly changed.
+* Configuration panels UI and messages are slightly changed.
 * The inspection name is changed from "Pyright inspection"
   to "Pyright inspection<b>s</b>".
 
