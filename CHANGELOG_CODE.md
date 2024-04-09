@@ -20,11 +20,19 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * `released.yaml` is renamed to [`publish.yml`][10-2].
   Steps overlapping with other jobs are removed. (aff01a5e)
-* Highlight severities are now the same as sister's. (HEAD)
+* Highlight severities are now the same as sister's. (5fccec40)
+
+### Fixed
+
+* [`PyrightConfigurable`][10-3]'s `apply()`, `isModified()` and `reset()`
+  now call the corresponding methods of `panel`.
+  This fixes a(nother) regression introduced in 0.1.0-mvp.5
+  which has been causing the configuration panels to be unresetable. (HEAD)
 
 
   [10-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e4b257e5/LICENSE_TEMPLATE.txt
   [10-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/aff01a5e/.github/workflows/publish.yaml
+  [10-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.6] - 2024-04-07

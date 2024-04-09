@@ -11,23 +11,20 @@ internal abstract class PyrightConfigurable<State : BaseState> : Configurable {
     
     protected abstract val service: SimplePersistentStateComponent<State>
     protected abstract val state: State
-    protected abstract val originalState: State
     
     protected abstract val panel: DialogPanel
     
     override fun createComponent() = panel
     
-    override fun isModified(): Boolean {
-        panel.apply()
-        return originalState != state
-    }
+    override fun isModified() = panel.isModified()
     
     override fun apply() {
+        panel.apply()
         XmlSerializerUtil.copyBean(state, service.state)
     }
     
     override fun reset() {
-        XmlSerializerUtil.copyBean(originalState, state)
+        panel.reset()
     }
     
     protected fun State.copy(): State {

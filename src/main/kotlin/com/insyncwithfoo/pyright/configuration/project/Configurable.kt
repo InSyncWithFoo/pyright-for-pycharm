@@ -9,7 +9,6 @@ internal class Configurable(internal val project: Project) : PyrightConfigurable
     
     override val service = ConfigurationService.getInstance(project)
     override val state = service.state.copy()
-    override val originalState = state.copy()
     
     override val panel by lazy { configurationPanel(state) }
     

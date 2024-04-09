@@ -16,13 +16,15 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 * Default highlight severities are now "Error", "Warning" and "Weak warning"
   instead of "Warning", "Weak warning" and "Weak warning".
   A future release will allow configuring these severities.
+* v0.1.0-mvp.5 has a bug causing the configurations to be always unresetable.
+  This has been fixed.
 
 
 ## [0.1.0-mvp.6] - 2024-04-07
 
 ### Fixed
 
-* v0.1.0-mvp.5 has a bug causing the configurations to not be saved.
+* v0.1.0-mvp.5 has a bug causing the configurations to be always unsavable.
   This has been fixed.
 
 
