@@ -24,7 +24,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * The "Always use global" and "Auto-suggest executable" are moved back
   to the first column of the first row. (6e6c6df6)
 * [@gradle/wrapper-validation-action][10-3] is updated to 2.1.3. (1c38c5ac)
-* [The docs][10-4] are rewritten to reflect both plugins. (HEAD)
+* [The docs][10-4] are rewritten to reflect both plugins. (4d1f29b6, HEAD)
 
 ### Fixed
 

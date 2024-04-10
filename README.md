@@ -15,8 +15,8 @@ It works by saving all your files as-is before running
 the executable provided by you. If you are not OK with that,
 please <em>do not</em> install this plugin.
 
-Note: If you use PyCharm Professional, install
-[the <i>Pyright Language Server</i> plugin][2] instead.
+Note: If you use PyCharm Professional,
+install [the <i>Pyright Language Server</i> plugin][2] instead.
 
 
 ## Usage
@@ -48,30 +48,18 @@ Currently supported versions:
 2024.1 (build 241.14494.241) - 2024.1.* (build 241.*).
 
 
-## Known issues
-
-This is only a minimum viable product.
-
-* There are very few tests. Manual checks are only performed on Windows.
-* Since `ExternalAnnotator`s are only called after all other annotators
-  have run, expect a major delay (up to a few seconds) between checks.
-
-If you are interested in contributing to this project,
-see [the contributing guide][9].
-
-
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][10].
+Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][9].
 It is such a fortune that that plugin does almost the same thing
 and is also written in Kotlin, and hence easily understandable.
 
-The SVG and PNG logos are derived from [the README image][11]
+The SVG and PNG logos are derived from [the README image][10]
 of the [@microsoft/pyright][1] repository,
 generated using Inkscape's autotrace feature.
 
 Some other files are based on or copied directly from
-[@JetBrains/intellij-platform-plugin-template][12].
+[@JetBrains/intellij-platform-plugin-template][11].
 
 
   [4]: https://plugins.jetbrains.com/
@@ -80,6 +68,6 @@ Some other files are based on or copied directly from
   [7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
   [8]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
   [9]: ./CONTRIBUTING.md
-  [10]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [11]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [12]: https://github.com/JetBrains/intellij-platform-plugin-template
+  [9]: https://github.com/koxudaxi/ruff-pycharm-plugin
+  [10]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
+  [11]: https://github.com/JetBrains/intellij-platform-plugin-template
