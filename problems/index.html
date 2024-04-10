@@ -19,7 +19,7 @@
         <link rel="next" href="../faq/">
       
       
-      <link rel="icon" href="../img/icon.svg">
+      <link rel="icon" href="../assets/icon.svg">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
@@ -94,7 +94,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Pyright for PyCharm" class="md-header__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
       
-  <img src="../img/icon-outline-10-white.svg" alt="logo">
+  <img src="../assets/icon-outline-10-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -172,6 +172,8 @@
         </button>
       </nav>
       
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -226,7 +228,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Pyright for PyCharm" class="md-nav__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
       
-  <img src="../img/icon-outline-10-white.svg" alt="logo">
+  <img src="../assets/icon-outline-10-white.svg" alt="logo">
 
     </a>
     Pyright for PyCharm
@@ -273,15 +275,141 @@
   
   
     <li class="md-nav__item">
-      <a href="../configurations/" class="md-nav__link">
+      <a href="../usage/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Configurations
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Configurations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLI-specific
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/lsp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LSP-specific
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/related/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Related
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -386,9 +514,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unrecognized-cli-options" class="md-nav__link">
+  <a href="#unrecognized-command-line-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Unrecognized CLI options
+      Unrecognized command-line options
     </span>
   </a>
   
@@ -476,9 +604,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unrecognized-cli-options" class="md-nav__link">
+  <a href="#unrecognized-command-line-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Unrecognized CLI options
+      Unrecognized command-line options
     </span>
   </a>
   
@@ -505,40 +633,43 @@
     </a>
   
   
+    
+      
+    
+    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/raw/master/docs/problems.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
 
 
 <h1 id="problems-and-solutions">Problems and solutions<a class="headerlink" href="#problems-and-solutions" title="Permanent link">#</a></h1>
 <h2 id="no-annotations">No annotations<a class="headerlink" href="#no-annotations" title="Permanent link">#</a></h2>
 <p>Make sure that:</p>
 <ul>
-<li>
-<p>Your project has the correct interpreter set
-  (<b>Project</b> | <b>Python Interpreter</b>, or a cell in the status bar).</p>
-</li>
-<li>
-<p>The executable is given
-  (<b>Tools</b> | <b>Pyright (Global)</b> / <b>Pyright (Project)</b>)
-  and <a href="../configurations/#executable">is correct</a>.</p>
-</li>
-<li>
-<p>The plugin itself is enabled (<b>Plugins</b>).</p>
-</li>
-<li>
-<p>The inspection is enabled
-  (<b>Editor</b> | <b>Inspections</b> -&gt; <i>Pyright inspections</i>).</p>
-</li>
-<li>
-<p>The file is an actual Python file on disk, not an injected fragment
-  (see <a href="../faq/#why-does-this-plugin-have-to-perform-saves-so-often">the FAQ</a> for more information).</p>
-</li>
+<li>Your project has the correct interpreter set
+  (<b>Project</b> | <b>Python Interpreter</b>, or a cell in the status bar).</li>
+<li><a href="../configurations/cli/#configuration-file">The executable</a> is given and is correct.</li>
+<li>The plugin itself is enabled (<b>Plugins</b>).</li>
+<li>The corresponding inspection is enabled
+  (<b>Editor</b> | <b>Inspections</b> &rarr;
+  <i>Pyright inspections</i>/<i>Pyright LS inspections</i>).</li>
+<li>(CLI) The file is an actual Python file on disk, not an injected fragment.</li>
 </ul>
+<details class="question">
+<summary>Why does CLI need the file to be an actual file?</summary>
+<p><a href="../faq/#why-does-cli-have-to-perform-saves-so-often">TLDR</a>: Pyright only supports reading files from disk, not stdin.</p>
+</details>
 <p>Other things to try:</p>
 <ul>
-<li>Reinstalling the plugin or update to the latest version.</li>
-<li>Reopen the files or restart the IDE.</li>
+<li>Reinstall the plugin or update to the latest version.</li>
+<li>Reopen the files, reopen the project or restart the IDE.</li>
+<li>(LSP) Restart the language server.</li>
 <li>Restart your machine.</li>
 </ul>
-<p>If the problem persists, please report it to <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues">the issue tracker</a>.</p>
+<p><img alt="" src="../assets/lsp-restart-server-button.png" /></p>
+<p>If the problem persists, please report it to
+<a href="../">the corresponding issue tracker</a>.</p>
 <h2 id="fatal-error">Fatal error<a class="headerlink" href="#fatal-error" title="Permanent link">#</a></h2>
 <p>This most likely suggests a Pyright bug.</p>
 <p>Disable the plugin immediately to avoid hardware problems.
@@ -546,19 +677,19 @@ Try to narrow the problem as much as possible,
 then report it to <a href="https://github.com/microsoft/pyright/issues">Pyright's issue tracker</a>.</p>
 <h2 id="cannot-parse-configuration-file">Cannot parse configuration file<a class="headerlink" href="#cannot-parse-configuration-file" title="Permanent link">#</a></h2>
 <p>This most likely means that the configuration file is invalid in some way.</p>
-<p>To know which file is being used, see <a href="../configurations/#executable">the configuration docs</a>.
-Alternatively, use the "Open file" action to directly open the file
-which is reported to be invalid by Pyright.</p>
-<h2 id="unrecognized-cli-options">Unrecognized CLI options<a class="headerlink" href="#unrecognized-cli-options" title="Permanent link">#</a></h2>
+<p>To know which file is being used, see <a href="../configurations/cli/#configuration-file">the configuration docs</a>.
+Alternatively, use the "Open file" action to
+directly open the file which is reported to be invalid.</p>
+<h2 id="unrecognized-command-line-options">Unrecognized command-line options<a class="headerlink" href="#unrecognized-command-line-options" title="Permanent link">#</a></h2>
 <p>This most likely means that the executable you provide
-doesn't support the options this plugin uses.</p>
+doesn't support the options used by the plugin.</p>
 <p>If you are using <a href="https://www.npmjs.com/package/pyright">the official NPM package</a> or
 <a href="https://pypi.org/project/pyright/">the community-maintained PyPI package</a>,
-please report the problem to <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues">the issue tracker</a> along with
-the version of Pyright you are using, which can be retrieved
-by running <code>&lt;path-to-pyright&gt; --version</code> in your terminal.</p>
+please report the problem to <a href="../">the corresponding issue tracker</a>
+along with the version of Pyright you are using, which can be
+retrieved by running <code>&lt;path-to-pyright&gt; --version</code> in your terminal.</p>
 <p>If the executable is something you come up with,
-check <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/master/src/main/kotlin/com/insyncwithfoo/pyright/runner/Command.kt">the source code</a> for expected options.</p>
+check the source code for expected options.</p>
 
 
 
@@ -605,7 +736,7 @@ check <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/master/
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "search.suggest"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>

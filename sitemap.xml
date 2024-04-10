@@ -6,11 +6,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/</loc>
-         <lastmod>2024-04-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/faq/</loc>
          <lastmod>2024-04-10</lastmod>
          <changefreq>daily</changefreq>
@@ -22,6 +17,31 @@
     </url>
     <url>
          <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/problems/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/usage/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/cli/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/common/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/lsp/</loc>
+         <lastmod>2024-04-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/related/</loc>
          <lastmod>2024-04-10</lastmod>
          <changefreq>daily</changefreq>
     </url>

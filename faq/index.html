@@ -17,7 +17,7 @@
       
       
       
-      <link rel="icon" href="../img/icon.svg">
+      <link rel="icon" href="../assets/icon.svg">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
@@ -92,7 +92,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Pyright for PyCharm" class="md-header__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
       
-  <img src="../img/icon-outline-10-white.svg" alt="logo">
+  <img src="../assets/icon-outline-10-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -170,6 +170,8 @@
         </button>
       </nav>
       
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -224,7 +226,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Pyright for PyCharm" class="md-nav__button md-logo" aria-label="Pyright for PyCharm" data-md-component="logo">
       
-  <img src="../img/icon-outline-10-white.svg" alt="logo">
+  <img src="../assets/icon-outline-10-white.svg" alt="logo">
 
     </a>
     Pyright for PyCharm
@@ -271,15 +273,141 @@
   
   
     <li class="md-nav__item">
-      <a href="../configurations/" class="md-nav__link">
+      <a href="../usage/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Configurations
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Configurations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLI-specific
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/lsp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LSP-specific
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurations/related/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Related
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -383,6 +511,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="What exactly is this plugin doing?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -395,40 +547,40 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-the-difference-between-pyright-and-pyright-python" class="md-nav__link">
+  <a href="#whats-the-difference-between-the-pyright-and-pyright-python-files" class="md-nav__link">
     <span class="md-ellipsis">
-      What's the difference between pyright and pyright-python?
+      What's the difference between the pyright and pyright-python files?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-does-this-plugin-have-to-perform-saves-so-often" class="md-nav__link">
+  <a href="#why-does-cli-have-to-perform-saves-so-often" class="md-nav__link">
     <span class="md-ellipsis">
-      Why does this plugin have to perform saves so often?
+      Why does CLI have to perform saves so often?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#is-watch-mode-watch-supported" class="md-nav__link">
+  <a href="#is-the-command-line-watch-mode-watch-supported" class="md-nav__link">
     <span class="md-ellipsis">
-      Is watch mode (--watch) supported?
+      Is the command-line watch mode (--watch) supported?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-does-it-take-so-long-to-run-on-my-project" class="md-nav__link">
+  <a href="#why-does-cli-take-so-long-to-run-on-my-project" class="md-nav__link">
     <span class="md-ellipsis">
-      Why does it take so long to run on my project?
+      Why does CLI take so long to run on my project?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why does it take so long to run on my project?">
+    <nav class="md-nav" aria-label="Why does CLI take so long to run on my project?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -473,9 +625,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-love-this-plugin-how-can-i-support-it" class="md-nav__link">
+  <a href="#i-love-this-project-how-can-i-support-it" class="md-nav__link">
     <span class="md-ellipsis">
-      I love this plugin. How can I support it?
+      I love this project. How can I support it?
     </span>
   </a>
   
@@ -522,6 +674,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="What exactly is this plugin doing?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -534,40 +710,40 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-the-difference-between-pyright-and-pyright-python" class="md-nav__link">
+  <a href="#whats-the-difference-between-the-pyright-and-pyright-python-files" class="md-nav__link">
     <span class="md-ellipsis">
-      What's the difference between pyright and pyright-python?
+      What's the difference between the pyright and pyright-python files?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-does-this-plugin-have-to-perform-saves-so-often" class="md-nav__link">
+  <a href="#why-does-cli-have-to-perform-saves-so-often" class="md-nav__link">
     <span class="md-ellipsis">
-      Why does this plugin have to perform saves so often?
+      Why does CLI have to perform saves so often?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#is-watch-mode-watch-supported" class="md-nav__link">
+  <a href="#is-the-command-line-watch-mode-watch-supported" class="md-nav__link">
     <span class="md-ellipsis">
-      Is watch mode (--watch) supported?
+      Is the command-line watch mode (--watch) supported?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-does-it-take-so-long-to-run-on-my-project" class="md-nav__link">
+  <a href="#why-does-cli-take-so-long-to-run-on-my-project" class="md-nav__link">
     <span class="md-ellipsis">
-      Why does it take so long to run on my project?
+      Why does CLI take so long to run on my project?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why does it take so long to run on my project?">
+    <nav class="md-nav" aria-label="Why does CLI take so long to run on my project?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -612,9 +788,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-love-this-plugin-how-can-i-support-it" class="md-nav__link">
+  <a href="#i-love-this-project-how-can-i-support-it" class="md-nav__link">
     <span class="md-ellipsis">
-      I love this plugin. How can I support it?
+      I love this project. How can I support it?
     </span>
   </a>
   
@@ -641,10 +817,19 @@
     </a>
   
   
+    
+      
+    
+    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/raw/master/docs/faq.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
 
 
 <h1 id="frequently-asked-questions">Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h1>
 <h2 id="what-exactly-is-this-plugin-doing">What exactly is this plugin doing?<a class="headerlink" href="#what-exactly-is-this-plugin-doing" title="Permanent link">#</a></h2>
+<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">#</a></h3>
 <p>In a nutshell:</p>
 <ul>
 <li>You edit your code.</li>
@@ -662,63 +847,70 @@
 <p>As long as you respect these <em>requirements</em>,
 you can use your own script, or whatever.
 If you don't, expect some big bad error messages.</p>
+<h3 id="lsp">LSP<a class="headerlink" href="#lsp" title="Permanent link">#</a></h3>
+<p>Most of the logic is already defined by either the <a href="https://github.com/eclipse-lsp4j/lsp4j">@eclipse-lsp4j/lsp4j</a>
+library or <a href="https://plugins.jetbrains.com/docs/intellij/language-server-protocol.html">the experimental language server protocol APIs</a>.
+LSP simply glues these and the Pyright language server together.</p>
+<p>Again, the executable is not checked.
+You can use your own hand-hacked version if you feel like it.</p>
 <h2 id="my-code-should-have-nothese-errors-but-it-doesdoesnt">My code should have no/these errors, but it does/doesn't.<a class="headerlink" href="#my-code-should-have-nothese-errors-but-it-doesdoesnt" title="Permanent link">#</a></h2>
-<p>This plugin contains no type checking logic.
+<p>Both CLI and LSP contain no type checking logic.
 For type checking bugs, please report them to <a href="https://github.com/microsoft/pyright/issues">the Pyright issue tracker</a>.</p>
-<h2 id="whats-the-difference-between-pyright-and-pyright-python">What's the difference between <code>pyright</code> and <code>pyright-python</code>?<a class="headerlink" href="#whats-the-difference-between-pyright-and-pyright-python" title="Permanent link">#</a></h2>
-<p>Pyright is written in TypeScript and published on NPM,
+<h2 id="whats-the-difference-between-the-pyright-and-pyright-python-files">What's the difference between the <code>pyright</code> and <code>pyright-python</code> files?<a class="headerlink" href="#whats-the-difference-between-the-pyright-and-pyright-python-files" title="Permanent link">#</a></h2>
+<p>Pyright is written in TypeScript and officially published on NPM,
 mainly for the purpose of better integration with VSCode.
 This requires a dependency on Node, which Python developers
 might not have on their development machines.</p>
-<p><a href="https://pypi.org/project/pyright/">The <code>pyright</code> package on PyPI</a> was created to solve this problem.
-It will automatically install the actual NPM package and
-places 4 proxy executables in the same virtual environment/directory
-you have your <code>pip</code> in:</p>
+<p><a href="https://pypi.org/project/pyright/">The PyPI <code>pyright</code> package</a> was created to solve this problem.
+When installed, it places 4 proxy executables in
+the same virtual environment/directory you have your <code>pip</code> in:</p>
 <ul>
 <li><code>pyright</code>/<code>pyright-langserver</code> (these have the same names as the originals)</li>
 <li><code>pyright-python</code>/<code>pyright-python-langserver</code></li>
 </ul>
-<p>These proxies will re-output the results of the original executables.
-<a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#automatically-keeping-pyright-up-to-date">With the correct configurations</a>,
-new versions can be automatically installed at runtime.</p>
-<p>If you use this package, the original executables can typically be found at:</p>
+<p>These proxies will automatically install the actual NPM package
+if it is not already installed, then re-output the results of
+the original executables. <a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#automatically-keeping-pyright-up-to-date">With the correct configurations</a>,
+new versions may be automatically installed at runtime.</p>
+<p>If the corresponding version of the NPM package has not been installed,
+the proxies will also re-output the "added 1 package" notice by NPM,
+which <em>will</em> cause parsing errors.
+Due to this, it is recommended that the original executables are used instead.</p>
+<p>Said original executables can typically be found at:</p>
 <ul>
 <li>Windows: <code>%HOMEPATH%/.cache/pyright-python/&lt;version&gt;/node_modules/.bin</code></li>
 <li>Linux: <code>~/.cache/pyright-python/&lt;version&gt;/node_modules/.bin</code></li>
 </ul>
-<p>For more information on how to configure this location,
-see <a href="https://github.com/RobertCraigie/pyright-python/blob/HEAD/README.md#modify-npm-package-location"><em>Pyright for Python</em>'s documentation</a>.</p>
-<h2 id="why-does-this-plugin-have-to-perform-saves-so-often">Why does this plugin have to perform saves so often?<a class="headerlink" href="#why-does-this-plugin-have-to-perform-saves-so-often" title="Permanent link">#</a></h2>
-<p>Pyright does not support passing files from stdin.
+<h2 id="why-does-cli-have-to-perform-saves-so-often">Why does CLI have to perform saves so often?<a class="headerlink" href="#why-does-cli-have-to-perform-saves-so-often" title="Permanent link">#</a></h2>
+<p>Pyright only reads actual files on disk.
+It does not support passing files from stdin.
 <a href="https://github.com/microsoft/pyright/issues/7282">A feature request</a> was made and quickly rejected.</p>
-<p>Adding an option that makes the plugin run only on "manual" saves
-(the <em>Save All</em> action) is counter-productive, since that don't guarantee
-the annotator class is called. This is <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10">a known limitation</a>.</p>
-<p>If you use PyCharm Professional, you should be using
-<a href="https://github.com/sponsors/InSyncWithFoo">the sister plugin</a> instead. It relies on experimental APIs and
-thus not as stable, but much faster and does not require saving.</p>
-<h2 id="is-watch-mode-watch-supported">Is watch mode (<code>--watch</code>) supported?<a class="headerlink" href="#is-watch-mode-watch-supported" title="Permanent link">#</a></h2>
-<p>Supporting for watch mode is on the roadmap.
+<p>Adding an option that makes CLI run only on "manual" saves
+(the <em>Save All</em> action) is counter-productive, since that doesn't
+guarantee the annotator class is called. This is <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10">a known limitation</a>.</p>
+<p>If you use PyCharm Professional, you <a href="../#choosing-the-right-plugin">should be using</a> LSP instead.</p>
+<h2 id="is-the-command-line-watch-mode-watch-supported">Is the command-line watch mode (<code>--watch</code>) supported?<a class="headerlink" href="#is-the-command-line-watch-mode-watch-supported" title="Permanent link">#</a></h2>
+<p>Support for <code>--watch</code> is on the roadmap.
 There is no ETA, however.</p>
-<h2 id="why-does-it-take-so-long-to-run-on-my-project">Why does it take so long to run on my project?<a class="headerlink" href="#why-does-it-take-so-long-to-run-on-my-project" title="Permanent link">#</a></h2>
+<h2 id="why-does-cli-take-so-long-to-run-on-my-project">Why does CLI take so long to run on my project?<a class="headerlink" href="#why-does-cli-take-so-long-to-run-on-my-project" title="Permanent link">#</a></h2>
 <p>There are multiple possible reasons for this.</p>
 <h3 id="other-inspections-are-taking-too-long">Other inspections are taking too long<a class="headerlink" href="#other-inspections-are-taking-too-long" title="Permanent link">#</a></h3>
-<p>Since this plugin invokes a CLI tool, it must be registered
+<p>Since CLI invokes a command-line tool, it must be registered
 as an <a href="https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator"><code>ExternalAnnotator</code></a>. Inspectors of this kind will
 only run when all other background tasks have finished.</p>
 <p>Check your other plugins to see if this is the case.</p>
 <h3 id="there-are-a-lot-of-filesthings-to-process">There are a lot of files/things to process<a class="headerlink" href="#there-are-a-lot-of-filesthings-to-process" title="Permanent link">#</a></h3>
-<p>Unlike Mypy, Pyright does not cache previous results in a hidden directory.
-As such, everytime it runs on a given <em>file</em>, it also has to reprocess
-all other files that file depends on.</p>
-<p>Again, for better performance, <a href="https://github.com/sponsors/InSyncWithFoo">the sister plugin</a> is recommended.</p>
+<p>Unlike Mypy, Pyright does not cache previous results.
+As such, everytime it runs on a given <em>file</em>,
+it also has to reprocess all other files that file depends on.</p>
+<p>Again, for better performance, LSP <a href="../#choosing-the-right-plugin">is recommended</a>.</p>
 <h3 id="your-code-triggers-a-pyright-bug">Your code triggers a Pyright bug<a class="headerlink" href="#your-code-triggers-a-pyright-bug" title="Permanent link">#</a></h3>
-<p>In some rare cases, Pyright might get itself into an infinite loop or similar.</p>
+<p>In some rare cases, Pyright might be stuck in an infinite loop or similar.</p>
 <p>If this seems to be the case, treat it as <a href="../problems/#fatal-error">a fatal error</a>.</p>
 <h2 id="is-this-plugin-affiliated-with-microsoftjetbrains">Is this plugin affiliated with Microsoft/JetBrains?<a class="headerlink" href="#is-this-plugin-affiliated-with-microsoftjetbrains" title="Permanent link">#</a></h2>
 <p>No, or at least not in a business or ownership sense.</p>
 <p>It was, however, created out of adoration of Pyright and JetBrains IDEs.</p>
-<h2 id="i-love-this-plugin-how-can-i-support-it">I love this plugin. How can I support it?<a class="headerlink" href="#i-love-this-plugin-how-can-i-support-it" title="Permanent link">#</a></h2>
+<h2 id="i-love-this-project-how-can-i-support-it">I love this project. How can I support it?<a class="headerlink" href="#i-love-this-project-how-can-i-support-it" title="Permanent link">#</a></h2>
 <p>You can consider <a href="https://github.com/sponsors/InSyncWithFoo">sponsoring it</a>.</p>
 <p>If you are feeling generous, see <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>
 for how to contribute non-financially.</p>
@@ -768,7 +960,7 @@ for how to contribute non-financially.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "search.suggest"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
