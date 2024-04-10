@@ -7,26 +7,28 @@ Make sure that:
 
 * Your project has the correct interpreter set
   (<b>Project</b> | <b>Python Interpreter</b>, or a cell in the status bar).
-
-* The executable is given
-  (<b>Tools</b> | <b>Pyright (Global)</b> / <b>Pyright (Project)</b>)
-  and [is correct][1].
-
+* [The executable][1] is given and is correct.
 * The plugin itself is enabled (<b>Plugins</b>).
+* The corresponding inspection is enabled
+  (<b>Editor</b> | <b>Inspections</b> -->
+  <i>Pyright inspections</i>/<i>Pyright LS inspections</i>).
+* (CLI) The file is an actual Python file on disk, not an injected fragment.
 
-* The inspection is enabled
-  (<b>Editor</b> | <b>Inspections</b> -> <i>Pyright inspections</i>).
+??? question "Why does CLI need the file to be an actual file?"
 
-* The file is an actual Python file on disk, not an injected fragment
-  (see [the FAQ][2] for more information).
+    [TLDR][2]: Pyright only supports reading files from disk, not stdin.
 
 Other things to try:
 
-* Reinstalling the plugin or update to the latest version.
-* Reopen the files or restart the IDE.
+* Reinstall the plugin or update to the latest version.
+* Reopen the files, reopen the project or restart the IDE.
+* (LSP) Restart the language server.
 * Restart your machine.
 
-If the problem persists, please report it to [the issue tracker][3].
+![](assets/lsp-restart-server-button.png)
+
+If the problem persists, please report it to
+[the corresponding issue tracker][3].
 
 
 ## Fatal error
@@ -43,29 +45,28 @@ then report it to [Pyright's issue tracker][4].
 This most likely means that the configuration file is invalid in some way.
 
 To know which file is being used, see [the configuration docs][1].
-Alternatively, use the "Open file" action to directly open the file
-which is reported to be invalid by Pyright.
+Alternatively, use the "Open file" action to
+directly open the file which is reported to be invalid.
 
 
-## Unrecognized CLI options
+## Unrecognized command-line options
 
 This most likely means that the executable you provide
-doesn't support the options this plugin uses.
+doesn't support the options used by the plugin.
 
 If you are using [the official NPM package][5] or
 [the community-maintained PyPI package][6],
-please report the problem to [the issue tracker][3] along with
-the version of Pyright you are using, which can be retrieved
-by running `<path-to-pyright> --version` in your terminal.
+please report the problem to [the corresponding issue tracker][3]
+along with the version of Pyright you are using, which can be
+retrieved by running `<path-to-pyright> --version` in your terminal.
 
 If the executable is something you come up with,
-check [the source code][7] for expected options.
+check the source code for expected options.
 
 
-  [1]: configurations.md#executable
-  [2]: faq.md#why-does-this-plugin-have-to-perform-saves-so-often
-  [3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/issues
+  [1]: configurations/cli.md#configuration-file
+  [2]: faq.md#why-does-cli-have-to-perform-saves-so-often
+  [3]: index.md
   [4]: https://github.com/microsoft/pyright/issues
   [5]: https://www.npmjs.com/package/pyright
   [6]: https://pypi.org/project/pyright/
-  [7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/master/src/main/kotlin/com/insyncwithfoo/pyright/runner/Command.kt

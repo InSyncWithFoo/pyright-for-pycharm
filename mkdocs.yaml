@@ -12,8 +12,8 @@ exclude_docs: |
 
 theme:
   name: material
-  favicon: img/icon.svg
-  logo: img/icon-outline-10-white.svg
+  favicon: assets/icon.svg
+  logo: assets/icon-outline-10-white.svg
   palette:
     -
       media: "(prefers-color-scheme: light)"
@@ -33,16 +33,41 @@ theme:
         name: "Switch to light mode"
   features:
     - content.action.edit
+    - content.action.view
+    - search.suggest
 
 markdown_extensions:
-  - admonition:
-  - codehilite:
-  - toc:
-      permalink: '#'
+  admonition:
+  codehilite:
+  pymdownx.details:
+  pymdownx.tabbed:
+    alternate_style: true
+    combine_header_slug: true
+    slugify: !!python/object/apply:pymdownx.slugs.slugify
+      kwds:
+        case: lower
+  pymdownx.smartsymbols:
+    arrows: true
+    care_of: false
+    copyright: false
+    fractions: false
+    notequal: false
+    ordinal_numbers: false
+    plusminus: false
+    registered: false
+    trademark: false
+  pymdownx.superfences:
+  toc:
+    permalink: '#'
 
 nav:
   - Overview: index.md
-  - Configurations: configurations.md
+  - Usage: usage.md
+  - Configurations:
+    - Common: configurations/common.md
+    - CLI-specific: configurations/cli.md
+    - LSP-specific: configurations/lsp.md
+    - Related: configurations/related.md
   - Features: features.md
   - Problems: problems.md
   - FAQ: faq.md

@@ -3,7 +3,7 @@
 [![Build](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml/badge.svg)](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml)
 [![Docs](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/docs.yaml/badge.svg)](https://insyncwithfoo.github.io/pyright-for-pycharm)
 
-![](./docs/img/demo1.png)
+![](docs/assets/cli-demo1.png)
 
 <!-- Plugin description -->
 Pyright integration for PyCharm.

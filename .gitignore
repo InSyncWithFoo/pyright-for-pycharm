@@ -1,8 +1,6 @@
 .gradle
 build/
-site/
-venv/
-TODO.md
+
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -10,6 +8,12 @@ TODO.md
 .scripts/
 !.scripts/changelog.py
 !.scripts/edit_releases.py
+
+TODO.md
+.credentials/
+
+site/
+venv/
 
 ### IntelliJ IDEA ###
 .idea/**

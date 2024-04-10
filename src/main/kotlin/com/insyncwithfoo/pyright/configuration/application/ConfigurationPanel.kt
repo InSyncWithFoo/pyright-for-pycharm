@@ -1,7 +1,6 @@
 package com.insyncwithfoo.pyright.configuration.application
 
 import com.insyncwithfoo.pyright.configuration.Hint
-import com.insyncwithfoo.pyright.configuration.NO_LABEL
 import com.insyncwithfoo.pyright.configuration.bindText
 import com.insyncwithfoo.pyright.configuration.configurationFilePathResolvingHint
 import com.insyncwithfoo.pyright.configuration.displayPathHint

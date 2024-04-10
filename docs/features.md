@@ -19,4 +19,4 @@ Available actions:
 * Do not suggest: Turn off [the corresponding option][1].
 
 
-  [1]: configurations.md#auto-suggest-executable
+  [1]: configurations/common.md#auto-suggest-executable

@@ -22,19 +22,23 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   Steps overlapping with other jobs are removed. (aff01a5e)
 * Highlight severities are now the same as sister's. (5fccec40)
 * The "Always use global" and "Auto-suggest executable" are moved back
-  to the first column of the first row. (HEAD)
+  to the first column of the first row. (6e6c6df6)
+* [@gradle/wrapper-validation-action][10-3] is updated to 2.1.3. (1c38c5ac)
+* [The docs][10-4] are rewritten to reflect both plugins. (HEAD)
 
 ### Fixed
 
-* [`PyrightConfigurable`][10-3]'s `apply()`, `isModified()` and `reset()`
+* [`PyrightConfigurable`][10-5]'s `apply()`, `isModified()` and `reset()`
   now call the corresponding methods of `panel`.
-  This fixes a(nother) regression introduced in 0.1.0-mvp.5
-  which has been causing the configuration panels to be unresetable. (HEAD)
+  This fixes a(nother) regression introduced in v0.1.0-mvp.5
+  which has been causing the configuration panels to be unresetable. (2eb24204)
 
 
   [10-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e4b257e5/LICENSE_TEMPLATE.txt
   [10-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/aff01a5e/.github/workflows/publish.yaml
-  [10-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
+  [10-3]: https://github.com/gradle/wrapper-validation-action
+  [10-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
+  [10-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/2eb24204/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
 ## [0.1.0-mvp.6] - 2024-04-07
