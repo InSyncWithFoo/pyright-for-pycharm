@@ -12,6 +12,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.1.0] - 2024-04-10
+
 ### Added
 
 * [`LICENSE_TEMPLATE.txt`][10-1] is added. (e4b257e5)
@@ -24,7 +29,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * The "Always use global" and "Auto-suggest executable" are moved back
   to the first column of the first row. (6e6c6df6)
 * [@gradle/wrapper-validation-action][10-3] is updated to 2.1.3. (1c38c5ac)
-* [The docs][10-4] are rewritten to reflect both plugins. (4d1f29b6, HEAD)
+* [The docs][10-4] are rewritten to reflect both plugins. (4d1f29b6, 5e997e73)
 
 ### Fixed
 
@@ -37,7 +42,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [10-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e4b257e5/LICENSE_TEMPLATE.txt
   [10-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/aff01a5e/.github/workflows/publish.yaml
   [10-3]: https://github.com/gradle/wrapper-validation-action
-  [10-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
+  [10-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/5e997e73/docs
   [10-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/2eb24204/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PyrightConfigurable.kt
 
 
@@ -235,7 +240,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.6..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0..HEAD
+  [0.1.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.6..v0.1.0
   [0.1.0-mvp.6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.5..v0.1.0-mvp.6
   [0.1.0-mvp.5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.4..v0.1.0-mvp.5
   [0.1.0-mvp.4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.3..v0.1.0-mvp.4
