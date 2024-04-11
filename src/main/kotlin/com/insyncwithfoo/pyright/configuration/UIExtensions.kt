@@ -39,12 +39,6 @@ internal fun Row.secondColumnPathInput() = textFieldWithBrowseButton().apply {
 }
 
 
-internal fun <T : JComponent> Row.makeCellReturnComponent(block: Row.() -> Cell<T>): T {
-    val cell = block()
-    return cell.component
-}
-
-
 internal fun <T : TextFieldWithBrowseButton> Cell<T>.bindText(property: KMutableProperty0<String?>) =
     this.bindText({ property.get().orEmpty() }, property::set)
 

@@ -1,12 +1,11 @@
 package com.insyncwithfoo.pyright
 
 import com.insyncwithfoo.pyright.configuration.ConfigurationService
+import com.insyncwithfoo.pyright.configuration.project.Configurations
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import java.nio.file.Path
-import kotlin.io.path.listDirectoryEntries
-import kotlin.io.path.nameWithoutExtension
 
 
 private val Project.sdkIsLocal: Boolean
@@ -28,27 +27,21 @@ private fun Project.executableShouldBeSuggested(): Boolean {
 }
 
 
-private fun Project.findPyrightExecutable(): Path? {
-    val sdkDirectory = sdkPath?.parent ?: return null
-    val children = sdkDirectory.listDirectoryEntries("*")
+private fun Project.changePyrightConfigurations(action: Configurations.() -> Unit) {
+    val configurationService = ConfigurationService.getInstance(this)
+    val projectConfigurations = configurationService.projectService.state
     
-    return children.find { it.nameWithoutExtension == "pyright" }
+    projectConfigurations.action()
 }
 
 
 private fun Project.setAsExecutable(executable: Path) {
-    val configurationService = ConfigurationService.getInstance(this)
-    val projectConfigurations = configurationService.projectService.state
-        
-    projectConfigurations.projectExecutable = executable.toString()
+    changePyrightConfigurations { projectExecutable = executable.toString() }
 }
 
 
 private fun Project.disableSuggester() {
-    val configurationService = ConfigurationService.getInstance(this)
-    val projectConfigurations = configurationService.projectService.state
-    
-    projectConfigurations.autoSuggestExecutable = false
+    changePyrightConfigurations { autoSuggestExecutable = false }
 }
 
 
