@@ -10,12 +10,11 @@ on:
       - released
 
 jobs:
-  release:
+  publish:
     name: Publish
     runs-on: ubuntu-latest
-    environment: publish
-    
     if: github.event.release.tag_name != 'v0.1.0'
+    environment: publish
     
     steps:
       -

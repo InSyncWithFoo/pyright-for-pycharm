@@ -2,6 +2,9 @@
 
 [![Build](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml/badge.svg)](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml)
 [![Docs](https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/docs.yaml/badge.svg)](https://insyncwithfoo.github.io/pyright-for-pycharm)
+[![Version](https://img.shields.io/jetbrains/plugin/v/24145)][4]
+[![Rating](https://img.shields.io/jetbrains/plugin/r/rating/24145)][4]
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/24145)][4]
 
 ![](docs/assets/cli-demo1.png)
 
@@ -62,7 +65,7 @@ Some other files are based on or copied directly from
 [@JetBrains/intellij-platform-plugin-template][11].
 
 
-  [4]: https://plugins.jetbrains.com/
+  [4]: https://plugins.jetbrains.com/plugin/24145
   [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/releases
   [6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
   [7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
