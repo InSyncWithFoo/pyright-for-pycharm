@@ -667,13 +667,26 @@
 <h2 id="executable">Executable<a class="headerlink" href="#executable" title="Permanent link">#</a></h2>
 <p>For CLI/LSP to work, at least one executable file needs to be defined
 using either the <b>Global</b> or <b>Project</b> panel.</p>
+<details class="question">
+<summary>How to install the Pyright executable(s)?</summary>
+<p>Choose one that works for you (or one you like the most):</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pyright
+$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>pyright
+$<span class="w"> </span>yarn<span class="w"> </span>add<span class="w"> </span>pyright
+$<span class="w"> </span>pnpm<span class="w"> </span>install<span class="w"> </span>pyright
+$<span class="w"> </span>bun<span class="w"> </span>install<span class="w"> </span>pyright
+</code></pre></div>
+<p>See also <a href="https://microsoft.github.io/pyright/#/installation?id=command-line">Pyright's official installation guide</a>.</p>
+</details>
 <p>Such a file is typically named <code>pyright</code>/<code>pyright-python</code> (CLI)
 or <code>pyright-langserver</code>/<code>pyright-python-langserver</code> (LSP)
 and can likely be found in:</p>
-<details class="question">
-<summary>What's the difference between these files?</summary>
-<p><a href="../../faq/#whats-the-difference-between-the-pyright-and-pyright-python-files">TLDR</a>: Some may output "unexpected" things.</p>
-</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The locations mentioned here are for Pip and NPM-like managers.
+For other tools (e.g. Homebrew), see their documentation
+to know where they store their executable files.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -734,6 +747,10 @@ and can likely be found in:</p>
 </tr>
 </tbody>
 </table>
+<details class="question">
+<summary>What's the difference between these files?</summary>
+<p><a href="../../faq/#whats-the-difference-between-the-pyright-and-pyright-python-files">TLDR</a>: Some may output "unexpected" things.</p>
+</details>
 <p>If the executables can't be found in the aforementioned locations,
 see the following pages for more information:</p>
 <ul>
