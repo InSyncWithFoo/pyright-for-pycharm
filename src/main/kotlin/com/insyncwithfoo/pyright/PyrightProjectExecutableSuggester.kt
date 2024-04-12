@@ -1,11 +1,11 @@
 package com.insyncwithfoo.pyright
 
 import com.insyncwithfoo.pyright.configuration.ConfigurationService
-import com.insyncwithfoo.pyright.configuration.project.Configurations
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import java.nio.file.Path
+import com.insyncwithfoo.pyright.configuration.project.Configurations as ProjectConfigurations
 
 
 private val Project.sdkIsLocal: Boolean
@@ -27,7 +27,7 @@ private fun Project.executableShouldBeSuggested(): Boolean {
 }
 
 
-private fun Project.changePyrightConfigurations(action: Configurations.() -> Unit) {
+private fun Project.changePyrightConfigurations(action: ProjectConfigurations.() -> Unit) {
     val configurationService = ConfigurationService.getInstance(this)
     val projectConfigurations = configurationService.projectService.state
     

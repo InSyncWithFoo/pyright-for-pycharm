@@ -6,13 +6,29 @@
 For CLI/LSP to work, at least one executable file needs to be defined
 using either the <b>Global</b> or <b>Project</b> panel.
 
+??? question "How to install the Pyright executable(s)?"
+
+    Choose one that works for you (or one you like the most):
+    
+    ```shell
+    $ pip install pyright
+    $ npm install pyright
+    $ yarn add pyright
+    $ pnpm install pyright
+    $ bun install pyright
+    ```
+    
+    See also [Pyright's official installation guide][1].
+
 Such a file is typically named `pyright`/`pyright-python` (CLI)
 or `pyright-langserver`/`pyright-python-langserver` (LSP)
 and can likely be found in:
 
-??? question "What's the difference between these files?"
+!!! note
 
-    [TLDR][1]: Some may output "unexpected" things.
+    The locations mentioned here are for Pip and NPM-like managers.
+    For other tools (e.g. Homebrew), see their documentation
+    to know where they store their executable files.
 
 | Manager | Type   | OS      | Directory                                          |
 |---------|:-------|:--------|:---------------------------------------------------|
@@ -25,12 +41,16 @@ and can likely be found in:
 | Pip     | Local  | Windows | `.\<your-venv>\Scripts`                            |
 | Pip     | Local  | Linux   | `./<your-venv>/bin`                                |
 
+??? question "What's the difference between these files?"
+
+    [TLDR][2]: Some may output "unexpected" things.
+
 If the executables can't be found in the aforementioned locations,
 see the following pages for more information:
 
-* <i>[Where does npm install packages?][2]</i> - <i>Stack Overflow</i>
-* <i>[Where does pip install its packages?][3]</i> - <i>Stack Overflow</i>
-* <i>[folders][4]</i> - <i>npm Docs</i>
+* <i>[Where does npm install packages?][3]</i> - <i>Stack Overflow</i>
+* <i>[Where does pip install its packages?][4]</i> - <i>Stack Overflow</i>
+* <i>[folders][5]</i> - <i>npm Docs</i>
 
 You can also use a relative path.
 It would be interpreted as relative to the project directory.
@@ -70,13 +90,14 @@ Default: `false`
 
 Check this option to automatically find and
 suggest an executable for the current project on open.
-See [the corresponding feature][5] for more information.
+See [the corresponding feature][6] for more information.
 
 Default: `true`
 
 
-  [1]: ../faq.md#whats-the-difference-between-the-pyright-and-pyright-python-files
-  [2]: https://stackoverflow.com/q/5926672
-  [3]: https://stackoverflow.com/q/29980798
-  [4]: https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables
-  [5]: ../features.md#executable-suggestion
+  [1]: https://microsoft.github.io/pyright/#/installation?id=command-line
+  [2]: ../faq.md#whats-the-difference-between-the-pyright-and-pyright-python-files
+  [3]: https://stackoverflow.com/q/5926672
+  [4]: https://stackoverflow.com/q/29980798
+  [5]: https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables
+  [6]: ../features.md#executable-suggestion

@@ -28,15 +28,15 @@ Go to <b>Settings</b> | <b>Tools</b> |
 <b>Pyright (Global)</b> / <b>Pyright (Project)</b>
 and set the path to your Pyright executable.
 
+(Not sure what this means? See [the docs][3] for more information.)
+
 Save, return to your file and start making some modifications.
 You should see the annotations in a few seconds.
-
-See [the docs][3] for more information on the configurations and features.
 
 
   [1]: https://github.com/microsoft/pyright
   [2]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
-  [3]: https://insyncwithfoo.github.io/pyright-for-pycharm/
+  [3]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/common/#executable
 <!-- Plugin description end -->
 
 
