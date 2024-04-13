@@ -422,6 +422,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#highlight-severity-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Highlight severity levels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Highlight severity levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended levels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -632,6 +665,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#highlight-severity-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Highlight severity levels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Highlight severity levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended levels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -782,6 +848,102 @@ you might need to make an edit to see the effect.</p>
 suggest an executable for the current project on open.
 See <a href="../../features/#executable-suggestion">the corresponding feature</a> for more information.</p>
 <p>Default: <code>true</code></p>
+<h2 id="highlight-severity-levels">Highlight severity levels<a class="headerlink" href="#highlight-severity-levels" title="Permanent link">#</a></h2>
+<p>Pyright diagnostics have <a href="https://microsoft.github.io/pyright/#/configuration?id=type-check-diagnostics-settings">three possible levels</a>:
+Error, warning, and information.
+These can be mapped to different highlight severity levels in the IDE.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The language server may also output "hint" diagnostics
+that report code as <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#diagnosticTag">"unnecessary" or "deprecated"</a>.
+This level is not configurable.</p>
+</div>
+<h3 id="configuring">Configuring<a class="headerlink" href="#configuring" title="Permanent link">#</a></h3>
+<p>The target levels can be configured by modifying the options provided
+at <b>Editor</b> | <b>Inspections</b> &rarr;
+<i>Pyright diagnostics</i> / <i>Pyright language server diagnostics</i>.</p>
+<div class="admonition note">
+<p>Only the levels defined in the select boxes
+    under the <i>Options</i> pane are honored.</p>
+</div>
+<p><img alt="" src="../../assets/inspection-highlight-severity-levels.png" /></p>
+<p>For each diagnostic level, there are four highlight levels to choose from:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Default effects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error</td>
+<td>Red squiggles</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>Yellow squiggles</td>
+</tr>
+<tr>
+<td>Weak warning</td>
+<td>Dark yellow squiggles</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>No visible effects</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p>These levels are semantic, not visual.</p>
+</div>
+<p>The <i>Information</i> level is the only one not considered
+"problematic" by the IDE. Annotations of this kind
+will not be reported as "problems" during batch inspections
+(<i>File</i>, <i>Project Errors</i> and similar tabs in
+the <i>Problems</i> tool window).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Despite having no visible effects,
+<i>Information</i> annotations are still shown on hover.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="configuring-information" name="__tabbed_1" type="radio" /><input id="configuring-weak-warning" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="configuring-information">Information</label><label for="configuring-weak-warning">Weak warning</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/inspection-information-demo.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/inspection-weak-warning-demo.png" /></p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="recommended-levels">Recommended levels<a class="headerlink" href="#recommended-levels" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Diagnostic</th>
+<th>For most users (default)</th>
+<th>For lax users</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error</td>
+<td>Error</td>
+<td>Warning</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>Warning</td>
+<td>Weak warning</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>Weak warning</td>
+<td>Weak warning</td>
+</tr>
+</tbody>
+</table>
 
 
 
