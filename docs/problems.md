@@ -11,7 +11,7 @@ Make sure that:
 * The plugin itself is enabled (<b>Plugins</b>).
 * The corresponding inspection is enabled
   (<b>Editor</b> | <b>Inspections</b> -->
-  <i>Pyright inspections</i>/<i>Pyright LS inspections</i>).
+  <i>Pyright diagnostics</i> / <i>Pyright language server diagnostics</i>).
 * (CLI) The file is an actual Python file on disk, not an injected fragment.
 
 ??? question "Why does CLI need the file to be an actual file?"

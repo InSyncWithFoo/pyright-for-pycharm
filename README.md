@@ -6,7 +6,7 @@
 [![Rating](https://img.shields.io/jetbrains/plugin/r/rating/24145)][4]
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/24145)][4]
 
-![](docs/assets/cli-demo1.png)
+![](docs/assets/cli-demo-1.png)
 
 <!-- Plugin description -->
 Pyright integration for PyCharm.

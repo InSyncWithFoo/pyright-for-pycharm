@@ -1,7 +1,3 @@
-CLI and LSP employs the following additional features
-to ease the configuring process.
-
-
 ## UI hints
 
 As a path field is edited, the small hint under the field

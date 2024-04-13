@@ -8,6 +8,7 @@ import com.intellij.lang.annotation.ExternalAnnotator
 import com.intellij.lang.injection.InjectedLanguageManager
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.fileEditor.FileDocumentManager
+import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.PythonLanguage
@@ -39,14 +40,24 @@ private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
 }
 
 
+private fun PsiFile.getPyrightInspection(): PyrightInspection {
+    val inspectionManager = InspectionProjectProfileManager.getInstance(project)
+    val profile = inspectionManager.currentProfile
+    
+    return profile.getUnwrappedTool(PyrightInspection.SHORT_NAME, this) as PyrightInspection
+}
+
+
 internal data class AnnotationInfo(
     val configurations: AllConfigurations,
+    val inspection: PyrightInspection,
     val file: PsiFile
 )
 
 
 internal data class AnnotationResult(
     val configurations: AllConfigurations,
+    val inspection: PyrightInspection,
     val output: PyrightOutput
 )
 
@@ -76,26 +87,26 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
             return null
         }
         
-        return AnnotationInfo(configurations, file)
+        return AnnotationInfo(configurations, file.getPyrightInspection(), file)
     }
     
     override fun doAnnotate(collectedInfo: AnnotationInfo?): AnnotationResult? {
-        val (configurations, file) = collectedInfo ?: return null
+        val (configurations, inspection, file) = collectedInfo ?: return null
         
         val command = PyrightCommand.create(configurations, file) ?: return null
         val output = PyrightRunner(file.project).run(command) ?: return null
         
-        return AnnotationResult(configurations, output)
+        return AnnotationResult(configurations, inspection, output)
     }
     
     override fun apply(file: PsiFile, annotationResult: AnnotationResult?, holder: AnnotationHolder) {
-        val (configurations, output) = annotationResult ?: return
+        val (configurations, inspection, output) = annotationResult ?: return
         
         val project = file.project
         val documentManager = PsiDocumentManager.getInstance(project)
         val document = documentManager.getDocument(file) ?: return
         
-        AnnotationApplier(document, output, configurations, holder).apply()
+        AnnotationApplier(configurations, inspection, holder).apply(document, output)
     }
     
 }

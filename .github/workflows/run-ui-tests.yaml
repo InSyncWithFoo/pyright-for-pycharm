@@ -40,7 +40,7 @@ jobs:
     
     steps:
       -
-        name: Fetch Sources
+        name: Fetch sources
         uses: actions/checkout@v4
       -
         name: Set up Java
@@ -57,7 +57,7 @@ jobs:
         name: Run IDE
         run: ${{ matrix.runIde }}
       -
-        name: Health Check
+        name: Health check
         uses: jtalk/url-health-check-action@v4
         with:
           url: http://127.0.0.1:8082

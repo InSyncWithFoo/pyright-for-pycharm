@@ -11,16 +11,20 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* Highlight severity levels are now configurable
+  using the options provided in the <i>Inspection</i> panel.
+  The inspection is renamed to "Pyright diagnostics".
 
 
 ## [0.1.0] - 2024-04-10
 
 ### Changed
 
-* Default highlight severities are now "Error", "Warning" and "Weak warning"
+* Default highlight severity levels are now "Error", "Warning" and "Weak warning"
   instead of "Warning", "Weak warning" and "Weak warning".
-  A future release will allow configuring these severities.
+  A future release will allow configuring these levels.
 * v0.1.0-mvp.5 has a bug causing the configurations to be always unresetable.
   This has been fixed.
 * Configuration panels are slightly changed.

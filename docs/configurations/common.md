@@ -95,9 +95,78 @@ See [the corresponding feature][6] for more information.
 Default: `true`
 
 
+## Highlight severity levels
+
+Pyright diagnostics have [three possible levels][7]:
+Error, warning, and information.
+These can be mapped to different highlight severity levels in the IDE.
+
+!!! note
+
+    The language server may also output "hint" diagnostics
+    that report code as ["unnecessary" or "deprecated"][8].
+    This level is not configurable.
+
+### Configuring
+
+The target levels can be configured by modifying the options provided
+at <b>Editor</b> | <b>Inspections</b> -->
+<i>Pyright diagnostics</i> / <i>Pyright language server diagnostics</i>.
+
+!!! note ""
+
+    Only the levels defined in the select boxes
+		under the <i>Options</i> pane are honored.
+
+![](../assets/inspection-highlight-severity-levels.png)
+
+For each diagnostic level, there are four highlight levels to choose from:
+
+| Level        | Default effects       |
+|--------------|-----------------------|
+| Error        | Red squiggles         |
+| Warning      | Yellow squiggles      |
+| Weak warning | Dark yellow squiggles |
+| Information  | No visible effects    |
+
+!!! note ""
+
+    These levels are semantic, not visual.
+
+The <i>Information</i> level is the only one not considered
+"problematic" by the IDE. Annotations of this kind
+will not be reported as "problems" during batch inspections
+(<i>File</i>, <i>Project Errors</i> and similar tabs in
+the <i>Problems</i> tool window).
+
+!!! note
+
+    Despite having no visible effects,
+    <i>Information</i> annotations are still shown on hover.
+
+    === "Information"
+
+        ![](../assets/inspection-information-demo.png)
+
+    === "Weak warning"
+
+        ![](../assets/inspection-weak-warning-demo.png)
+
+
+### Recommended levels
+
+| Diagnostic  | For most users (default) | For lax users |
+|-------------|--------------------------|---------------|
+| Error       | Error                    | Warning       |
+| Warning     | Warning                  | Weak warning  |
+| Information | Weak warning             | Weak warning  |
+
+
   [1]: https://microsoft.github.io/pyright/#/installation?id=command-line
   [2]: ../faq.md#whats-the-difference-between-the-pyright-and-pyright-python-files
   [3]: https://stackoverflow.com/q/5926672
   [4]: https://stackoverflow.com/q/29980798
   [5]: https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables
   [6]: ../features.md#executable-suggestion
+  [7]: https://microsoft.github.io/pyright/#/configuration?id=type-check-diagnostics-settings
+  [8]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#diagnosticTag

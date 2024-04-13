@@ -46,7 +46,7 @@
 			groupName="Python"
 			
 			shortName="PyrightInspection"
-			displayName="Pyright inspections"
+			displayName="Pyright diagnostics"
 			suppressId="Pyright"
 			
 			enabledByDefault="true"

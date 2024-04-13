@@ -3,7 +3,6 @@ package com.insyncwithfoo.pyright
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
-import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.util.TextRange
@@ -26,10 +25,10 @@ private fun Document.getStartEndRange(range: PyrightDiagnosticTextRange): TextRa
 }
 
 
-private fun PyrightDiagnosticSeverity.toHighlightSeverity() = when (this) {
-    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity.ERROR
-    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity.WARNING
-    PyrightDiagnosticSeverity.INFORMATION -> HighlightSeverity.WEAK_WARNING
+private fun PyrightDiagnosticSeverity.toHighlightSeverity(inspection: PyrightInspection) = when (this) {
+    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity(inspection.highlightSeverityForErrors)
+    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity(inspection.highlightSeverityForWarnings)
+    PyrightDiagnosticSeverity.INFORMATION -> HighlightSeverity(inspection.highlightSeverityForInformation)
 }
 
 
@@ -47,13 +46,12 @@ private val PyrightDiagnostic.suffixedMessage: String
 
 
 internal class AnnotationApplier(
-    private val document: Document,
-    private val output: PyrightOutput,
     private val configurations: AllConfigurations,
+    private val inspection: PyrightInspection,
     private val holder: AnnotationHolder
 ) {
     
-    fun apply() {
+    fun apply(document: Document, output: PyrightOutput) {
         output.generalDiagnostics.forEach {
             val builder = makeBuilder(it)
             val range = document.getStartEndRange(it.range)
@@ -78,7 +76,7 @@ internal class AnnotationApplier(
         }
         
         val tooltip = tooltipMessage.toPreformatted(font?.name)
-        val highlightSeverity = severity.toHighlightSeverity()
+        val highlightSeverity = severity.toHighlightSeverity(inspection)
         
         return holder.newAnnotation(highlightSeverity, message).tooltip(tooltip)
     }

@@ -1,40 +1,17 @@
 <html lang="en">
 <body>
-	Reports all errors Pyright could find in your code.
+	Reports all diagnostics Pyright have to say about your code.
 	
 	<p>
 		To configure which errors are reported, use either <code>pyrightconfig.json</code>
-		or the <code>[tool.pyright]</code> section in <code>pyproject.toml</code>.
-		More information can be found in
-		<a href="https://microsoft.github.io/pyright/#/configuration">the documentation</a>.
+		or the <code>[tool.pyright]</code> table in <code>pyproject.toml</code>.
+		See <a href="https://microsoft.github.io/pyright/#/configuration">Pyright's documentation</a>
+		for more information.
 	</p>
 	
 	<p>
-		The level setting has no effect. By default, Pyright diagnostics
-		are reported according to the following rules:
+		Only the levels defined in the select boxes
+		under the <i>Options</i> pane are honored.
 	</p>
-	
-	<table>
-		<thead>
-			<tr>
-				<th>Pyright diagnostic level</th>
-				<th>Display severity level</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Error</td>
-				<td>Error</td>
-			</tr>
-			<tr>
-				<td>Warning</td>
-				<td>Warning</td>
-			</tr>
-			<tr>
-				<td>Information</td>
-				<td>Weak warning</td>
-			</tr>
-		</tbody>
-	</table>
 </body>
 </html>

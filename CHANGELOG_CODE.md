@@ -12,7 +12,14 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* Three new properties are added to [`PyrightInspection`][20-1]
+  to allow configuring highlight severity levels.
+  Corresponding documentation is added along with more screenshots. (HEAD)
+
+
+  [20-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/PyrightInspection.kt
 
 
 ## [0.1.0] - 2024-04-10
@@ -25,7 +32,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * `released.yaml` is renamed to [`publish.yml`][10-2].
   Steps overlapping with other jobs are removed. (aff01a5e)
-* Highlight severities are now the same as sister's. (5fccec40)
+* Default highlight severity levels are now the same as sister's. (5fccec40)
 * The "Always use global" and "Auto-suggest executable" are moved back
   to the first column of the first row. (6e6c6df6)
 * [@gradle/wrapper-validation-action][10-3] is updated to 2.1.3. (1c38c5ac)
