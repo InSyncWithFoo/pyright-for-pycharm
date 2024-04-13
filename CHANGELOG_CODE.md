@@ -16,7 +16,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * Three new properties are added to [`PyrightInspection`][20-1]
   to allow configuring highlight severity levels.
-  Corresponding documentation is added along with more screenshots. (HEAD)
+  Corresponding documentation is added along with more screenshots.
+  (0d6188f9, HEAD)
 
 
   [20-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/PyrightInspection.kt

@@ -105,7 +105,7 @@ These can be mapped to different highlight severity levels in the IDE.
 
     The language server may also output "hint" diagnostics
     that report code as ["unnecessary" or "deprecated"][8].
-    This level is not configurable.
+    This level is not configurable via the UI.
 
 ### Configuring
 
