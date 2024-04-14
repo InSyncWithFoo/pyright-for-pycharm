@@ -756,7 +756,7 @@ to know where they store their executable files.</p>
 <table>
 <thead>
 <tr>
-<th>Manager</th>
+<th style="text-align: left;">Manager</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">OS</th>
 <th style="text-align: left;">Directory</th>
@@ -764,49 +764,49 @@ to know where they store their executable files.</p>
 </thead>
 <tbody>
 <tr>
-<td>NPM</td>
+<td style="text-align: left;">NPM</td>
 <td style="text-align: left;">Global</td>
 <td style="text-align: left;">Windows</td>
 <td style="text-align: left;"><code>%APPDATA%\npm</code></td>
 </tr>
 <tr>
-<td>NPM</td>
+<td style="text-align: left;">NPM</td>
 <td style="text-align: left;">Global</td>
 <td style="text-align: left;">Linux</td>
 <td style="text-align: left;"><code>/usr/local/bin</code></td>
 </tr>
 <tr>
-<td>Pip</td>
+<td style="text-align: left;">Pip</td>
 <td style="text-align: left;">Global</td>
 <td style="text-align: left;">Windows</td>
 <td style="text-align: left;"><code>%LOCALAPPDATA%\Programs\Python\&lt;version&gt;\Scripts</code></td>
 </tr>
 <tr>
-<td>Pip</td>
+<td style="text-align: left;">Pip</td>
 <td style="text-align: left;">Global</td>
 <td style="text-align: left;">Linux</td>
 <td style="text-align: left;"><code>~/.local/bin</code></td>
 </tr>
 <tr>
-<td>NPM</td>
+<td style="text-align: left;">NPM</td>
 <td style="text-align: left;">Local</td>
 <td style="text-align: left;">Windows</td>
 <td style="text-align: left;"><code>.\node_modules\.bin</code></td>
 </tr>
 <tr>
-<td>NPM</td>
+<td style="text-align: left;">NPM</td>
 <td style="text-align: left;">Local</td>
 <td style="text-align: left;">Linux</td>
 <td style="text-align: left;"><code>./node_modules/.bin</code></td>
 </tr>
 <tr>
-<td>Pip</td>
+<td style="text-align: left;">Pip</td>
 <td style="text-align: left;">Local</td>
 <td style="text-align: left;">Windows</td>
 <td style="text-align: left;"><code>.\&lt;your-venv&gt;\Scripts</code></td>
 </tr>
 <tr>
-<td>Pip</td>
+<td style="text-align: left;">Pip</td>
 <td style="text-align: left;">Local</td>
 <td style="text-align: left;">Linux</td>
 <td style="text-align: left;"><code>./&lt;your-venv&gt;/bin</code></td>
@@ -834,15 +834,35 @@ it's a wrapper script that outputs diagnostics in the expected format.</p>
 and configuration file.</p>
 <p>Default: <code>false</code></p>
 <h2 id="use-editor-font">Use editor font<a class="headerlink" href="#use-editor-font" title="Permanent link">#</a></h2>
-<p>Check this option to display annotations in the editor font.
+<p>Check this option to display tooltips in the editor font.
 This option is not applied retroactively;
 you might need to make an edit to see the effect.</p>
 <p>Default: <code>false</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="use-editor-font-disabled" name="__tabbed_1" type="radio" /><input id="use-editor-font-enabled" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="use-editor-font-disabled">Disabled</label><label for="use-editor-font-enabled">Enabled</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/configurations-demo-default.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/configurations-demo-use-editor-font.png" /></p>
+</div>
+</div>
+</div>
 <h2 id="add-prefix-to-tooltips">Add prefix to tooltips<a class="headerlink" href="#add-prefix-to-tooltips" title="Permanent link">#</a></h2>
 <p>Check this option to prefix tooltips with "Pyright:".
 This option is not applied retroactively;
 you might need to make an edit to see the effect.</p>
 <p>Default: <code>false</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="add-prefix-to-tooltips-disabled" name="__tabbed_2" type="radio" /><input id="add-prefix-to-tooltips-enabled" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="add-prefix-to-tooltips-disabled">Disabled</label><label for="add-prefix-to-tooltips-enabled">Enabled</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/configurations-demo-default.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/configurations-demo-add-tooltip-prefix.png" /></p>
+</div>
+</div>
+</div>
 <h2 id="auto-suggest-executable">Auto-suggest executable<a class="headerlink" href="#auto-suggest-executable" title="Permanent link">#</a></h2>
 <p>Check this option to automatically find and
 suggest an executable for the current project on open.
@@ -856,7 +876,7 @@ These can be mapped to different highlight severity levels in the IDE.</p>
 <p class="admonition-title">Note</p>
 <p>The language server may also output "hint" diagnostics
 that report code as <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#diagnosticTag">"unnecessary" or "deprecated"</a>.
-This level is not configurable.</p>
+This level is not configurable via the UI.</p>
 </div>
 <h3 id="configuring">Configuring<a class="headerlink" href="#configuring" title="Permanent link">#</a></h3>
 <p>The target levels can be configured by modifying the options provided
@@ -906,7 +926,7 @@ the <i>Problems</i> tool window).</p>
 <p class="admonition-title">Note</p>
 <p>Despite having no visible effects,
 <i>Information</i> annotations are still shown on hover.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="configuring-information" name="__tabbed_1" type="radio" /><input id="configuring-weak-warning" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="configuring-information">Information</label><label for="configuring-weak-warning">Weak warning</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="configuring-information" name="__tabbed_3" type="radio" /><input id="configuring-weak-warning" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="configuring-information">Information</label><label for="configuring-weak-warning">Weak warning</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><img alt="" src="../../assets/inspection-information-demo.png" /></p>

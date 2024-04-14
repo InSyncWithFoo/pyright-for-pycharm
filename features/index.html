@@ -595,8 +595,8 @@
 as the executable for that project is shown if:</p>
 <ul>
 <li>The interpreter of the project exists and is located inside it.</li>
-<li>There is a file named <code>pyright</code> (with or without extension)
-  among the siblings of the interpreter.</li>
+<li>There is a file named <code>pyright</code>/<code>pyright-langserver</code>
+  (with or without extension) among the siblings of the interpreter.</li>
 <li>The project executable is not yet given.</li>
 <li>The global executable is not preferred.</li>
 </ul>
@@ -606,6 +606,16 @@ as the executable for that project is shown if:</p>
 <li>Relative path: Set the relative path (no leading dot).</li>
 <li>Do not suggest: Turn off <a href="../configurations/common/#auto-suggest-executable">the corresponding option</a>.</li>
 </ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="executable-suggestion-cli" name="__tabbed_1" type="radio" /><input id="executable-suggestion-lsp" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="executable-suggestion-cli">CLI</label><label for="executable-suggestion-lsp">LSP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../assets/cli-features-demo-auto-suggest-executable.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../assets/lsp-features-demo-auto-suggest-executable.png" /></p>
+</div>
+</div>
+</div>
 
 
 
