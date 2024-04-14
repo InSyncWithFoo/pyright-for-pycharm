@@ -31,7 +31,7 @@ and can likely be found in:
     to know where they store their executable files.
 
 | Manager | Type   | OS      | Directory                                          |
-|---------|:-------|:--------|:---------------------------------------------------|
+|:--------|:-------|:--------|:---------------------------------------------------|
 | NPM     | Global | Windows | `%APPDATA%\npm`                                    |
 | NPM     | Global | Linux   | `/usr/local/bin`                                   |
 | Pip     | Global | Windows | `%LOCALAPPDATA%\Programs\Python\<version>\Scripts` |
@@ -70,11 +70,19 @@ Default: `false`
 
 ## Use editor font
 
-Check this option to display annotations in the editor font.
+Check this option to display tooltips in the editor font.
 This option is not applied retroactively;
 you might need to make an edit to see the effect.
 
 Default: `false`
+
+=== "Disabled"
+
+    ![](../assets/configurations-demo-default.png)
+
+=== "Enabled"
+
+    ![](../assets/configurations-demo-use-editor-font.png)
 
 
 ## Add prefix to tooltips
@@ -84,6 +92,14 @@ This option is not applied retroactively;
 you might need to make an edit to see the effect.
 
 Default: `false`
+
+=== "Disabled"
+
+    ![](../assets/configurations-demo-default.png)
+
+=== "Enabled"
+
+    ![](../assets/configurations-demo-add-tooltip-prefix.png)
 
 
 ## Auto-suggest executable
