@@ -34,7 +34,7 @@ it is recommended that PyCharm Professional users use LSP instead.
 
     Do not install both plugins.
     While doing so will likely cause no technical issues,
-    their functionality overlaps a lot.
+    their functionalities overlap a lot.
 
 
   [1]: https://github.com/InSyncWithFoo/pyright-for-pycharm

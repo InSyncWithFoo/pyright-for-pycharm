@@ -17,10 +17,16 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Three new properties are added to [`PyrightInspection`][20-1]
   to allow configuring highlight severity levels.
   Corresponding documentation is added along with more screenshots.
-  (0d6188f9, HEAD)
+  (0d6188f9, 25917886)
+
+### Changed
+
+* [@gradle/actions/wrapper-validation][20-2] is updated to 3.3.0.
+  (a8f6d5d6, HEAD)
 
 
-  [20-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/PyrightInspection.kt
+  [20-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/25917886/src/main/kotlin/com/insyncwithfoo/pyright/PyrightInspection.kt
+  [20-2]: https://github.com/gradle/actions/wrapper-validation
 
 
 ## [0.1.0] - 2024-04-10
