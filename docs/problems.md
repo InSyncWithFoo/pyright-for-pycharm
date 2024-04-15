@@ -22,13 +22,11 @@ Other things to try:
 
 * Reinstall the plugin or update to the latest version.
 * Reopen the files, reopen the project or restart the IDE.
-* (LSP) Restart the language server.
+* (LSP) [Restart the language server][3].
 * Restart your machine.
 
-![](assets/lsp-restart-server-button.png)
-
 If the problem persists, please report it to
-[the corresponding issue tracker][3].
+[the corresponding issue tracker][4].
 
 
 ## Fatal error
@@ -37,7 +35,7 @@ This most likely suggests a Pyright bug.
 
 Disable the plugin immediately to avoid hardware problems.
 Try to narrow the problem as much as possible,
-then report it to [Pyright's issue tracker][4].
+then report it to [Pyright's issue tracker][5].
 
 
 ## Cannot parse configuration file
@@ -54,9 +52,9 @@ directly open the file which is reported to be invalid.
 This most likely means that the executable you provide
 doesn't support the options used by the plugin.
 
-If you are using [the official NPM package][5] or
-[the community-maintained PyPI package][6],
-please report the problem to [the corresponding issue tracker][3]
+If you are using [the official NPM package][6] or
+[the community-maintained PyPI package][7],
+please report the problem to [the corresponding issue tracker][4]
 along with the version of Pyright you are using, which can be
 retrieved by running `<path-to-pyright> --version` in your terminal.
 
@@ -66,7 +64,8 @@ check the source code for expected options.
 
   [1]: configurations/cli.md#configuration-file
   [2]: faq.md#why-does-cli-have-to-perform-saves-so-often
-  [3]: index.md
-  [4]: https://github.com/microsoft/pyright/issues
-  [5]: https://www.npmjs.com/package/pyright
-  [6]: https://pypi.org/project/pyright/
+  [3]: how-to.md#how-to-restart-the-language-server
+  [4]: index.md
+  [5]: https://github.com/microsoft/pyright/issues
+  [6]: https://www.npmjs.com/package/pyright
+  [7]: https://pypi.org/project/pyright/

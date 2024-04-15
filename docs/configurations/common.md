@@ -6,19 +6,7 @@
 For CLI/LSP to work, at least one executable file needs to be defined
 using either the <b>Global</b> or <b>Project</b> panel.
 
-??? question "How to install the Pyright executable(s)?"
-
-    Choose one that works for you (or one you like the most):
-    
-    ```shell
-    $ pip install pyright
-    $ npm install pyright
-    $ yarn add pyright
-    $ pnpm install pyright
-    $ bun install pyright
-    ```
-    
-    See also [Pyright's official installation guide][1].
+!!! question "[How do I install the executable(s)?][1]"
 
 Such a file is typically named `pyright`/`pyright-python` (CLI)
 or `pyright-langserver`/`pyright-python-langserver` (LSP)
@@ -72,34 +60,34 @@ Default: `false`
 
 Check this option to display tooltips in the editor font.
 This option is not applied retroactively;
-you might need to make an edit to see the effect.
+you need to make an edit to see the effect.
 
 Default: `false`
 
-=== "Disabled"
-
-    ![](../assets/configurations-demo-default.png)
-
 === "Enabled"
 
-    ![](../assets/configurations-demo-use-editor-font.png)
+    ![](../assets/configurations-demo-tooltips-use-editor-font.png)
+
+=== "Disabled"
+
+    ![](../assets/configurations-demo-tooltips-default.png)
 
 
 ## Add prefix to tooltips
 
 Check this option to prefix tooltips with "Pyright:".
 This option is not applied retroactively;
-you might need to make an edit to see the effect.
+you need to make an edit to see the effect.
 
 Default: `false`
 
-=== "Disabled"
-
-    ![](../assets/configurations-demo-default.png)
-
 === "Enabled"
 
-    ![](../assets/configurations-demo-add-tooltip-prefix.png)
+    ![](../assets/configurations-demo-tooltips-add-tooltip-prefix.png)
+
+=== "Disabled"
+
+    ![](../assets/configurations-demo-tooltips-default.png)
 
 
 ## Auto-suggest executable
@@ -178,7 +166,7 @@ the <i>Problems</i> tool window).
 | Information | Weak warning             | Weak warning  |
 
 
-  [1]: https://microsoft.github.io/pyright/#/installation?id=command-line
+  [1]: ../how-to.md#how-to-install-the-pyright-executables
   [2]: ../faq.md#whats-the-difference-between-the-pyright-and-pyright-python-files
   [3]: https://stackoverflow.com/q/5926672
   [4]: https://stackoverflow.com/q/29980798

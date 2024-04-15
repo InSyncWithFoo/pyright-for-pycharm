@@ -70,6 +70,7 @@ nav:
     - Related: configurations/related.md
   - Features: features.md
   - Problems: problems.md
+  - How-to guides: how-to.md
   - FAQ: faq.md
 
 validation:
