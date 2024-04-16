@@ -20,11 +20,13 @@ Default: `false`
 
 ## Language server settings
 
+These settings are not applied retroactively;
+you need to [restart the server][1] to see the effect.
+
+
 ### Hover support
 
 Uncheck this option to disable hover support.
-This option is not applied retroactively;
-you need to [restart the server][1] to see the effect.
 
 Default: `true`
 
@@ -35,6 +37,21 @@ Default: `true`
 === "Disabled"
 
     ![](../assets/lsp-configurations-demo-server-hover-support-disabled.png)
+
+
+### Completion support
+
+Check this option to enable completion support.
+
+Default: `false`
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-server-completion-support-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-server-completion-support-disabled.png)
 
 
   [1]: ../how-to.md#how-to-restart-the-language-server

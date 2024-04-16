@@ -16,8 +16,9 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * Three new properties are added to [`PyrightInspection`][20-1]
   to allow configuring highlight severity levels.
-  Corresponding documentation is added along with more screenshots.
+  Corresponding documentation is added.
   (0d6188f9, 25917886)
+* Documentation for LSP-specific settings is added. (25917886, HEAD)
 
 ### Changed
 
