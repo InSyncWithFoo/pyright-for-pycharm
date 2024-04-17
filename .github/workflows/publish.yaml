@@ -14,7 +14,7 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     if: github.event.release.tag_name != 'v0.1.0'
-    environment: publish
+    environment: jetbrains-marketplace
     
     steps:
       -
@@ -41,4 +41,5 @@ jobs:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
         run: |
+          chmod +x ./gradlew
           ./gradlew publishPlugin
