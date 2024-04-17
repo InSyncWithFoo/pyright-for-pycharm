@@ -11,6 +11,11 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.2.0] - 2024-04-17
+
 ### Added
 
 * Highlight severity levels are now configurable
@@ -101,7 +106,8 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.2.0..HEAD
+  [0.2.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0..v0.2.0
   [0.1.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.6..v0.1.0
   [0.1.0-mvp.6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.5..v0.1.0-mvp.6
   [0.1.0-mvp.5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.4..v0.1.0-mvp.5
