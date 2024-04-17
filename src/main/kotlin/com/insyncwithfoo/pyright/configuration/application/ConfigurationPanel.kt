@@ -76,6 +76,7 @@ internal fun configurationPanel(state: Configurations) = panel {
         }
     }
     
+    @Suppress("DialogTitleCapitalization")
     group(message("configurations.global.group.tooltips")) {
         row {
             makeUseEditorFontInput { bindSelected(state::useEditorFont) }

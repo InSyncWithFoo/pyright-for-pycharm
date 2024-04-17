@@ -6,7 +6,7 @@
 For CLI/LSP to work, at least one executable file needs to be defined
 using either the <b>Global</b> or <b>Project</b> panel.
 
-!!! question "[How do I install the executable(s)?][1]"
+!!! question "[How do I install the executables?][1]"
 
 Such a file is typically named `pyright`/`pyright-python` (CLI)
 or `pyright-langserver`/`pyright-python-langserver` (LSP)
@@ -48,7 +48,7 @@ so CLI/LSP will still work even if, for example,
 it's a wrapper script that outputs diagnostics in the expected format.
 
 
-## Always use global
+### Always use global
 
 Check this option to always use the global executable
 and configuration file.
@@ -56,11 +56,24 @@ and configuration file.
 Default: `false`
 
 
-## Use editor font
+### Auto-suggest executable
+
+Check this option to automatically find and
+suggest an executable for the current project on open.
+See [the corresponding feature][6] for more information.
+
+Default: `true`
+
+
+## Tooltips
+
+These options are not applied retroactively;
+you need to make an edit to see the effect.
+
+
+### Use editor font
 
 Check this option to display tooltips in the editor font.
-This option is not applied retroactively;
-you need to make an edit to see the effect.
 
 Default: `false`
 
@@ -73,11 +86,9 @@ Default: `false`
     ![](../assets/configurations-demo-tooltips-default.png)
 
 
-## Add prefix to tooltips
+### Add prefix
 
 Check this option to prefix tooltips with "Pyright:".
-This option is not applied retroactively;
-you need to make an edit to see the effect.
 
 Default: `false`
 
@@ -88,15 +99,6 @@ Default: `false`
 === "Disabled"
 
     ![](../assets/configurations-demo-tooltips-default.png)
-
-
-## Auto-suggest executable
-
-Check this option to automatically find and
-suggest an executable for the current project on open.
-See [the corresponding feature][6] for more information.
-
-Default: `true`
 
 
 ## Highlight severity levels
@@ -110,6 +112,7 @@ These can be mapped to different highlight severity levels in the IDE.
     The language server may also output "hint" diagnostics
     that report code as ["unnecessary" or "deprecated"][8].
     This level is not configurable via the UI.
+
 
 ### Configuring
 

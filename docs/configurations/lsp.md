@@ -1,11 +1,15 @@
 # LSP-specific configurations
 
 
-## Link error codes
+## Tooltips
+
+These options are not applied retroactively;
+you need to make an edit to see the effect.
+
+
+### Link error codes
 
 Enable this option to display error codes as links.
-This option is not applied retroactively;
-you need to make an edit to see the effect.
 
 Default: `false`
 

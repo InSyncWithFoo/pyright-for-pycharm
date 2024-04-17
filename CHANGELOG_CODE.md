@@ -16,18 +16,21 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * Three new properties are added to [`PyrightInspection`][20-1]
   to allow configuring highlight severity levels.
-  Corresponding documentation is added.
+  [Corresponding documentation][20-2] is added.
   (0d6188f9, 25917886)
-* Documentation for LSP-specific settings is added. (25917886, HEAD)
+* [Documentation for LSP-specific settings][20-3] is added.
+  (25917886, cc71fb23)
 
 ### Changed
 
-* [@gradle/actions/wrapper-validation][20-2] is updated to 3.3.0.
-  (a8f6d5d6, HEAD)
+* [@gradle/actions/wrapper-validation][20-4] is updated to 3.3.0.
+  (a8f6d5d6, 5cff663e)
 
 
   [20-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/25917886/src/main/kotlin/com/insyncwithfoo/pyright/PyrightInspection.kt
-  [20-2]: https://github.com/gradle/actions/wrapper-validation
+  [20-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/25917886/docs/configurations/common.md
+  [20-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/cc71fb23/docs/configurations/lsp.md
+  [20-4]: https://github.com/gradle/actions/wrapper-validation
 
 
 ## [0.1.0] - 2024-04-10
