@@ -58,4 +58,11 @@ Default: `false`
     ![](../assets/lsp-configurations-demo-server-completion-support-disabled.png)
 
 
+### Go-to-definition support
+
+Check this option to enable go-to-definition support.
+
+Default: `false`
+
+
   [1]: ../how-to.md#how-to-restart-the-language-server

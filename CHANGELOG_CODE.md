@@ -12,7 +12,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* [Documentation for LSP-specific settings][30-1] is added. (HEAD)
+
+
+  [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/configurations/lsp.md
 
 
 ## [0.2.0] - 2024-04-17
