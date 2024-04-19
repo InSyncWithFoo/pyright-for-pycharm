@@ -24,6 +24,13 @@
     for the files to be recognized by the language server.
     If that doesn't work, refer to <i>[Problems and solutions][2]</i>.
 
+    ## Enable logging
+
+    You are strongly encouraged to [enable logging][3].
+    This way, all requests and responses will be recorded in `idea.log`
+    for further analysis should a problem arises.
+
 
   [1]: configurations/common.md#executable
   [2]: problems.md
+  [3]: how-to.md#how-to-enable-language-server-logging

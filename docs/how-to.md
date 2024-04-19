@@ -26,5 +26,15 @@ Click it, then click the loop icon.
 ![](assets/lsp-restart-server-button.png)
 
 
+## How to enable language server logging
+
+Add the following line to the <b>Debug Log Settings</b> panel
+(<b>Help</b> | <b>Diagnostic Tools</b>):
+
+```text
+#com.intellij.platform.lsp
+```
+
+
   [1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md
   [2]: https://microsoft.github.io/pyright/#/installation?id=command-line
