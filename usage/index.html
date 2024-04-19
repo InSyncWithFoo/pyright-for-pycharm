@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#enable-logging" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -277,6 +282,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -286,6 +302,32 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enable-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable logging
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -515,6 +557,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enable-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable logging
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -567,6 +626,10 @@ and set the path to <a href="../configurations/common/#executable">your Pyright 
 <p>You might need to reopen your files or restart the IDE
 for the files to be recognized by the language server.
 If that doesn't work, refer to <i><a href="../problems/">Problems and solutions</a></i>.</p>
+<h2 id="enable-logging">Enable logging<a class="headerlink" href="#enable-logging" title="Permanent link">#</a></h2>
+<p>You are strongly encouraged to <a href="../how-to/#how-to-enable-language-server-logging">enable logging</a>.
+This way, all requests and responses will be recorded in <code>idea.log</code>
+for further analysis should a problem arises.</p>
 </div>
 </div>
 </div>
