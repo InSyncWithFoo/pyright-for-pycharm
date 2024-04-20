@@ -33,7 +33,7 @@ private fun Row.makeProjectConfigurationFileInput(block: Cell<TextFieldWithBrows
 
 
 private fun Row.makeAutoSuggestExecutableInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.project.autoSuggestExecutable.label")).apply(block)
+    checkBox(message("configurations.autoSuggestExecutable.label")).apply(block)
 
 
 internal fun Configurable.configurationPanel(state: Configurations) = panel {
@@ -43,7 +43,7 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
         makeAutoSuggestExecutableInput { bindSelected(state::autoSuggestExecutable) }
     }
     
-    row(message("configurations.project.projectExecutable.label")) {
+    row(message("configurations.projectExecutable.label")) {
         makeProjectExecutableInput {
             onInput(::displayPathHint) { path ->
                 when {
@@ -57,7 +57,7 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
         }
     }
     
-    row(message("configurations.project.projectConfigurationFile.label")) {
+    row(message("configurations.projectConfigurationFile.label")) {
         makeProjectConfigurationFileInput {
             onInput(::displayPathHint) { path ->
                 when {
@@ -70,7 +70,7 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
             bindText(state::projectConfigurationFile)
             
             component.emptyText.text = when (project.path) {
-                null -> message("configurations.project.projectConfigurationFile.placeholder")
+                null -> message("configurations.projectConfigurationFile.placeholder")
                 else -> project.path.toString()
             }
         }

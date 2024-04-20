@@ -22,7 +22,7 @@ private fun relativePathHint() =
 
 
 private fun Row.makeAlwaysUseGlobalInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.global.alwaysUseGlobal.label")).apply(block)
+    checkBox(message("configurations.alwaysUseGlobal.label")).apply(block)
 
 
 private fun Row.makeGlobalExecutableInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
@@ -34,11 +34,11 @@ private fun Row.makeGlobalConfigurationFileInput(block: Cell<TextFieldWithBrowse
 
 
 private fun Row.makeUseEditorFontInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.global.useEditorFont.label")).apply(block)
+    checkBox(message("configurations.useEditorFont.label")).apply(block)
 
 
 private fun Row.makeAddTooltipPrefixInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.global.addTooltipPrefix.label")).apply(block)
+    checkBox(message("configurations.addTooltipPrefix.label")).apply(block)
 
 
 internal fun configurationPanel(state: Configurations) = panel {
@@ -48,7 +48,7 @@ internal fun configurationPanel(state: Configurations) = panel {
         makeAlwaysUseGlobalInput { bindSelected(state::alwaysUseGlobal) }
     }
     
-    row(message("configurations.global.globalExecutable.label")) {
+    row(message("configurations.globalExecutable.label")) {
         makeGlobalExecutableInput {
             onInput(::displayPathHint) { path ->
                 when {
@@ -62,7 +62,7 @@ internal fun configurationPanel(state: Configurations) = panel {
         }
     }
     
-    row(message("configurations.global.globalConfigurationFile.label")) {
+    row(message("configurations.globalConfigurationFile.label")) {
         makeGlobalConfigurationFileInput {
             onInput(::displayPathHint) { path ->
                 when {
@@ -77,7 +77,7 @@ internal fun configurationPanel(state: Configurations) = panel {
     }
     
     @Suppress("DialogTitleCapitalization")
-    group(message("configurations.global.group.tooltips")) {
+    group(message("configurations.group.tooltips")) {
         row {
             makeUseEditorFontInput { bindSelected(state::useEditorFont) }
         }
