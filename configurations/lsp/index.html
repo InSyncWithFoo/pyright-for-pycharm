@@ -489,6 +489,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#workspace-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workspace folders
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -707,6 +716,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#workspace-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workspace folders
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -800,6 +818,20 @@ You need to manually <a href="../../how-to/#how-to-enable-language-server-loggin
 </div>
 <p>Modify this option to make Pyright emit more or less <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage">log messages</a>.</p>
 <p>Default: <i>Information</i></p>
+<h3 id="workspace-folders">Workspace folders<a class="headerlink" href="#workspace-folders" title="Permanent link">#</a></h3>
+<p>The folders defined by this option will be passed
+to the language server as "<a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders">workspace folders</a>".
+Pyright will only recognize <code>pyproject.toml</code>/<code>pyrightconfig.json</code> files
+which are direct children of these folders.</p>
+<p>Possible choices:</p>
+<ul>
+<li><i>Project base directories</i>:
+  Top-level directories which contain files related to the project,
+  often only one (project root).</li>
+<li><i>Source roots</i>:
+  Directories marked as "<a href="https://www.jetbrains.com/help/pycharm/content-root.html">source roots</a>".</li>
+</ul>
+<p>Default: <i>Project base directories</i></p>
 
 
 
