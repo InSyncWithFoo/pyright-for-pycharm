@@ -14,7 +14,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Added
 
-* [Documentation for LSP-specific settings][30-1] is added. (HEAD)
+* [Documentation for LSP-specific settings][30-1] is added.
+  (d8fd3b82, 115fabf6, HEAD)
 
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/configurations/lsp.md

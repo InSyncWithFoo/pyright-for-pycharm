@@ -70,13 +70,33 @@ Default: `false`
 !!! warning
 
     Language server logs are not recorded in `idea.log` by default.
-    You need to manually [enable it][3].
+    You need to manually [enable it][2].
 
-Modify this option to make Pyright emit more or less [log messages][2].
+Modify this option to make Pyright emit more or less [log messages][3].
 
 Default: <i>Information</i>
 
 
+### Workspace folders
+
+The folders defined by this option will be passed
+to the language server as "[workspace folders][4]".
+Pyright will only recognize `pyproject.toml`/`pyrightconfig.json` files
+which are direct children of these folders.
+
+Possible choices:
+
+* <i>Project base directories</i>:
+  Top-level directories which contain files related to the project,
+  often only one (project root).
+* <i>Source roots</i>:
+  Directories marked as "[source roots][5]".
+
+Default: <i>Project base directories</i>
+
+
   [1]: ../how-to.md#how-to-restart-the-language-server
-  [2]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
-  [3]: ../how-to.md#how-to-enable-language-server-logging
+  [2]: ../how-to.md#how-to-enable-language-server-logging
+  [3]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
+  [4]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
+  [5]: https://www.jetbrains.com/help/pycharm/content-root.html
