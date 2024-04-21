@@ -481,6 +481,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tagged-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tagged hints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#log-level" class="md-nav__link">
     <span class="md-ellipsis">
       Log level
@@ -708,6 +717,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tagged-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tagged hints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#log-level" class="md-nav__link">
     <span class="md-ellipsis">
       Log level
@@ -810,6 +828,22 @@ you need to <a href="../../how-to/#how-to-restart-the-language-server">restart t
 <h3 id="go-to-definition-support">Go-to-definition support<a class="headerlink" href="#go-to-definition-support" title="Permanent link">#</a></h3>
 <p>Check this option to enable go-to-definition support.</p>
 <p>Default: <code>false</code></p>
+<h3 id="tagged-hints">Tagged hints<a class="headerlink" href="#tagged-hints" title="Permanent link">#</a></h3>
+<p>Uncheck this option to prevent the language server from emitting
+"Unnecessary" and "Deprecated" hints, which are visualized in the IDE
+as faded-out and strikethrough text, correspondingly.</p>
+<p>This corresponds to the <code>pyright.disableTaggedHints</code> setting.</p>
+<p>Default: <code>true</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="tagged-hints-enabled" name="__tabbed_4" type="radio" /><input id="tagged-hints-disabled" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="tagged-hints-enabled">Enabled</label><label for="tagged-hints-disabled">Disabled</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-server-tagged-hints-enabled.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-server-tagged-hints-disabled.png" /></p>
+</div>
+</div>
+</div>
 <h3 id="log-level">Log level<a class="headerlink" href="#log-level" title="Permanent link">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -817,6 +851,7 @@ you need to <a href="../../how-to/#how-to-restart-the-language-server">restart t
 You need to manually <a href="../../how-to/#how-to-enable-language-server-logging">enable it</a>.</p>
 </div>
 <p>Modify this option to make Pyright emit more or less <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage">log messages</a>.</p>
+<p>This corresponds to the <code>python.analysis.logLevel</code> setting.</p>
 <p>Default: <i>Information</i></p>
 <h3 id="workspace-folders">Workspace folders<a class="headerlink" href="#workspace-folders" title="Permanent link">#</a></h3>
 <p>The folders defined by this option will be passed
