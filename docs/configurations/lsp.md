@@ -65,6 +65,25 @@ Check this option to enable go-to-definition support.
 Default: `false`
 
 
+### Tagged hints
+
+Uncheck this option to prevent the language server from emitting
+"Unnecessary" and "Deprecated" hints, which are visualized in the IDE
+as faded-out and strikethrough text, correspondingly.
+
+This corresponds to the `pyright.disableTaggedHints` setting.
+
+Default: `true`
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-server-tagged-hints-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-server-tagged-hints-disabled.png)
+
+
 ### Log level
 
 !!! warning
@@ -73,6 +92,8 @@ Default: `false`
     You need to manually [enable it][2].
 
 Modify this option to make Pyright emit more or less [log messages][3].
+
+This corresponds to the `python.analysis.logLevel` setting.
 
 Default: <i>Information</i>
 

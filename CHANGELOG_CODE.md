@@ -15,12 +15,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * [Documentation for LSP-specific settings][30-1] is added.
-  (d8fd3b82, 115fabf6, 519c54d1)
-* [Message key names][30-2] are slightly changed. (HEAD)
+  (d8fd3b82, 115fabf6, 519c54d1, HEAD)
+* [Message key names][30-2] are slightly changed. (dc1240d4)
 
 
-  [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/519c54d1/docs/configurations/lsp.md
-  [30-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/resources/messages/pyright.properties
+  [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/configurations/lsp.md
+  [30-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dc1240d4/src/main/resources/messages/pyright.properties
 
 
 ## [0.2.0] - 2024-04-17

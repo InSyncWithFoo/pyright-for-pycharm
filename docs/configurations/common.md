@@ -111,7 +111,7 @@ These can be mapped to different highlight severity levels in the IDE.
 
     The language server may also output "hint" diagnostics
     that report code as ["unnecessary" or "deprecated"][8].
-    This level is not configurable via the UI.
+    These can be [disabled][9] from the global configuration panel.
 
 
 ### Configuring
@@ -177,3 +177,4 @@ the <i>Problems</i> tool window).
   [6]: ../features.md#executable-suggestion
   [7]: https://microsoft.github.io/pyright/#/configuration?id=type-check-diagnostics-settings
   [8]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#diagnosticTag
+  [9]: lsp.md#tagged-hints
