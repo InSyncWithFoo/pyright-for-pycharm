@@ -15,7 +15,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * [Documentation for LSP-specific settings][30-1] is added.
-  (d8fd3b82, 115fabf6, 519c54d1, HEAD)
+  (d8fd3b82, 115fabf6, 519c54d1, 5608c8da, HEAD)
 * [Message key names][30-2] are slightly changed. (dc1240d4)
 
 

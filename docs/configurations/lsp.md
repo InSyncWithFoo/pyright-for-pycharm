@@ -84,6 +84,29 @@ Default: `true`
     ![](../assets/lsp-configurations-demo-server-tagged-hints-disabled.png)
 
 
+### Auto-import completions
+
+Uncheck this option to prevent the language server from offering
+completions which, if accepted, will also add a `import` statement
+for that newly introduced symbol.
+
+This corresponds to the `python.analysis.autoImportCompletions` setting.
+
+Default: `true`
+
+=== "Auto-import completions enabled"
+
+    ![](../assets/lsp-configurations-demo-server-completion-support-enabled.png)
+
+=== "Auto-import completions disabled"
+
+    ![](../assets/lsp-configurations-demo-server-auto-import-completions-disabled.png)
+
+=== "Completion support disabled"
+
+    ![](../assets/lsp-configurations-demo-server-completion-support-disabled.png)
+
+
 ### Log level
 
 !!! warning
