@@ -21,7 +21,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Changed
 
 * [The Qodana Gradle plugin][30-3] and its corresponding action
-  [@JetBrains/qodana-action][30-4] are updated to 2024.1.1. (ba0e2aca, e9eafd54)
+  [@JetBrains/qodana-action][30-4] are updated to 2024.1.2.
+  (ba0e2aca, e9eafd54, f4331b4c, 0f89d093)
 
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/bc55d40f/docs/configurations/lsp.md
