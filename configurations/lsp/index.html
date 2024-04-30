@@ -846,6 +846,17 @@ you need to <a href="../../how-to/#how-to-restart-the-language-server">restart t
 <h3 id="go-to-definition-support">Go-to-definition support<a class="headerlink" href="#go-to-definition-support" title="Permanent link">#</a></h3>
 <p>Check this option to enable go-to-definition support.</p>
 <p>Default: <code>false</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of yet, PyCharm's native support is
+prioritized over the language server's.</p>
+<p>This means <kbd>Ctrl</kbd> <kbd>B</kbd> (or similar shortcuts)
+will only trigger PyCharm's support on tokens it can handle
+(that is, most of them).</p>
+<p>The difference between the set of all tokens which Pyright support
+and that of PyCharm is currently unknown.</p>
+<p>See <a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29">this issue</a> for more information.</p>
+</div>
 <h3 id="tagged-hints">Tagged hints<a class="headerlink" href="#tagged-hints" title="Permanent link">#</a></h3>
 <p>Uncheck this option to prevent the language server from emitting
 "Unnecessary" and "Deprecated" hints, which are visualized in the IDE
