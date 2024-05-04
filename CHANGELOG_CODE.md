@@ -15,17 +15,17 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * [Documentation for LSP-specific settings][30-1] is added.
-  (d8fd3b82, 115fabf6, 519c54d1, 5608c8da, bc55d40f, HEAD)
+  (d8fd3b82, 115fabf6, 519c54d1, 5608c8da, bc55d40f, 31982c84)
 * [Message key names][30-2] are slightly changed. (dc1240d4)
 
 ### Changed
 
 * [The Qodana Gradle plugin][30-3] and its corresponding action
-  [@JetBrains/qodana-action][30-4] are updated to 2024.1.2.
-  (ba0e2aca, e9eafd54, f4331b4c, 0f89d093)
+  [@JetBrains/qodana-action][30-4] are updated to 2024.1.3.
+  (ba0e2aca, e9eafd54, f4331b4c, 0f89d093, HEAD)
 
 
-  [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/configurations/lsp.md
+  [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/31982c84/docs/configurations/lsp.md
   [30-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dc1240d4/src/main/resources/messages/pyright.properties
   [30-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [30-4]: https://github.com/JetBrains/qodana-action
