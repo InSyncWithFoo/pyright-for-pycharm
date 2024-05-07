@@ -4,9 +4,11 @@ import java.nio.file.InvalidPathException
 import java.nio.file.Path
 import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.name
+import kotlin.io.path.nameWithoutExtension
 
 
-private val RECOGNIZED_CONFIGURATION_FILE_NAMES = listOf("pyrightconfig.json", "pyproject.toml")
+private val RECOGNIZED_CONFIGURATION_FILENAMES = listOf("pyrightconfig.json", "pyproject.toml")
+private val KNOWN_EXECUTABLE_FILENAMES = listOf("pyright", "pyright-python", "basedpyright")
 
 
 internal fun String.toPathOrNull() =
@@ -26,8 +28,12 @@ internal fun Path.resolvedAgainst(base: Path?) =
 
 
 internal val Path.isPyrightConfigurationFile: Boolean
-    get() = name in RECOGNIZED_CONFIGURATION_FILE_NAMES
+    get() = name in RECOGNIZED_CONFIGURATION_FILENAMES
 
 
 internal fun Path.containsConfigurationFile() =
     listDirectoryEntries().any { it.isPyrightConfigurationFile }
+
+
+internal val Path.isProbablyPyrightExecutable: Boolean
+    get() = nameWithoutExtension in KNOWN_EXECUTABLE_FILENAMES

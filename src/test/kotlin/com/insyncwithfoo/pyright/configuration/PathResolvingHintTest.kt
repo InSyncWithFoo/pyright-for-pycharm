@@ -14,14 +14,14 @@ class PathResolvingHintTest : TestCase() {
         val path = cwd / Path.of("gradlew")
         val hint = executablePathResolvingHint(path)
         
-        assertTrue(hint.icon === HintIcon.Success)
+        assertTrue(hint.icon === HintIcon.Info)
     }
     
     fun `test executablePathResolvingHint - symlink`() {
         val path = cwd / ".idea" / "icon.svg"
         val hint = executablePathResolvingHint(path)
         
-        assertTrue(hint.icon === HintIcon.Success)
+        assertTrue(hint.icon === HintIcon.Info)
     }
     
     fun `test executablePathResolvingHint - directory`() {

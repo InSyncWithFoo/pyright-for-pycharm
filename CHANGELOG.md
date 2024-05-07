@@ -11,7 +11,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* An informational hint will now be given if
+  the given executable file's name is not a known name.
 
 
 ## [0.2.0] - 2024-04-17

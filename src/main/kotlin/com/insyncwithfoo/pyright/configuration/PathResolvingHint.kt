@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configuration
 
 import com.insyncwithfoo.pyright.containsConfigurationFile
+import com.insyncwithfoo.pyright.isProbablyPyrightExecutable
 import com.insyncwithfoo.pyright.isPyrightConfigurationFile
 import com.insyncwithfoo.pyright.message
 import com.intellij.icons.ExpUiIcons
@@ -48,6 +49,8 @@ internal fun executablePathResolvingHint(path: Path) = when {
     // Uncomment the following if it is asked for.
     // !path.isExecutable() ->
     //     Hint.warning(message("configurations.hint.fileNotExecutable"))
+    !path.isProbablyPyrightExecutable ->
+        Hint.info(message("configurations.hint.unknownExecutable"))
     else ->
         Hint.success(message("configurations.hint.fileFound"))
 }
@@ -64,7 +67,7 @@ internal fun configurationFilePathResolvingHint(path: Path): Hint {
                 Hint.success(message("configurations.hint.recognizedFileFound"))
         }
         !path.isPyrightConfigurationFile ->
-            Hint.error(message("configurations.hint.unrecognizedFile"))
+            Hint.error(message("configurations.hint.unrecognizedConfigurationFile"))
         else ->
             Hint.success(message("configurations.hint.fileFound"))
     }
