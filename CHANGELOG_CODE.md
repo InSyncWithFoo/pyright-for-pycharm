@@ -21,10 +21,10 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Changed
 
 * [The Qodana Gradle plugin][30-3] and its corresponding action
-  [@JetBrains/qodana-action][30-4] are updated to 2024.1.3.
-  (ba0e2aca, e9eafd54, f4331b4c, 0f89d093, a58e9621)
+  [@JetBrains/qodana-action][30-4] are updated to 2024.1.4.
+  (ba0e2aca, e9eafd54, f4331b4c, 0f89d093, a58e9621, HEAD)
 * A new branch is added to [`executablePathResolvingHint()`][30-5]. (fb98eae7)
-* [Kotlin JVM plugin][30-6] is updated to 1.9.24. (HEAD)
+* [Kotlin JVM plugin][30-6] is updated to 1.9.24. (908f95a8)
 
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/31982c84/docs/configurations/lsp.md
