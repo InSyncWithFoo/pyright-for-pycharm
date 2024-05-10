@@ -15,6 +15,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 * An informational hint will now be given if
   the given executable file's name is not a known name.
+* Application-level settings can now be exported using the
+  <i>Export Settings...</i> action.
+  Previously they would be omitted when exporting
+  and can only be found in the IDE's configuration directory.
 
 
 ## [0.2.0] - 2024-04-17

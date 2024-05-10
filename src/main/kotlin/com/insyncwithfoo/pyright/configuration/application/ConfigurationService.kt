@@ -8,7 +8,7 @@ import com.intellij.openapi.components.Storage
 import com.intellij.openapi.components.service
 
 
-@State(name = "ApplicationConfigurations", storages = [Storage("pyright.xml", roamingType = RoamingType.DISABLED)])
+@State(name = "ApplicationConfigurations", storages = [Storage("pyright.xml", roamingType = RoamingType.LOCAL)])
 @Service(Service.Level.APP)
 internal class ConfigurationService : SimplePersistentStateComponent<Configurations>(Configurations()) {
     companion object {
