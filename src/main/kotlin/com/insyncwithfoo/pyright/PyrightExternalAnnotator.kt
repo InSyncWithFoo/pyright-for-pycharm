@@ -1,19 +1,68 @@
 package com.insyncwithfoo.pyright
 
+import com.insyncwithfoo.pyright.annotations.AnnotationApplier
+import com.insyncwithfoo.pyright.annotations.SuppressQuickFix
+import com.insyncwithfoo.pyright.annotations.toHighlightSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.runner.PyrightCommand
 import com.insyncwithfoo.pyright.runner.PyrightRunner
+import com.intellij.codeInspection.InspectionManager
+import com.intellij.codeInspection.LocalQuickFix
+import com.intellij.codeInspection.ProblemDescriptor
+import com.intellij.codeInspection.ProblemHighlightType
+import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.lang.injection.InjectedLanguageManager
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.fileEditor.FileDocumentManager
-import com.intellij.profile.codeInspection.InspectionProjectProfileManager
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiDocumentManager
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
+import com.intellij.psi.util.PsiTreeUtil
 import com.jetbrains.python.PythonLanguage
 import com.jetbrains.python.psi.PyFile
 import com.jetbrains.python.psi.impl.PyFileImpl
+
+
+private typealias Message = String
+
+
+private fun AnnotationBuilder.registerFix(createProblemDescriptor: () -> ProblemDescriptor?) {
+    val problemDescriptor = createProblemDescriptor() ?: return
+    val fix = problemDescriptor.fixes?.firstOrNull() as LocalQuickFix? ?: return
+    
+    newLocalQuickFix(fix, problemDescriptor).registerFix()
+}
+
+
+private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
+    unsavedDocuments.forEach { saveDocumentAsIs(it) }
+}
+
+
+private fun HighlightSeverity.toProblemHighlightType() =
+    ProblemHighlightType.valueOf(this.name)
+
+
+private fun InspectionManager.createProblemDescriptor(
+    psiElement: PsiElement,
+    fix: LocalQuickFix,
+    highlightType: ProblemHighlightType,
+    onTheFly: Boolean
+) =
+    createProblemDescriptor(psiElement, fix.familyName, fix, highlightType, onTheFly)
+
+
+private val Project.inspectionManager: InspectionManager
+    get() = InspectionManager.getInstance(this)
+
+
+private val Project.psiDocumentManager: PsiDocumentManager
+    get() = PsiDocumentManager.getInstance(this)
 
 
 private val PsiFile.isInjected: Boolean
@@ -35,17 +84,49 @@ private val PsiFile.isApplicable: Boolean
     }
 
 
-private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
-    unsavedDocuments.forEach { saveDocumentAsIs(it) }
-}
-
-
 private fun PsiFile.getPyrightInspection(): PyrightInspection {
-    val inspectionManager = InspectionProjectProfileManager.getInstance(project)
-    val profile = inspectionManager.currentProfile
+    val profile = project.inspectionProfileManager.currentProfile
     
     return profile.getUnwrappedTool(PyrightInspection.SHORT_NAME, this) as PyrightInspection
 }
+
+
+private fun PsiFile.getElementAtRange(range: TextRange): PsiElement? {
+    val psiElement = this.findElementAtRange(range)
+    
+    return when {
+        psiElement != null -> psiElement
+        range.isEmpty && range.atEndOfFile(this) -> findElementAt(range.endOffset - 1)
+        else -> findElementAt(range.startOffset)
+    }
+}
+
+
+private fun PsiFile.findElementAtRange(range: TextRange): PsiElement? {
+    val (start, end) = range.startOffset to range.endOffset
+    return PsiTreeUtil.findElementOfClassAtRange(this, start, end, PsiElement::class.java)
+}
+
+
+private val PyrightDiagnostic.isUnsuppressable: Boolean
+    get() {
+        val unsuppressableErrorCodes = listOf("reportUnnecessaryTypeIgnoreComment")
+        
+        return rule in unsuppressableErrorCodes || message.isAboutUnnecessaryIgnoreComment
+    }
+
+
+private val Message.isAboutUnnecessaryIgnoreComment: Boolean
+    get() {
+        // In 1.1.362 and lower reportUnnecessaryTypeIgnoreComment is unmarked.
+        // https://github.com/microsoft/pyright/issues/7883
+        val reportUnnecessaryTypeIgnoreCommentMessage = """(?i)unnecessary.*?pyright:\s*ignore""".toRegex()
+        
+        return this.matches(reportUnnecessaryTypeIgnoreCommentMessage)
+    }
+
+
+private fun TextRange.atEndOfFile(file: PsiFile) = endOffset == file.textLength
 
 
 internal data class AnnotationInfo(
@@ -103,10 +184,31 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
         val (configurations, inspection, output) = annotationResult ?: return
         
         val project = file.project
-        val documentManager = PsiDocumentManager.getInstance(project)
-        val document = documentManager.getDocument(file) ?: return
+        val document = project.psiDocumentManager.getDocument(file) ?: return
         
-        AnnotationApplier(configurations, inspection, holder).apply(document, output)
+        val annotationApplier = AnnotationApplier(configurations, inspection, holder)
+        
+        annotationApplier.apply(document, output) { builder, diagnostic, range ->
+            builder.registerFix {
+                if (diagnostic.isUnsuppressable) {
+                    return@registerFix null
+                }
+                
+                val element = file.getElementAtRange(range) ?: return@registerFix null
+                val fix = SuppressQuickFix(diagnostic.rule, range)
+                
+                val problemHighlightType = diagnostic.severity
+                    .toHighlightSeverity(inspection)
+                    .toProblemHighlightType()
+                
+                project.inspectionManager.createProblemDescriptor(
+                    psiElement = element,
+                    fix = fix,
+                    highlightType = problemHighlightType,
+                    onTheFly = true
+                )
+            }
+        }
     }
     
 }

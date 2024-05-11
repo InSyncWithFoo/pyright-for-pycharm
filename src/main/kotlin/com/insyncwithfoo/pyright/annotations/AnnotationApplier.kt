@@ -1,5 +1,12 @@
-package com.insyncwithfoo.pyright
+package com.insyncwithfoo.pyright.annotations
 
+import com.insyncwithfoo.pyright.HighlightSeverity
+import com.insyncwithfoo.pyright.PyrightDiagnostic
+import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.PyrightDiagnosticTextRange
+import com.insyncwithfoo.pyright.PyrightDiagnosticTextRangeEndpoint
+import com.insyncwithfoo.pyright.PyrightInspection
+import com.insyncwithfoo.pyright.PyrightOutput
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
@@ -7,6 +14,9 @@ import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.util.text.HtmlChunk
+
+
+private typealias ApplierCallback = (AnnotationBuilder, PyrightDiagnostic, TextRange) -> Unit
 
 
 private fun <T> T.runIf(condition: Boolean, block: T.() -> T): T =
@@ -25,13 +35,6 @@ private fun Document.getStartEndRange(range: PyrightDiagnosticTextRange): TextRa
 }
 
 
-private fun PyrightDiagnosticSeverity.toHighlightSeverity(inspection: PyrightInspection) = when (this) {
-    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity(inspection.highlightSeverityForErrors)
-    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity(inspection.highlightSeverityForWarnings)
-    PyrightDiagnosticSeverity.INFORMATION -> HighlightSeverity(inspection.highlightSeverityForInformation)
-}
-
-
 private fun String.toPreformatted(font: String? = null) =
     HtmlChunk.div()
         .runIf(font != null) { style("font-family: '$font'") }
@@ -45,20 +48,18 @@ private val PyrightDiagnostic.suffixedMessage: String
     }
 
 
+internal fun PyrightDiagnosticSeverity.toHighlightSeverity(inspection: PyrightInspection) = when (this) {
+    PyrightDiagnosticSeverity.ERROR -> HighlightSeverity(inspection.highlightSeverityForErrors)
+    PyrightDiagnosticSeverity.WARNING -> HighlightSeverity(inspection.highlightSeverityForWarnings)
+    PyrightDiagnosticSeverity.INFORMATION -> HighlightSeverity(inspection.highlightSeverityForInformation)
+}
+
+
 internal class AnnotationApplier(
     private val configurations: AllConfigurations,
     private val inspection: PyrightInspection,
     private val holder: AnnotationHolder
 ) {
-    
-    fun apply(document: Document, output: PyrightOutput) {
-        output.generalDiagnostics.forEach { diagnostic ->
-            val builder = diagnostic.makeBuilder()
-            val range = document.getStartEndRange(diagnostic.range)
-            
-            builder.needsUpdateOnTyping().range(range).create()
-        }
-    }
     
     private fun PyrightDiagnostic.makeBuilder(): AnnotationBuilder {
         var tooltipMessage = suffixedMessage
@@ -78,6 +79,17 @@ internal class AnnotationApplier(
         val highlightSeverity = severity.toHighlightSeverity(inspection)
         
         return holder.newAnnotation(highlightSeverity, message).tooltip(tooltip)
+    }
+    
+    fun apply(document: Document, output: PyrightOutput, callback: ApplierCallback) {
+        output.generalDiagnostics.forEach { diagnostic ->
+            val builder = diagnostic.makeBuilder()
+            val range = document.getStartEndRange(diagnostic.range)
+            
+            builder.needsUpdateOnTyping().range(range)
+                .also { callback(builder, diagnostic, range) }
+                .create()
+        }
     }
     
 }

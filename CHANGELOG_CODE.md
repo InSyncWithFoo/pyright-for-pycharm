@@ -17,25 +17,29 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [Documentation for LSP-specific settings][30-1] is added.
   (d8fd3b82, 115fabf6, 519c54d1, 5608c8da, bc55d40f, 31982c84)
 * [Message key names][30-2] are slightly changed. (dc1240d4)
+* `AnnotationApplier` and newly added related constructs for quick fixes
+  are moved to the [`.annotations`][30-3] module.
+  Corresponding tests are also added. (HEAD)
 
 ### Changed
 
-* [The Qodana Gradle plugin][30-3] and its corresponding action
-  [@JetBrains/qodana-action][30-4] are updated to 2024.1.4.
+* [The Qodana Gradle plugin][30-4] and its corresponding action
+  [@JetBrains/qodana-action][30-5] are updated to 2024.1.4.
   (ba0e2aca, e9eafd54, f4331b4c, 0f89d093, a58e9621, 913fe613)
-* A new branch is added to [`executablePathResolvingHint()`][30-5]. (fb98eae7)
-* [Kotlin JVM plugin][30-6] is updated to 1.9.24. (908f95a8)
-* `RoamingType.LOCAL` is used for [application-level configurations][30-7]
+* A new branch is added to [`executablePathResolvingHint()`][30-6]. (fb98eae7)
+* [Kotlin JVM plugin][30-7] is updated to 1.9.24. (908f95a8)
+* `RoamingType.LOCAL` is used for [application-level configurations][30-8]
   instead of `RoamingType.DISABLED`. (15540255)
 
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/31982c84/docs/configurations/lsp.md
   [30-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dc1240d4/src/main/resources/messages/pyright.properties
-  [30-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
-  [30-4]: https://github.com/JetBrains/qodana-action
-  [30-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fb98eae7/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
-  [30-6]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
-  [30-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/15540255/src/main/kotlin/com/insyncwithfoo/pyright/configuration/application/ConfigurationService.kt
+  [30-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/annotations
+  [30-4]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
+  [30-5]: https://github.com/JetBrains/qodana-action
+  [30-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fb98eae7/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
+  [30-7]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
+  [30-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/15540255/src/main/kotlin/com/insyncwithfoo/pyright/configuration/application/ConfigurationService.kt
 
 
 ## [0.2.0] - 2024-04-17

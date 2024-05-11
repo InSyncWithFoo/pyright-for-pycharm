@@ -11,6 +11,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
+### Added
+
+* Diagnostics can now be suppressed using quick fixes.
+
 ### Changed
 
 * An informational hint will now be given if
