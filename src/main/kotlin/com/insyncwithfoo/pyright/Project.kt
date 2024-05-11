@@ -11,6 +11,10 @@ import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.nameWithoutExtension
 
 
+internal val Project.inspectionProfileManager: InspectionProjectProfileManager
+    get() = InspectionProjectProfileManager.getInstance(this)
+
+
 internal val Project.path: Path?
     get() = basePath?.let { Path.of(it) }
 
@@ -27,13 +31,13 @@ internal val Project.pyrightConfigurations: AllConfigurations
     get() = ConfigurationService.getInstance(this).state
 
 
-internal fun Project.isPyrightInspectionEnabled(): Boolean {
-    val inspectionManager = InspectionProjectProfileManager.getInstance(this)
-    val profile = inspectionManager.currentProfile
-    val pyrightInspection = profile.allTools.find { it.tool.shortName == PyrightInspection.SHORT_NAME }
-    
-    return pyrightInspection?.isEnabled ?: false
-}
+internal val Project.pyrightInspectionIsEnabled: Boolean
+    get() {
+        val profile = inspectionProfileManager.currentProfile
+        val pyrightInspection = profile.allTools.find { it.tool.shortName == PyrightInspection.SHORT_NAME }
+        
+        return pyrightInspection?.isEnabled ?: false
+    }
 
 
 internal fun Project.findPyrightExecutable(): Path? {

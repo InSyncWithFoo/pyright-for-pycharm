@@ -26,7 +26,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * A new branch is added to [`executablePathResolvingHint()`][30-5]. (fb98eae7)
 * [Kotlin JVM plugin][30-6] is updated to 1.9.24. (908f95a8)
 * `RoamingType.LOCAL` is used for [application-level configurations][30-7]
-  instead of `RoamingType.DISABLED`. (HEAD)
+  instead of `RoamingType.DISABLED`. (15540255)
 
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/31982c84/docs/configurations/lsp.md
@@ -35,7 +35,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [30-4]: https://github.com/JetBrains/qodana-action
   [30-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fb98eae7/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
   [30-6]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
-  [30-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/configuration/application/ConfigurationService.kt
+  [30-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/15540255/src/main/kotlin/com/insyncwithfoo/pyright/configuration/application/ConfigurationService.kt
 
 
 ## [0.2.0] - 2024-04-17

@@ -52,17 +52,16 @@ internal class AnnotationApplier(
 ) {
     
     fun apply(document: Document, output: PyrightOutput) {
-        output.generalDiagnostics.forEach {
-            val builder = makeBuilder(it)
-            val range = document.getStartEndRange(it.range)
+        output.generalDiagnostics.forEach { diagnostic ->
+            val builder = diagnostic.makeBuilder()
+            val range = document.getStartEndRange(diagnostic.range)
             
             builder.needsUpdateOnTyping().range(range).create()
         }
     }
     
-    private fun makeBuilder(diagnostic: PyrightDiagnostic): AnnotationBuilder {
-        val (_, severity, message) = diagnostic
-        var tooltipMessage = diagnostic.suffixedMessage
+    private fun PyrightDiagnostic.makeBuilder(): AnnotationBuilder {
+        var tooltipMessage = suffixedMessage
         
         val addTooltipPrefix = configurations.addTooltipPrefix
         if (addTooltipPrefix) {
