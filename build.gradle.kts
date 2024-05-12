@@ -58,6 +58,12 @@ koverReport {
 }
 
 tasks {
+    runIde {
+        // From https://app.slack.com/client/T5P9YATH9/C5U8BM1MK
+        systemProperty("ide.experimental.ui", "true")
+        systemProperty("projectView.hide.dot.idea", "false")
+    }
+    
     wrapper {
         gradleVersion = properties("gradleVersion").get()
     }
