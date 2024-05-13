@@ -475,6 +475,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#suppressing-diagnostics-using-quick-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suppressing diagnostics using quick fixes
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -578,6 +587,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#suppressing-diagnostics-using-quick-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suppressing diagnostics using quick fixes
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -633,6 +651,47 @@ as the executable for that project is shown if:</p>
 </div>
 <div class="tabbed-block">
 <p><img alt="" src="../assets/lsp-features-demo-auto-suggest-executable.png" /></p>
+</div>
+</div>
+</div>
+<h2 id="suppressing-diagnostics-using-quick-fixes">Suppressing diagnostics using quick fixes<a class="headerlink" href="#suppressing-diagnostics-using-quick-fixes" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is not yet available in LSP.</p>
+</div>
+<p>Most diagnostics can be suppressed using
+their corresponding quick fixes:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="suppressing-diagnostics-using-quick-fixes-before" name="__tabbed_2" type="radio" /><input id="suppressing-diagnostics-using-quick-fixes-after" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="suppressing-diagnostics-using-quick-fixes-before">Before</label><label for="suppressing-diagnostics-using-quick-fixes-after">After</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../assets/features-demo-diagnostic-suppressing-quick-fixes-no-existing-before.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../assets/features-demo-diagnostic-suppressing-quick-fixes-no-existing-after.png" /></p>
+</div>
+</div>
+</div>
+<p>If a comment already presents on that line,
+the new error code will be appended to the end of the list:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="suppressing-diagnostics-using-quick-fixes-before_1" name="__tabbed_3" type="radio" /><input id="suppressing-diagnostics-using-quick-fixes-after_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="suppressing-diagnostics-using-quick-fixes-before_1">Before</label><label for="suppressing-diagnostics-using-quick-fixes-after_1">After</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../assets/features-demo-diagnostic-suppressing-quick-fixes-existing-comment-before.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../assets/features-demo-diagnostic-suppressing-quick-fixes-existing-comment-after.png" /></p>
+</div>
+</div>
+</div>
+<p>If the error has no corresponding code,
+the entire list will be removed:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="suppressing-diagnostics-using-quick-fixes-before_2" name="__tabbed_4" type="radio" /><input id="suppressing-diagnostics-using-quick-fixes-after_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="suppressing-diagnostics-using-quick-fixes-before_2">Before</label><label for="suppressing-diagnostics-using-quick-fixes-after_2">After</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../assets/features-demo-diagnostic-suppressing-quick-fixes-no-code-before.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../assets/features-demo-diagnostic-suppressing-quick-fixes-no-code-after.png" /></p>
 </div>
 </div>
 </div>
