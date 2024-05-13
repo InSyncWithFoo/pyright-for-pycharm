@@ -41,12 +41,12 @@ internal class SuppressQuickFix(
         val lineNumber = getLineNumber(range.startOffset)
         val lastCharacter = charsSequence[getLineEndOffset(lineNumber) - 1]
         
-        val prefix = when {
+        val padding = when {
             lastCharacter == ' ' -> ""
             else -> "  "
         }
         
-        appendToLine(lineNumber, prefix + PyrightIgnoreComment.parse(code ?: ""))
+        appendToLine(lineNumber, padding + PyrightIgnoreComment.parse(code ?: ""))
     }
     
     private fun Document.removeCommentCodeList(comment: ExistingPyrightIgnoreComment) {

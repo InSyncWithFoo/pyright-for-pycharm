@@ -19,7 +19,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [Message key names][30-2] are slightly changed. (dc1240d4)
 * `AnnotationApplier` and newly added related constructs for quick fixes
   are moved to the [`.annotations`][30-3] module.
-  Corresponding tests are also added. (2c9b87fe)
+  Corresponding tests and documentation are also added. (2c9b87fe, HEAD)
 
 ### Changed
 
@@ -31,12 +31,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * `RoamingType.LOCAL` is used for [application-level configurations][30-8]
   instead of `RoamingType.DISABLED`. (15540255)
 * The "Run Plugin" task now runs with the new UI enabled and
-  the `.idea` subdirectory not hidden. (HEAD)
+  the `.idea` subdirectory not hidden. (38b8c86a)
 
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/31982c84/docs/configurations/lsp.md
   [30-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dc1240d4/src/main/resources/messages/pyright.properties
-  [30-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/2c9b87fe/src/main/kotlin/com/insyncwithfoo/pyright/annotations
+  [30-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/annotations
   [30-4]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [30-5]: https://github.com/JetBrains/qodana-action
   [30-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fb98eae7/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt

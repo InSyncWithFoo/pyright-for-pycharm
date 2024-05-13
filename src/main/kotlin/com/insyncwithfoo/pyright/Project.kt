@@ -8,7 +8,6 @@ import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import java.nio.file.Path
 import kotlin.io.path.listDirectoryEntries
-import kotlin.io.path.nameWithoutExtension
 
 
 internal val Project.inspectionProfileManager: InspectionProjectProfileManager
@@ -44,5 +43,5 @@ internal fun Project.findPyrightExecutable(): Path? {
     val sdkDirectory = sdkPath?.parent ?: return null
     val children = sdkDirectory.listDirectoryEntries()
     
-    return children.find { it.nameWithoutExtension == "pyright" }
+    return children.find { it.isProbablyPyrightExecutable }
 }

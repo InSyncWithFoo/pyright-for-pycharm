@@ -27,4 +27,46 @@ Available actions:
     ![](./assets/lsp-features-demo-auto-suggest-executable.png)
 
 
+## Suppressing diagnostics using quick fixes
+
+!!! note
+
+    This feature is not yet available in LSP.
+
+Most diagnostics can be suppressed using
+their corresponding quick fixes:
+
+=== "Before"
+
+    ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-no-existing-before.png)
+
+=== "After"
+
+    ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-no-existing-after.png)
+
+
+If a comment already presents on that line,
+the new error code will be appended to the end of the list:
+
+=== "Before"
+
+    ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-existing-comment-before.png)
+
+=== "After"
+
+    ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-existing-comment-after.png)
+
+
+If the error has no corresponding code,
+the entire list will be removed:
+
+=== "Before"
+
+    ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-no-code-before.png)
+
+=== "After"
+
+    ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-no-code-after.png)
+
+
   [1]: configurations/common.md#auto-suggest-executable

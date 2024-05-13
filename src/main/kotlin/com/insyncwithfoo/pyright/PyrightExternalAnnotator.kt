@@ -92,7 +92,7 @@ private fun PsiFile.getPyrightInspection(): PyrightInspection {
 
 
 private fun PsiFile.getElementAtRange(range: TextRange): PsiElement? {
-    val psiElement = this.findElementAtRange(range)
+    val psiElement = findElementAtRange(range)
     
     return when {
         psiElement != null -> psiElement
