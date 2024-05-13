@@ -12,6 +12,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.3.0] - 2024-05-13
+
 ### Added
 
 * [Documentation for LSP-specific settings][30-1] is added.
@@ -19,7 +24,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [Message key names][30-2] are slightly changed. (dc1240d4)
 * `AnnotationApplier` and newly added related constructs for quick fixes
   are moved to the [`.annotations`][30-3] module.
-  Corresponding tests and documentation are also added. (2c9b87fe, HEAD)
+  Corresponding tests and documentation are also added. (2c9b87fe, ae653d79)
 
 ### Changed
 
@@ -36,7 +41,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
   [30-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/31982c84/docs/configurations/lsp.md
   [30-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/dc1240d4/src/main/resources/messages/pyright.properties
-  [30-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/annotations
+  [30-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/ae653d79/src/main/kotlin/com/insyncwithfoo/pyright/annotations
   [30-4]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [30-5]: https://github.com/JetBrains/qodana-action
   [30-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fb98eae7/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
@@ -292,7 +297,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.2.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..HEAD
+  [0.3.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.2.0..v0.3.0
   [0.2.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0..v0.2.0
   [0.1.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.6..v0.1.0
   [0.1.0-mvp.6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0-mvp.5..v0.1.0-mvp.6
