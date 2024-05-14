@@ -24,7 +24,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [Message key names][30-2] are slightly changed. (dc1240d4)
 * `AnnotationApplier` and newly added related constructs for quick fixes
   are moved to the [`.annotations`][30-3] module.
-  Corresponding tests and documentation are also added. (2c9b87fe, ae653d79)
+  Corresponding tests and documentation are also added.
+  (2c9b87fe, ae653d79, HEAD)
 
 ### Changed
 

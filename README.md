@@ -70,7 +70,6 @@ Some other files are based on or copied directly from
   [6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
   [7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
   [8]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
-  [9]: ./CONTRIBUTING.md
   [9]: https://github.com/koxudaxi/ruff-pycharm-plugin
   [10]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
   [11]: https://github.com/JetBrains/intellij-platform-plugin-template
