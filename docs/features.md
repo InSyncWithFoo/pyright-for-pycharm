@@ -29,10 +29,6 @@ Available actions:
 
 ## Suppressing diagnostics using quick fixes
 
-!!! note
-
-    This feature is not yet available in LSP.
-
 Most diagnostics can be suppressed using
 their corresponding quick fixes:
 
