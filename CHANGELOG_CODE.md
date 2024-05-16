@@ -12,7 +12,14 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Fixed
+
+* `HighlightSeverity` member names contain spaces but not underscores,
+  which causes [`ProblemHighlightType.valueOf()`][31-1] to throw.
+  A workaround is introduced by manually replacing `" "` with `"_"`. (HEAD)
+
+
+  [31-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.3.0] - 2024-05-13

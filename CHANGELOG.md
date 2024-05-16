@@ -11,7 +11,11 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Fixed
+
+* v0.3.0 has a bug causing an internal error
+  if the inspections' levels are set as "Weak warnings".
+  This has been fixed.
 
 
 ## [0.3.0] - 2024-05-13
@@ -43,8 +47,9 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ### Changed
 
-* Default highlight severity levels are now "Error", "Warning" and "Weak warning"
-  instead of "Warning", "Weak warning" and "Weak warning".
+* Default highlight severity levels are now
+  "Error", "Warning" and "Weak warning" instead of
+  "Warning", "Weak warning" and "Weak warning".
   A future release will allow configuring these levels.
 * v0.1.0-mvp.5 has a bug causing the configurations to be always unresetable.
   This has been fixed.

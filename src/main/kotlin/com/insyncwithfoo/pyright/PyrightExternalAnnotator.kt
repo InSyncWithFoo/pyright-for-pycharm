@@ -45,7 +45,7 @@ private fun FileDocumentManager.saveAllUnsavedDocumentsAsIs() {
 
 
 private fun HighlightSeverity.toProblemHighlightType() =
-    ProblemHighlightType.valueOf(this.name)
+    ProblemHighlightType.valueOf(this.name.replace(" ", "_"))
 
 
 private fun InspectionManager.createProblemDescriptor(
