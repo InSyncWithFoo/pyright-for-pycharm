@@ -30,7 +30,7 @@ private fun String.firstPyrightIgnoreEndToNextClosingBracketIndices(): Pair<Int,
 }
 
 
-class TestExistingPyrightIgnoreComment : TestCase() {
+class ExistingPyrightIgnoreCommentTest : TestCase() {
     
     fun `test create - no codes`() {
         val input = "# pyright: ignore"

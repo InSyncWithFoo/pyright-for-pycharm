@@ -3,7 +3,7 @@ package com.insyncwithfoo.pyright.annotations
 import junit.framework.TestCase
 
 
-class TestPyrightIgnoreComment : TestCase() {
+class PyrightIgnoreCommentTest : TestCase() {
     
     fun `test parse - empty`() {
         val input = ""
