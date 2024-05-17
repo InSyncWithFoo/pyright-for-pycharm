@@ -12,7 +12,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* [The Kover Gradle Plugin][40-1] is updated to 0.8.0. (9d583cd2)
+
+
+  [40-1]: https://github.com/Kotlin/kotlinx-kover
 
 
 ## [0.3.1] - 2024-05-16
@@ -21,10 +26,10 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * `HighlightSeverity` member names contain spaces but not underscores,
   which causes [`ProblemHighlightType.valueOf()`][31-1] to throw.
-  A workaround is introduced by manually replacing `" "` with `"_"`. (HEAD)
+  A workaround is introduced by manually replacing `" "` with `"_"`. (cdd51d86)
 
 
-  [31-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
+  [31-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/cdd51d86/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.3.0] - 2024-05-13
