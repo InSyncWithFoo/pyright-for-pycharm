@@ -1,5 +1,6 @@
 package com.insyncwithfoo.pyright.configuration
 
+import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
 import org.jetbrains.annotations.SystemDependent
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
 import com.insyncwithfoo.pyright.configuration.project.Configurations as ProjectConfigurations
@@ -12,6 +13,7 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
         globalConfigurationFile = this.globalConfigurationFile,
         useEditorFont = this.useEditorFont,
         addTooltipPrefix = this.addTooltipPrefix,
+        minimumSeverityLevel = this.minimumSeverityLevel,
         
         projectExecutable = other.projectExecutable,
         projectConfigurationFile = other.projectConfigurationFile,
@@ -25,6 +27,7 @@ internal data class AllConfigurations(
     val globalConfigurationFile: @SystemDependent String?,
     val useEditorFont: Boolean,
     val addTooltipPrefix: Boolean,
+    val minimumSeverityLevel: PyrightDiagnosticSeverity,
     
     val projectExecutable: @SystemDependent String?,
     val projectConfigurationFile: @SystemDependent String?,

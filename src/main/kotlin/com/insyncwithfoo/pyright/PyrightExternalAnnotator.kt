@@ -76,6 +76,7 @@ private val PsiFile.languageIsPython: Boolean
     get() = language.isKindOf(PythonLanguage.getInstance())
 
 
+@Suppress("UnstableApiUsage")
 private val PsiFile.isApplicable: Boolean
     get() = when {
         this !is PyFile || this.isInjected || !this.languageIsPython -> false
@@ -174,7 +175,7 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
     override fun doAnnotate(collectedInfo: AnnotationInfo?): AnnotationResult? {
         val (configurations, inspection, file) = collectedInfo ?: return null
         
-        val command = PyrightCommand.create(configurations, file) ?: return null
+        val command = PyrightCommand.create(file) ?: return null
         val output = PyrightRunner(file.project).run(command) ?: return null
         
         return AnnotationResult(configurations, inspection, output)

@@ -1,5 +1,6 @@
 package com.insyncwithfoo.pyright.configuration
 
+import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
 import junit.framework.TestCase
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
 import com.insyncwithfoo.pyright.configuration.project.Configurations as ProjectConfigurations
@@ -22,7 +23,7 @@ class ConfigurationFieldsTest : TestCase() {
     fun `test defaults - application`() {
         val configurations = ApplicationConfigurations()
         
-        assertEquals(5, applicationFields().size)
+        assertEquals(6, applicationFields().size)
         
         configurations.run {
             assertEquals(false, alwaysUseGlobal)
@@ -30,6 +31,7 @@ class ConfigurationFieldsTest : TestCase() {
             assertEquals(null, globalConfigurationFile)
             assertEquals(false, useEditorFont)
             assertEquals(false, addTooltipPrefix)
+            assertEquals(PyrightDiagnosticSeverity.INFORMATION, minimumSeverityLevel)
         }
     }
     

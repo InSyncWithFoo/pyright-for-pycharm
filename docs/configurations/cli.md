@@ -22,5 +22,28 @@ If the path retrieved using the aforementioned strategy is not specified,
 the project directory is used.
 
 
+## Minimum severity level
+
+Modify this option to set a minimum threshold that
+only the diagnostics whose severity is equal or higher than it
+will be emitted.
+
+This corresponds to the `--level` option.
+
+Default: <i>Information</i>
+
+=== "Information"
+
+    ![](../assets/cli-configurations-demo-others-minimum-severity-level-information.png)
+
+=== "Warning"
+
+    ![](../assets/cli-configurations-demo-others-minimum-severity-level-warning.png)
+
+=== "Error"
+
+    ![](../assets/cli-configurations-demo-others-minimum-severity-level-error.png)
+
+
   [1]: https://github.com/microsoft/pyright/discussions/7650
   [2]: https://microsoft.github.io/pyright/#/command-line

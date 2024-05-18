@@ -11,7 +11,9 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* Diagnostics can now be limited by severity levels.
 
 
 ## [0.3.1] - 2024-05-16

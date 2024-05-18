@@ -1,7 +1,9 @@
 package com.insyncwithfoo.pyright.runner
 
+import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.path
+import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.sdkPath
 import com.intellij.execution.RunCanceledByUserException
 import com.intellij.execution.configurations.GeneralCommandLine
@@ -65,6 +67,29 @@ internal data class PyrightCommand(
     private val handler: CapturingProcessHandler
         get() = CapturingProcessHandler(getCommandLine())
     
+    internal val extraArgumentsMap: Map<String, String?>
+        get() {
+            val map = mutableMapOf<String, String?>()
+            var index = 0
+            
+            while (index < extraArguments.size) {
+                val element = extraArguments[index]
+                val nextElement = extraArguments.getOrNull(index + 1)
+                
+                if (nextElement?.startsWith("--") == true) {
+                    map[element] = null
+                } else {
+                    map[element] = nextElement
+                    index++
+                }
+                
+                index++
+            }
+            
+            return map
+        }
+    
+    
     private fun getCommandLine() =
         GeneralCommandLine(fragments).apply {
             withWorkDirectory(projectPath)
@@ -102,27 +127,43 @@ internal data class PyrightCommand(
     }
     
     companion object {
-        fun create(
+        
+        internal fun create(
             configurations: AllConfigurations,
-            file: PsiFile
-        ): PyrightCommand? {
-            val project = file.project
-            val projectPath = (project.path ?: return null).toString()
-            
-            val executable = configurations.executable?.toPathIfItExists(base = projectPath) ?: return null
-            val target = file.virtualFile.path.toPathIfItExists() ?: return null
+            executable: Path,
+            target: Path,
+            projectPath: Path,
+            interpreterPath: Path
+        ): PyrightCommand {
             val configurationFile = configurations.configurationFile
             
-            val pythonExecutable = project.sdkPath ?: return null
-            
-            val extraArguments: List<String> = listOf(
+            val argumentForProject = configurationFile ?: projectPath
+            val extraArguments: MutableList<String> = mutableListOf(
                 "--outputjson",
-                "--project", configurationFile ?: projectPath,
-                "--pythonpath", pythonExecutable.toString()
+                "--project", argumentForProject.toString(),
+                "--pythonpath", interpreterPath.toString()
             )
             
-            return PyrightCommand(executable, target, projectPath, extraArguments)
+            if (configurations.minimumSeverityLevel != PyrightDiagnosticSeverity.INFORMATION) {
+                extraArguments.add("--level")
+                extraArguments.add(configurations.minimumSeverityLevel.name)
+            }
+            
+            return PyrightCommand(executable, target, projectPath.toString(), extraArguments)
         }
+        
+        fun create(file: PsiFile): PyrightCommand? {
+            val project = file.project
+            
+            val configurations = project.pyrightConfigurations
+            val filePath = file.virtualFile.path.toPathIfItExists() ?: return null
+            val projectPath = project.path ?: return null
+            val executable = configurations.executable?.toPathIfItExists(base = projectPath) ?: return null
+            val interpreterPath = project.sdkPath ?: return null
+            
+            return create(configurations, executable, filePath, projectPath, interpreterPath)
+        }
+        
     }
     
 }

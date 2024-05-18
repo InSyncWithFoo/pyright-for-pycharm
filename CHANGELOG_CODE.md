@@ -14,7 +14,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Added
 
-* The plugin now supports 2024.2. (HEAD)
+* The plugin now supports 2024.2. (18897c60)
+* Global option "Minimum severity level" is added. (HEAD)
 
 ### Changed
 
