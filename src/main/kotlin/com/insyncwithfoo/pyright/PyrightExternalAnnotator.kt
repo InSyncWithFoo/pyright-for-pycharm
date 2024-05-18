@@ -25,7 +25,6 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.util.PsiTreeUtil
 import com.jetbrains.python.PythonLanguage
 import com.jetbrains.python.psi.PyFile
-import com.jetbrains.python.psi.impl.PyFileImpl
 
 
 private typealias Message = String
@@ -76,13 +75,8 @@ private val PsiFile.languageIsPython: Boolean
     get() = language.isKindOf(PythonLanguage.getInstance())
 
 
-@Suppress("UnstableApiUsage")
 private val PsiFile.isApplicable: Boolean
-    get() = when {
-        this !is PyFile || this.isInjected || !this.languageIsPython -> false
-        this is PyFileImpl && !this.isAcceptedFor(PyrightInspection::class.java) -> false
-        else -> true
-    }
+    get() = this is PyFile && !this.isInjected && this.languageIsPython
 
 
 private fun PsiFile.getPyrightInspection(): PyrightInspection {
