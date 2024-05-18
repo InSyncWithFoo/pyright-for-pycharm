@@ -12,19 +12,28 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+### Added
+
+* The plugin now supports 2024.2. (HEAD)
+
 ### Changed
 
 * [The Kover Gradle Plugin][40-1] is updated to 0.8.0. (9d583cd2)
+* [The Qodana Gradle plugin][40-2] and its corresponding action
+  [@JetBrains/qodana-action][40-3] are updated to 2024.1.5.
+  (7d2278a5)
 
 
   [40-1]: https://github.com/Kotlin/kotlinx-kover
+  [40-2]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
+  [40-3]: https://github.com/JetBrains/qodana-action
 
 
 ## [0.3.1] - 2024-05-16
 
 ### Fixed
 
-* `HighlightSeverity` member names contain spaces but not underscores,
+* `HighlightSeverity` members' names may contain spaces,
   which causes [`ProblemHighlightType.valueOf()`][31-1] to throw.
   A workaround is introduced by manually replacing `" "` with `"_"`. (cdd51d86)
 
