@@ -481,6 +481,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#autocomplete-parentheses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autocomplete parentheses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tagged-hints" class="md-nav__link">
     <span class="md-ellipsis">
       Tagged hints
@@ -726,6 +735,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#autocomplete-parentheses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autocomplete parentheses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tagged-hints" class="md-nav__link">
     <span class="md-ellipsis">
       Tagged hints
@@ -857,13 +875,30 @@ will only trigger PyCharm's support on tokens it can handle
 and that of PyCharm is currently unknown.</p>
 <p>See <a href="https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29">this issue</a> for more information.</p>
 </div>
+<h3 id="autocomplete-parentheses">Autocomplete parentheses<a class="headerlink" href="#autocomplete-parentheses" title="Permanent link">#</a></h3>
+<p>Check this option to also automatically insert parentheses
+for function, method and constructor completions.</p>
+<p>Default: <code>false</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="autocomplete-parentheses-before" name="__tabbed_4" type="radio" /><input id="autocomplete-parentheses-disabled" name="__tabbed_4" type="radio" /><input id="autocomplete-parentheses-enabled" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="autocomplete-parentheses-before">Before</label><label for="autocomplete-parentheses-disabled">Disabled</label><label for="autocomplete-parentheses-enabled">Enabled</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-autocomplete-parentheses-before.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-autocomplete-parentheses-disabled.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-autocomplete-parentheses-enabled.png" /></p>
+</div>
+</div>
+</div>
 <h3 id="tagged-hints">Tagged hints<a class="headerlink" href="#tagged-hints" title="Permanent link">#</a></h3>
 <p>Uncheck this option to prevent the language server from emitting
 "Unnecessary" and "Deprecated" hints, which are visualized in the IDE
 as faded-out and strikethrough text, correspondingly.</p>
 <p>This corresponds to the <code>pyright.disableTaggedHints</code> setting.</p>
 <p>Default: <code>true</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="tagged-hints-enabled" name="__tabbed_4" type="radio" /><input id="tagged-hints-disabled" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="tagged-hints-enabled">Enabled</label><label for="tagged-hints-disabled">Disabled</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="tagged-hints-enabled" name="__tabbed_5" type="radio" /><input id="tagged-hints-disabled" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="tagged-hints-enabled">Enabled</label><label for="tagged-hints-disabled">Disabled</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><img alt="" src="../../assets/lsp-configurations-demo-server-tagged-hints-enabled.png" /></p>
@@ -879,7 +914,7 @@ completions which, if accepted, will also add a <code>import</code> statement
 for that newly introduced symbol.</p>
 <p>This corresponds to the <code>python.analysis.autoImportCompletions</code> setting.</p>
 <p>Default: <code>true</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="auto-import-completions-auto-import-completions-enabled" name="__tabbed_5" type="radio" /><input id="auto-import-completions-auto-import-completions-disabled" name="__tabbed_5" type="radio" /><input id="auto-import-completions-completion-support-disabled" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="auto-import-completions-auto-import-completions-enabled">Auto-import completions enabled</label><label for="auto-import-completions-auto-import-completions-disabled">Auto-import completions disabled</label><label for="auto-import-completions-completion-support-disabled">Completion support disabled</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="auto-import-completions-auto-import-completions-enabled" name="__tabbed_6" type="radio" /><input id="auto-import-completions-auto-import-completions-disabled" name="__tabbed_6" type="radio" /><input id="auto-import-completions-completion-support-disabled" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="auto-import-completions-auto-import-completions-enabled">Auto-import completions enabled</label><label for="auto-import-completions-auto-import-completions-disabled">Auto-import completions disabled</label><label for="auto-import-completions-completion-support-disabled">Completion support disabled</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><img alt="" src="../../assets/lsp-configurations-demo-server-completion-support-enabled.png" /></p>
