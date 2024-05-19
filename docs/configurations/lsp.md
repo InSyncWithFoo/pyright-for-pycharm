@@ -79,6 +79,26 @@ Default: `false`
     See [this issue][2] for more information.
 
 
+### Autocomplete parentheses
+
+Check this option to also automatically insert parentheses
+for function, method and constructor completions.
+
+Default: `false`
+
+=== "Before"
+
+    ![](../assets/lsp-configurations-demo-autocomplete-parentheses-before.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-autocomplete-parentheses-disabled.png)
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-autocomplete-parentheses-enabled.png)
+
+
 ### Tagged hints
 
 Uncheck this option to prevent the language server from emitting

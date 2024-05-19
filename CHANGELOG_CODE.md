@@ -16,18 +16,20 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * The plugin now supports 2024.2. (18897c60)
 * Global option "Minimum severity level" is added. (74267a2c)
+* [Documentation for LSP-specific settings][40-1] is added. (HEAD)
 
 ### Changed
 
-* [The Kover Gradle Plugin][40-1] is updated to 0.8.0. (9d583cd2)
-* [The Qodana Gradle plugin][40-2] and its corresponding action
-  [@JetBrains/qodana-action][40-3] are updated to 2024.1.5.
+* [The Kover Gradle Plugin][40-2] is updated to 0.8.0. (9d583cd2)
+* [The Qodana Gradle plugin][40-3] and its corresponding action
+  [@JetBrains/qodana-action][40-4] are updated to 2024.1.5.
   (7d2278a5)
 
 
-  [40-1]: https://github.com/Kotlin/kotlinx-kover
-  [40-2]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
-  [40-3]: https://github.com/JetBrains/qodana-action
+  [40-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/configurations/lsp.md
+  [40-2]: https://github.com/Kotlin/kotlinx-kover
+  [40-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
+  [40-4]: https://github.com/JetBrains/qodana-action
 
 
 ## [0.3.1] - 2024-05-16
