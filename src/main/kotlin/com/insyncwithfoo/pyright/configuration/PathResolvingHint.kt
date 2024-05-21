@@ -37,8 +37,7 @@ internal data class Hint(
 internal fun emptyPathHint() = Hint.info(message("configurations.hint.noPathSpecified"))
 
 
-internal fun invalidPathHint() =
-    Hint.error(message("configurations.hint.invalidPath"))
+internal fun invalidPathHint() = Hint.error(message("configurations.hint.invalidPath"))
 
 
 internal fun executablePathResolvingHint(path: Path) = when {

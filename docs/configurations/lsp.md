@@ -36,11 +36,11 @@ Default: `true`
 
 === "Enabled"
 
-    ![](../assets/lsp-configurations-demo-server-hover-support-enabled.png)
+    ![](../assets/lsp-configurations-demo-hover-support-enabled.png)
 
 === "Disabled"
 
-    ![](../assets/lsp-configurations-demo-server-hover-support-disabled.png)
+    ![](../assets/lsp-configurations-demo-hover-support-disabled.png)
 
 
 ### Completion support
@@ -51,11 +51,11 @@ Default: `false`
 
 === "Enabled"
 
-    ![](../assets/lsp-configurations-demo-server-completion-support-enabled.png)
+    ![](../assets/lsp-configurations-demo-completion-support-enabled.png)
 
 === "Disabled"
 
-    ![](../assets/lsp-configurations-demo-server-completion-support-disabled.png)
+    ![](../assets/lsp-configurations-demo-completion-support-disabled.png)
 
 
 ### Go-to-definition support
@@ -111,11 +111,11 @@ Default: `true`
 
 === "Enabled"
 
-    ![](../assets/lsp-configurations-demo-server-tagged-hints-enabled.png)
+    ![](../assets/lsp-configurations-demo-tagged-hints-enabled.png)
 
 === "Disabled"
 
-    ![](../assets/lsp-configurations-demo-server-tagged-hints-disabled.png)
+    ![](../assets/lsp-configurations-demo-tagged-hints-disabled.png)
 
 
 ### Auto-import completions
@@ -130,20 +130,20 @@ Default: `true`
 
 === "Auto-import completions enabled"
 
-    ![](../assets/lsp-configurations-demo-server-completion-support-enabled.png)
+    ![](../assets/lsp-configurations-demo-completion-support-enabled.png)
 
 === "Auto-import completions disabled"
 
-    ![](../assets/lsp-configurations-demo-server-auto-import-completions-disabled.png)
+    ![](../assets/lsp-configurations-demo-auto-import-completions-disabled.png)
 
 === "Completion support disabled"
 
-    ![](../assets/lsp-configurations-demo-server-completion-support-disabled.png)
+    ![](../assets/lsp-configurations-demo-completion-support-disabled.png)
 
 
 ### Log level
 
-!!! warning
+!!! note
 
     Language server logs are not recorded in `idea.log` by default.
     You need to manually [enable it][3].
