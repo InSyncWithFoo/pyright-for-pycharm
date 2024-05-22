@@ -28,21 +28,6 @@ These settings are not applied retroactively;
 you need to [restart the server][1] to see the effect.
 
 
-### Hover support
-
-Uncheck this option to disable hover support.
-
-Default: `true`
-
-=== "Enabled"
-
-    ![](../assets/lsp-configurations-demo-hover-support-enabled.png)
-
-=== "Disabled"
-
-    ![](../assets/lsp-configurations-demo-hover-support-disabled.png)
-
-
 ### Completion support
 
 Check this option to enable completion support.
@@ -56,6 +41,21 @@ Default: `false`
 === "Disabled"
 
     ![](../assets/lsp-configurations-demo-completion-support-disabled.png)
+
+
+### Diagnostics support
+
+Uncheck this option to disable diagnostics support.
+
+Default: `true`
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-diagnostics-support-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-diagnostics-support-disabled.png)
 
 
 ### Go-to-definition support
@@ -79,6 +79,21 @@ Default: `false`
     See [this issue][2] for more information.
 
 
+### Hover support
+
+Uncheck this option to disable hover support.
+
+Default: `true`
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-hover-support-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-hover-support-disabled.png)
+
+
 ### Autocomplete parentheses
 
 Check this option to also automatically insert parentheses
@@ -97,25 +112,6 @@ Default: `false`
 === "Enabled"
 
     ![](../assets/lsp-configurations-demo-autocomplete-parentheses-enabled.png)
-
-
-### Tagged hints
-
-Uncheck this option to prevent the language server from emitting
-"Unnecessary" and "Deprecated" hints, which are visualized in the IDE
-as faded-out and strikethrough text, correspondingly.
-
-This corresponds to the `pyright.disableTaggedHints` setting.
-
-Default: `true`
-
-=== "Enabled"
-
-    ![](../assets/lsp-configurations-demo-tagged-hints-enabled.png)
-
-=== "Disabled"
-
-    ![](../assets/lsp-configurations-demo-tagged-hints-disabled.png)
 
 
 ### Auto-import completions
@@ -153,6 +149,25 @@ Modify this option to make Pyright emit more or less [log messages][4].
 This corresponds to the `python.analysis.logLevel` setting.
 
 Default: <i>Information</i>
+
+
+### Tagged hints
+
+Uncheck this option to prevent the language server from emitting
+"Unnecessary" and "Deprecated" hints, which are visualized in the IDE
+as faded-out and strikethrough text, correspondingly.
+
+This corresponds to the `pyright.disableTaggedHints` setting.
+
+Default: `true`
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-tagged-hints-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-tagged-hints-disabled.png)
 
 
 ### Workspace folders

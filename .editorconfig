@@ -117,7 +117,7 @@ ij_kotlin_wrap_first_method_in_call_chain = false
 indent_size = 2
 indent_style = space
 
-[docs/*.md]
+[docs/**.md]
 indent_size = 4
 
 [*.py]
