@@ -15,11 +15,11 @@ The effect of doing so is different for each plugin.
 
 * For CLI:
     * The executable will not be executed.
-    * The files will not be automatically saved.
+    * Files will not be automatically saved.
 
 * For LSP:
-    * New server(s) will not be started.
-    * Existing server(s) will simply stop on [restart][2].
+    * New sessions will not be started.
+    * Existing sessions will stop on [restart][2].
 
 
   [1]: ../configurations/common.md#highlight-severity-levels

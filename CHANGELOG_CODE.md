@@ -17,7 +17,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * The plugin now supports 2024.2. (18897c60)
 * Global option "Minimum severity level" is added. (74267a2c)
 * [Documentation for LSP-specific settings][40-1] is updated.
-  (9dbfbb86, b3ffed47, HEAD)
+  (9dbfbb86, b3ffed47, 69406c38, HEAD)
 
 ### Changed
 

@@ -25,7 +25,23 @@ Default: `false`
 ## Language server settings
 
 These settings are not applied retroactively;
-you need to [restart the server][1] to see the effect.
+the server needs to be [restarted][1] for them to have effects.
+
+
+### Auto-restart server
+
+Check this option to automatically restart
+the language server on configuration change.
+
+[Highlight severity level settings][2]
+will not trigger this behaviour.
+
+Default: `false`
+
+!!! note
+
+    The server might be restarted more than once if
+    both configuration panels are modified.
 
 
 ### Completion support
@@ -76,7 +92,7 @@ Default: `false`
     The difference between the set of all tokens which Pyright support
     and that of PyCharm is currently unknown.
 
-    See [this issue][2] for more information.
+    See [this issue][3] for more information.
 
 
 ### Hover support
@@ -142,9 +158,9 @@ Default: `true`
 !!! note
 
     Language server logs are not recorded in `idea.log` by default.
-    You need to manually [enable it][3].
+    You need to manually [enable it][4].
 
-Modify this option to make Pyright emit more or less [log messages][4].
+Modify this option to make Pyright emit more or less [log messages][5].
 
 This corresponds to the `python.analysis.logLevel` setting.
 
@@ -173,7 +189,7 @@ Default: `true`
 ### Workspace folders
 
 The folders defined by this option will be passed
-to the language server as "[workspace folders][5]".
+to the language server as "[workspace folders][6]".
 Pyright will only recognize `pyproject.toml`/`pyrightconfig.json` files
 which are direct children of these folders.
 
@@ -183,14 +199,15 @@ Possible choices:
   Top-level directories which contain files related to the project,
   often only one (project root).
 * <i>Source roots</i>:
-  Directories marked as "[source roots][6]".
+  Directories marked as "[source roots][7]".
 
 Default: <i>Project base directories</i>
 
 
   [1]: ../how-to.md#how-to-restart-the-language-server
-  [2]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29
-  [3]: ../how-to.md#how-to-enable-language-server-logging
-  [4]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
-  [5]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
-  [6]: https://www.jetbrains.com/help/pycharm/content-root.html
+  [2]: ./common.md#highlight-severity-levels
+  [3]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29
+  [4]: ../how-to.md#how-to-enable-language-server-logging
+  [5]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
+  [6]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
+  [7]: https://www.jetbrains.com/help/pycharm/content-root.html
