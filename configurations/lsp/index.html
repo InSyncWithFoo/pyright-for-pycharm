@@ -454,6 +454,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#auto-restart-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-restart server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#completion-support" class="md-nav__link">
     <span class="md-ellipsis">
       Completion support
@@ -717,6 +726,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#auto-restart-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-restart server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#completion-support" class="md-nav__link">
     <span class="md-ellipsis">
       Completion support
@@ -852,7 +870,18 @@ you need to make an edit to see the effect.</p>
 </div>
 <h2 id="language-server-settings">Language server settings<a class="headerlink" href="#language-server-settings" title="Permanent link">#</a></h2>
 <p>These settings are not applied retroactively;
-you need to <a href="../../how-to/#how-to-restart-the-language-server">restart the server</a> to see the effect.</p>
+the server needs to be <a href="../../how-to/#how-to-restart-the-language-server">restarted</a> for them to have effects.</p>
+<h3 id="auto-restart-server">Auto-restart server<a class="headerlink" href="#auto-restart-server" title="Permanent link">#</a></h3>
+<p>Check this option to automatically restart
+the language server on configuration change.</p>
+<p><a href="../common/#highlight-severity-levels">Highlight severity level settings</a>
+will not trigger this behaviour.</p>
+<p>Default: <code>false</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The server might be restarted more than once if
+both configuration panels are modified.</p>
+</div>
 <h3 id="completion-support">Completion support<a class="headerlink" href="#completion-support" title="Permanent link">#</a></h3>
 <p>Check this option to enable completion support.</p>
 <p>Default: <code>false</code></p>
