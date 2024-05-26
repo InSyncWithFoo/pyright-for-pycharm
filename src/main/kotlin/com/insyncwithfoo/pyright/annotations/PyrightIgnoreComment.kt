@@ -1,12 +1,12 @@
 package com.insyncwithfoo.pyright.annotations
 
 
-// From https://github.com/microsoft/pyright/blob/496e50f6/packages/pyright-internal/src/parser/tokenizer.ts#L1302
+// From https://github.com/microsoft/pyright/blob/a4d165e/packages/pyright-internal/src/parser/tokenizer.ts#L1302
 private val pyrightIgnoreSyntax = """(?x)
     (?<prefix>\#\s*pyright:\s*ignore)
     (?:
         (?<padding>\s*)
-        (?<codeList>\[[\s*\w-,]*])
+        (?<codeList>\[[\s\w-,]*])
     )?
 """.toRegex()
 
@@ -42,9 +42,10 @@ internal class PyrightIgnoreComment(val codes: Set<PyrightErrorCode>) {
     companion object {
         
         fun parse(codeList: String): PyrightIgnoreComment {
-            val codes = codeList.split(",").mapNotNullTo(mutableSetOf()) { code ->
-                code.trim().takeIf { it.isNotEmpty() }
-            }
+            val codes = codeList.split(",")
+                .mapNotNullTo(mutableSetOf()) { code ->
+                    code.trim().takeIf { it.isNotEmpty() }
+                }
             
             return PyrightIgnoreComment(codes)
         }

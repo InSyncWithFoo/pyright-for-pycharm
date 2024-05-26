@@ -17,7 +17,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * The plugin now supports 2024.2. (18897c60)
 * Global option "Minimum severity level" is added. (74267a2c)
 * [Documentation for LSP-specific settings][40-1] is updated.
-  (9dbfbb86, b3ffed47, 69406c38, HEAD)
+  (9dbfbb86, b3ffed47, 69406c38, ebea0b86)
 
 ### Changed
 
@@ -25,12 +25,14 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [The Qodana Gradle plugin][40-3] and its corresponding action
   [@JetBrains/qodana-action][40-4] are updated to 2024.1.5.
   (7d2278a5)
+* [Kotlin JVM plugin][40-5] is updated to 2.0.0. (99770f0e)
 
 
-  [40-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/9dbfbb86/docs/configurations/lsp.md
+  [40-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/ebea0b86/docs/configurations/lsp.md
   [40-2]: https://github.com/Kotlin/kotlinx-kover
   [40-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [40-4]: https://github.com/JetBrains/qodana-action
+  [40-5]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
 
 
 ## [0.3.1] - 2024-05-16
