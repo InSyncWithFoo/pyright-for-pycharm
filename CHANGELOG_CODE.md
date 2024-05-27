@@ -12,6 +12,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.4.0] - 2024-05-27
+
 ### Added
 
 * The plugin now supports 2024.2. (18897c60)
@@ -27,7 +32,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   (7d2278a5)
 * [Kotlin JVM plugin][40-5] is updated to 2.0.0. (99770f0e)
 * [`HintIcon.toString()`][40-6] now returns an empty string.
-  This is due to `ExpUiIcons` being deprecated. (HEAD)
+  This is due to `ExpUiIcons` being deprecated. (96465451)
 
 
   [40-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/ebea0b86/docs/configurations/lsp.md
@@ -35,7 +40,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [40-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [40-4]: https://github.com/JetBrains/qodana-action
   [40-5]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
-  [40-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
+  [40-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/96465451/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
 
 
 ## [0.3.1] - 2024-05-16
@@ -333,7 +338,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..HEAD
+  [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
   [0.3.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..v0.3.1
   [0.3.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.2.0..v0.3.0
   [0.2.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.1.0..v0.2.0
