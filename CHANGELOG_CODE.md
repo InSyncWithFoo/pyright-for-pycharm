@@ -26,6 +26,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [@JetBrains/qodana-action][40-4] are updated to 2024.1.5.
   (7d2278a5)
 * [Kotlin JVM plugin][40-5] is updated to 2.0.0. (99770f0e)
+* [`HintIcon.toString()`][40-6] now returns an empty string.
+  This is due to `ExpUiIcons` being deprecated. (HEAD)
 
 
   [40-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/ebea0b86/docs/configurations/lsp.md
@@ -33,6 +35,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [40-3]: https://plugins.gradle.org/plugin/org.jetbrains.qodana
   [40-4]: https://github.com/JetBrains/qodana-action
   [40-5]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
+  [40-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/configuration/PathResolvingHint.kt
 
 
 ## [0.3.1] - 2024-05-16

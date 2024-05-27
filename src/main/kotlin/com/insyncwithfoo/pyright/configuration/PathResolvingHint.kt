@@ -4,7 +4,6 @@ import com.insyncwithfoo.pyright.containsConfigurationFile
 import com.insyncwithfoo.pyright.isProbablyPyrightExecutable
 import com.insyncwithfoo.pyright.isPyrightConfigurationFile
 import com.insyncwithfoo.pyright.message
-import com.intellij.icons.ExpUiIcons
 import java.nio.file.Path
 import kotlin.io.path.exists
 import kotlin.io.path.isDirectory
@@ -13,7 +12,8 @@ import kotlin.io.path.isDirectory
 internal enum class HintIcon {
     Success, Info, Warning, Error;
     
-    override fun toString() = """<icon src="${ExpUiIcons.Status::class.qualifiedName}.$name">"""
+    // TODO: Re-add icons
+    override fun toString() = ""
 }
 
 

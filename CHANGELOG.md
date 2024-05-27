@@ -15,6 +15,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 * Diagnostics can now be limited by severity levels.
 
+### Changed
+
+* UI components are slightly changed.
+
 
 ## [0.3.1] - 2024-05-16
 
