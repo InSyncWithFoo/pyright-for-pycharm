@@ -186,10 +186,36 @@ Default: `true`
     ![](../assets/lsp-configurations-demo-tagged-hints-disabled.png)
 
 
+### Targeted file extensions
+
+A file whose extension is included in this list will be recognized
+as suitable for the language server to run on.
+This is useful if you use a server
+whose support range is wider than that of Pyright.
+
+Each extension should be written on one line when the editor is expanded.
+Otherwise, use the pipe character (`|`) to separate them.
+
+Leading and trailing whitespace are stripped away.
+Blank extensions are thus considered invalid.
+
+Default: `py`, `pyi`
+
+!!! note
+
+    Presumably, due to a limitation/bug of IntelliJ,
+    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][6])
+    cannot be serialized correctly into setting files
+    and therefore will not persist between IDE sessions.
+
+    Testing shows that this affects characters
+    whose codepoints are greater than U+FFFD.
+
+
 ### Workspace folders
 
 The folders defined by this option will be passed
-to the language server as "[workspace folders][6]".
+to the language server as "[workspace folders][7]".
 Pyright will only recognize `pyproject.toml`/`pyrightconfig.json` files
 which are direct children of these folders.
 
@@ -199,7 +225,7 @@ Possible choices:
   Top-level directories which contain files related to the project,
   often only one (project root).
 * <i>Source roots</i>:
-  Directories marked as "[source roots][7]".
+  Directories marked as "[source roots][8]".
 
 Default: <i>Project base directories</i>
 
@@ -209,5 +235,6 @@ Default: <i>Project base directories</i>
   [3]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29
   [4]: ../how-to.md#how-to-enable-language-server-logging
   [5]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
-  [6]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
-  [7]: https://www.jetbrains.com/help/pycharm/content-root.html
+  [6]: https://en.wikipedia.org/wiki/Mojo_(programming_language)
+  [7]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
+  [8]: https://www.jetbrains.com/help/pycharm/content-root.html
