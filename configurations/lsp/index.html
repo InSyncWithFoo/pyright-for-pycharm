@@ -535,6 +535,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#targeted-file-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Targeted file extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#workspace-folders" class="md-nav__link">
     <span class="md-ellipsis">
       Workspace folders
@@ -807,6 +816,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#targeted-file-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Targeted file extensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#workspace-folders" class="md-nav__link">
     <span class="md-ellipsis">
       Workspace folders
@@ -995,6 +1013,25 @@ as faded-out and strikethrough text, correspondingly.</p>
 <p><img alt="" src="../../assets/lsp-configurations-demo-tagged-hints-disabled.png" /></p>
 </div>
 </div>
+</div>
+<h3 id="targeted-file-extensions">Targeted file extensions<a class="headerlink" href="#targeted-file-extensions" title="Permanent link">#</a></h3>
+<p>A file whose extension is included in this list will be recognized
+as suitable for the language server to run on.
+This is useful if you use a server
+whose support range is wider than that of Pyright.</p>
+<p>Each extension should be written on one line when the editor is expanded.
+Otherwise, use the pipe character (<code>|</code>) to separate them.</p>
+<p>Leading and trailing whitespace are stripped away.
+Blank extensions are thus considered invalid.</p>
+<p>Default: <code>py</code>, <code>pyi</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Presumably, due to a limitation/bug of IntelliJ,
+characters like "🔥" (U+1F525 Fire, the extension for <a href="https://en.wikipedia.org/wiki/Mojo_(programming_language)">Mojo</a>)
+cannot be serialized correctly into setting files
+and therefore will not persist between IDE sessions.</p>
+<p>Testing shows that this affects characters
+whose codepoints are greater than U+FFFD.</p>
 </div>
 <h3 id="workspace-folders">Workspace folders<a class="headerlink" href="#workspace-folders" title="Permanent link">#</a></h3>
 <p>The folders defined by this option will be passed
