@@ -1,30 +1,122 @@
 package com.insyncwithfoo.pyright.runner
 
 import com.insyncwithfoo.pyright.PyrightOutput
+import com.insyncwithfoo.pyright.addSimpleExpiringAction
+import com.insyncwithfoo.pyright.configuration.AllConfigurations
+import com.insyncwithfoo.pyright.configuration.PyrightConfigurable
+import com.insyncwithfoo.pyright.createErrorNotification
+import com.insyncwithfoo.pyright.fileEditorManager
+import com.insyncwithfoo.pyright.message
+import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.intellij.execution.RunCanceledByUserException
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.components.BaseState
 import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.fileEditor.OpenFileDescriptor
+import com.intellij.openapi.fileTypes.FileTypeManager
+import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
+import com.intellij.testFramework.LightVirtualFile
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import com.insyncwithfoo.pyright.configuration.application.Configurable as ApplicationConfigurable
+import com.insyncwithfoo.pyright.configuration.project.Configurable as ProjectConfigurable
+
+
+private class OpenTemporaryFileAction(
+    text: String,
+    private val fileName: String,
+    private val content: String
+) : NotificationAction(text) {
+    
+    override fun actionPerformed(event: AnActionEvent, notification: Notification) {
+        val project = event.project!!
+        val fileType = FileTypeManager.getInstance().getFileTypeByFileName(fileName)
+        
+        val openFileDescriptor = OpenFileDescriptor(
+            project,
+            LightVirtualFile(fileName, fileType, content)
+        )
+        
+        project.fileEditorManager.openEditor(openFileDescriptor, true)
+    }
+    
+}
 
 
 @Serializable
-private data class ExceptionInfo(
+private data class PyrightExceptionInfo(
     val type: String,
     val stdout: String,
     val stderr: String,
     val message: String
-)
+) {
+    override fun toString() = Json.encodeToString(this)
+}
 
 
-private fun ExceptionInfo(exception: PyrightException): ExceptionInfo {
-    return ExceptionInfo(
-        exception::class.simpleName!!,
-        exception.stdout,
-        exception.stderr,
-        exception.message!!
+private val PyrightException.info: PyrightExceptionInfo
+    get() = PyrightExceptionInfo(
+        type = this::class.simpleName!!,
+        stdout = stdout,
+        stderr = stderr,
+        message = message!!
     )
+
+
+private fun PyrightCommand.toJson() = Json.encodeToString(this)
+
+
+private val AllConfigurations.configurableClass: Class<out PyrightConfigurable<out BaseState>>
+    get() = when {
+        alwaysUseGlobal -> ProjectConfigurable::class.java
+        projectExecutable != null -> ProjectConfigurable::class.java
+        else -> ApplicationConfigurable::class.java
+    }
+
+
+private fun Notification.addOpenSettingsAction(project: Project) {
+    addSimpleExpiringAction(message("notifications.error.action.openSettings")) {
+        val configurations = project.pyrightConfigurations
+        val configurableClass = configurations.configurableClass
+        
+        ShowSettingsUtil.getInstance().showSettingsDialog(project, configurableClass)
+    }
+}
+
+
+private fun Notification.addOpenTemporaryFileAction(text: String, fileName: String, content: String) {
+    addAction(OpenTemporaryFileAction(text, fileName, content))
+}
+
+
+private fun Notifier.notifyPyrightException(exception: PyrightException) =
+    notify { group, _ -> exception.createNotification(group) }
+
+
+private fun Notifier.notifySerializationException(output: String) = notify { group, project ->
+    val notification = group.createErrorNotification(
+        title = message("notifications.error.invalidOutput.title"),
+        content = when {
+            output.isBlank() -> message("notifications.error.invalidOutput.body.blank")
+            else -> message("notifications.error.invalidOutput.body")
+        }
+    )
+    
+    if (output.isNotBlank()) {
+        notification.addOpenTemporaryFileAction(
+            text = message(key = "notifications.error.action.seeOutputInEditor"),
+            fileName = "output.txt",
+            content = output
+        )
+    }
+    notification.addOpenSettingsAction(project)
+    
+    notification
 }
 
 
@@ -33,28 +125,27 @@ internal class PyrightRunner(project: Project) {
     private val notifier = Notifier(project)
     
     fun run(command: PyrightCommand): PyrightOutput? {
-        val serializedCommand = Json.encodeToString(command)
-        LOGGER.info("Running: $serializedCommand")
+        LOGGER.info("Running: ${command.toJson()}")
         
+        val output = command.getOutputGracefully() ?: return null
+        val parsed = parseOutputIfPossible(output) ?: return null
+        
+        return parsed.also { logMinified(it) }
+    }
+    
+    private fun PyrightCommand.getOutputGracefully(): String? {
         return try {
-            runAndLogOutput(command)
+            this.run()
         } catch (_: RunCanceledByUserException) {
             null
         } catch (exception: PyrightException) {
             report(exception)
             
             when (exception) {
-                is InvalidConfigurationsException -> parseOutput(exception.stdout)
+                is InvalidConfigurationsException -> exception.stdout
                 is FatalException, is InvalidParametersException -> null
             }
         }
-    }
-    
-    private fun runAndLogOutput(command: PyrightCommand): PyrightOutput {
-        val output = command.run()
-        val parsed = parseOutput(output).also { logMinified(it) }
-        
-        return parsed
     }
     
     private fun logMinified(parsedOutput: PyrightOutput) {
@@ -62,16 +153,29 @@ internal class PyrightRunner(project: Project) {
         LOGGER.info("Output: $minified")
     }
     
-    private fun parseOutput(response: String) =
-        Json.decodeFromString<PyrightOutput>(response)
+    private fun parseOutputIfPossible(rawOutput: String): PyrightOutput? {
+        return try {
+            parseOutput(rawOutput)
+        } catch (exception: SerializationException) {
+            report(exception, rawOutput)
+            null
+        }
+    }
+    
+    private fun parseOutput(rawOutput: String) =
+        Json.decodeFromString<PyrightOutput>(rawOutput)
     
     private fun report(exception: PyrightException) {
-        val exceptionInfo = Json.encodeToString(ExceptionInfo(exception))
-        
         LOGGER.warn(exception)
-        LOGGER.info("Exception properties: $exceptionInfo")
+        LOGGER.info("Exception properties: ${exception.info}")
         
-        notifier.notify(exception)
+        notifier.notifyPyrightException(exception)
+    }
+    
+    private fun report(exception: SerializationException, rawOutput: String) {
+        LOGGER.warn(exception)
+        
+        notifier.notifySerializationException(rawOutput)
     }
     
     companion object {

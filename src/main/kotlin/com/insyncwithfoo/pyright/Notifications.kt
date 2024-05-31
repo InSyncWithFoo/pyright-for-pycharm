@@ -4,6 +4,7 @@ import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction.createSimpleExpiring
 import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.notification.NotificationsManager
 import com.intellij.openapi.project.Project
 
@@ -38,3 +39,7 @@ internal val Project.openingPyrightNotifications: List<Notification>
     get() = NotificationsManager.getNotificationsManager()
         .getNotificationsOfType(Notification::class.java, this)
         .filter { it.groupId == ID }
+
+
+internal fun NotificationGroup.createErrorNotification(title: String, content: String) =
+    createNotification(title, content, NotificationType.ERROR)
