@@ -47,6 +47,11 @@ The executable is used as-is with no additional checks,
 so CLI/LSP will still work even if, for example,
 it's a wrapper script that outputs diagnostics in the expected format.
 
+!!! tip
+
+    For the best experience, always use or maintain compatibility
+    with the latest version of Pyright.
+
 
 ### Always use global
 

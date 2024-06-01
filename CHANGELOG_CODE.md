@@ -14,9 +14,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 * [Documentation for LSP-specific settings][50-1] is added.
   (34b7c498)
+* [`logging.md`][50-2] is added. (HEAD)
 
 
   [50-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/34b7c498/docs/configurations/lsp.md
+  [50-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/logging.md
 
 
 ## [0.4.0] - 2024-05-27
