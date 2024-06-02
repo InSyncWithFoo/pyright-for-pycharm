@@ -1,5 +1,6 @@
 package com.insyncwithfoo.pyright.annotations
 
+import com.insyncwithfoo.pyright.message
 import com.intellij.codeInsight.intention.FileModifier.SafeFieldForPreview
 import com.intellij.codeInspection.LocalQuickFix
 import com.intellij.codeInspection.ProblemDescriptor
@@ -72,9 +73,12 @@ internal class SuppressQuickFix(
             return padding + newComment.codeList
         }
     
-    override fun getName() = "Suppress ${code ?: "this Pyright diagnostic"}"
+    override fun getName() = when {
+        code != null -> message("quickFixes.suppress.name", code)
+        else -> message("quickFixes.suppress.name.noCode")
+    }
     
-    override fun getFamilyName() = name
+    override fun getFamilyName() = message("quickFixes.suppress.familyName")
     
     override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
         val psiFile = descriptor.psiElement.containingFile

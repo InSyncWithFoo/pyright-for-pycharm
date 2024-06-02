@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.runner
 
 import com.insyncwithfoo.pyright.message
+import com.insyncwithfoo.pyright.somethingIsWrong
 import com.intellij.notification.BrowseNotificationAction
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
@@ -9,7 +10,7 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.fileEditor.OpenFileDescriptor
-import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem
 
 
@@ -20,21 +21,20 @@ private fun NotificationGroup.createErrorNotification(title: String, content: St
 private class OpenFileAction(text: String, private val path: String) : NotificationAction(text) {
     
     override fun actionPerformed(event: AnActionEvent, notification: Notification) {
-        val project = event.project ?: return somethingIsWrong()
+        val project = event.project ?: return cannotOpenFile()
         val fileEditorManager = FileEditorManager.getInstance(project)
         
         val fileSystem = LocalFileSystem.getInstance()
-        val virtualFile = fileSystem.findFileByPath(path) ?: return somethingIsWrong()
+        val virtualFile = fileSystem.findFileByPath(path) ?: return cannotOpenFile(project)
         
         fileEditorManager.openFileEditor(OpenFileDescriptor(project, virtualFile), true)
     }
     
-    private fun somethingIsWrong() {
+    private fun cannotOpenFile(project: Project? = null) {
         val text = message("notifications.error.action.openConfigurationFile.error.body", path)
-        @Suppress("DialogTitleCapitalization")
         val title = message("notifications.error.action.openConfigurationFile.error.title")
         
-        Messages.showErrorDialog(text, title)
+        project.somethingIsWrong(text, title)
     }
     
 }

@@ -5,6 +5,7 @@ import com.insyncwithfoo.pyright.configuration.ConfigurationService
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.roots.ProjectRootManager
+import com.intellij.openapi.ui.Messages
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import java.nio.file.Path
 import kotlin.io.path.listDirectoryEntries
@@ -44,4 +45,9 @@ internal fun Project.findPyrightExecutable(): Path? {
     val children = sdkDirectory.listDirectoryEntries()
     
     return children.find { it.isProbablyPyrightExecutable }
+}
+
+
+internal fun Project?.somethingIsWrong(message: String, title: String) {
+    Messages.showErrorDialog(this, message, title)
 }

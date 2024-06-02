@@ -27,9 +27,6 @@ import com.jetbrains.python.PythonLanguage
 import com.jetbrains.python.psi.PyFile
 
 
-private typealias Message = String
-
-
 private fun AnnotationBuilder.registerFix(createProblemDescriptor: () -> ProblemDescriptor?) {
     val problemDescriptor = createProblemDescriptor() ?: return
     val fix = problemDescriptor.fixes?.firstOrNull() as LocalQuickFix? ?: return
@@ -50,10 +47,9 @@ private fun HighlightSeverity.toProblemHighlightType() =
 private fun InspectionManager.createProblemDescriptor(
     psiElement: PsiElement,
     fix: LocalQuickFix,
-    highlightType: ProblemHighlightType,
-    onTheFly: Boolean
+    highlightType: ProblemHighlightType
 ) =
-    createProblemDescriptor(psiElement, fix.familyName, fix, highlightType, onTheFly)
+    createProblemDescriptor(psiElement, fix.familyName, fix, highlightType, true)
 
 
 private val Project.inspectionManager: InspectionManager
@@ -107,17 +103,7 @@ private val PyrightDiagnostic.isUnsuppressable: Boolean
     get() {
         val unsuppressableErrorCodes = listOf("reportUnnecessaryTypeIgnoreComment")
         
-        return rule in unsuppressableErrorCodes || message.isAboutUnnecessaryIgnoreComment
-    }
-
-
-private val Message.isAboutUnnecessaryIgnoreComment: Boolean
-    get() {
-        // In 1.1.362 and lower reportUnnecessaryTypeIgnoreComment is unmarked.
-        // https://github.com/microsoft/pyright/issues/7883
-        val reportUnnecessaryTypeIgnoreCommentMessage = """(?i)unnecessary.*?pyright:\s*ignore""".toRegex()
-        
-        return this.matches(reportUnnecessaryTypeIgnoreCommentMessage)
+        return rule in unsuppressableErrorCodes
     }
 
 
@@ -196,12 +182,7 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
                     .toHighlightSeverity(inspection)
                     .toProblemHighlightType()
                 
-                project.inspectionManager.createProblemDescriptor(
-                    psiElement = element,
-                    fix = fix,
-                    highlightType = problemHighlightType,
-                    onTheFly = true
-                )
+                project.inspectionManager.createProblemDescriptor(element, fix, problemHighlightType)
             }
         }
     }

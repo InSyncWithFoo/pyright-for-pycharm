@@ -12,13 +12,20 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+### Added
+
 * [Documentation for LSP-specific settings][50-1] is added.
   (34b7c498)
-* [`logging.md`][50-2] is added. (HEAD)
+* [`logging.md`][50-2] is added. (7d02d73b)
+
+### Fixed
+
+* [`SuppressQuickFix`][50-3] names are now stored as messages. (HEAD)
 
 
   [50-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/34b7c498/docs/configurations/lsp.md
-  [50-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs/logging.md
+  [50-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7d02d73b/docs/logging.md
+  [50-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/annotations/SuppressQuickFix.kt
 
 
 ## [0.4.0] - 2024-05-27
