@@ -8,10 +8,7 @@ import com.insyncwithfoo.pyright.sdkPath
 import com.intellij.execution.RunCanceledByUserException
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.process.CapturingProcessHandler
-import com.intellij.execution.process.ProcessOutput
-import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiFile
-import com.jetbrains.python.packaging.IndicatedProcessOutputListener
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -21,6 +18,10 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.nio.file.Path
 import kotlin.io.path.exists
+
+
+private val GeneralCommandLine.handler: CapturingProcessHandler
+    get() = CapturingProcessHandler(this)
 
 
 private fun String.toPathIfItExists(base: String = "") =
@@ -64,53 +65,14 @@ internal data class PyrightCommand(
             target.toString()
         )
     
-    private val handler: CapturingProcessHandler
-        get() = CapturingProcessHandler(getCommandLine())
-    
-    internal val extraArgumentsMap: Map<String, String?>
-        get() {
-            val map = mutableMapOf<String, String?>()
-            var index = 0
-            
-            while (index < extraArguments.size) {
-                val element = extraArguments[index]
-                val nextElement = extraArguments.getOrNull(index + 1)
-                
-                if (nextElement?.startsWith("--") == true) {
-                    map[element] = null
-                } else {
-                    map[element] = nextElement
-                    index++
-                }
-                
-                index++
-            }
-            
-            return map
-        }
-    
-    
-    private fun getCommandLine() =
-        GeneralCommandLine(fragments).apply {
+    private val commandLine: GeneralCommandLine
+        get() = GeneralCommandLine(fragments).apply {
             withWorkDirectory(projectPath)
             withCharset(Charsets.UTF_8)
         }
     
-    private fun runWithIndicator(): ProcessOutput {
-        val indicator = ProgressManager.getInstance().progressIndicator
-        
-        return with(handler) {
-            if (indicator != null) {
-                addProcessListener(IndicatedProcessOutputListener(indicator))
-                runProcessWithProgressIndicator(indicator)
-            } else {
-                runProcess()
-            }
-        }
-    }
-    
     fun run(): String {
-        val processOutput = runWithIndicator()
+        val processOutput = commandLine.handler.runProcess()
         
         return processOutput.run {
             if (isCancelled) {

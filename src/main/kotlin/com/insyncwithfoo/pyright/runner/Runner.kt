@@ -18,13 +18,19 @@ import com.intellij.openapi.fileEditor.OpenFileDescriptor
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
+import com.intellij.platform.ide.progress.withBackgroundProgress
 import com.intellij.testFramework.LightVirtualFile
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlin.io.path.name
 import com.insyncwithfoo.pyright.configuration.application.Configurable as ApplicationConfigurable
 import com.insyncwithfoo.pyright.configuration.project.Configurable as ProjectConfigurable
+
+
+private typealias PyrightConfigurableClass = PyrightConfigurable<out BaseState>
 
 
 private class OpenTemporaryFileAction(
@@ -71,20 +77,24 @@ private val PyrightException.info: PyrightExceptionInfo
 private fun PyrightCommand.toJson() = Json.encodeToString(this)
 
 
-private val AllConfigurations.configurableClass: Class<out PyrightConfigurable<out BaseState>>
+private val AllConfigurations.configurableClassWithExecutable: Class<out PyrightConfigurableClass>
     get() = when {
         alwaysUseGlobal -> ProjectConfigurable::class.java
         projectExecutable != null -> ProjectConfigurable::class.java
         else -> ApplicationConfigurable::class.java
     }
 
+private fun <T : PyrightConfigurableClass> Project.showSettingsDialog(toSelect: Class<T>) {
+    ShowSettingsUtil.getInstance().showSettingsDialog(this, toSelect)
+}
+
 
 private fun Notification.addOpenSettingsAction(project: Project) {
     addSimpleExpiringAction(message("notifications.error.action.openSettings")) {
         val configurations = project.pyrightConfigurations
-        val configurableClass = configurations.configurableClass
+        val configurableClass = configurations.configurableClassWithExecutable
         
-        ShowSettingsUtil.getInstance().showSettingsDialog(project, configurableClass)
+        project.showSettingsDialog(configurableClass)
     }
 }
 
@@ -120,17 +130,26 @@ private fun Notifier.notifySerializationException(output: String) = notify { gro
 }
 
 
-internal class PyrightRunner(project: Project) {
+internal class PyrightRunner(private val project: Project) {
     
     private val notifier = Notifier(project)
     
     fun run(command: PyrightCommand): PyrightOutput? {
         LOGGER.info("Running: ${command.toJson()}")
         
-        val output = command.getOutputGracefully() ?: return null
+        val output = runWithIndicator(command) ?: return null
         val parsed = parseOutputIfPossible(output) ?: return null
         
         return parsed.also { logMinified(it) }
+    }
+    
+    private fun runWithIndicator(command: PyrightCommand) = runBlocking {
+        val title = message("progress.runOnFile.title", command.target.name)
+        
+        // The process is non-cancellable due to JetBrains-knows-what
+        withBackgroundProgress(project, title, cancellable = false) {
+            command.getOutputGracefully()
+        }
     }
     
     private fun PyrightCommand.getOutputGracefully(): String? {
