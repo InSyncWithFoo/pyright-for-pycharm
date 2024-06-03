@@ -5,9 +5,9 @@ import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.sdkPath
-import com.intellij.execution.RunCanceledByUserException
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.process.CapturingProcessHandler
+import com.intellij.execution.process.ProcessOutput
 import com.intellij.psi.PsiFile
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -24,11 +24,7 @@ private val GeneralCommandLine.handler: CapturingProcessHandler
     get() = CapturingProcessHandler(this)
 
 
-private fun String.toPathIfItExists(base: String = "") =
-    this.toPathIfItExists(Path.of(base))
-
-
-private fun String.toPathIfItExists(base: Path) =
+private fun String.toPathIfItExists(base: Path = Path.of("")) =
     Path.of(this)
         .let { base.resolve(it).normalize() }
         .takeIf { it.exists() }
@@ -71,22 +67,8 @@ internal data class PyrightCommand(
             withCharset(Charsets.UTF_8)
         }
     
-    fun run(): String {
-        val processOutput = commandLine.handler.runProcess()
-        
-        return processOutput.run {
-            if (isCancelled) {
-                throw RunCanceledByUserException()
-            }
-            
-            when (PyrightExitCode.fromInt(exitCode)) {
-                PyrightExitCode.FATAL -> throw FatalException(stdout, stderr)
-                PyrightExitCode.INVALID_CONFIG -> throw InvalidConfigurationsException(stdout, stderr)
-                PyrightExitCode.INVALID_PARAMETERS -> throw InvalidParametersException(stdout, stderr)
-                else -> stdout
-            }
-        }
-    }
+    fun run(timeoutInMilliseconds: Int): ProcessOutput =
+        commandLine.handler.runProcess(timeoutInMilliseconds)
     
     companion object {
         

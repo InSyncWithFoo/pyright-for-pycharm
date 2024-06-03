@@ -12,10 +12,12 @@ import com.insyncwithfoo.pyright.configuration.secondColumnPathInput
 import com.insyncwithfoo.pyright.message
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
+import com.intellij.ui.JBIntSpinner
 import com.intellij.ui.SimpleListCellRenderer
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.dsl.builder.Cell
 import com.intellij.ui.dsl.builder.Row
+import com.intellij.ui.dsl.builder.bindIntValue
 import com.intellij.ui.dsl.builder.bindItem
 import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.panel
@@ -52,6 +54,10 @@ private fun Row.makeUseEditorFontInput(block: Cell<JBCheckBox>.() -> Unit) =
 
 private fun Row.makeAddTooltipPrefixInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.addTooltipPrefix.label")).apply(block)
+
+
+private fun Row.makeProcessTimeoutInput(block: Cell<JBIntSpinner>.() -> Unit) =
+    spinner(-1..3_600_000, step = 100).apply(block)
 
 
 private fun Row.makeMinimumSeverityLevelInput(block: Cell<ComboBox<PyrightDiagnosticSeverity>>.() -> Unit) = run {
@@ -109,6 +115,9 @@ internal fun configurationPanel(state: Configurations) = panel {
     }
     
     group(message("configurations.group.others")) {
+        row(message("configurations.processTimeout.label")) {
+            makeProcessTimeoutInput { bindIntValue(state::processTimeout) }
+        }
         row(message("configurations.minimumSeverityLevel.label")) {
             makeMinimumSeverityLevelInput { bindItem(state::minimumSeverityLevel.toNullableProperty()) }
         }

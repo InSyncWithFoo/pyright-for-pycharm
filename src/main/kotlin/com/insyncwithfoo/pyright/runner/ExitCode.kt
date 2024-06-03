@@ -9,6 +9,6 @@ internal enum class PyrightExitCode(val value: Int) {
     INVALID_PARAMETERS(4);
     
     companion object {
-        fun fromInt(value: Int) = entries.first { it.value == value }
+        fun fromInt(value: Int) = entries.firstOrNull { it.value == value }
     }
 }

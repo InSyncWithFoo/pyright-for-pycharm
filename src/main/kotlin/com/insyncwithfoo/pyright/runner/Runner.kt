@@ -33,6 +33,9 @@ import com.insyncwithfoo.pyright.configuration.project.Configurable as ProjectCo
 private typealias PyrightConfigurableClass = PyrightConfigurable<out BaseState>
 
 
+private class TimeoutException(message: String = "Process timed out") : RuntimeException(message)
+
+
 private class OpenTemporaryFileAction(
     text: String,
     private val fileName: String,
@@ -89,11 +92,11 @@ private fun <T : PyrightConfigurableClass> Project.showSettingsDialog(toSelect: 
 }
 
 
-private fun Notification.addOpenSettingsAction(project: Project) {
+private fun Notification.addOpenSettingsAction(
+    project: Project,
+    configurableClass: Class<out PyrightConfigurableClass>
+) {
     addSimpleExpiringAction(message("notifications.error.action.openSettings")) {
-        val configurations = project.pyrightConfigurations
-        val configurableClass = configurations.configurableClassWithExecutable
-        
         project.showSettingsDialog(configurableClass)
     }
 }
@@ -109,6 +112,7 @@ private fun Notifier.notifyPyrightException(exception: PyrightException) =
 
 
 private fun Notifier.notifySerializationException(output: String) = notify { group, project ->
+    val configurations = project.pyrightConfigurations
     val notification = group.createErrorNotification(
         title = message("notifications.error.invalidOutput.title"),
         content = when {
@@ -124,9 +128,21 @@ private fun Notifier.notifySerializationException(output: String) = notify { gro
             content = output
         )
     }
-    notification.addOpenSettingsAction(project)
+    notification.addOpenSettingsAction(project, configurations.configurableClassWithExecutable)
     
     notification
+}
+
+
+private fun Notifier.notifyProcessTimeout() = notify { group, project ->
+    val newNotification = group.createErrorNotification(
+        title = message("notifications.error.processTimeout.title"),
+        content = message("notifications.error.processTimeout.body")
+    )
+    
+    newNotification.addOpenSettingsAction(project, ApplicationConfigurable::class.java)
+    
+    newNotification
 }
 
 
@@ -146,16 +162,40 @@ internal class PyrightRunner(private val project: Project) {
     private fun runWithIndicator(command: PyrightCommand) = runBlocking {
         val title = message("progress.runOnFile.title", command.target.name)
         
-        // The process is non-cancellable due to JetBrains-knows-what
         withBackgroundProgress(project, title, cancellable = false) {
             command.getOutputGracefully()
         }
     }
     
+    private fun PyrightCommand.getStdout(): String {
+        val timeout = project.pyrightConfigurations.processTimeout
+        val processOutput = this.run(timeout)
+        
+        return processOutput.run {
+            if (isCancelled) {
+                throw RunCanceledByUserException()
+            }
+            
+            if (isTimeout) {
+                throw TimeoutException()
+            }
+            
+            when (PyrightExitCode.fromInt(exitCode)) {
+                PyrightExitCode.FATAL -> throw FatalException(stdout, stderr)
+                PyrightExitCode.INVALID_CONFIG -> throw InvalidConfigurationsException(stdout, stderr)
+                PyrightExitCode.INVALID_PARAMETERS -> throw InvalidParametersException(stdout, stderr)
+                else -> stdout
+            }
+        }
+    }
+    
     private fun PyrightCommand.getOutputGracefully(): String? {
         return try {
-            this.run()
+            this.getStdout()
         } catch (_: RunCanceledByUserException) {
+            null
+        } catch (exception: TimeoutException) {
+            report(exception)
             null
         } catch (exception: PyrightException) {
             report(exception)
@@ -174,15 +214,12 @@ internal class PyrightRunner(private val project: Project) {
     
     private fun parseOutputIfPossible(rawOutput: String): PyrightOutput? {
         return try {
-            parseOutput(rawOutput)
+            Json.decodeFromString<PyrightOutput>(rawOutput)
         } catch (exception: SerializationException) {
             report(exception, rawOutput)
             null
         }
     }
-    
-    private fun parseOutput(rawOutput: String) =
-        Json.decodeFromString<PyrightOutput>(rawOutput)
     
     private fun report(exception: PyrightException) {
         LOGGER.warn(exception)
@@ -195,6 +232,12 @@ internal class PyrightRunner(private val project: Project) {
         LOGGER.warn(exception)
         
         notifier.notifySerializationException(rawOutput)
+    }
+    
+    private fun report(exception: TimeoutException) {
+        LOGGER.warn(exception)
+        
+        notifier.notifyProcessTimeout()
     }
     
     companion object {
