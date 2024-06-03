@@ -5,13 +5,10 @@ import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.sdkPath
-import com.intellij.execution.RunCanceledByUserException
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.process.CapturingProcessHandler
 import com.intellij.execution.process.ProcessOutput
-import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiFile
-import com.jetbrains.python.packaging.IndicatedProcessOutputListener
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -23,11 +20,11 @@ import java.nio.file.Path
 import kotlin.io.path.exists
 
 
-private fun String.toPathIfItExists(base: String = "") =
-    this.toPathIfItExists(Path.of(base))
+private val GeneralCommandLine.handler: CapturingProcessHandler
+    get() = CapturingProcessHandler(this)
 
 
-private fun String.toPathIfItExists(base: Path) =
+private fun String.toPathIfItExists(base: Path = Path.of("")) =
     Path.of(this)
         .let { base.resolve(it).normalize() }
         .takeIf { it.exists() }
@@ -48,7 +45,7 @@ private object PathSerializer : KSerializer<Path> {
 
 
 @Serializable
-internal data class PyrightCommand(
+internal data class FileCommand(
     @Serializable(with = PathSerializer::class)
     val executable: Path,
     @Serializable(with = PathSerializer::class)
@@ -64,67 +61,14 @@ internal data class PyrightCommand(
             target.toString()
         )
     
-    private val handler: CapturingProcessHandler
-        get() = CapturingProcessHandler(getCommandLine())
-    
-    internal val extraArgumentsMap: Map<String, String?>
-        get() {
-            val map = mutableMapOf<String, String?>()
-            var index = 0
-            
-            while (index < extraArguments.size) {
-                val element = extraArguments[index]
-                val nextElement = extraArguments.getOrNull(index + 1)
-                
-                if (nextElement?.startsWith("--") == true) {
-                    map[element] = null
-                } else {
-                    map[element] = nextElement
-                    index++
-                }
-                
-                index++
-            }
-            
-            return map
-        }
-    
-    
-    private fun getCommandLine() =
-        GeneralCommandLine(fragments).apply {
+    private val commandLine: GeneralCommandLine
+        get() = GeneralCommandLine(fragments).apply {
             withWorkDirectory(projectPath)
             withCharset(Charsets.UTF_8)
         }
     
-    private fun runWithIndicator(): ProcessOutput {
-        val indicator = ProgressManager.getInstance().progressIndicator
-        
-        return with(handler) {
-            if (indicator != null) {
-                addProcessListener(IndicatedProcessOutputListener(indicator))
-                runProcessWithProgressIndicator(indicator)
-            } else {
-                runProcess()
-            }
-        }
-    }
-    
-    fun run(): String {
-        val processOutput = runWithIndicator()
-        
-        return processOutput.run {
-            if (isCancelled) {
-                throw RunCanceledByUserException()
-            }
-            
-            when (PyrightExitCode.fromInt(exitCode)) {
-                PyrightExitCode.FATAL -> throw FatalException(stdout, stderr)
-                PyrightExitCode.INVALID_CONFIG -> throw InvalidConfigurationsException(stdout, stderr)
-                PyrightExitCode.INVALID_PARAMETERS -> throw InvalidParametersException(stdout, stderr)
-                else -> stdout
-            }
-        }
-    }
+    fun run(timeoutInMilliseconds: Int): ProcessOutput =
+        commandLine.handler.runProcess(timeoutInMilliseconds)
     
     companion object {
         
@@ -134,7 +78,7 @@ internal data class PyrightCommand(
             target: Path,
             projectPath: Path,
             interpreterPath: Path
-        ): PyrightCommand {
+        ): FileCommand {
             val configurationFile = configurations.configurationFile
             
             val argumentForProject = configurationFile ?: projectPath
@@ -149,10 +93,10 @@ internal data class PyrightCommand(
                 extraArguments.add(configurations.minimumSeverityLevel.name)
             }
             
-            return PyrightCommand(executable, target, projectPath.toString(), extraArguments)
+            return FileCommand(executable, target, projectPath.toString(), extraArguments)
         }
         
-        fun create(file: PsiFile): PyrightCommand? {
+        fun create(file: PsiFile): FileCommand? {
             val project = file.project
             
             val configurations = project.pyrightConfigurations

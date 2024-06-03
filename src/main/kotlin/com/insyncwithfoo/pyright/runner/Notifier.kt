@@ -9,11 +9,12 @@ import com.insyncwithfoo.pyright.prettify
 import com.insyncwithfoo.pyright.pyrightNotificationGroup
 import com.insyncwithfoo.pyright.runThenNotify
 import com.intellij.notification.Notification
+import com.intellij.notification.NotificationGroup
 import com.intellij.openapi.project.Project
 
 
 private infix fun Notification.sameAs(other: Notification) =
-    title == other.title && content == other.content
+    this.title == other.title
 
 
 private fun Project.disablePyrightInspection() {
@@ -29,8 +30,8 @@ internal class Notifier(private val project: Project) {
     
     private val group = pyrightNotificationGroup()
     
-    fun notify(exception: PyrightException) {
-        val newNotification = exception.createNotification(group)
+    fun notify(createNotification: (NotificationGroup, Project) -> Notification) {
+        val newNotification = createNotification(group, project)
         val notified = project.openingPyrightNotifications
         
         if (!notified.any { it sameAs newNotification }) {

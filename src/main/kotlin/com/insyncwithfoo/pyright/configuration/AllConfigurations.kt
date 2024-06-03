@@ -14,6 +14,7 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
         useEditorFont = this.useEditorFont,
         addTooltipPrefix = this.addTooltipPrefix,
         minimumSeverityLevel = this.minimumSeverityLevel,
+        processTimeout = this.processTimeout,
         
         projectExecutable = other.projectExecutable,
         projectConfigurationFile = other.projectConfigurationFile,
@@ -28,6 +29,7 @@ internal data class AllConfigurations(
     val useEditorFont: Boolean,
     val addTooltipPrefix: Boolean,
     val minimumSeverityLevel: PyrightDiagnosticSeverity,
+    val processTimeout: Int,
     
     val projectExecutable: @SystemDependent String?,
     val projectConfigurationFile: @SystemDependent String?,

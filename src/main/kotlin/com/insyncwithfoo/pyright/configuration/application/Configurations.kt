@@ -11,4 +11,5 @@ internal class Configurations : BaseState() {
     var useEditorFont by property(false)
     var addTooltipPrefix by property(false)
     var minimumSeverityLevel by enum(PyrightDiagnosticSeverity.INFORMATION)
+    var processTimeout by property(10_000)
 }
