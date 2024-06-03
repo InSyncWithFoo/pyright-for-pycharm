@@ -45,7 +45,7 @@ private object PathSerializer : KSerializer<Path> {
 
 
 @Serializable
-internal data class PyrightCommand(
+internal data class FileCommand(
     @Serializable(with = PathSerializer::class)
     val executable: Path,
     @Serializable(with = PathSerializer::class)
@@ -78,7 +78,7 @@ internal data class PyrightCommand(
             target: Path,
             projectPath: Path,
             interpreterPath: Path
-        ): PyrightCommand {
+        ): FileCommand {
             val configurationFile = configurations.configurationFile
             
             val argumentForProject = configurationFile ?: projectPath
@@ -93,10 +93,10 @@ internal data class PyrightCommand(
                 extraArguments.add(configurations.minimumSeverityLevel.name)
             }
             
-            return PyrightCommand(executable, target, projectPath.toString(), extraArguments)
+            return FileCommand(executable, target, projectPath.toString(), extraArguments)
         }
         
-        fun create(file: PsiFile): PyrightCommand? {
+        fun create(file: PsiFile): FileCommand? {
             val project = file.project
             
             val configurations = project.pyrightConfigurations

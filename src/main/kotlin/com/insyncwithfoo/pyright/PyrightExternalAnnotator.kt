@@ -4,7 +4,7 @@ import com.insyncwithfoo.pyright.annotations.AnnotationApplier
 import com.insyncwithfoo.pyright.annotations.SuppressQuickFix
 import com.insyncwithfoo.pyright.annotations.toHighlightSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
-import com.insyncwithfoo.pyright.runner.PyrightCommand
+import com.insyncwithfoo.pyright.runner.FileCommand
 import com.insyncwithfoo.pyright.runner.PyrightRunner
 import com.intellij.codeInspection.InspectionManager
 import com.intellij.codeInspection.LocalQuickFix
@@ -155,7 +155,7 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
     override fun doAnnotate(collectedInfo: AnnotationInfo?): AnnotationResult? {
         val (configurations, inspection, file) = collectedInfo ?: return null
         
-        val command = PyrightCommand.create(file) ?: return null
+        val command = FileCommand.create(file) ?: return null
         val output = PyrightRunner(file.project).run(command) ?: return null
         
         return AnnotationResult(configurations, inspection, output)

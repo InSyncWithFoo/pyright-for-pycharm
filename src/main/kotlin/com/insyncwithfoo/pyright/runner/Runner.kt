@@ -77,7 +77,7 @@ private val PyrightException.info: PyrightExceptionInfo
     )
 
 
-private fun PyrightCommand.toJson() = Json.encodeToString(this)
+private fun FileCommand.toJson() = Json.encodeToString(this)
 
 
 private val AllConfigurations.configurableClassWithExecutable: Class<out PyrightConfigurableClass>
@@ -150,7 +150,7 @@ internal class PyrightRunner(private val project: Project) {
     
     private val notifier = Notifier(project)
     
-    fun run(command: PyrightCommand): PyrightOutput? {
+    fun run(command: FileCommand): PyrightOutput? {
         LOGGER.info("Running: ${command.toJson()}")
         
         val output = runWithIndicator(command) ?: return null
@@ -159,7 +159,7 @@ internal class PyrightRunner(private val project: Project) {
         return parsed.also { logMinified(it) }
     }
     
-    private fun runWithIndicator(command: PyrightCommand) = runBlocking {
+    private fun runWithIndicator(command: FileCommand) = runBlocking {
         val title = message("progress.runOnFile.title", command.target.name)
         
         withBackgroundProgress(project, title, cancellable = false) {
@@ -167,7 +167,7 @@ internal class PyrightRunner(private val project: Project) {
         }
     }
     
-    private fun PyrightCommand.getStdout(): String {
+    private fun FileCommand.getStdout(): String {
         val timeout = project.pyrightConfigurations.processTimeout
         val processOutput = this.run(timeout)
         
@@ -189,7 +189,7 @@ internal class PyrightRunner(private val project: Project) {
         }
     }
     
-    private fun PyrightCommand.getOutputGracefully(): String? {
+    private fun FileCommand.getOutputGracefully(): String? {
         return try {
             this.getStdout()
         } catch (_: RunCanceledByUserException) {
