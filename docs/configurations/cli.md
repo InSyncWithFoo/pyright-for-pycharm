@@ -22,6 +22,21 @@ If the path retrieved using the aforementioned strategy is not specified,
 the project directory is used.
 
 
+## Process timeout
+
+Modify this option to set a maximum limit (in milliseconds)
+each process should take before it is forcibly destroyed.
+
+A value of <i>-1</i> disables the timeout.
+
+Default: <i>10 seconds</i>.
+
+!!! warning
+
+    If there is no time limit, the process might run indefinitely,
+    leading to undesired CPU and RAM usage.
+
+
 ## Minimum severity level
 
 Modify this option to set a minimum threshold that

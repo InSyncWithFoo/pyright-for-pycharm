@@ -41,7 +41,7 @@ private fun Project.changePyrightConfigurations(action: ProjectConfigurations.()
     val configurationService = ConfigurationService.getInstance(this)
     val projectConfigurations = configurationService.projectService.state
     
-    projectConfigurations.action()
+    action(projectConfigurations)
 }
 
 

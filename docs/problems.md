@@ -63,6 +63,25 @@ If the executable is something you come up with,
 check the source code for expected options.
 
 
+## Cannot parse output
+
+This most likely mean that there is an error while running the executable,
+which causes the output to be invalid as JSON and thus cannot be parsed.
+It could also mean that the output is valid JSON,
+but does not follow [the officially documented schemas][9].
+
+Update Pyright to the latest version may help.
+For custom executables, maintain compatibility with said version.
+
+
+## Process timed out
+
+This means the process did not finish within [the limit defined][10].
+
+There are [multiple possible reasons][11] for this.
+Increase the limit as necessary.
+
+
   [1]: configurations/cli.md#configuration-file
   [2]: faq.md#why-does-cli-have-to-perform-saves-so-often
   [3]: how-to.md#how-to-restart-the-language-server
@@ -71,3 +90,6 @@ check the source code for expected options.
   [6]: https://github.com/microsoft/pyright/issues
   [7]: https://www.npmjs.com/package/pyright
   [8]: https://pypi.org/project/pyright/
+  [9]: https://microsoft.github.io/pyright/#/command-line?id=json-output
+  [10]: configurations/cli.md#process-timeout
+  [11]: faq.md#why-does-cli-take-so-long-to-run-on-my-project

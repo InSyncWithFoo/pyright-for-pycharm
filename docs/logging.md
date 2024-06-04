@@ -59,7 +59,7 @@ Command entry format:
         executable: ExecutablePath
         target: CurrentFilePath
         projectPath: ProjectPath
-        extraArguments: tuple[
+        extraArguments: tuple[  # There might be other options.
             Literal['--outputjson'],
             Literal['--project'], ConfigurationFilePath,
             Literal['--pythonpath'], InterpreterPath

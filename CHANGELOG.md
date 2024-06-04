@@ -11,7 +11,11 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* Errors are now detected and handled in a more user-friendly way,
+  with notifications and proper actions.
+  Previously, they would only be logged in the IDE's log file.
 
 
 ## [0.4.0] - 2024-05-27

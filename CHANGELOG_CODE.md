@@ -14,18 +14,26 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Added
 
-* [Documentation for LSP-specific settings][50-1] is added.
-  (34b7c498)
-* [`logging.md`][50-2] is added. (7d02d73b)
+* [The documentation][50-1] is updated.
+  * [`logging.md`][50-2] is added.
+  
+  (34b7c498, 7d02d73b, HEAD)
+
+* Global option "Process timeout" is added. (f3b7585f)
+
+### Changed
+
+* [`PyrightRunner` and related classes][50-3] are rewritten. (f3b7585f)
 
 ### Fixed
 
-* [`SuppressQuickFix`][50-3] names are now stored as messages. (HEAD)
+* [`SuppressQuickFix`][50-4] names are now stored as messages. (e2d9ca2b)
 
 
-  [50-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/34b7c498/docs/configurations/lsp.md
+  [50-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
   [50-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7d02d73b/docs/logging.md
-  [50-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/annotations/SuppressQuickFix.kt
+  [50-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/f3b7585f/src/main/kotlin/com/insyncwithfoo/pyright/runner
+  [50-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e2d9ca2b/src/main/kotlin/com/insyncwithfoo/pyright/annotations/SuppressQuickFix.kt
 
 
 ## [0.4.0] - 2024-05-27

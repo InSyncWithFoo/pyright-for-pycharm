@@ -69,10 +69,8 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
             prefilledWithRandomPlaceholder()
             bindText(state::projectConfigurationFile)
             
-            component.emptyText.text = when (project.path) {
-                null -> message("configurations.projectConfigurationFile.placeholder")
-                else -> project.path.toString()
-            }
+            component.emptyText.text =
+                project.path?.toString() ?: message("configurations.projectConfigurationFile.placeholder")
         }
     }
     
