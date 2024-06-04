@@ -522,6 +522,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cannot-parse-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot parse output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-timed-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process timed out
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -652,6 +670,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cannot-parse-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot parse output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-timed-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process timed out
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -730,6 +766,17 @@ along with the version of Pyright you are using, which can be
 retrieved by running <code>&lt;path-to-pyright&gt; --version</code> in your terminal.</p>
 <p>If the executable is something you come up with,
 check the source code for expected options.</p>
+<h2 id="cannot-parse-output">Cannot parse output<a class="headerlink" href="#cannot-parse-output" title="Permanent link">#</a></h2>
+<p>This most likely mean that there is an error while running the executable,
+which causes the output to be invalid as JSON and thus cannot be parsed.
+It could also mean that the output is valid JSON,
+but does not follow <a href="https://microsoft.github.io/pyright/#/command-line?id=json-output">the officially documented schemas</a>.</p>
+<p>Update Pyright to the latest version may help.
+For custom executables, maintain compatibility with said version.</p>
+<h2 id="process-timed-out">Process timed out<a class="headerlink" href="#process-timed-out" title="Permanent link">#</a></h2>
+<p>This means the process did not finish within <a href="../configurations/cli/#process-timeout">the limit defined</a>.</p>
+<p>There are <a href="../faq/#why-does-cli-take-so-long-to-run-on-my-project">multiple possible reasons</a> for this.
+Increase the limit as necessary.</p>
 
 
 

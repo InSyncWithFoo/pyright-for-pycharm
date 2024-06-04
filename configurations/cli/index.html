@@ -408,6 +408,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#process-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process timeout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#minimum-severity-level" class="md-nav__link">
     <span class="md-ellipsis">
       Minimum severity level
@@ -610,6 +619,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#process-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process timeout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#minimum-severity-level" class="md-nav__link">
     <span class="md-ellipsis">
       Minimum severity level
@@ -668,6 +686,16 @@ This path will be passed to the executable via <a href="https://microsoft.github
 </ul>
 <p>If the path retrieved using the aforementioned strategy is not specified,
 the project directory is used.</p>
+<h2 id="process-timeout">Process timeout<a class="headerlink" href="#process-timeout" title="Permanent link">#</a></h2>
+<p>Modify this option to set a maximum limit (in milliseconds)
+each process should take before it is forcibly destroyed.</p>
+<p>A value of <i>-1</i> disables the timeout.</p>
+<p>Default: <i>10 seconds</i>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there is no time limit, the process might run indefinitely,
+leading to undesired CPU and RAM usage.</p>
+</div>
 <h2 id="minimum-severity-level">Minimum severity level<a class="headerlink" href="#minimum-severity-level" title="Permanent link">#</a></h2>
 <p>Modify this option to set a minimum threshold that
 only the diagnostics whose severity is equal or higher than it
