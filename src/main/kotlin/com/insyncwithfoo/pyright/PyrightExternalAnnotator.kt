@@ -4,6 +4,7 @@ import com.insyncwithfoo.pyright.annotations.AnnotationApplier
 import com.insyncwithfoo.pyright.annotations.SuppressQuickFix
 import com.insyncwithfoo.pyright.annotations.toHighlightSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
+import com.insyncwithfoo.pyright.configuration.application.RunningMode
 import com.insyncwithfoo.pyright.runner.FileCommand
 import com.insyncwithfoo.pyright.runner.PyrightRunner
 import com.intellij.codeInspection.InspectionManager
@@ -138,7 +139,7 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
         val project = file.project
         val configurations = project.pyrightConfigurations
         
-        if (configurations.executable == null) {
+        if (configurations.run { executable == null || runningMode != RunningMode.CLI }) {
             return null
         }
         

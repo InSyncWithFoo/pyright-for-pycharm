@@ -20,6 +20,7 @@
 	<depends>com.intellij.modules.lang</depends>
 	<depends>com.intellij.modules.python</depends>
 	<depends>com.intellij.modules.platform</depends>
+	<depends>com.redhat.devtools.lsp4ij</depends>
 	
 	<!-- <resource-bundle>messages.pyright</resource-bundle> -->
 	
@@ -77,4 +78,21 @@
 			icon="AllIcons.Actions.Copy"
 		/>
 	</actions>
+	
+	<extensions defaultExtensionNs="com.redhat.devtools.lsp4ij">
+		<server
+			id="pyright"
+			name="Pyright"
+			factoryClass="com.insyncwithfoo.pyright.lsp4ij.PyrightLanguageServerFactory"
+		>
+			<description><![CDATA[]]></description>
+		</server>
+		
+		<languageMapping
+			language="Python"
+			languageId="python"
+			serverId="pyright"
+			documentMatcher="com.insyncwithfoo.pyright.lsp4ij.PyrightDocumentMatcher"
+		/>
+	</extensions>
 </idea-plugin>

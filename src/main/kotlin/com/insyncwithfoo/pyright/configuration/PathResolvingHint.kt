@@ -2,6 +2,7 @@ package com.insyncwithfoo.pyright.configuration
 
 import com.insyncwithfoo.pyright.containsConfigurationFile
 import com.insyncwithfoo.pyright.isProbablyPyrightExecutable
+import com.insyncwithfoo.pyright.isProbablyPyrightLSExecutable
 import com.insyncwithfoo.pyright.isPyrightConfigurationFile
 import com.insyncwithfoo.pyright.message
 import java.nio.file.Path
@@ -49,6 +50,18 @@ internal fun executablePathResolvingHint(path: Path) = when {
     // !path.isExecutable() ->
     //     Hint.warning(message("configurations.hint.fileNotExecutable"))
     !path.isProbablyPyrightExecutable ->
+        Hint.info(message("configurations.hint.unknownExecutable"))
+    else ->
+        Hint.success(message("configurations.hint.fileFound"))
+}
+
+
+internal fun langserverExecutablePathResolvingHint(path: Path) = when {
+    !path.exists() ->
+        Hint.warning(message("configurations.hint.fileNotFound"))
+    path.isDirectory() ->
+        Hint.error(message("configurations.hint.unexpectedDirectory"))
+    !path.isProbablyPyrightLSExecutable ->
         Hint.info(message("configurations.hint.unknownExecutable"))
     else ->
         Hint.success(message("configurations.hint.fileFound"))
