@@ -40,6 +40,11 @@ private val PyrightDiagnosticSeverity.label: String
     }
 
 
+private fun Row.radioButtonFor(runningMode: RunningMode) {
+    radioButton(runningMode.label, runningMode)
+}
+
+
 private fun Row.makeAlwaysUseGlobalInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.alwaysUseGlobal.label")).apply(block)
 
@@ -80,8 +85,8 @@ private fun Row.makeGlobalLangserverExecutableInput(block: Cell<TextFieldWithBro
 private fun Panel.makeGlobalRunningModeInput(block: ButtonsGroup.() -> Unit) = run {
     val group = buttonsGroup {
         row(message("configurations.runningMode.label")) {
-            radioButton(message("configurations.runningMode.cli"), RunningMode.CLI)
-            radioButton(message("configurations.runningMode.lsp4ij"), RunningMode.LSP4IJ)
+            radioButtonFor(RunningMode.CLI)
+            radioButtonFor(RunningMode.LSP4IJ)
         }
     }
     group.apply(block)

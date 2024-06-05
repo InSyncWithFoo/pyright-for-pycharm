@@ -28,6 +28,10 @@ private fun unresolvablePathHint() =
     Hint.error(message("configurations.hint.unresolvablePath"))
 
 
+private fun Row.radioButtonFor(runningMode: RunningMode) =
+    radioButton(runningMode.label, runningMode)
+
+
 private fun Row.makeProjectExecutableInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
     secondColumnPathInput().apply(block)
 
@@ -47,9 +51,9 @@ private fun Row.makeProjectLangserverExecutableInput(block: Cell<TextFieldWithBr
 private fun Panel.makeProjectRunningModeInput(block: ButtonsGroup.() -> Unit) = run {
     val group = buttonsGroup {
         row(message("configurations.runningMode.label")) {
-            radioButton(message("configurations.runningMode.useGlobal"), RunningMode.USE_GLOBAL)
-            radioButton(message("configurations.runningMode.cli"), RunningMode.CLI)
-            radioButton(message("configurations.runningMode.lsp4ij"), RunningMode.LSP4IJ)
+            radioButtonFor(RunningMode.USE_GLOBAL)
+            radioButtonFor(RunningMode.CLI)
+            radioButtonFor(RunningMode.LSP4IJ)
         }
     }
     group.apply(block)
