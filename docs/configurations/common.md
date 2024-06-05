@@ -128,7 +128,7 @@ at <b>Editor</b> | <b>Inspections</b> -->
 !!! note ""
 
     Only the levels defined in the select boxes
-		under the <i>Options</i> pane are honored.
+    under the <i>Options</i> pane are honored.
 
 ![](../assets/inspection-highlight-severity-levels.png)
 
@@ -141,7 +141,7 @@ For each diagnostic level, there are four highlight levels to choose from:
 | Weak warning | Dark yellow squiggles |
 | Information  | No visible effects    |
 
-!!! note ""
+!!! info ""
 
     These levels are semantic, not visual.
 

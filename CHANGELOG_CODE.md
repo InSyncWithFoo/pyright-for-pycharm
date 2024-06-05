@@ -12,12 +12,17 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.5.0] - 2024-06-04
+
 ### Added
 
 * [The documentation][50-1] is updated.
   * [`logging.md`][50-2] is added.
   
-  (34b7c498, 7d02d73b, HEAD)
+  (34b7c498, 7d02d73b, 8238bfd4)
 
 * Global option "Process timeout" is added. (f3b7585f)
 
@@ -30,7 +35,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [`SuppressQuickFix`][50-4] names are now stored as messages. (e2d9ca2b)
 
 
-  [50-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
+  [50-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/8238bfd4/docs
   [50-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7d02d73b/docs/logging.md
   [50-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/f3b7585f/src/main/kotlin/com/insyncwithfoo/pyright/runner
   [50-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/e2d9ca2b/src/main/kotlin/com/insyncwithfoo/pyright/annotations/SuppressQuickFix.kt
@@ -359,7 +364,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..HEAD
+  [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
   [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
   [0.3.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..v0.3.1
   [0.3.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.2.0..v0.3.0
