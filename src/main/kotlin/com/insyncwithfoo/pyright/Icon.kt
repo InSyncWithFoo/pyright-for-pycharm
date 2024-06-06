@@ -3,7 +3,7 @@ package com.insyncwithfoo.pyright
 import com.intellij.openapi.util.IconLoader
 
 
-private fun loadIcon(path: String) = IconLoader.getIcon(path, PyrightIcon::class.java)
+private fun loadIcon(path: String) = IconLoader.getIcon(path, Icon::class.java)
 
 
 private fun loadOutlinedIcon(name: String) = loadIcon("icons/outline-$name.svg")
@@ -13,7 +13,7 @@ private fun loadColoredIcon(size: String) = loadIcon("icons/colored-$size.svg")
 
 
 @Suppress("unused")
-internal object PyrightIcon {
+internal object Icon {
     val COLORED_MEDIUM = loadColoredIcon("medium")
     val COLORED_SMALL = loadColoredIcon("small")
     

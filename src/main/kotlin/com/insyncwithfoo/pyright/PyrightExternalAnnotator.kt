@@ -16,6 +16,7 @@ import com.intellij.lang.annotation.ExternalAnnotator
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.lang.injection.InjectedLanguageManager
 import com.intellij.openapi.application.invokeLater
+import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
@@ -129,7 +130,7 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
     override fun getPairedBatchInspectionShortName() =
         PyrightInspection.SHORT_NAME
     
-    override fun collectInformation(file: PsiFile): AnnotationInfo? {
+    override fun collectInformation(file: PsiFile, editor: Editor, hasErrors: Boolean): AnnotationInfo? {
         if (!file.isApplicable) {
             return null
         }

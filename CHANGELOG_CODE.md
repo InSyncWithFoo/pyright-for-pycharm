@@ -12,7 +12,20 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* [`PyrightBundle`][60-1] and [`PyrightIcon`][60-2] are renamed. (HEAD)
+
+### Fixed
+
+* [`PyrightExternalAnnotator`][60-3] now overrides
+  `collectInformation(PsiFile, Editor, boolean)`
+  instead of `collectInformation(PsiFile)`. (HEAD)
+
+
+  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
+  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
+  [60-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.5.0] - 2024-06-04

@@ -10,7 +10,7 @@ import com.intellij.openapi.project.Project
 
 
 private const val ID = "Pyright notifications"
-private val ICON = PyrightIcon.COLORED_SMALL
+private val ICON = Icon.COLORED_SMALL
 
 
 internal fun Notification.prettify() = apply {

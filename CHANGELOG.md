@@ -11,7 +11,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Fixed
+
+* The annotator now always run, regardless of other annotators' results.
+  Previously, it would not run if previous analyses resulted in errors.
 
 
 ## [0.5.0] - 2024-06-04

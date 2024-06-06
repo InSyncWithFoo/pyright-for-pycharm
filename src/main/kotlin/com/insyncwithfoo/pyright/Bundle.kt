@@ -8,7 +8,7 @@ import org.jetbrains.annotations.PropertyKey
 private const val BUNDLE_PATH = "messages.pyright"
 
 
-private object PyrightBundle : DynamicBundle(BUNDLE_PATH)
+private object Bundle : DynamicBundle(BUNDLE_PATH)
 
 
 @Nls
@@ -16,4 +16,4 @@ internal fun message(
     @PropertyKey(resourceBundle = BUNDLE_PATH) key: String,
     vararg params: Any,
 ) =
-    PyrightBundle.getMessage(key, *params)
+    Bundle.getMessage(key, *params)
