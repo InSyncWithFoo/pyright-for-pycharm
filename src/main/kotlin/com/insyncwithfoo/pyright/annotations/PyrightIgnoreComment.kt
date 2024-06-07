@@ -29,7 +29,7 @@ internal class PyrightIgnoreCommentFragment(val content: String, baseOffset: Int
 internal class PyrightIgnoreComment(val codes: Set<PyrightErrorCode>) {
     
     val codeList: String
-        get() = "[${codes.joinToString(", ")}]" 
+        get() = "[${codes.joinToString(", ")}]"
     
     override fun toString(): String {
         val affix = when {

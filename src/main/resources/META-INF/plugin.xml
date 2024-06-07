@@ -21,6 +21,8 @@
 	<depends>com.intellij.modules.python</depends>
 	<depends>com.intellij.modules.platform</depends>
 	
+	<!-- <resource-bundle>messages.pyright</resource-bundle> -->
+	
 	<!-- Extension points defined by the plugin.
 		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
 	<extensions defaultExtensionNs="com.intellij">
@@ -64,4 +66,15 @@
 			implementation="com.insyncwithfoo.pyright.PyrightProjectExecutableSuggester"
 		/>
 	</extensions>
+	
+	<actions>
+		<!--suppress PluginXmlCapitalization -->
+		<action
+			id="pyright.copyFileCommand"
+			class="com.insyncwithfoo.pyright.actions.CopyFileCommand"
+			text="Copy Pyright command"
+			description="Copy Pyright command that would be used for current file"
+			icon="AllIcons.Actions.Copy"
+		/>
+	</actions>
 </idea-plugin>

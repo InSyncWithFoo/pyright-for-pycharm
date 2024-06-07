@@ -53,6 +53,11 @@ internal fun Project.findPyrightExecutable(): Path? {
 }
 
 
-internal fun Project?.somethingIsWrong(message: String, title: String) {
+internal fun Project?.somethingIsWrong(title: String, message: String) {
     Messages.showErrorDialog(this, message, title)
+}
+
+
+internal fun Project?.somethingIsWrong(message: String) {
+    somethingIsWrong(title = message("messages.somethingIsWrong.title"), message)
 }

@@ -27,9 +27,8 @@ private class OpenFileAction(text: String, private val path: String) : Notificat
     
     private fun cannotOpenFile(project: Project? = null) {
         val text = message("notifications.error.action.openConfigurationFile.error.body", path)
-        val title = message("notifications.error.action.openConfigurationFile.error.title")
         
-        project.somethingIsWrong(text, title)
+        project.somethingIsWrong(text)
     }
     
 }

@@ -69,6 +69,7 @@ nav:
     - LSP-specific: configurations/lsp.md
     - Related: configurations/related.md
   - Features: features.md
+  - IDE actions: actions.md
   - Problems: problems.md
   - Logging: logging.md
   - How-to guides: how-to.md

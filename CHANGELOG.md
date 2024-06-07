@@ -11,6 +11,12 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
+### Added
+
+* The command for the currently selected file can now be copied
+  using the newly added "Copy Pyright command" action.
+  This is useful for debugging purposes.
+
 ### Fixed
 
 * The annotator now always run, regardless of other annotators' results.

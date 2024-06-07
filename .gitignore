@@ -5,6 +5,7 @@
 TODO.md
 .credentials/
 
+.sources/
 site/
 venv/
 

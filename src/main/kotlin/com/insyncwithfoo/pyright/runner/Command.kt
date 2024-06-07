@@ -8,6 +8,8 @@ import com.insyncwithfoo.pyright.sdkPath
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.process.CapturingProcessHandler
 import com.intellij.execution.process.ProcessOutput
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiFile
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -67,6 +69,8 @@ internal data class FileCommand(
             withCharset(Charsets.UTF_8)
         }
     
+    fun asCopyableString() = commandLine.commandLineString
+    
     fun run(timeoutInMilliseconds: Int): ProcessOutput =
         commandLine.handler.runProcess(timeoutInMilliseconds)
     
@@ -96,16 +100,18 @@ internal data class FileCommand(
             return FileCommand(executable, target, projectPath.toString(), extraArguments)
         }
         
-        fun create(file: PsiFile): FileCommand? {
-            val project = file.project
-            
+        fun create(project: Project, file: VirtualFile): FileCommand? {
             val configurations = project.pyrightConfigurations
-            val filePath = file.virtualFile.path.toPathIfItExists() ?: return null
+            val filePath = file.path.toPathIfItExists() ?: return null
             val projectPath = project.path ?: return null
             val executable = configurations.executable?.toPathIfItExists(base = projectPath) ?: return null
             val interpreterPath = project.sdkPath ?: return null
             
             return create(configurations, executable, filePath, projectPath, interpreterPath)
+        }
+        
+        fun create(file: PsiFile): FileCommand? {
+            return create(file.project, file.virtualFile)
         }
         
     }

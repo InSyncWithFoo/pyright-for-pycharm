@@ -82,6 +82,12 @@ There are [multiple possible reasons][11] for this.
 Increase the limit as necessary.
 
 
+## Other problems
+
+For CLI, you can start debugging by running the commands manually.
+The commands can be retrieved using [the provided IDE action][12].
+
+
   [1]: configurations/cli.md#configuration-file
   [2]: faq.md#why-does-cli-have-to-perform-saves-so-often
   [3]: how-to.md#how-to-restart-the-language-server
@@ -93,3 +99,4 @@ Increase the limit as necessary.
   [9]: https://microsoft.github.io/pyright/#/command-line?id=json-output
   [10]: configurations/cli.md#process-timeout
   [11]: faq.md#why-does-cli-take-so-long-to-run-on-my-project
+  [12]: actions.md#copy-pyright-command
