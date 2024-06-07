@@ -14,11 +14,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Added
 
-* "Copy Pyright command" action is added. (HEAD)
+* "Copy Pyright command" action is added. (4ca4b746)
 
 ### Changed
 
 * [`PyrightBundle`][60-1] and [`PyrightIcon`][60-2] are renamed. (7032faff)
+* Gradle is updated to 8.8. (HEAD)
 
 ### Fixed
 
