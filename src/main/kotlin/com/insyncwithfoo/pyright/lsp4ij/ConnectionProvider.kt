@@ -3,8 +3,8 @@ package com.insyncwithfoo.pyright.lsp4ij
 import com.insyncwithfoo.pyright.configuration.application.RunningMode
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.pyrightConfigurations
+import com.insyncwithfoo.pyright.pyrightLSExecutable
 import com.insyncwithfoo.pyright.sdkPath
-import com.insyncwithfoo.pyright.toPathIfItExists
 import com.intellij.openapi.project.Project
 import com.redhat.devtools.lsp4ij.server.ProcessStreamConnectionProvider
 import java.net.URI
@@ -43,10 +43,7 @@ internal class ConnectionProvider(
     
     companion object {
         fun create(project: Project): ConnectionProvider {
-            val configurations = project.pyrightConfigurations
-            val executable = configurations.langserverExecutable?.toPathIfItExists(base = project.path)
-            
-            return ConnectionProvider(project, executable)
+            return ConnectionProvider(project, project.pyrightLSExecutable)
         }
     }
     

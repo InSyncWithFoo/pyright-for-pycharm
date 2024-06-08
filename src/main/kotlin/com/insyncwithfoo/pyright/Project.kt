@@ -43,6 +43,10 @@ internal val Project.pyrightExecutable: Path?
     get() = pyrightConfigurations.executable?.toPathIfItExists(base = this.path)
 
 
+internal val Project.pyrightLSExecutable: Path?
+    get() = pyrightConfigurations.langserverExecutable?.toPathIfItExists(base = this.path)
+
+
 internal val Project.pyrightInspectionIsEnabled: Boolean
     get() {
         val profile = inspectionProfileManager.currentProfile
