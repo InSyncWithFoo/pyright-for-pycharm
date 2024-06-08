@@ -2,6 +2,7 @@ package com.insyncwithfoo.pyright
 
 import java.nio.file.InvalidPathException
 import java.nio.file.Path
+import kotlin.io.path.exists
 import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.name
 import kotlin.io.path.nameWithoutExtension
@@ -17,6 +18,12 @@ internal fun String.toPathOrNull() =
     } catch (_: InvalidPathException) {
         null
     }
+
+
+internal fun String.toPathIfItExists(base: Path? = Path.of("")) =
+    this.toPathOrNull()
+        ?.let { (base?.resolve(it) ?: it).normalize() }
+        ?.takeIf { it.exists() }
 
 
 internal val Path.isEmpty: Boolean

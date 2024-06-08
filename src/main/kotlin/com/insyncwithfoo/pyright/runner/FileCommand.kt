@@ -1,13 +1,13 @@
 package com.insyncwithfoo.pyright.runner
 
+import com.insyncwithfoo.pyright.PyrightCommand
 import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.pyrightConfigurations
+import com.insyncwithfoo.pyright.pyrightExecutable
 import com.insyncwithfoo.pyright.sdkPath
-import com.intellij.execution.configurations.GeneralCommandLine
-import com.intellij.execution.process.CapturingProcessHandler
-import com.intellij.execution.process.ProcessOutput
+import com.insyncwithfoo.pyright.toPathIfItExists
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiFile
@@ -19,17 +19,6 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.nio.file.Path
-import kotlin.io.path.exists
-
-
-private val GeneralCommandLine.handler: CapturingProcessHandler
-    get() = CapturingProcessHandler(this)
-
-
-private fun String.toPathIfItExists(base: Path = Path.of("")) =
-    Path.of(this)
-        .let { base.resolve(it).normalize() }
-        .takeIf { it.exists() }
 
 
 private object PathSerializer : KSerializer<Path> {
@@ -54,25 +43,16 @@ internal data class FileCommand(
     val target: Path,
     val projectPath: String,
     val extraArguments: List<String>
-) {
+) : PyrightCommand() {
     
-    private val fragments: List<String>
+    override val workingDirectory by ::projectPath
+    
+    override val fragments: List<String>
         get() = listOf(
             executable.toString(),
             *extraArguments.toTypedArray(),
             target.toString()
         )
-    
-    private val commandLine: GeneralCommandLine
-        get() = GeneralCommandLine(fragments).apply {
-            withWorkDirectory(projectPath)
-            withCharset(Charsets.UTF_8)
-        }
-    
-    fun asCopyableString() = commandLine.commandLineString
-    
-    fun run(timeoutInMilliseconds: Int): ProcessOutput =
-        commandLine.handler.runProcess(timeoutInMilliseconds)
     
     companion object {
         
@@ -102,9 +82,10 @@ internal data class FileCommand(
         
         fun create(project: Project, file: VirtualFile): FileCommand? {
             val configurations = project.pyrightConfigurations
+            
             val filePath = file.path.toPathIfItExists() ?: return null
             val projectPath = project.path ?: return null
-            val executable = configurations.executable?.toPathIfItExists(base = projectPath) ?: return null
+            val executable = project.pyrightExecutable ?: return null
             val interpreterPath = project.sdkPath ?: return null
             
             return create(configurations, executable, filePath, projectPath, interpreterPath)

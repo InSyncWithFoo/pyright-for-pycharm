@@ -8,6 +8,7 @@ import com.insyncwithfoo.pyright.createErrorNotification
 import com.insyncwithfoo.pyright.fileEditorManager
 import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.pyrightConfigurations
+import com.insyncwithfoo.pyright.runWithIndicator
 import com.intellij.execution.RunCanceledByUserException
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
@@ -18,9 +19,7 @@ import com.intellij.openapi.fileEditor.OpenFileDescriptor
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
-import com.intellij.platform.ide.progress.withBackgroundProgress
 import com.intellij.testFramework.LightVirtualFile
-import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.encodeToString
@@ -159,10 +158,10 @@ internal class PyrightRunner(private val project: Project) {
         return parsed.also { logMinified(it) }
     }
     
-    private fun runWithIndicator(command: FileCommand) = runBlocking {
+    private fun runWithIndicator(command: FileCommand): String? {
         val title = message("progress.runOnFile.title", command.target.name)
         
-        withBackgroundProgress(project, title, cancellable = false) {
+        return project.runWithIndicator(title) {
             command.getOutputGracefully()
         }
     }
