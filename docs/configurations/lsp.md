@@ -58,6 +58,13 @@ Default: `false`
 
     ![](../assets/lsp-configurations-demo-completion-support-disabled.png)
 
+!!! note
+
+    The autocompletion result might not precisely
+    follow the server's response due to
+    a few custom modifications employed by the plugin
+    to monkeypatch IDE bugs (e.g. [IJPL-155741][3]).
+
 
 ### Diagnostics support
 
@@ -92,7 +99,7 @@ Default: `false`
     The difference between the set of all tokens which Pyright support
     and that of PyCharm is currently unknown.
 
-    See [this issue][3] for more information.
+    See [this issue][4] for more information.
 
 
 ### Hover support
@@ -158,9 +165,9 @@ Default: `true`
 !!! note
 
     Language server logs are not recorded in `idea.log` by default.
-    You need to manually [enable it][4].
+    You need to manually [enable it][5].
 
-Modify this option to make Pyright emit more or less [log messages][5].
+Modify this option to make Pyright emit more or less [log messages][6].
 
 This corresponds to the `python.analysis.logLevel` setting.
 
@@ -204,7 +211,7 @@ Default: `py`, `pyi`
 !!! note
 
     Presumably, due to a limitation/bug of IntelliJ,
-    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][6])
+    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][7])
     cannot be serialized correctly into setting files
     and therefore will not persist between IDE sessions.
 
@@ -215,7 +222,7 @@ Default: `py`, `pyi`
 ### Workspace folders
 
 The folders defined by this option will be passed
-to the language server as "[workspace folders][7]".
+to the language server as "[workspace folders][8]".
 Pyright will only recognize `pyproject.toml`/`pyrightconfig.json` files
 which are direct children of these folders.
 
@@ -225,16 +232,17 @@ Possible choices:
   Top-level directories which contain files related to the project,
   often only one (project root).
 * <i>Source roots</i>:
-  Directories marked as "[source roots][8]".
+  Directories marked as "[source roots][9]".
 
 Default: <i>Project base directories</i>
 
 
   [1]: ../how-to.md#how-to-restart-the-language-server
   [2]: ./common.md#highlight-severity-levels
-  [3]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29
-  [4]: ../how-to.md#how-to-enable-language-server-logging
-  [5]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
-  [6]: https://en.wikipedia.org/wiki/Mojo_(programming_language)
-  [7]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
-  [8]: https://www.jetbrains.com/help/pycharm/content-root.html
+  [3]: https://youtrack.jetbrains.com/issue/IJPL-155741
+  [4]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29
+  [5]: ../how-to.md#how-to-enable-language-server-logging
+  [6]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
+  [7]: https://en.wikipedia.org/wiki/Mojo_(programming_language)
+  [8]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
+  [9]: https://www.jetbrains.com/help/pycharm/content-root.html
