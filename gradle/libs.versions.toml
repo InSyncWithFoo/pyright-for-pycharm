@@ -6,7 +6,7 @@ kotlinxSerialization = "1.7.1"
 # plugins
 kotlin = "2.0.0"
 changelog = "2.2.1"
-gradleIntelliJPlugin = "1.17.3"
+intellijPlatform = "2.0.0-beta6"
 qodana = "2024.1.5"
 kover = "0.8.2"
 
@@ -24,9 +24,9 @@ version.ref = "kotlinxSerialization"
 id = "org.jetbrains.changelog"
 version.ref = "changelog"
 
-[plugins.gradleIntelliJPlugin]
-id = "org.jetbrains.intellij"
-version.ref = "gradleIntelliJPlugin"
+[plugins.intellijPlatform]
+id = "org.jetbrains.intellij.platform"
+version.ref = "intellijPlatform"
 
 [plugins.kotlin]
 id = "org.jetbrains.kotlin.jvm"
