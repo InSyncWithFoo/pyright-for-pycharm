@@ -136,6 +136,7 @@ tasks {
         systemProperty("ide.experimental.ui", "true")
         systemProperty("projectView.hide.dot.idea", "false")
         systemProperty("terminal.new.ui", "false")
+        systemProperty("ide.tree.painter.compact.default", "true")
     }
     
     wrapper {
