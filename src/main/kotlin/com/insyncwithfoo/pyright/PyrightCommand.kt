@@ -16,7 +16,7 @@ internal abstract class PyrightCommand {
     
     private val commandLine: GeneralCommandLine
         get() = GeneralCommandLine(fragments).apply {
-            withWorkDirectory(workingDirectory)
+            withWorkDirectory(this@PyrightCommand.workingDirectory)
             withCharset(Charsets.UTF_8)
         }
     
