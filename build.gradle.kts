@@ -1,6 +1,8 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.models.ProductRelease
 
 fun properties(key: String) = providers.gradleProperty(key)
 fun environment(key: String) = providers.environmentVariable(key)
@@ -109,6 +111,22 @@ intellijPlatform {
     verifyPlugin {
         ides {
             recommended()
+            
+            select {
+                channels = listOf(
+                    ProductRelease.Channel.EAP,
+                    ProductRelease.Channel.RELEASE,
+                    ProductRelease.Channel.BETA,
+                    ProductRelease.Channel.RC
+                )
+                types = listOf(
+                    IntelliJPlatformType.PyCharmCommunity,
+                    IntelliJPlatformType.PyCharmProfessional
+                )
+                
+                sinceBuild = properties("pluginSinceBuild")
+                untilBuild = properties("pluginUntilBuild")
+            }
         }
     }
 }
