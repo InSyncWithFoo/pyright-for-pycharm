@@ -1,49 +1,24 @@
 package com.insyncwithfoo.pyright.lsp4ij
 
-import com.insyncwithfoo.pyright.configuration.application.RunningMode
 import com.insyncwithfoo.pyright.path
-import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.pyrightLSExecutable
-import com.insyncwithfoo.pyright.sdkPath
 import com.intellij.openapi.project.Project
 import com.redhat.devtools.lsp4ij.server.ProcessStreamConnectionProvider
-import java.net.URI
-import java.nio.file.Path
-
-
-private fun Project.createSettingsObject() = Settings {
-    python {
-        pythonPath = sdkPath?.toString()
-    }
-}
 
 
 internal class ConnectionProvider(
-    private val project: Project,
-    private val executable: Path?
-) : ProcessStreamConnectionProvider() {
-    
-    private val configurations = project.pyrightConfigurations
-    
-    init {
-        commands = listOf(executable?.toString() ?: "", "--stdio")
-        workingDirectory = project.path?.toString()
-    }
-    
-    override fun start() {
-        // FIXME: This throws NullPointerException at runtime.
-        if (configurations.runningMode == RunningMode.LSP4IJ && executable != null) {
-            super.start()
-        }
-    }
-    
-    // FIXME: This must be sent via didChangeConfiguration.
-    override fun getInitializationOptions(rootUri: URI?) =
-        project.createSettingsObject()
+    commands: List<String>,
+    workingDirectory: String?
+) : ProcessStreamConnectionProvider(commands, workingDirectory) {
     
     companion object {
         fun create(project: Project): ConnectionProvider {
-            return ConnectionProvider(project, project.pyrightLSExecutable)
+            val executable = project.pyrightLSExecutable!!
+            
+            val commands: List<String> = listOf(executable.toString(), "--stdio")
+            val workingDirectory = project.path?.toString()
+            
+            return ConnectionProvider(commands, workingDirectory)
         }
     }
     

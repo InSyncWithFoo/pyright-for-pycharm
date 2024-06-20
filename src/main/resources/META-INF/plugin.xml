@@ -66,6 +66,12 @@
 		<postStartupActivity
 			implementation="com.insyncwithfoo.pyright.PyrightProjectExecutableSuggester"
 		/>
+		
+		<codeInsight.parameterInfo
+			id="PyrightLSPParameterInfoHandler"
+			language="Python"
+			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
+		/>
 	</extensions>
 	
 	<actions>
