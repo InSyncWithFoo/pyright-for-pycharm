@@ -6,7 +6,7 @@ import com.redhat.devtools.lsp4ij.ServerStatus
 import com.redhat.devtools.lsp4ij.client.LanguageClientImpl
 
 
-private fun Project.createSettingsObject() = Settings {
+private fun Project.createSettingsObject() = Settings().apply {
     python {
         pythonPath = sdkPath?.toString()
     }

@@ -1,22 +1,37 @@
 package com.insyncwithfoo.pyright.configuration
 
-import com.insyncwithfoo.pyright.isNormal
+import com.insyncwithfoo.pyright.configuration.application.RunningMode
+import com.insyncwithfoo.pyright.lsp4ij.SERVER_ID
+import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.intellij.openapi.components.BaseState
 import com.intellij.openapi.components.SimplePersistentStateComponent
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.redhat.devtools.lsp4ij.LanguageServerManager
 
 
-private val ProjectManager.undisposedProjects: Sequence<Project>
-    get() = openProjects.asSequence().filter { it.isNormal }
-
-
 private val Project.languageServerManager: LanguageServerManager
     get() = LanguageServerManager.getInstance(this)
+
+
+private fun Project.stopServers(disable: Boolean = false) {
+    val options = LanguageServerManager.StopOptions().apply {
+        isWillDisable = disable
+    }
+    
+    languageServerManager.stop(SERVER_ID, options)
+}
+
+
+private fun Project.startServers(enable: Boolean = false) {
+    val options = LanguageServerManager.StartOptions().apply { 
+        isWillEnable = enable
+    }
+    
+    languageServerManager.start(SERVER_ID, options)
+}
 
 
 internal abstract class PyrightConfigurable<State : BaseState> : Configurable {
@@ -43,21 +58,12 @@ internal abstract class PyrightConfigurable<State : BaseState> : Configurable {
         return XmlSerializerUtil.createCopy(this)
     }
     
-    protected fun stopAllServers() {
-        ProjectManager.getInstance().undisposedProjects.forEach { project ->
-            project.languageServerManager.stop("pyright")
+    protected fun Project.toggleServersAccordingly() {
+        stopServers()
+        
+        if (pyrightConfigurations.runningMode == RunningMode.LSP4IJ) {
+            startServers()
         }
-    }
-    
-    protected fun startServers() {
-        ProjectManager.getInstance().undisposedProjects.forEach { project ->
-            project.languageServerManager.start("pyright")
-        }
-    }
-    
-    protected fun restartAllServersIfSoChoose() {
-        stopAllServers()
-        startServers()
     }
     
 }

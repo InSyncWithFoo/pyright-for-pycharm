@@ -1,21 +1,19 @@
 package com.insyncwithfoo.pyright.lsp4ij
 
 
-internal class Python {
+private interface Builder
+
+
+internal operator fun <T : Builder> T.invoke(block: T.() -> Unit) {
+    this.apply(block)
+}
+
+
+internal data class Python(
     var pythonPath: String? = null
-}
+) : Builder
 
 
-internal class Settings(block: Settings.() -> Unit) {
-    
-    private val python = Python()
-    
-    init {
-        this.apply(block)
-    }
-    
-    fun python(block: Python.() -> Unit) {
-        python.apply(block)
-    }
-    
-}
+internal data class Settings(
+    val python: Python = Python()
+)
