@@ -70,6 +70,7 @@
 		<codeInsight.parameterInfo
 			id="PyrightLSPParameterInfoHandler"
 			language="Python"
+			order="first"
 			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
 		/>
 	</extensions>
