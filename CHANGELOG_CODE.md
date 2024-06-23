@@ -18,22 +18,24 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Changed
 
-* [`PyrightBundle`][60-1] and [`PyrightIcon`][60-2] are renamed. (7032faff)
+* [The documentation][60-1] is updated. (HEAD)
+* [`PyrightBundle`][60-2] and [`PyrightIcon`][60-3] are renamed. (7032faff)
 * Gradle is updated to 8.8. (2397aafd)
-* [The Kotlin Serialization Gradle Plugin][60-3] is updated to 1.7.0.
+* [The Kotlin Serialization Gradle Plugin][60-4] is updated to 1.7.0.
   (330ef0c3)
 
 ### Fixed
 
-* [`PyrightExternalAnnotator`][60-4] now overrides
+* [`PyrightExternalAnnotator`][60-5] now overrides
   `collectInformation(PsiFile, Editor, boolean)`
   instead of `collectInformation(PsiFile)`. (7032faff)
 
 
-  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
-  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
-  [60-3]: https://github.com/Kotlin/kotlinx.serialization
-  [60-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
+  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
+  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
+  [60-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
+  [60-4]: https://github.com/Kotlin/kotlinx.serialization
+  [60-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.5.0] - 2024-06-04

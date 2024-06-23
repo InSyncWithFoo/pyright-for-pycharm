@@ -160,6 +160,31 @@ Default: `true`
     ![](../assets/lsp-configurations-demo-completion-support-disabled.png)
 
 
+### Add common search paths
+
+Uncheck this option to tell the language server not to add
+common search paths like `src` when there are
+no execution environments defined in the configuration file.
+
+This corresponds to the `python.analysis.autoSearchPaths` setting.
+
+Default: `true`
+
+
+### Diagnostic mode
+
+!!! note
+
+    This option's usefulness is as of yet unknown.
+
+Modify this option to control the number of files
+for which the language server will analyze and report diagnostics.
+
+This corresponds to the `python.analysis.diagnosticMode` setting.
+
+Default: *Open files only*
+
+
 ### Log level
 
 !!! note
@@ -167,11 +192,50 @@ Default: `true`
     Language server logs are not recorded in `idea.log` by default.
     You need to manually [enable it][5].
 
-Modify this option to make Pyright emit more or less [log messages][6].
+Modify this option to make the language server
+emit more or less [log messages][6].
 
 This corresponds to the `python.analysis.logLevel` setting.
 
 Default: <i>Information</i>
+
+
+### Monkeypatch auto-import details
+
+Uncheck this option to prevent the original completion item detail
+("<i>Auto-import</i>" or a similar localized message)
+from being overridden by its import source.
+
+Default: `true`
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-monkeypatch-auto-import-details-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-monkeypatch-auto-import-details-disabled.png)
+
+
+### Monkeypatch trailing quote bug
+
+Uncheck this option to use the IDE's native implementation
+when applying quoted completions,
+which may insert extraneous trailing quotes.
+
+Default: `true`
+
+=== "Before"
+
+    ![](../assets/lsp-configurations-demo-monkeypatch-trailing-quote-bug-before.png)
+
+=== "Enabled"
+
+    ![](../assets/lsp-configurations-demo-monkeypatch-trailing-quote-bug-enabled.png)
+
+=== "Disabled"
+
+    ![](../assets/lsp-configurations-demo-monkeypatch-trailing-quote-bug-disabled.png)
 
 
 ### Tagged hints

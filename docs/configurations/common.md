@@ -33,6 +33,12 @@ and can likely be found in:
 
     [TLDR][2]: Some may output "unexpected" things.
 
+!!! note
+
+    For LSP to work with a WSL project,
+    its interpreter and the executable must be
+    located within the same distribution.
+
 If the executables can't be found in the aforementioned locations,
 see the following pages for more information:
 
