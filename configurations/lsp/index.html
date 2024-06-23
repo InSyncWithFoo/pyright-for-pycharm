@@ -517,9 +517,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#add-common-search-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add common search paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#log-level" class="md-nav__link">
     <span class="md-ellipsis">
       Log level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkeypatch-auto-import-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monkeypatch auto-import details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkeypatch-trailing-quote-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monkeypatch trailing quote bug
     </span>
   </a>
   
@@ -838,9 +874,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#add-common-search-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add common search paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#log-level" class="md-nav__link">
     <span class="md-ellipsis">
       Log level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkeypatch-auto-import-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monkeypatch auto-import details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monkeypatch-trailing-quote-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monkeypatch trailing quote bug
     </span>
   </a>
   
@@ -1036,22 +1108,71 @@ for that newly introduced symbol.</p>
 </div>
 </div>
 </div>
+<h3 id="add-common-search-paths">Add common search paths<a class="headerlink" href="#add-common-search-paths" title="Permanent link">#</a></h3>
+<p>Uncheck this option to tell the language server not to add
+common search paths like <code>src</code> when there are
+no execution environments defined in the configuration file.</p>
+<p>This corresponds to the <code>python.analysis.autoSearchPaths</code> setting.</p>
+<p>Default: <code>true</code></p>
+<h3 id="diagnostic-mode">Diagnostic mode<a class="headerlink" href="#diagnostic-mode" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This option's usefulness is as of yet unknown.</p>
+</div>
+<p>Modify this option to control the number of files
+for which the language server will analyze and report diagnostics.</p>
+<p>This corresponds to the <code>python.analysis.diagnosticMode</code> setting.</p>
+<p>Default: <em>Open files only</em></p>
 <h3 id="log-level">Log level<a class="headerlink" href="#log-level" title="Permanent link">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Language server logs are not recorded in <code>idea.log</code> by default.
 You need to manually <a href="../../how-to/#how-to-enable-language-server-logging">enable it</a>.</p>
 </div>
-<p>Modify this option to make Pyright emit more or less <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage">log messages</a>.</p>
+<p>Modify this option to make the language server
+emit more or less <a href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage">log messages</a>.</p>
 <p>This corresponds to the <code>python.analysis.logLevel</code> setting.</p>
 <p>Default: <i>Information</i></p>
+<h3 id="monkeypatch-auto-import-details">Monkeypatch auto-import details<a class="headerlink" href="#monkeypatch-auto-import-details" title="Permanent link">#</a></h3>
+<p>Uncheck this option to prevent the original completion item detail
+("<i>Auto-import</i>" or a similar localized message)
+from being overridden by its import source.</p>
+<p>Default: <code>true</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="monkeypatch-auto-import-details-enabled" name="__tabbed_7" type="radio" /><input id="monkeypatch-auto-import-details-disabled" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="monkeypatch-auto-import-details-enabled">Enabled</label><label for="monkeypatch-auto-import-details-disabled">Disabled</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-monkeypatch-auto-import-details-enabled.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-monkeypatch-auto-import-details-disabled.png" /></p>
+</div>
+</div>
+</div>
+<h3 id="monkeypatch-trailing-quote-bug">Monkeypatch trailing quote bug<a class="headerlink" href="#monkeypatch-trailing-quote-bug" title="Permanent link">#</a></h3>
+<p>Uncheck this option to use the IDE's native implementation
+when applying quoted completions,
+which may insert extraneous trailing quotes.</p>
+<p>Default: <code>true</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="monkeypatch-trailing-quote-bug-before" name="__tabbed_8" type="radio" /><input id="monkeypatch-trailing-quote-bug-enabled" name="__tabbed_8" type="radio" /><input id="monkeypatch-trailing-quote-bug-disabled" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="monkeypatch-trailing-quote-bug-before">Before</label><label for="monkeypatch-trailing-quote-bug-enabled">Enabled</label><label for="monkeypatch-trailing-quote-bug-disabled">Disabled</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-monkeypatch-trailing-quote-bug-before.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-monkeypatch-trailing-quote-bug-enabled.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../assets/lsp-configurations-demo-monkeypatch-trailing-quote-bug-disabled.png" /></p>
+</div>
+</div>
+</div>
 <h3 id="tagged-hints">Tagged hints<a class="headerlink" href="#tagged-hints" title="Permanent link">#</a></h3>
 <p>Uncheck this option to prevent the language server from emitting
 "Unnecessary" and "Deprecated" hints, which are visualized in the IDE
 as faded-out and strikethrough text, correspondingly.</p>
 <p>This corresponds to the <code>pyright.disableTaggedHints</code> setting.</p>
 <p>Default: <code>true</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="tagged-hints-enabled" name="__tabbed_7" type="radio" /><input id="tagged-hints-disabled" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="tagged-hints-enabled">Enabled</label><label for="tagged-hints-disabled">Disabled</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="tagged-hints-enabled" name="__tabbed_9" type="radio" /><input id="tagged-hints-disabled" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="tagged-hints-enabled">Enabled</label><label for="tagged-hints-disabled">Disabled</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><img alt="" src="../../assets/lsp-configurations-demo-tagged-hints-enabled.png" /></p>
