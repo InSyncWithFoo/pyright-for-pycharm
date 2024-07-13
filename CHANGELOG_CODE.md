@@ -18,24 +18,26 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Changed
 
-* [The documentation][60-1] is updated. (HEAD)
+* [The documentation][60-1] is updated. (fcf2c0fb)
 * [`PyrightBundle`][60-2] and [`PyrightIcon`][60-3] are renamed. (7032faff)
-* Gradle is updated to 8.8. (2397aafd)
-* [The Kotlin Serialization Gradle Plugin][60-4] is updated to 1.7.0.
-  (330ef0c3)
+* Gradle is updated to 8.9. (2397aafd, HEAD)
+* [Kotlin Serialization Gradle Plugin][60-4] is updated to 1.7.1.
+  (330ef0c3, b839a59b)
+* [Kover Gradle Plugin][60-5] is updated to 0.8.2. (eb306695, 87e5660a)
 
 ### Fixed
 
-* [`PyrightExternalAnnotator`][60-5] now overrides
+* [`PyrightExternalAnnotator`][60-6] now overrides
   `collectInformation(PsiFile, Editor, boolean)`
   instead of `collectInformation(PsiFile)`. (7032faff)
 
 
-  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
+  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fcf2c0fb/docs
   [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
   [60-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
   [60-4]: https://github.com/Kotlin/kotlinx.serialization
-  [60-5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
+  [60-5]: https://github.com/Kotlin/kotlinx-kover
+  [60-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.5.0] - 2024-06-04
@@ -75,8 +77,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Changed
 
-* [The Kover Gradle Plugin][40-2] is updated to 0.8.0. (9d583cd2)
-* [The Qodana Gradle plugin][40-3] and its corresponding action
+* [Kover Gradle Plugin][40-2] is updated to 0.8.0. (9d583cd2)
+* [Qodana Gradle plugin][40-3] and its corresponding action
   [@JetBrains/qodana-action][40-4] are updated to 2024.1.5.
   (7d2278a5)
 * [Kotlin JVM plugin][40-5] is updated to 2.0.0. (99770f0e)
@@ -118,7 +120,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Changed
 
-* [The Qodana Gradle plugin][30-4] and its corresponding action
+* [Qodana Gradle plugin][30-4] and its corresponding action
   [@JetBrains/qodana-action][30-5] are updated to 2024.1.4.
   (ba0e2aca, e9eafd54, f4331b4c, 0f89d093, a58e9621, 913fe613)
 * A new branch is added to [`executablePathResolvingHint()`][30-6]. (fb98eae7)
@@ -176,7 +178,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * The "Always use global" and "Auto-suggest executable" are moved back
   to the first column of the first row. (6e6c6df6)
 * [@gradle/wrapper-validation-action][10-3] is updated to 2.1.3. (1c38c5ac)
-* [The docs][10-4] are rewritten to reflect both plugins. (4d1f29b6, 5e997e73)
+* [The documentation][10-4] is rewritten to reflect both plugins.
+  (4d1f29b6, 5e997e73)
 
 ### Fixed
 
@@ -240,12 +243,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   The two helper Python scripts are added under [`.scripts`][5-4].
   (e9500f03)
 
-* [The Qodana Gradle plugin][5-5] and its corresponding action
+* [Qodana Gradle plugin][5-5] and its corresponding action
   [@JetBrains/qodana-action][5-6] are updated to 2023.3.2. (caca9092)
 * UI-related code is rewritten to use [Kotlin UI DSL][5-7]. (6e4f8c7c)
 * All APIs are now either internal or private. (6e4f8c7c)
   * Some of them no longer have the prefix `Pyright` in their names. (6e4f8c7c)
-* [The IntelliJ Platform Gradle plugin][5-8] is updated to 1.17.3. (26fae6a3)
+* [IntelliJ Platform Gradle plugin][5-8] is updated to 1.17.3. (26fae6a3)
 
 ### Changed
 
@@ -286,7 +289,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
     is used instead of `v2.6.0`. (a8613613)
 * The project/repository is renamed from
   `pyright-plugin` to `pyright-for-pycharm`. (d9253998)
-* [The Gradle Qodana plugin][4-6] is updated to 2023.3.1. (aa32c1b9)
+* [Gradle Qodana plugin][4-6] is updated to 2023.3.1. (aa32c1b9)
 * Configuration constructs are now marked `internal`. (54d74f74)
 * [`CHANGELOG.md`][4-7] is rewritten. (c02db458, 4650c88c, 7516e63d)
 * Notifications-related logic is rewritten. (6b4b8e2a, 6a0cd5ac)
