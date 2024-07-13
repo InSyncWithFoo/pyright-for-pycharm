@@ -11,7 +11,7 @@
 			</option>
 			<option name="taskNames">
 				<list>
-					<option value="runIdeForUiTests"/>
+					<option value="testIdeUi"/>
 				</list>
 			</option>
 			<option name="vmOptions"/>

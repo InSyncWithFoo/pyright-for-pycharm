@@ -66,8 +66,6 @@ jobs:
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-          
-          ./gradlew listProductsReleases
       -
         name: Build plugin
         run: |
@@ -243,7 +241,7 @@ jobs:
         name: Run verifier
         run: |
           chmod +x ./gradlew
-          ./gradlew runPluginVerifier -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
+          ./gradlew verifyPlugin -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
       -
         name: Upload result
         if: always()
