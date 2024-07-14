@@ -12,6 +12,7 @@ venv/
 ### Generated ###
 .gradle/
 .kotlin/
+.intellijPlatform/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/

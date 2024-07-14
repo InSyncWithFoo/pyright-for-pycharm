@@ -24,9 +24,9 @@ version.ref = "kotlinxSerialization"
 id = "org.jetbrains.changelog"
 version.ref = "changelog"
 
-[plugins.gradleIntelliJPlugin]
-id = "org.jetbrains.intellij"
-version.ref = "gradleIntelliJPlugin"
+[plugins.intellijPlatform]
+id = "org.jetbrains.intellij.platform"
+version.ref = "intellijPlatform"
 
 [plugins.kotlin]
 id = "org.jetbrains.kotlin.jvm"
