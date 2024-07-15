@@ -6,6 +6,7 @@ import com.insyncwithfoo.pyright.configuration.bindText
 import com.insyncwithfoo.pyright.configuration.configurationFilePathResolvingHint
 import com.insyncwithfoo.pyright.configuration.displayPathHint
 import com.insyncwithfoo.pyright.configuration.executablePathResolvingHint
+import com.insyncwithfoo.pyright.configuration.langserverExecutablePathResolvingHint
 import com.insyncwithfoo.pyright.configuration.onInput
 import com.insyncwithfoo.pyright.configuration.prefilledWithRandomPlaceholder
 import com.insyncwithfoo.pyright.configuration.secondColumnPathInput
@@ -15,12 +16,15 @@ import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.ui.JBIntSpinner
 import com.intellij.ui.SimpleListCellRenderer
 import com.intellij.ui.components.JBCheckBox
+import com.intellij.ui.dsl.builder.ButtonsGroup
 import com.intellij.ui.dsl.builder.Cell
+import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.Row
 import com.intellij.ui.dsl.builder.bindIntValue
 import com.intellij.ui.dsl.builder.bindItem
 import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.panel
+import com.intellij.ui.dsl.builder.toMutableProperty
 import com.intellij.ui.dsl.builder.toNullableProperty
 
 
@@ -34,6 +38,11 @@ private val PyrightDiagnosticSeverity.label: String
         PyrightDiagnosticSeverity.WARNING -> message("configurations.minimumSeverityLevel.warning")
         PyrightDiagnosticSeverity.INFORMATION -> message("configurations.minimumSeverityLevel.information")
     }
+
+
+private fun Row.radioButtonFor(runningMode: RunningMode) {
+    radioButton(runningMode.label, runningMode)
+}
 
 
 private fun Row.makeAlwaysUseGlobalInput(block: Cell<JBCheckBox>.() -> Unit) =
@@ -69,6 +78,21 @@ private fun Row.makeMinimumSeverityLevelInput(block: Cell<ComboBox<PyrightDiagno
 }
 
 
+private fun Row.makeGlobalLangserverExecutableInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
+    secondColumnPathInput().apply(block)
+
+
+private fun Panel.makeGlobalRunningModeInput(block: ButtonsGroup.() -> Unit) = run {
+    val group = buttonsGroup {
+        row(message("configurations.runningMode.label")) {
+            radioButtonFor(RunningMode.CLI)
+            radioButtonFor(RunningMode.LSP4IJ)
+        }
+    }
+    group.apply(block)
+}
+
+
 @Suppress("DialogTitleCapitalization")
 internal fun configurationPanel(state: Configurations) = panel {
     // FIXME: The onInput() callbacks are too deeply nested.
@@ -91,6 +115,20 @@ internal fun configurationPanel(state: Configurations) = panel {
         }
     }
     
+    row(message("configurations.globalLangserverExecutable.label")) {
+        makeGlobalLangserverExecutableInput {
+            onInput(::displayPathHint) { path ->
+                when {
+                    !path.isAbsolute -> relativePathHint()
+                    else -> langserverExecutablePathResolvingHint(path)
+                }
+            }
+            
+            prefilledWithRandomPlaceholder()
+            bindText(state::globalLangserverExecutable)
+        }
+    }
+    
     row(message("configurations.globalConfigurationFile.label")) {
         makeGlobalConfigurationFileInput {
             onInput(::displayPathHint) { path ->
@@ -103,6 +141,10 @@ internal fun configurationPanel(state: Configurations) = panel {
             prefilledWithRandomPlaceholder()
             bindText(state::globalConfigurationFile)
         }
+    }
+    
+    makeGlobalRunningModeInput {
+        bind(state::globalRunningMode.toMutableProperty(), RunningMode::class.java)
     }
     
     group(message("configurations.group.tooltips")) {

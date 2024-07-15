@@ -35,12 +35,20 @@ internal val Project.sdkPath: Path?
     get() = sdk?.homePath?.let { Path.of(it) }
 
 
+internal val Project.isNormal: Boolean
+    get() = !this.isDefault && !this.isDisposed
+
+
 internal val Project.pyrightConfigurations: AllConfigurations
     get() = ConfigurationService.getInstance(this).state
 
 
 internal val Project.pyrightExecutable: Path?
     get() = pyrightConfigurations.executable?.toPathIfItExists(base = this.path)
+
+
+internal val Project.pyrightLSExecutable: Path?
+    get() = pyrightConfigurations.langserverExecutable?.toPathIfItExists(base = this.path)
 
 
 internal val Project.pyrightInspectionIsEnabled: Boolean
