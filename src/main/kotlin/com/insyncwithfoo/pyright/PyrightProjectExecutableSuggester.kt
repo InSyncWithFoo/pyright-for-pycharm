@@ -17,11 +17,11 @@ private fun NotificationGroup.makeSuggestionNotification(executableRelativized: 
     )
 
 
-private val Project.sdkIsLocal: Boolean
+private val Project.interpreterIsLocal: Boolean
     get() = when {
         path == null -> false
-        sdkPath == null -> false
-        else -> sdkPath!!.startsWith(path!!)
+        interpreterPath == null -> false
+        else -> interpreterPath!!.startsWith(path!!)
     }
 
 
@@ -79,7 +79,7 @@ private fun Project.suggest(executable: Path) {
 internal class PyrightProjectExecutableSuggester : ProjectActivity {
     
     override suspend fun execute(project: Project) {
-        if (project.run { pyrightInspectionIsEnabled && executableShouldBeSuggested && sdkIsLocal }) {
+        if (project.run { pyrightInspectionIsEnabled && executableShouldBeSuggested && interpreterIsLocal }) {
             project.suggest(project.findPyrightExecutable() ?: return)
         }
     }
