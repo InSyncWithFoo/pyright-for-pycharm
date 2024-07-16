@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright.runner
+package com.insyncwithfoo.pyright.cli
 
 import com.insyncwithfoo.pyright.createErrorNotification
 import com.insyncwithfoo.pyright.fileEditorManager

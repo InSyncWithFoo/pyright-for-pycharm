@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.configuration.application
 
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
 import com.insyncwithfoo.pyright.message
 import com.intellij.openapi.components.BaseState
 

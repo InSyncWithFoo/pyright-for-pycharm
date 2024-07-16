@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright
+package com.insyncwithfoo.pyright.cli
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

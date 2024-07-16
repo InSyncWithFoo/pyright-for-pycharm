@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright.runner
+package com.insyncwithfoo.pyright.cli
 
 
 internal enum class PyrightExitCode(val value: Int) {

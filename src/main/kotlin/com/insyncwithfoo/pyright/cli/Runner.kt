@@ -1,6 +1,5 @@
-package com.insyncwithfoo.pyright.runner
+package com.insyncwithfoo.pyright.cli
 
-import com.insyncwithfoo.pyright.PyrightOutput
 import com.insyncwithfoo.pyright.addSimpleExpiringAction
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.configuration.PyrightConfigurable

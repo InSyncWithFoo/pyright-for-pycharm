@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright.runner
+package com.insyncwithfoo.pyright.cli
 
 import com.insyncwithfoo.pyright.PyrightInspection
 import com.insyncwithfoo.pyright.addSimpleExpiringAction

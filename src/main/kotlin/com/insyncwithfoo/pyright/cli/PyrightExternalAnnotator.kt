@@ -1,12 +1,13 @@
-package com.insyncwithfoo.pyright
+package com.insyncwithfoo.pyright.cli
 
+import com.insyncwithfoo.pyright.PyrightInspection
 import com.insyncwithfoo.pyright.annotations.AnnotationApplier
 import com.insyncwithfoo.pyright.annotations.SuppressQuickFix
 import com.insyncwithfoo.pyright.annotations.toHighlightSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.configuration.application.RunningMode
-import com.insyncwithfoo.pyright.runner.FileCommand
-import com.insyncwithfoo.pyright.runner.PyrightRunner
+import com.insyncwithfoo.pyright.inspectionProfileManager
+import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.intellij.codeInspection.InspectionManager
 import com.intellij.codeInspection.LocalQuickFix
 import com.intellij.codeInspection.ProblemDescriptor

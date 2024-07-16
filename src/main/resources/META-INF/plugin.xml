@@ -60,7 +60,7 @@
 		
 		<externalAnnotator
 			language="Python"
-			implementationClass="com.insyncwithfoo.pyright.PyrightExternalAnnotator"
+			implementationClass="com.insyncwithfoo.pyright.cli.PyrightExternalAnnotator"
 		/>
 		
 		<postStartupActivity

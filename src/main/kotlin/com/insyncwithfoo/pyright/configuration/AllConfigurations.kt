@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.configuration
 
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
 import org.jetbrains.annotations.SystemDependent
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
 import com.insyncwithfoo.pyright.configuration.application.RunningMode as ApplicationRunningMode

@@ -1,7 +1,6 @@
-package com.insyncwithfoo.pyright.runner
+package com.insyncwithfoo.pyright.cli
 
 import com.insyncwithfoo.pyright.PyrightCommand
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.pyrightConfigurations

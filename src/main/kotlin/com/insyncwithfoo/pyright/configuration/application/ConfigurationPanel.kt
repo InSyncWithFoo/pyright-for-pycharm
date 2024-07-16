@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.configuration.application
 
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
 import com.insyncwithfoo.pyright.configuration.Hint
 import com.insyncwithfoo.pyright.configuration.bindText
 import com.insyncwithfoo.pyright.configuration.configurationFilePathResolvingHint

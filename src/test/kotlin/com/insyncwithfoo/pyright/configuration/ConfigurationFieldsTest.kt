@@ -1,6 +1,6 @@
 package com.insyncwithfoo.pyright.configuration
 
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
 import junit.framework.TestCase
 import kotlin.test.assertContains
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
