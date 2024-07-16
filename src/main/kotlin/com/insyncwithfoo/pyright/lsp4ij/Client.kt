@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.lsp4ij
 
-import com.insyncwithfoo.pyright.sdkPath
+import com.insyncwithfoo.pyright.interpreterPath
+import com.insyncwithfoo.pyright.onlyModuleOrNull
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.redhat.devtools.lsp4ij.ServerStatus
@@ -9,7 +10,7 @@ import com.redhat.devtools.lsp4ij.client.LanguageClientImpl
 
 private fun Project.createSettingsObject() = Settings().apply {
     python {
-        pythonPath = sdkPath?.toString()
+        pythonPath = onlyModuleOrNull?.interpreterPath?.toString()
     }
 }
 
