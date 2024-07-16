@@ -11,6 +11,7 @@ import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.ui.Messages
 import com.intellij.platform.ide.progress.withBackgroundProgress
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
+import com.jetbrains.python.sdk.PythonSdkUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 import java.nio.file.Path
@@ -27,6 +28,7 @@ private val Project.modules: Array<Module>
 
 private val Project.sdk: Sdk?
     get() = ProjectRootManager.getInstance(this).projectSdk
+        ?.takeIf { PythonSdkUtil.isPythonSdk(it) }
 
 
 internal val Project.path: Path?
@@ -43,10 +45,6 @@ internal val Project.isNormal: Boolean
 
 internal val Project.onlyModuleOrNull: Module?
     get() = modules.onlyElement
-
-
-internal val Project.hasOnlyOneModule: Boolean
-    get() = modules.size == 1
 
 
 internal val Project.fileEditorManager: FileEditorManager
