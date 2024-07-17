@@ -417,6 +417,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#number-of-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Number of threads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#minimum-severity-level" class="md-nav__link">
     <span class="md-ellipsis">
       Minimum severity level
@@ -648,6 +657,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#number-of-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Number of threads
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#minimum-severity-level" class="md-nav__link">
     <span class="md-ellipsis">
       Minimum severity level
@@ -715,6 +733,17 @@ each process should take before it is forcibly destroyed.</p>
 <p class="admonition-title">Warning</p>
 <p>If there is no time limit, the process might run indefinitely,
 leading to undesired CPU and RAM usage.</p>
+</div>
+<h2 id="number-of-threads">Number of threads<a class="headerlink" href="#number-of-threads" title="Permanent link">#</a></h2>
+<p>Modify this option to paralellize type checking
+on up to the specified number of threads.
+A value of 0 means nothing is passed to the executable.</p>
+<p>This corresponds to the <code>--threads</code> option.</p>
+<p>Default: <i>0</i></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>--thread</code> option is only available in Pyright 1.1.371 and later.
+Modifying it will cause an error for older versions.</p>
 </div>
 <h2 id="minimum-severity-level">Minimum severity level<a class="headerlink" href="#minimum-severity-level" title="Permanent link">#</a></h2>
 <p>Modify this option to set a minimum threshold that
