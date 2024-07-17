@@ -26,7 +26,7 @@ class ConfigurationFieldsTest : TestCase() {
     fun `test defaults - application`() {
         val configurations = ApplicationConfigurations()
         
-        assertEquals(9, applicationFields().size)
+        assertEquals(10, applicationFields().size)
         
         configurations.run {
             assertEquals(false, alwaysUseGlobal)
@@ -38,6 +38,7 @@ class ConfigurationFieldsTest : TestCase() {
             assertEquals(10_000, processTimeout)
             assertEquals(null, globalLangserverExecutable)
             assertEquals(ApplicationRunningMode.CLI, globalRunningMode)
+            assertEquals(0, numberOfThreads)
         }
     }
     

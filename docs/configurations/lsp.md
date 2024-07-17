@@ -223,6 +223,8 @@ Uncheck this option to use the IDE's native implementation
 when applying quoted completions,
 which may insert extraneous trailing quotes.
 
+Upstream issue: [IJPL-155741][7].
+
 Default: `true`
 
 === "Before"
@@ -275,7 +277,7 @@ Default: `py`, `pyi`
 !!! note
 
     Presumably, due to a limitation/bug of IntelliJ,
-    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][7])
+    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][8])
     cannot be serialized correctly into setting files
     and therefore will not persist between IDE sessions.
 
@@ -286,7 +288,7 @@ Default: `py`, `pyi`
 ### Workspace folders
 
 The folders defined by this option will be passed
-to the language server as "[workspace folders][8]".
+to the language server as "[workspace folders][9]".
 Pyright will only recognize `pyproject.toml`/`pyrightconfig.json` files
 which are direct children of these folders.
 
@@ -296,7 +298,7 @@ Possible choices:
   Top-level directories which contain files related to the project,
   often only one (project root).
 * <i>Source roots</i>:
-  Directories marked as "[source roots][9]".
+  Directories marked as "[source roots][10]".
 
 Default: <i>Project base directories</i>
 
@@ -307,6 +309,7 @@ Default: <i>Project base directories</i>
   [4]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm/issues/29
   [5]: ../how-to.md#how-to-enable-language-server-logging
   [6]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_logMessage
-  [7]: https://en.wikipedia.org/wiki/Mojo_(programming_language)
-  [8]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
-  [9]: https://www.jetbrains.com/help/pycharm/content-root.html
+  [7]: https://youtrack.jetbrains.com/issue/IJPL-155741
+  [8]: https://en.wikipedia.org/wiki/Mojo_(programming_language)
+  [9]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
+  [10]: https://www.jetbrains.com/help/pycharm/content-root.html

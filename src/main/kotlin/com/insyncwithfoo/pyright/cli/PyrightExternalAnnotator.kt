@@ -7,6 +7,7 @@ import com.insyncwithfoo.pyright.annotations.toHighlightSeverity
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.configuration.application.RunningMode
 import com.insyncwithfoo.pyright.inspectionProfileManager
+import com.insyncwithfoo.pyright.onlyModuleOrNull
 import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.intellij.codeInspection.InspectionManager
 import com.intellij.codeInspection.LocalQuickFix
@@ -20,6 +21,8 @@ import com.intellij.lang.injection.InjectedLanguageManager
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.fileEditor.FileDocumentManager
+import com.intellij.openapi.module.Module
+import com.intellij.openapi.module.ModuleUtilCore
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiDocumentManager
@@ -78,6 +81,10 @@ private val PsiFile.isApplicable: Boolean
     get() = this is PyFile && !this.isInjected && this.languageIsPython
 
 
+private val PsiElement.module: Module?
+    get() = ModuleUtilCore.findModuleForPsiElement(this) ?: project.onlyModuleOrNull
+
+
 private fun PsiFile.getPyrightInspection(): PyrightInspection {
     val profile = project.inspectionProfileManager.currentProfile
     
@@ -116,7 +123,8 @@ private fun TextRange.atEndOfFile(file: PsiFile) = endOffset == file.textLength
 internal data class AnnotationInfo(
     val configurations: AllConfigurations,
     val inspection: PyrightInspection,
-    val file: PsiFile
+    val file: PsiFile,
+    val module: Module
 )
 
 
@@ -152,13 +160,15 @@ internal class PyrightExternalAnnotator : ExternalAnnotator<AnnotationInfo, Anno
             return null
         }
         
-        return AnnotationInfo(configurations, file.getPyrightInspection(), file)
+        val module = file.module ?: return null
+        
+        return AnnotationInfo(configurations, file.getPyrightInspection(), file, module)
     }
     
     override fun doAnnotate(collectedInfo: AnnotationInfo?): AnnotationResult? {
-        val (configurations, inspection, file) = collectedInfo ?: return null
+        val (configurations, inspection, file, module) = collectedInfo ?: return null
         
-        val command = FileCommand.create(file) ?: return null
+        val command = FileCommand.create(module, file) ?: return null
         val output = PyrightRunner(file.project).run(command) ?: return null
         
         return AnnotationResult(configurations, inspection, output)

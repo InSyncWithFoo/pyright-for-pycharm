@@ -16,11 +16,15 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 * The command for the currently selected file can now be copied
   using the newly added "Copy Pyright command" action.
   This is useful for debugging purposes.
+* Experimental LSP support is now available via the LSP4IJ plugin.
+* The executable can now be configured to run on multiple threads
+  via an UI option.
 
 ### Fixed
 
 * The annotator now always run, regardless of other annotators' results.
   Previously, it would not run if previous analyses resulted in errors.
+* The active interpreter is now detected correcly on non-PyCharm IDEs.
 
 
 ## [0.5.0] - 2024-06-04

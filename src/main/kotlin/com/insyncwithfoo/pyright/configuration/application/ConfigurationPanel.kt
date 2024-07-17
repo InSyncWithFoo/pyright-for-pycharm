@@ -93,6 +93,12 @@ private fun Panel.makeGlobalRunningModeInput(block: ButtonsGroup.() -> Unit) = r
 }
 
 
+private fun Row.makeNumberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit): Cell<JBIntSpinner> = run {
+    val comment = message("configurations.numberOfThreads.comment")
+    spinner(0..1_000_000, step = 1).comment(comment).apply(block)
+}
+
+
 @Suppress("DialogTitleCapitalization")
 internal fun configurationPanel(state: Configurations) = panel {
     // FIXME: The onInput() callbacks are too deeply nested.
@@ -159,6 +165,9 @@ internal fun configurationPanel(state: Configurations) = panel {
     group(message("configurations.group.others")) {
         row(message("configurations.processTimeout.label")) {
             makeProcessTimeoutInput { bindIntValue(state::processTimeout) }
+        }
+        row(message("configurations.numberOfThreads.label")) {
+            makeNumberOfThreadsInput { bindIntValue(state::numberOfThreads) }
         }
         row(message("configurations.minimumSeverityLevel.label")) {
             makeMinimumSeverityLevelInput { bindItem(state::minimumSeverityLevel.toNullableProperty()) }

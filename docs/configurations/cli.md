@@ -37,6 +37,22 @@ Default: <i>10 seconds</i>.
     leading to undesired CPU and RAM usage.
 
 
+## Number of threads
+
+Modify this option to paralellize type checking
+on up to the specified number of threads.
+A value of 0 means nothing is passed to the executable.
+
+This corresponds to the `--threads` option.
+
+Default: <i>0</i>
+
+!!! warning
+
+    The `--thread` option is only available in Pyright 1.1.371 and later.
+    Modifying it will cause an error for older versions.
+
+
 ## Minimum severity level
 
 Modify this option to set a minimum threshold that

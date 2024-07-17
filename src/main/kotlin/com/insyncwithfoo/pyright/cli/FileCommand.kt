@@ -9,10 +9,8 @@ import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.pyrightExecutable
 import com.insyncwithfoo.pyright.toPathIfItExists
 import com.intellij.openapi.module.Module
-import com.intellij.openapi.module.ModuleUtilCore
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -22,10 +20,6 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.nio.file.Path
-
-
-private val PsiElement.module: Module?
-    get() = ModuleUtilCore.findModuleForPsiElement(this) ?: project.onlyModuleOrNull
 
 
 private object PathSerializer : KSerializer<Path> {
@@ -84,6 +78,11 @@ internal data class FileCommand(
                 extraArguments.add(configurations.minimumSeverityLevel.name)
             }
             
+            if (configurations.numberOfThreads != 0) {
+                extraArguments.add("--threads")
+                extraArguments.add(configurations.numberOfThreads.toString())
+            }
+            
             return FileCommand(executable, target, projectPath.toString(), extraArguments)
         }
         
@@ -104,8 +103,7 @@ internal data class FileCommand(
             return create(module, file)
         }
         
-        fun create(file: PsiFile): FileCommand? {
-            val module = file.module ?: return null
+        fun create(module: Module, file: PsiFile): FileCommand? {
             return create(module, file.virtualFile)
         }
         

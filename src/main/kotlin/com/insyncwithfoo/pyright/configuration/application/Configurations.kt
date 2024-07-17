@@ -21,4 +21,5 @@ internal class Configurations : BaseState() {
     var processTimeout by property(10_000)
     var globalLangserverExecutable by string(null)
     var globalRunningMode by enum(RunningMode.CLI)
+    var numberOfThreads by property(0)
 }

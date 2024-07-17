@@ -19,6 +19,7 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
         processTimeout = this.processTimeout,
         globalLangserverExecutable = this.globalLangserverExecutable,
         globalRunningMode = this.globalRunningMode,
+        numberOfThreads = this.numberOfThreads,
         
         projectExecutable = other.projectExecutable,
         projectConfigurationFile = other.projectConfigurationFile,
@@ -38,6 +39,7 @@ internal data class AllConfigurations(
     val processTimeout: Int,
     val globalLangserverExecutable: @SystemDependent String?,
     val globalRunningMode: ApplicationRunningMode,
+    val numberOfThreads: Int,
     
     val projectExecutable: @SystemDependent String?,
     val projectConfigurationFile: @SystemDependent String?,
