@@ -2,14 +2,13 @@ package com.insyncwithfoo.pyright.configuration.application
 
 import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
 import com.insyncwithfoo.pyright.configuration.Hint
-import com.insyncwithfoo.pyright.configuration.bindText
+import com.insyncwithfoo.pyright.configuration.PathHintState
 import com.insyncwithfoo.pyright.configuration.configurationFilePathResolvingHint
-import com.insyncwithfoo.pyright.configuration.displayPathHint
 import com.insyncwithfoo.pyright.configuration.executablePathResolvingHint
 import com.insyncwithfoo.pyright.configuration.langserverExecutablePathResolvingHint
-import com.insyncwithfoo.pyright.configuration.onInput
-import com.insyncwithfoo.pyright.configuration.prefilledWithRandomPlaceholder
-import com.insyncwithfoo.pyright.configuration.secondColumnPathInput
+import com.insyncwithfoo.pyright.configuration.makeFlexible
+import com.insyncwithfoo.pyright.configuration.reactiveLabel
+import com.insyncwithfoo.pyright.configuration.triggerChange
 import com.insyncwithfoo.pyright.message
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
@@ -23,13 +22,16 @@ import com.intellij.ui.dsl.builder.Row
 import com.intellij.ui.dsl.builder.bindIntValue
 import com.intellij.ui.dsl.builder.bindItem
 import com.intellij.ui.dsl.builder.bindSelected
+import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.panel
 import com.intellij.ui.dsl.builder.toMutableProperty
+import com.intellij.ui.dsl.builder.toNonNullableProperty
 import com.intellij.ui.dsl.builder.toNullableProperty
+import java.nio.file.Path
 
 
-private fun relativePathHint() =
-    Hint.error(message("configurations.hint.globalMustBeAbsolute"))
+private val relativePathHint: Hint
+    get() = Hint.error(message("configurations.hint.globalMustBeAbsolute"))
 
 
 private val PyrightDiagnosticSeverity.label: String
@@ -38,6 +40,14 @@ private val PyrightDiagnosticSeverity.label: String
         PyrightDiagnosticSeverity.WARNING -> message("configurations.minimumSeverityLevel.warning")
         PyrightDiagnosticSeverity.INFORMATION -> message("configurations.minimumSeverityLevel.information")
     }
+
+
+private fun makeAbsolutePathHintState(makeAbsolutePathHint: (Path) -> Hint) = PathHintState { path ->
+    when {
+        !path.isAbsolute -> relativePathHint
+        else -> makeAbsolutePathHint(path)
+    }
+}
 
 
 private fun Row.radioButtonFor(runningMode: RunningMode) {
@@ -50,11 +60,11 @@ private fun Row.makeAlwaysUseGlobalInput(block: Cell<JBCheckBox>.() -> Unit) =
 
 
 private fun Row.makeGlobalExecutableInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
-    secondColumnPathInput().apply(block)
+    textFieldWithBrowseButton().makeFlexible().apply(block)
 
 
 private fun Row.makeGlobalConfigurationFileInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
-    secondColumnPathInput().apply(block)
+    textFieldWithBrowseButton().makeFlexible().apply(block)
 
 
 private fun Row.makeUseEditorFontInput(block: Cell<JBCheckBox>.() -> Unit) =
@@ -79,7 +89,7 @@ private fun Row.makeMinimumSeverityLevelInput(block: Cell<ComboBox<PyrightDiagno
 
 
 private fun Row.makeGlobalLangserverExecutableInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
-    secondColumnPathInput().apply(block)
+    textFieldWithBrowseButton().makeFlexible().apply(block)
 
 
 private fun Panel.makeGlobalRunningModeInput(block: ButtonsGroup.() -> Unit) = run {
@@ -101,7 +111,9 @@ private fun Row.makeNumberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit): 
 
 @Suppress("DialogTitleCapitalization")
 internal fun configurationPanel(state: Configurations) = panel {
-    // FIXME: The onInput() callbacks are too deeply nested.
+    val executablePathHintState = makeAbsolutePathHintState(::executablePathResolvingHint)
+    val configurationFilePathHintState = makeAbsolutePathHintState(::configurationFilePathResolvingHint)
+    val langserverExecutablePathHintState = makeAbsolutePathHintState(::langserverExecutablePathResolvingHint)
     
     row {
         makeAlwaysUseGlobalInput { bindSelected(state::alwaysUseGlobal) }
@@ -109,44 +121,35 @@ internal fun configurationPanel(state: Configurations) = panel {
     
     row(message("configurations.globalExecutable.label")) {
         makeGlobalExecutableInput {
-            onInput(::displayPathHint) { path ->
-                when {
-                    !path.isAbsolute -> relativePathHint()
-                    else -> executablePathResolvingHint(path)
-                }
-            }
-            
-            prefilledWithRandomPlaceholder()
-            bindText(state::globalExecutable)
+            bindText(executablePathHintState.path)
+            bindText(state::globalExecutable.toNonNullableProperty(""))
+            triggerChange()
         }
     }
-    
-    row(message("configurations.globalLangserverExecutable.label")) {
-        makeGlobalLangserverExecutableInput {
-            onInput(::displayPathHint) { path ->
-                when {
-                    !path.isAbsolute -> relativePathHint()
-                    else -> langserverExecutablePathResolvingHint(path)
-                }
-            }
-            
-            prefilledWithRandomPlaceholder()
-            bindText(state::globalLangserverExecutable)
-        }
+    row("") {
+        reactiveLabel(executablePathHintState.hint)
     }
     
     row(message("configurations.globalConfigurationFile.label")) {
         makeGlobalConfigurationFileInput {
-            onInput(::displayPathHint) { path ->
-                when {
-                    !path.isAbsolute -> relativePathHint()
-                    else -> configurationFilePathResolvingHint(path)
-                }
-            }
-            
-            prefilledWithRandomPlaceholder()
-            bindText(state::globalConfigurationFile)
+            bindText(configurationFilePathHintState.path)
+            bindText(state::globalConfigurationFile.toNonNullableProperty(""))
+            triggerChange()
         }
+    }
+    row("") {
+        reactiveLabel(configurationFilePathHintState.hint)
+    }
+    
+    row(message("configurations.globalLangserverExecutable.label")) {
+        makeGlobalLangserverExecutableInput {
+            bindText(langserverExecutablePathHintState.path)
+            bindText(state::globalLangserverExecutable.toNonNullableProperty(""))
+            triggerChange()
+        }
+    }
+    row("") {
+        reactiveLabel(langserverExecutablePathHintState.hint)
     }
     
     makeGlobalRunningModeInput {

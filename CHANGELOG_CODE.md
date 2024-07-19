@@ -15,11 +15,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * ["Copy Pyright command" action][60-1] is added. (4ca4b746)
-* Global option "Number of threads" is added. (HEAD)
+* Global option "Number of threads" is added. (91d467ac)
 
 ### Changed
 
-* [The documentation][60-2] is updated. (fcf2c0fb, HEAD)
+* [The documentation][60-2] is updated. (fcf2c0fb, 91d467ac)
 * [`PyrightBundle`][60-3] and [`PyrightIcon`][60-4] are renamed. (7032faff)
 * Gradle is updated to 8.9. (2397aafd, c5d7c8c8)
 * [Kotlin Serialization Gradle Plugin][60-5] is updated to 1.7.1.
@@ -27,6 +27,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [Kover Gradle Plugin][60-6] is updated to 0.8.2. (eb306695, 87e5660a)
 * [The `lsp4ij` submodule][60-7] is added. (b67210b7)
 * Various files are moved to [the new `cli` submodule][60-8]. (37136d65)
+* Path-hints-related logic is revisited to use `PropertyGraph`. (HEAD)
 
 ### Fixed
 
@@ -36,7 +37,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 
   [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/4ca4b746/src/main/kotlin/com/insyncwithfoo/pyright/actions/CopyFileCommand.kt
-  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fcf2c0fb/docs
+  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/91d467ac/docs
   [60-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
   [60-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
   [60-5]: https://github.com/Kotlin/kotlinx.serialization
