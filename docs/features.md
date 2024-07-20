@@ -16,15 +16,9 @@ Available actions:
 
 * Absolute path: Set the absolute path.
 * Relative path: Set the relative path (no leading dot).
-* Do not suggest: Turn off [the corresponding option][1].
+* Do not suggest: Turn off [the corresponding setting][1].
 
-=== "CLI"
-
-    ![](./assets/cli-features-demo-auto-suggest-executable.png)
-
-=== "LSP"
-
-    ![](./assets/lsp-features-demo-auto-suggest-executable.png)
+![](./assets/features-demo-auto-suggest-executable.png)
 
 
 ## Suppressing diagnostics using quick fixes
@@ -65,4 +59,4 @@ the entire list will be removed:
     ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-no-code-after.png)
 
 
-  [1]: configurations/common.md#auto-suggest-executable
+  [1]: configurations/executables.md#auto-suggest-executable

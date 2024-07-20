@@ -103,7 +103,7 @@ private fun Panel.makeGlobalRunningModeInput(block: ButtonsGroup.() -> Unit) = r
 }
 
 
-private fun Row.makeNumberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit): Cell<JBIntSpinner> = run {
+private fun Row.makeNumberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) = run {
     val comment = message("configurations.numberOfThreads.comment")
     spinner(0..1_000_000, step = 1).comment(comment).apply(block)
 }
@@ -165,7 +165,7 @@ internal fun configurationPanel(state: Configurations) = panel {
         }
     }
     
-    group(message("configurations.group.others")) {
+    group(message("configurations.group.commandLine")) {
         row(message("configurations.processTimeout.label")) {
             makeProcessTimeoutInput { bindIntValue(state::processTimeout) }
         }

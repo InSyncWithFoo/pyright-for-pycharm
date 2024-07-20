@@ -1,4 +1,4 @@
-For debugging purposes, the plugins may log some informational data.
+For debugging purposes, the plugin may log some informational data.
 When reporting issues, always include the relevant log entries if applicable.
 
 
@@ -18,7 +18,7 @@ Note that it might be up to 10 MB in size.
 Alternatively, navigate to the directories documented [here][1].
 
 
-## CLI
+## Command line mode
 
 | Event            | Content                              | Searching keywords                     |
 |------------------|--------------------------------------|----------------------------------------|
@@ -119,19 +119,13 @@ Exception properties entry format:
     ```
 
 
-## LSP
+## LSP4IJ mode
 
-| Event        | Content               | Keywords to look for                      |
-|--------------|-----------------------|-------------------------------------------|
-| Server start | Plugin configurations | `PyrightLSDescriptor - AllConfigurations` |
-
-
-If language server logging [is enabled][4],
-every request and response will be logged,
-potentially truncated if it is too long.
+| Event        | Content                  | Keywords to look for                                 |
+|--------------|--------------------------|------------------------------------------------------|
+| Server start | Language server settings | `com.insyncwithfoo.pyright.lsp4ij.Client - Settings` |
 
 
   [1]: https://www.jetbrains.com/help/pycharm/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#logs-directory
   [2]: https://microsoft.github.io/pyright/#/command-line?id=json-output
   [3]: https://microsoft.github.io/pyright/#/command-line?id=pyright-exit-codes
-  [4]: how-to.md#how-to-enable-language-server-logging

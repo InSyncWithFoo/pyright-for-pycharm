@@ -6,27 +6,23 @@
 [![Rating](https://img.shields.io/jetbrains/plugin/r/rating/24145)][7]
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/24145)][8]
 
-![](docs/assets/cli-demo-2.png)
+![](./docs/assets/demo.png)
 
 <!-- Plugin description -->
 Pyright integration for PyCharm.
 
 This plugin runs [the Pyright type checker][1] on-the-fly
-as you edit your Python files.
+and reroutes its diagnostics back to the IDE as you code.
 
-It works by saving all your files as-is before running
-the executable provided by you. If you are not OK with that,
-please <em>do not</em> install this plugin.
-
-Note: If you use PyCharm Professional,
-install [the <i>Pyright Language Server</i> plugin][2] instead.
+Warning: Depending on the running mode,
+it might save your files at very fast pace.
 
 
 ## Usage
 
 Go to <b>Settings</b> | <b>Tools</b> |
 <b>Pyright (Global)</b> / <b>Pyright (Project)</b>
-and set the path to your Pyright executable.
+and set the path to your Pyright executable(s).
 
 (Not sure what this means? See [the docs][3] for more information.)
 
@@ -36,7 +32,7 @@ You should see the annotations in a few seconds.
 
   [1]: https://github.com/microsoft/pyright
   [2]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
-  [3]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/common/#executable
+  [3]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/running-modes/
 <!-- Plugin description end -->
 
 
