@@ -2,10 +2,11 @@
 # libraries
 annotations = "24.1.0"
 kotlinxSerialization = "1.7.1"
+junit = "4.13.2"
 
 # plugins
 changelog = "2.2.1"
-intellijPlatform = "2.0.0-beta9"
+intelliJPlatForm = "2.0.0-rc1"
 kotlin = "2.0.0"
 kover = "0.8.2"
 qodana = "2024.1.5"
@@ -20,13 +21,18 @@ group = "org.jetbrains.kotlinx"
 name = "kotlinx-serialization-json"
 version.ref = "kotlinxSerialization"
 
+[libraries.junit]
+group = "junit"
+name = "junit"
+version.ref = "junit"
+
 [plugins.changelog]
 id = "org.jetbrains.changelog"
 version.ref = "changelog"
 
-[plugins.intellijPlatform]
+[plugins.intelliJPlatForm]
 id = "org.jetbrains.intellij.platform"
-version.ref = "intellijPlatform"
+version.ref = "intelliJPlatForm"
 
 [plugins.kotlin]
 id = "org.jetbrains.kotlin.jvm"

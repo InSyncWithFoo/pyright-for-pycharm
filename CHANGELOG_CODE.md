@@ -19,7 +19,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Changed
 
-* [The documentation][60-2] is updated. (fcf2c0fb, 91d467ac, HEAD)
+* [The documentation][60-2] is updated. (fcf2c0fb, 91d467ac, cf6beccd)
 * [`PyrightBundle`][60-3] and [`PyrightIcon`][60-4] are renamed. (7032faff)
 * Gradle is updated to 8.9. (2397aafd, c5d7c8c8)
 * [Kotlin Serialization Gradle Plugin][60-5] is updated to 1.7.1.
@@ -28,10 +28,12 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [The `lsp4ij` submodule][60-7] is added. (b67210b7)
 * Various files are moved to [the new `cli` submodule][60-8]. (37136d65)
 * Path-hints-related logic is revisited to use `PropertyGraph`. (bf2de95e)
+* [IntelliJ Platform Gradle Plugin][60-9] is updated to 2.0.0-rc1.
+  (ace16ca8, HEAD)
 
 ### Fixed
 
-* [`PyrightExternalAnnotator`][60-9] now overrides
+* [`PyrightExternalAnnotator`][60-10] now overrides
   `collectInformation(PsiFile, Editor, boolean)`
   instead of `collectInformation(PsiFile)`. (7032faff)
 
@@ -44,7 +46,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   [60-6]: https://github.com/Kotlin/kotlinx-kover
   [60-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/b67210b7/src/main/kotlin/com/insyncwithfoo/pyright/lsp4ij
   [60-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/37136d65/src/main/kotlin/com/insyncwithfoo/pyright/cli
-  [60-9]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
+  [60-9]: https://github.com/JetBrains/intellij-platform-gradle-plugin
+  [60-10]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.5.0] - 2024-06-04
