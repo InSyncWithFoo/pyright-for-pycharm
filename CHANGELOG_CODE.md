@@ -12,6 +12,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.6.0] - 2024-07-21
+
 ### Added
 
 * ["Copy Pyright command" action][60-1] is added. (4ca4b746)
@@ -29,7 +34,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Various files are moved to [the new `cli` submodule][60-8]. (37136d65)
 * Path-hints-related logic is revisited to use `PropertyGraph`. (bf2de95e)
 * [IntelliJ Platform Gradle Plugin][60-9] is updated to 2.0.0-rc1.
-  (ace16ca8, d9dc2b09, HEAD)
+  (ace16ca8, d9dc2b09, 842dfd25)
 
 ### Fixed
 
@@ -400,7 +405,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..HEAD
+  [0.6.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..v0.6.0
   [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
   [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
   [0.3.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..v0.3.1

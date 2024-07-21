@@ -11,6 +11,11 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.6.0] - 2024-07-21
+
 ### Added
 
 * The command for the currently selected file can now be copied
@@ -165,7 +170,8 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..HEAD
+  [0.6.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..v0.6.0
   [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
   [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
   [0.3.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..v0.3.1
