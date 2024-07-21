@@ -29,7 +29,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Various files are moved to [the new `cli` submodule][60-8]. (37136d65)
 * Path-hints-related logic is revisited to use `PropertyGraph`. (bf2de95e)
 * [IntelliJ Platform Gradle Plugin][60-9] is updated to 2.0.0-rc1.
-  (ace16ca8, HEAD)
+  (ace16ca8, d9dc2b09, HEAD)
 
 ### Fixed
 
