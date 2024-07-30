@@ -6,7 +6,7 @@ junit = "4.13.2"
 
 # plugins
 changelog = "2.2.1"
-intelliJPlatForm = "2.0.0-rc1"
+intelliJPlatForm = "2.0.0"
 kotlin = "2.0.0"
 kover = "0.8.3"
 qodana = "2024.1.5"

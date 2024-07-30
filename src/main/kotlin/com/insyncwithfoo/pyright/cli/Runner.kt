@@ -121,7 +121,7 @@ private fun Notifier.notifySerializationException(output: String) = notify { gro
     
     if (output.isNotBlank()) {
         notification.addOpenTemporaryFileAction(
-            text = message(key = "notifications.error.action.seeOutputInEditor"),
+            text = message("notifications.error.action.seeOutputInEditor"),
             fileName = "output.txt",
             content = output
         )

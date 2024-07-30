@@ -1,4 +1,4 @@
-.scripts/
+.scripts/*
 !.scripts/changelog.py
 !.scripts/edit_releases.py
 

@@ -12,7 +12,14 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Changed
+
+* [Kover Gradle Plugin][70-1] is updated to 0.8.3. (502ea971)
+* [IntelliJ Platform Gradle Plugin][70-2] is updated to 2.0.0. (HEAD)
+
+
+  [70-1]: https://github.com/Kotlin/kotlinx-kover
+  [70-2]: https://github.com/JetBrains/intellij-platform-gradle-plugin
 
 
 ## [0.6.0] - 2024-07-21
