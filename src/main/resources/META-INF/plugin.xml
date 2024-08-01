@@ -73,6 +73,10 @@
 			order="first"
 			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
 		/>
+		
+		<fileIconProvider
+			implementation="com.insyncwithfoo.pyright.icons.PyrightConfigFileIconProvider"
+		/>
 	</extensions>
 	
 	<actions>

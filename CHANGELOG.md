@@ -11,7 +11,9 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
-<i>This section is currently empty.</i>
+### Added
+
+* The icon for `pyrightconfig.json` is now replaced with Pyright's logo.
 
 
 ## [0.6.0] - 2024-07-21

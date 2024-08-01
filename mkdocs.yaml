@@ -40,6 +40,7 @@ theme:
 markdown_extensions:
   admonition:
   codehilite:
+  md_in_html:
   pymdownx.details:
   pymdownx.tabbed:
     alternate_style: true

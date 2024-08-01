@@ -12,14 +12,19 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ## [Unreleased]
 
+### Added
+
+* The [`icons`][70-1] subpackage is added. (HEAD)
+
 ### Changed
 
-* [Kover Gradle Plugin][70-1] is updated to 0.8.3. (502ea971)
-* [IntelliJ Platform Gradle Plugin][70-2] is updated to 2.0.0. (HEAD)
+* [Kover Gradle Plugin][70-2] is updated to 0.8.3. (502ea971)
+* [IntelliJ Platform Gradle Plugin][70-3] is updated to 2.0.0. (90fb72af)
 
 
-  [70-1]: https://github.com/Kotlin/kotlinx-kover
-  [70-2]: https://github.com/JetBrains/intellij-platform-gradle-plugin
+  [70-1]:https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/icons
+  [70-2]: https://github.com/Kotlin/kotlinx-kover
+  [70-3]: https://github.com/JetBrains/intellij-platform-gradle-plugin
 
 
 ## [0.6.0] - 2024-07-21
