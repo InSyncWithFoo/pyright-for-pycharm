@@ -9,6 +9,7 @@ import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.runWithIndicator
 import com.intellij.execution.RunCanceledByUserException
+import com.intellij.execution.process.ProcessOutput
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -29,6 +30,23 @@ import com.insyncwithfoo.pyright.configuration.project.Configurable as ProjectCo
 
 
 private typealias PyrightConfigurableClass = PyrightConfigurable<out BaseState>
+
+
+@Suppress("unused")
+@Serializable
+private class ProcessOutputSurrogate (
+    val stdout: String,
+    val stderr: String,
+    val exitCode: Int,
+    val isTimeout: Boolean,
+    val isCancelled: Boolean
+) {
+    override fun toString() = Json.encodeToString(this)
+}
+
+
+private fun ProcessOutput.toSurrogate(): ProcessOutputSurrogate =
+    ProcessOutputSurrogate(stdout, stderr, exitCode, isTimeout, isCancelled)
 
 
 private class TimeoutException(message: String = "Process timed out") : RuntimeException(message)
@@ -168,6 +186,8 @@ internal class PyrightRunner(private val project: Project) {
     private fun FileCommand.getStdout(): String {
         val timeout = project.pyrightConfigurations.processTimeout
         val processOutput = this.run(timeout)
+        
+        LOGGER.info("Raw output: ${processOutput.toSurrogate()}")
         
         return processOutput.run {
             if (isCancelled) {
