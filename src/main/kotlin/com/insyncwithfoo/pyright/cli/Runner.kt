@@ -202,7 +202,7 @@ internal class PyrightRunner(private val project: Project) {
                 PyrightExitCode.FATAL -> throw FatalException(stdout, stderr)
                 PyrightExitCode.INVALID_CONFIG -> throw InvalidConfigurationsException(stdout, stderr)
                 PyrightExitCode.INVALID_PARAMETERS -> throw InvalidParametersException(stdout, stderr)
-                else -> stdout
+                else -> stdout.ifBlank { stderr }
             }
         }
     }
