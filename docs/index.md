@@ -1,44 +1,36 @@
 # Pyright for PyCharm user documentation
 
 This site serves as the user documentation for
-the <i>Pyright for PyCharm</i> project.
-The project includes two plugins:
+[the <i>Pyright</i> PyCharm plugin][1].
 
-|                  | The CLI-based plugin     | The LSP-based plugin                |
-|:-----------------|:-------------------------|:------------------------------------|
-| Repository       | [pyright-for-pycharm][1] | [pyright-langserver-for-pycharm][2] |
-| Marketplace name | <i>[Pyright][3]</i>      | <i>[Pyright Language Server][4]</i> |
-| Codename         | <i>CLI</I>               | <i>LSP</i>                          |
+The plugin runs and reroutes Pyright's diagnostics back to your IDE.
+Both PyCharm Professional and PyCharm Community users can use it.
 
-In this documentation, the two plugins
-will be referred to using their codenames.
+??? question "Looking for the old LSP plugin?"
+
+    It now has [its own documentation site][2].
 
 
-## Choosing the right plugin
+## Usage
 
-!!! abstract "TLDR: Professional --> LSP; Community --> CLI."
+Go to <b>Settings</b> | <b>Tools</b> |
+<b>Pyright (Global)</b> / <b>Pyright (Project)</b>
+and set the path to [your Pyright executable(s)][3].
 
-These two plugins have the same naming conventions,
-are maintained by the same person, have similar (but not identical)
-configurations, but are meant for different target users.
+=== "Global"
 
-LSP is dependent on [the experimental language server protocol APIs][5]
-which are only available for PyCharm Professional and other paid IDEs
-since 2023.2. This means that PyCharm Community users cannot use it.
+    ![](./assets/configurations-global-panel.png)
 
-On the other hand, CLI can be used by both.
-However, due to its limited capabilities and performance reason,
-it is recommended that PyCharm Professional users use LSP instead.
+=== "Project"
 
-!!! warning
+    ![](./assets/configurations-project-panel.png)
 
-    Do not install both plugins.
-    While doing so will likely cause no technical issues,
-    their functionalities overlap a lot.
+Save, return to your files and start making some modifications.
+You should see Pyright annotations in a few seconds.
+If not, refer to <i>[Problems and solutions][4]</i>.
 
 
-  [1]: https://github.com/InSyncWithFoo/pyright-for-pycharm
-  [2]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
-  [3]: https://plugins.jetbrains.com/plugin/24145
-  [4]: https://plugins.jetbrains.com/plugin/24146
-  [5]: https://plugins.jetbrains.com/docs/intellij/language-server-protocol.html
+  [1]: https://plugins.jetbrains.com/plugin/24145
+  [2]: https://insyncwithfoo.github.io/pyright-langserver-for-pycharm
+  [3]: configurations/executables.md
+  [4]: problems.md

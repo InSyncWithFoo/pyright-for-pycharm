@@ -14,4 +14,9 @@ internal class Configurable(internal val project: Project) : PyrightConfigurable
     
     override fun getDisplayName() = message("configurations.project.displayName")
     
+    override fun apply() {
+        super.apply()
+        project.toggleServersAccordingly()
+    }
+    
 }

@@ -2,6 +2,8 @@ package com.insyncwithfoo.pyright.configuration
 
 import com.insyncwithfoo.pyright.isEmpty
 import com.insyncwithfoo.pyright.toPathOrNull
+import com.intellij.openapi.observable.properties.ObservableMutableProperty
+import com.intellij.openapi.observable.properties.PropertyGraph
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.ui.dsl.builder.AlignX
 import com.intellij.ui.dsl.builder.Cell
@@ -11,10 +13,6 @@ import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.text
 import java.nio.file.Path
 import javax.swing.JComponent
-import kotlin.reflect.KMutableProperty0
-
-
-internal const val NO_LABEL = ""
 
 
 private fun randomPlaceholder(): String {
@@ -23,59 +21,43 @@ private fun randomPlaceholder(): String {
 }
 
 
-internal fun <T : JComponent> Cell<T>.ensureComment() = this.apply {
-    comment(NO_LABEL)
-    // Whether this actually does anything noticeable is a subject of wonder.
-    comment!!.maximumSize = component.size
+private fun makePathHint(input: String, makeValidPathHint: (Path) -> Hint): Hint {
+    val path = input.toPathOrNull()
+    
+    return when {
+        path == null -> invalidPathHint
+        path.isEmpty -> emptyPathHint
+        else -> makeValidPathHint(path)
+    }
 }
 
 
-internal fun Row.secondColumnPathInput() = textFieldWithBrowseButton().apply {
-    ensureComment()
-    
+internal fun <T : JComponent> Cell<T>.makeFlexible() = this.apply {
     gap(RightGap.SMALL)
     align(AlignX.FILL)
     resizableColumn()
 }
 
 
-internal fun <T : TextFieldWithBrowseButton> Cell<T>.bindText(property: KMutableProperty0<String?>) =
-    bindText({ property.get().orEmpty() }, property::set)
-
-
-internal fun <T : TextFieldWithBrowseButton> Cell<T>.onInput(block: Cell<T>.(String) -> Unit) {
-    onChanged { _ -> block(component.text) }
-    onApply { block(component.text) }
-}
-
-
-internal fun <T : TextFieldWithBrowseButton> Cell<T>.onInput(
-    callbackMaker: ((Path) -> Hint) -> Cell<T>.(String) -> Unit,
-    block: (Path) -> Hint
-) {
-    onInput(callbackMaker(block))
-}
-
-
-// onChanged() callbacks don't get called when the new value is the same,
-// which potentially prevents the listener(s) from being called on panel opening.
-internal fun <T : TextFieldWithBrowseButton> Cell<T>.prefilledWithRandomPlaceholder() =
+internal fun <T : TextFieldWithBrowseButton> Cell<T>.triggerChange() {
+    val originalContent = component.text
+    
     text(randomPlaceholder())
+    text(originalContent)
+}
 
 
-internal fun <T : TextFieldWithBrowseButton> displayPathHint(
-    validPathHintMaker: (Path) -> Hint
-): Cell<T>.(String) -> Unit {
-    fun Cell<T>.callback(input: String) {
-        val path = input.toPathOrNull()
-        val hint = when {
-            path == null -> invalidPathHint()
-            path.isEmpty -> emptyPathHint()
-            else -> validPathHintMaker(path)
-        }
-        
-        comment!!.text = hint.toString()
+internal fun Row.reactiveLabel(property: ObservableMutableProperty<String>) =
+    comment("").bindText(property)
+
+
+internal class PathHintState(private val makeValidPathHint: (Path) -> Hint) {
+    
+    private val propertyGraph = PropertyGraph()
+    
+    val path = propertyGraph.property("")
+    val hint = propertyGraph.property("").apply {
+        dependsOn(path) { makePathHint(path.get(), makeValidPathHint).toString() }
     }
     
-    return Cell<T>::callback
 }

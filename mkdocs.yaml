@@ -13,7 +13,7 @@ exclude_docs: |
 theme:
   name: material
   favicon: assets/icon.svg
-  logo: assets/icon-outline-10-white.svg
+  logo: assets/icon-outline.svg
   palette:
     -
       media: "(prefers-color-scheme: light)"
@@ -34,11 +34,13 @@ theme:
   features:
     - content.action.edit
     - content.action.view
+    - navigation.indexes
     - search.suggest
 
 markdown_extensions:
   admonition:
   codehilite:
+  md_in_html:
   pymdownx.details:
   pymdownx.tabbed:
     alternate_style: true
@@ -62,14 +64,14 @@ markdown_extensions:
 
 nav:
   - Overview: index.md
-  - Usage: usage.md
   - Configurations:
-    - Common: configurations/common.md
-    - CLI-specific: configurations/cli.md
-    - LSP-specific: configurations/lsp.md
-    - Related: configurations/related.md
-  - Features: features.md
+    - Overview: configurations/index.md
+    - Running modes: configurations/running-modes.md
+    - Executables: configurations/executables.md
+    - Inspection: configurations/inspection.md
+    - Other: configurations/other.md
   - IDE actions: actions.md
+  - Other features: features.md
   - Problems: problems.md
   - Logging: logging.md
   - How-to guides: how-to.md
@@ -79,5 +81,6 @@ validation:
   omitted_files: warn
   absolute_links: warn
   unrecognized_links: warn
+  anchors: warn
 
 strict: true

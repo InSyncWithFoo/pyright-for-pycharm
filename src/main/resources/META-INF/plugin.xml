@@ -20,6 +20,7 @@
 	<depends>com.intellij.modules.lang</depends>
 	<depends>com.intellij.modules.python</depends>
 	<depends>com.intellij.modules.platform</depends>
+	<depends>com.redhat.devtools.lsp4ij</depends>
 	
 	<!-- <resource-bundle>messages.pyright</resource-bundle> -->
 	
@@ -59,11 +60,22 @@
 		
 		<externalAnnotator
 			language="Python"
-			implementationClass="com.insyncwithfoo.pyright.PyrightExternalAnnotator"
+			implementationClass="com.insyncwithfoo.pyright.cli.PyrightExternalAnnotator"
 		/>
 		
 		<postStartupActivity
 			implementation="com.insyncwithfoo.pyright.PyrightProjectExecutableSuggester"
+		/>
+		
+		<codeInsight.parameterInfo
+			id="PyrightLSPParameterInfoHandler"
+			language="Python"
+			order="first"
+			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
+		/>
+		
+		<fileIconProvider
+			implementation="com.insyncwithfoo.pyright.icons.PyrightConfigFileIconProvider"
 		/>
 	</extensions>
 	
@@ -77,4 +89,21 @@
 			icon="AllIcons.Actions.Copy"
 		/>
 	</actions>
+	
+	<extensions defaultExtensionNs="com.redhat.devtools.lsp4ij">
+		<server
+			id="pyright"
+			name="Pyright"
+			factoryClass="com.insyncwithfoo.pyright.lsp4ij.PyrightLanguageServerFactory"
+		>
+			<description><![CDATA[]]></description>
+		</server>
+		
+		<languageMapping
+			language="Python"
+			languageId="python"
+			serverId="pyright"
+			documentMatcher="com.insyncwithfoo.pyright.lsp4ij.PyrightDocumentMatcher"
+		/>
+	</extensions>
 </idea-plugin>

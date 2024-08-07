@@ -14,30 +14,57 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Added
 
-* "Copy Pyright command" action is added. (4ca4b746)
+* The [`icons`][70-1] subpackage is added. (HEAD)
 
 ### Changed
 
-* [The documentation][60-1] is updated. (fcf2c0fb)
-* [`PyrightBundle`][60-2] and [`PyrightIcon`][60-3] are renamed. (7032faff)
-* Gradle is updated to 8.9. (2397aafd, HEAD)
-* [Kotlin Serialization Gradle Plugin][60-4] is updated to 1.7.1.
+* [Kover Gradle Plugin][70-2] is updated to 0.8.3. (502ea971)
+* [IntelliJ Platform Gradle Plugin][70-3] is updated to 2.0.0. (90fb72af)
+
+
+  [70-1]:https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/icons
+  [70-2]: https://github.com/Kotlin/kotlinx-kover
+  [70-3]: https://github.com/JetBrains/intellij-platform-gradle-plugin
+
+
+## [0.6.0] - 2024-07-21
+
+### Added
+
+* ["Copy Pyright command" action][60-1] is added. (4ca4b746)
+* Global option "Number of threads" is added. (91d467ac)
+
+### Changed
+
+* [The documentation][60-2] is updated. (fcf2c0fb, 91d467ac, cf6beccd)
+* [`PyrightBundle`][60-3] and [`PyrightIcon`][60-4] are renamed. (7032faff)
+* Gradle is updated to 8.9. (2397aafd, c5d7c8c8)
+* [Kotlin Serialization Gradle Plugin][60-5] is updated to 1.7.1.
   (330ef0c3, b839a59b)
-* [Kover Gradle Plugin][60-5] is updated to 0.8.2. (eb306695, 87e5660a)
+* [Kover Gradle Plugin][60-6] is updated to 0.8.2. (eb306695, 87e5660a)
+* [The `lsp4ij` submodule][60-7] is added. (b67210b7)
+* Various files are moved to [the new `cli` submodule][60-8]. (37136d65)
+* Path-hints-related logic is revisited to use `PropertyGraph`. (bf2de95e)
+* [IntelliJ Platform Gradle Plugin][60-9] is updated to 2.0.0-rc1.
+  (ace16ca8, d9dc2b09, 842dfd25)
 
 ### Fixed
 
-* [`PyrightExternalAnnotator`][60-6] now overrides
+* [`PyrightExternalAnnotator`][60-10] now overrides
   `collectInformation(PsiFile, Editor, boolean)`
   instead of `collectInformation(PsiFile)`. (7032faff)
 
 
-  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/fcf2c0fb/docs
-  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
-  [60-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
-  [60-4]: https://github.com/Kotlin/kotlinx.serialization
-  [60-5]: https://github.com/Kotlin/kotlinx-kover
-  [60-6]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
+  [60-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/4ca4b746/src/main/kotlin/com/insyncwithfoo/pyright/actions/CopyFileCommand.kt
+  [60-2]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/docs
+  [60-3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Bundle.kt
+  [60-4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/Icon.kt
+  [60-5]: https://github.com/Kotlin/kotlinx.serialization
+  [60-6]: https://github.com/Kotlin/kotlinx-kover
+  [60-7]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/b67210b7/src/main/kotlin/com/insyncwithfoo/pyright/lsp4ij
+  [60-8]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/37136d65/src/main/kotlin/com/insyncwithfoo/pyright/cli
+  [60-9]: https://github.com/JetBrains/intellij-platform-gradle-plugin
+  [60-10]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/7032faff/src/main/kotlin/com/insyncwithfoo/pyright/PyrightExternalAnnotator.kt
 
 
 ## [0.5.0] - 2024-06-04
@@ -390,7 +417,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..HEAD
+  [0.6.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..v0.6.0
   [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
   [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
   [0.3.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..v0.3.1

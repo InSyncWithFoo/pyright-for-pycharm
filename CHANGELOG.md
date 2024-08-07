@@ -13,14 +13,25 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ### Added
 
+* The icon for `pyrightconfig.json` is now replaced with Pyright's logo.
+
+
+## [0.6.0] - 2024-07-21
+
+### Added
+
 * The command for the currently selected file can now be copied
   using the newly added "Copy Pyright command" action.
   This is useful for debugging purposes.
+* Experimental LSP support is now available via the LSP4IJ plugin.
+* The executable can now be configured to run on multiple threads
+  via an UI option.
 
 ### Fixed
 
 * The annotator now always run, regardless of other annotators' results.
   Previously, it would not run if previous analyses resulted in errors.
+* The active interpreter is now detected correcly on non-PyCharm IDEs.
 
 
 ## [0.5.0] - 2024-06-04
@@ -161,7 +172,8 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..HEAD
+  [0.6.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..v0.6.0
   [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
   [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
   [0.3.1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.0..v0.3.1

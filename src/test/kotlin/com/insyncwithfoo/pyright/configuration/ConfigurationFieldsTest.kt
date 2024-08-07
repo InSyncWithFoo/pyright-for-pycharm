@@ -1,9 +1,12 @@
 package com.insyncwithfoo.pyright.configuration
 
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
 import junit.framework.TestCase
+import kotlin.test.assertContains
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
+import com.insyncwithfoo.pyright.configuration.application.RunningMode as ApplicationRunningMode
 import com.insyncwithfoo.pyright.configuration.project.Configurations as ProjectConfigurations
+import com.insyncwithfoo.pyright.configuration.project.RunningMode as ProjectRunningMode
 
 
 class ConfigurationFieldsTest : TestCase() {
@@ -23,7 +26,7 @@ class ConfigurationFieldsTest : TestCase() {
     fun `test defaults - application`() {
         val configurations = ApplicationConfigurations()
         
-        assertEquals(7, applicationFields().size)
+        assertEquals(10, applicationFields().size)
         
         configurations.run {
             assertEquals(false, alwaysUseGlobal)
@@ -33,18 +36,23 @@ class ConfigurationFieldsTest : TestCase() {
             assertEquals(false, addTooltipPrefix)
             assertEquals(PyrightDiagnosticSeverity.INFORMATION, minimumSeverityLevel)
             assertEquals(10_000, processTimeout)
+            assertEquals(null, globalLangserverExecutable)
+            assertEquals(ApplicationRunningMode.CLI, globalRunningMode)
+            assertEquals(0, numberOfThreads)
         }
     }
     
     fun `test defaults - project`() {
         val configurations = ProjectConfigurations()
         
-        assertEquals(3, projectFields().size)
+        assertEquals(5, projectFields().size)
         
         configurations.run {
             assertEquals(null, projectExecutable)
             assertEquals(null, projectConfigurationFile)
             assertEquals(true, autoSuggestExecutable)
+            assertEquals(null, projectLangserverExecutable)
+            assertEquals(ProjectRunningMode.USE_GLOBAL, projectRunningMode)
         }
     }
     
@@ -62,6 +70,19 @@ class ConfigurationFieldsTest : TestCase() {
         projectFields().forEach { (_, property) ->
             assertNotNull(property.getDelegate(receiver))
         }
+    }
+    
+    fun `test RunningMode`() {
+        val applicationRunningModes = applicationRunningModes()
+        val projectRunningModes = projectRunningModes()
+        
+        assertEquals(projectRunningModes.size, applicationRunningModes.size + 1)
+        
+        applicationRunningModes.forEach { (name, _) ->
+            assertContains(projectRunningModes, name)
+        }
+        
+        assertContains(projectRunningModes, "USE_GLOBAL")
     }
     
 }

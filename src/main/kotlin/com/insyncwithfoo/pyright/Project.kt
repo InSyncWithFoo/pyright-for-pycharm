@@ -3,16 +3,48 @@ package com.insyncwithfoo.pyright
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.insyncwithfoo.pyright.configuration.ConfigurationService
 import com.intellij.openapi.fileEditor.FileEditorManager
+import com.intellij.openapi.module.Module
+import com.intellij.openapi.module.ModuleManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.ui.Messages
 import com.intellij.platform.ide.progress.withBackgroundProgress
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
+import com.jetbrains.python.sdk.PythonSdkUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 import java.nio.file.Path
 import kotlin.io.path.listDirectoryEntries
+
+
+private val <T> Array<T>.onlyElement: T?
+    get() = firstOrNull().takeIf { size == 1 }
+
+
+private val Project.modules: Array<Module>
+    get() = ModuleManager.getInstance(this).modules
+
+
+private val Project.sdk: Sdk?
+    get() = ProjectRootManager.getInstance(this).projectSdk
+        ?.takeIf { PythonSdkUtil.isPythonSdk(it) }
+
+
+internal val Project.path: Path?
+    get() = basePath?.let { Path.of(it) }
+
+
+internal val Project.interpreterPath: Path?
+    get() = sdk?.homePath?.let { Path.of(it) }
+
+
+internal val Project.isNormal: Boolean
+    get() = !this.isDefault && !this.isDisposed
+
+
+internal val Project.onlyModuleOrNull: Module?
+    get() = modules.onlyElement
 
 
 internal val Project.fileEditorManager: FileEditorManager
@@ -23,24 +55,16 @@ internal val Project.inspectionProfileManager: InspectionProjectProfileManager
     get() = InspectionProjectProfileManager.getInstance(this)
 
 
-internal val Project.path: Path?
-    get() = basePath?.let { Path.of(it) }
-
-
-private val Project.sdk: Sdk?
-    get() = ProjectRootManager.getInstance(this).projectSdk
-
-
-internal val Project.sdkPath: Path?
-    get() = sdk?.homePath?.let { Path.of(it) }
-
-
 internal val Project.pyrightConfigurations: AllConfigurations
     get() = ConfigurationService.getInstance(this).state
 
 
 internal val Project.pyrightExecutable: Path?
     get() = pyrightConfigurations.executable?.toPathIfItExists(base = this.path)
+
+
+internal val Project.pyrightLSExecutable: Path?
+    get() = pyrightConfigurations.langserverExecutable?.toPathIfItExists(base = this.path)
 
 
 internal val Project.pyrightInspectionIsEnabled: Boolean
@@ -53,8 +77,8 @@ internal val Project.pyrightInspectionIsEnabled: Boolean
 
 
 internal fun Project.findPyrightExecutable(): Path? {
-    val sdkDirectory = sdkPath?.parent ?: return null
-    val children = sdkDirectory.listDirectoryEntries()
+    val interpreterDirectory = interpreterPath?.parent ?: return null
+    val children = interpreterDirectory.listDirectoryEntries()
     
     return children.find { it.isProbablyPyrightExecutable }
 }

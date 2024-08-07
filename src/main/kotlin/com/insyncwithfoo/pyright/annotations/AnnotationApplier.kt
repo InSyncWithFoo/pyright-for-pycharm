@@ -1,12 +1,12 @@
 package com.insyncwithfoo.pyright.annotations
 
 import com.insyncwithfoo.pyright.HighlightSeverity
-import com.insyncwithfoo.pyright.PyrightDiagnostic
-import com.insyncwithfoo.pyright.PyrightDiagnosticSeverity
-import com.insyncwithfoo.pyright.PyrightDiagnosticTextRange
-import com.insyncwithfoo.pyright.PyrightDiagnosticTextRangeEndpoint
+import com.insyncwithfoo.pyright.cli.PyrightDiagnostic
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticTextRange
+import com.insyncwithfoo.pyright.cli.PyrightDiagnosticTextRangeEndpoint
 import com.insyncwithfoo.pyright.PyrightInspection
-import com.insyncwithfoo.pyright.PyrightOutput
+import com.insyncwithfoo.pyright.cli.PyrightOutput
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
 import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder

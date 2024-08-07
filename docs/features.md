@@ -16,15 +16,9 @@ Available actions:
 
 * Absolute path: Set the absolute path.
 * Relative path: Set the relative path (no leading dot).
-* Do not suggest: Turn off [the corresponding option][1].
+* Do not suggest: Turn off [the corresponding setting][1].
 
-=== "CLI"
-
-    ![](./assets/cli-features-demo-auto-suggest-executable.png)
-
-=== "LSP"
-
-    ![](./assets/lsp-features-demo-auto-suggest-executable.png)
+![](./assets/features-demo-auto-suggest-executable.png)
 
 
 ## Suppressing diagnostics using quick fixes
@@ -65,4 +59,25 @@ the entire list will be removed:
     ![](./assets/features-demo-diagnostic-suppressing-quick-fixes-no-code-after.png)
 
 
-  [1]: configurations/common.md#auto-suggest-executable
+### `pyrightconfig.json` file icon
+
+In file-related views, the default JSON file icon
+for the `pyrightconfig.json` file is replaced with Pyright's logo.
+
+<figure markdown="1">
+  <figcaption><i>Project</i> tool window:</figcaption>
+  ![](./assets/features-demo-pyrightconfig-file-icon-project-tool-window.png)
+</figure>
+
+<figure markdown="1">
+  <figcaption>Editor tabs:</figcaption>
+  ![](./assets/features-demo-pyrightconfig-file-icon-editor-tabs.png)
+</figure>
+
+<figure markdown="1">
+  <figcaption>Breadcrumbs:</figcaption>
+  ![](./assets/features-demo-pyrightconfig-file-icon-breadcrumbs.png)
+</figure>
+
+
+  [1]: configurations/executables.md#auto-suggest-executable

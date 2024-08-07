@@ -10,6 +10,11 @@ import kotlin.io.path.nameWithoutExtension
 
 private val RECOGNIZED_CONFIGURATION_FILENAMES = listOf("pyrightconfig.json", "pyproject.toml")
 private val KNOWN_EXECUTABLE_FILENAMES = listOf("pyright", "pyright-python", "basedpyright")
+private val KNOWN_LANGSERVER_EXECUTABLE_FILENAMES = listOf(
+    "pyright-langserver",
+    "pyright-python-langserver",
+    "basedpyright-langserver"
+)
 
 
 internal fun String.toPathOrNull() =
@@ -44,3 +49,7 @@ internal fun Path.containsConfigurationFile() =
 
 internal val Path.isProbablyPyrightExecutable: Boolean
     get() = nameWithoutExtension in KNOWN_EXECUTABLE_FILENAMES
+
+
+internal val Path.isProbablyPyrightLSExecutable: Boolean
+    get() = nameWithoutExtension in KNOWN_LANGSERVER_EXECUTABLE_FILENAMES

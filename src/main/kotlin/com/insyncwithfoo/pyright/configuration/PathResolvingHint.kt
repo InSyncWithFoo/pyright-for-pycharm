@@ -2,6 +2,7 @@ package com.insyncwithfoo.pyright.configuration
 
 import com.insyncwithfoo.pyright.containsConfigurationFile
 import com.insyncwithfoo.pyright.isProbablyPyrightExecutable
+import com.insyncwithfoo.pyright.isProbablyPyrightLSExecutable
 import com.insyncwithfoo.pyright.isPyrightConfigurationFile
 import com.insyncwithfoo.pyright.message
 import java.nio.file.Path
@@ -34,10 +35,12 @@ internal data class Hint(
 }
 
 
-internal fun emptyPathHint() = Hint.info(message("configurations.hint.noPathSpecified"))
+internal val emptyPathHint: Hint
+    get() = Hint.info(message("configurations.hint.noPathSpecified"))
 
 
-internal fun invalidPathHint() = Hint.error(message("configurations.hint.invalidPath"))
+internal val invalidPathHint: Hint
+    get() = Hint.error(message("configurations.hint.invalidPath"))
 
 
 internal fun executablePathResolvingHint(path: Path) = when {
@@ -45,10 +48,19 @@ internal fun executablePathResolvingHint(path: Path) = when {
         Hint.warning(message("configurations.hint.fileNotFound"))
     path.isDirectory() ->
         Hint.error(message("configurations.hint.unexpectedDirectory"))
-    // Uncomment the following if it is asked for.
-    // !path.isExecutable() ->
-    //     Hint.warning(message("configurations.hint.fileNotExecutable"))
     !path.isProbablyPyrightExecutable ->
+        Hint.info(message("configurations.hint.unknownExecutable"))
+    else ->
+        Hint.success(message("configurations.hint.fileFound"))
+}
+
+
+internal fun langserverExecutablePathResolvingHint(path: Path) = when {
+    !path.exists() ->
+        Hint.warning(message("configurations.hint.fileNotFound"))
+    path.isDirectory() ->
+        Hint.error(message("configurations.hint.unexpectedDirectory"))
+    !path.isProbablyPyrightLSExecutable ->
         Hint.info(message("configurations.hint.unknownExecutable"))
     else ->
         Hint.success(message("configurations.hint.fileFound"))

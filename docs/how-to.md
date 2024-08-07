@@ -1,8 +1,6 @@
 ## How to install the Pyright executables
 
-Choose one that works for you (or one you like the most):
-
-!!! tip "Your favourite tool is not here? [Submit a PR!][1]"
+Choose one that works for you:
 
 ```shell
 $ pip install pyright
@@ -14,27 +12,25 @@ $ bun install pyright
 $ brew install pyright
 ```
 
-See also [Pyright's official installation guide][2].
+See also [Pyright's official installation guide][1].
 
 
 ## How to restart the language server
 
-In the status bar, find the cell that has
-"Pyright" next to a pair of braces.
-Click it, then click the loop icon.
+From the <i>LSP Consoles</i> of the <i>Language Servers</i> toolwindow,
+find the line that says "Pyright".
 
-![](assets/lsp-restart-server-button.png)
+Right click the line below it, then click "Stop".
+The line should then say "Disabled".
+Right click that line again, then click "Restart".
+
+=== "Stop"
+
+    ![](./assets/lsp4ij-stop-server-button.png)
+
+=== "Restart"
+
+    ![](./assets/lsp4ij-restart-server-button.png)
 
 
-## How to enable language server logging
-
-Add the following line to the <b>Debug Log Settings</b> panel
-(<b>Help</b> | <b>Diagnostic Tools</b>):
-
-```text
-#com.intellij.platform.lsp
-```
-
-
-  [1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md
-  [2]: https://microsoft.github.io/pyright/#/installation?id=command-line
+  [1]: https://microsoft.github.io/pyright/#/installation?id=command-line
