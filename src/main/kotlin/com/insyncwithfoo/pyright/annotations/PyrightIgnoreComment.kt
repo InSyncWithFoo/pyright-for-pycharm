@@ -1,5 +1,7 @@
 package com.insyncwithfoo.pyright.annotations
 
+import org.jetbrains.annotations.VisibleForTesting
+
 
 // From https://github.com/microsoft/pyright/blob/a4d165e/packages/pyright-internal/src/parser/tokenizer.ts#L1302
 private val pyrightIgnoreSyntax = """(?x)
@@ -83,6 +85,7 @@ internal class ExistingPyrightIgnoreComment(
         }
     
     companion object {
+        @VisibleForTesting
         fun create(text: String, baseOffset: Int): ExistingPyrightIgnoreComment? {
             val pyrightIgnorePart = pyrightIgnoreSyntax.find(text) ?: return null
             val groups = pyrightIgnorePart.groups

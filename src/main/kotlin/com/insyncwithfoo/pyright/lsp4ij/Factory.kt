@@ -1,6 +1,5 @@
 package com.insyncwithfoo.pyright.lsp4ij
 
-
 import com.insyncwithfoo.pyright.configuration.application.RunningMode
 import com.insyncwithfoo.pyright.pyrightConfigurations
 import com.insyncwithfoo.pyright.pyrightInspectionIsEnabled

@@ -2,7 +2,6 @@
 
 # Code changelog
 
-
 This page documents code changes.
 For user-facing changes, see [`CHANGELOG.md`][_-1].
 
@@ -14,17 +13,24 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 
 ### Added
 
-* The [`icons`][70-1] subpackage is added. (HEAD)
+* The [`icons`][70-1] subpackage is added. (3842d880)
 
 ### Changed
 
 * [Kover Gradle Plugin][70-2] is updated to 0.8.3. (502ea971)
-* [IntelliJ Platform Gradle Plugin][70-3] is updated to 2.0.0. (90fb72af)
+* [IntelliJ Platform Gradle Plugin][70-3] is updated to 2.0.1.
+  (90fb72af, 453d4ff5)
+* [@gradle/actions][70-4] is updated to 4.0.0. (4487199c)
+* [@JetBrains/qodana-action][70-5] is updated to 2024.1.9. (740c3099)
+* [Kotlin JVM plugin][70-6] is updated to 2.0.10. (c6b4ae69)
 
 
-  [70-1]:https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/icons
+  [70-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/icons
   [70-2]: https://github.com/Kotlin/kotlinx-kover
   [70-3]: https://github.com/JetBrains/intellij-platform-gradle-plugin
+  [70-4]: https://github.com/gradle/actions
+  [70-5]: https://github.com/JetBrains/qodana-action
+  [70-6]: https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
 
 
 ## [0.6.0] - 2024-07-21

@@ -15,6 +15,10 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 * The icon for `pyrightconfig.json` is now replaced with Pyright's logo.
 
+### Changed
+
+* The error-reporting logic is further enhanced.
+
 
 ## [0.6.0] - 2024-07-21
 
