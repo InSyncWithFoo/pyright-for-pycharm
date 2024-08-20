@@ -23,6 +23,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * [@gradle/actions][70-4] is updated to 4.0.0. (4487199c)
 * [@JetBrains/qodana-action][70-5] is updated to 2024.1.9. (740c3099)
 * [Kotlin JVM plugin][70-6] is updated to 2.0.10. (c6b4ae69)
+* Gradle is updated to 8.10. (HEAD)
 
 
   [70-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/icons

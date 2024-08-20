@@ -46,8 +46,6 @@ jobs:
       -
         name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-home-cache-cleanup: true
       -
         name: Export properties
         id: properties
@@ -158,8 +156,6 @@ jobs:
       -
         name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-home-cache-cleanup: true
       -
         name: Run tests
         run: |
@@ -175,7 +171,6 @@ jobs:
   
   inspect:
     name: Inspect
-    needs: [ build ]
     runs-on: ubuntu-latest
     
     permissions:
@@ -202,6 +197,8 @@ jobs:
       -
         name: Run Qodana
         uses: JetBrains/qodana-action@v2024.1.9
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
           cache-default-branch-only: true
   
@@ -229,8 +226,6 @@ jobs:
       -
         name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-home-cache-cleanup: true
       -
         name: Set up IDEs cache
         uses: actions/cache@v4

@@ -31,8 +31,6 @@ jobs:
       -
         name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-home-cache-cleanup: true
       -
         name: Publish plugin to Marketplace
         env:
