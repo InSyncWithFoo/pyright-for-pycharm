@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configuration
 
 import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.configuration.application.Locale
 import org.jetbrains.annotations.SystemDependent
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
 import com.insyncwithfoo.pyright.configuration.application.RunningMode as ApplicationRunningMode
@@ -20,6 +21,7 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
         globalLangserverExecutable = this.globalLangserverExecutable,
         globalRunningMode = this.globalRunningMode,
         numberOfThreads = this.numberOfThreads,
+        locale = this.locale,
         
         projectExecutable = other.projectExecutable,
         projectConfigurationFile = other.projectConfigurationFile,
@@ -40,6 +42,7 @@ internal data class AllConfigurations(
     val globalLangserverExecutable: @SystemDependent String?,
     val globalRunningMode: ApplicationRunningMode,
     val numberOfThreads: Int,
+    val locale: Locale,
     
     val projectExecutable: @SystemDependent String?,
     val projectConfigurationFile: @SystemDependent String?,

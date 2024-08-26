@@ -14,6 +14,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * The [`icons`][70-1] subpackage is added. (3842d880)
+* Global option "Locale" is added. (HEAD)
 
 ### Changed
 
@@ -22,8 +23,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
   (90fb72af, 453d4ff5)
 * [@gradle/actions][70-4] is updated to 4.0.0. (4487199c)
 * [@JetBrains/qodana-action][70-5] is updated to 2024.1.9. (740c3099)
-* [Kotlin JVM plugin][70-6] is updated to 2.0.10. (c6b4ae69)
-* Gradle is updated to 8.10. (HEAD)
+* [Kotlin JVM plugin][70-6] is updated to 2.0.20. (c6b4ae69, 1755e922)
+* Gradle is updated to 8.10. (1df6a988)
 
 
   [70-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/HEAD/src/main/kotlin/com/insyncwithfoo/pyright/icons

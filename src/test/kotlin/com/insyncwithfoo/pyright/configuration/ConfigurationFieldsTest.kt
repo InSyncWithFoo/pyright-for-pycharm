@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configuration
 
 import com.insyncwithfoo.pyright.cli.PyrightDiagnosticSeverity
+import com.insyncwithfoo.pyright.configuration.application.Locale
 import junit.framework.TestCase
 import kotlin.test.assertContains
 import com.insyncwithfoo.pyright.configuration.application.Configurations as ApplicationConfigurations
@@ -26,7 +27,7 @@ class ConfigurationFieldsTest : TestCase() {
     fun `test defaults - application`() {
         val configurations = ApplicationConfigurations()
         
-        assertEquals(10, applicationFields().size)
+        assertEquals(11, applicationFields().size)
         
         configurations.run {
             assertEquals(false, alwaysUseGlobal)
@@ -39,6 +40,7 @@ class ConfigurationFieldsTest : TestCase() {
             assertEquals(null, globalLangserverExecutable)
             assertEquals(ApplicationRunningMode.CLI, globalRunningMode)
             assertEquals(0, numberOfThreads)
+            assertEquals(Locale.DEFAULT, locale)
         }
     }
     

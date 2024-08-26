@@ -1,8 +1,8 @@
 package com.insyncwithfoo.pyright.actions
 
+import com.insyncwithfoo.pyright.cli.FileCommand
 import com.insyncwithfoo.pyright.fileEditorManager
 import com.insyncwithfoo.pyright.message
-import com.insyncwithfoo.pyright.cli.FileCommand
 import com.insyncwithfoo.pyright.somethingIsWrong
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.FileDocumentManager

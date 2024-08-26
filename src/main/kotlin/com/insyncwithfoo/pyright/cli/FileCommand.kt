@@ -2,6 +2,7 @@ package com.insyncwithfoo.pyright.cli
 
 import com.insyncwithfoo.pyright.PyrightCommand
 import com.insyncwithfoo.pyright.configuration.AllConfigurations
+import com.insyncwithfoo.pyright.configuration.application.Locale
 import com.insyncwithfoo.pyright.interpreterPath
 import com.insyncwithfoo.pyright.onlyModuleOrNull
 import com.insyncwithfoo.pyright.path
@@ -43,7 +44,8 @@ internal data class FileCommand(
     @Serializable(with = PathSerializer::class)
     val target: Path,
     val projectPath: String,
-    val extraArguments: List<String>
+    val extraArguments: List<String>,
+    override val environmentVariables: Map<String, String>
 ) : PyrightCommand() {
     
     override val workingDirectory by ::projectPath
@@ -72,6 +74,7 @@ internal data class FileCommand(
                 "--project", argumentForProject.toString(),
                 "--pythonpath", interpreterPath.toString()
             )
+            val environmentVariables = mutableMapOf<String, String>()
             
             if (configurations.minimumSeverityLevel != PyrightDiagnosticSeverity.INFORMATION) {
                 extraArguments.add("--level")
@@ -82,8 +85,12 @@ internal data class FileCommand(
                 extraArguments.add("--threads")
                 extraArguments.add(configurations.numberOfThreads.toString())
             }
+
+            if (configurations.locale != Locale.DEFAULT) {
+                environmentVariables.set("LC_ALL", configurations.locale.toString())
+            }
             
-            return FileCommand(executable, target, projectPath.toString(), extraArguments)
+            return FileCommand(executable, target, projectPath.toString(), extraArguments, environmentVariables)
         }
         
         private fun create(module: Module, file: VirtualFile): FileCommand? {

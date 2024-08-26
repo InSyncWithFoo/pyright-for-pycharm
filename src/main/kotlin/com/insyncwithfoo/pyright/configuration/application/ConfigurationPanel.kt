@@ -109,6 +109,15 @@ private fun Row.makeNumberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) =
 }
 
 
+private fun Row.makeLocaleInput(block: Cell<ComboBox<Locale>>.() -> Unit) = run {
+    val renderer = SimpleListCellRenderer.create<Locale> { label, value, _ ->
+        label.text = value.toString()
+    }
+
+    comboBox(Locale.entries, renderer).apply(block)
+}
+
+
 @Suppress("DialogTitleCapitalization")
 internal fun configurationPanel(state: Configurations) = panel {
     val executablePathHintState = makeAbsolutePathHintState(::executablePathResolvingHint)
@@ -174,6 +183,9 @@ internal fun configurationPanel(state: Configurations) = panel {
         }
         row(message("configurations.minimumSeverityLevel.label")) {
             makeMinimumSeverityLevelInput { bindItem(state::minimumSeverityLevel.toNullableProperty()) }
+        }
+        row(message("configurations.locale.label")) {
+            makeLocaleInput { bindItem(state::locale.toNullableProperty()) }
         }
     }
     

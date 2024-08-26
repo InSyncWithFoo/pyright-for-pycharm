@@ -99,3 +99,14 @@ will be emitted.
 === "Error"
 
     ![](../assets/configurations-demo-others-minimum-severity-level-error.png)
+
+
+## Locale
+
+| Default        | Corresponding environment variable |
+|----------------|------------------------------------|
+| <i>Default</i> | `LC_ALL`                           |
+
+
+Modify this option to make the language server
+emit messages in different languages.

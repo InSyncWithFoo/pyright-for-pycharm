@@ -13,11 +13,16 @@ internal abstract class PyrightCommand {
     
     protected abstract val workingDirectory: String
     protected abstract val fragments: List<String>
+    protected abstract val environmentVariables: Map<String, String>
     
     private val commandLine: GeneralCommandLine
         get() = GeneralCommandLine(fragments).apply {
             withWorkDirectory(this@PyrightCommand.workingDirectory)
             withCharset(Charsets.UTF_8)
+
+            environmentVariables.forEach { (name, value) ->
+                withEnvironment(name, value)
+            }
         }
     
     fun asCopyableString() = commandLine.commandLineString
