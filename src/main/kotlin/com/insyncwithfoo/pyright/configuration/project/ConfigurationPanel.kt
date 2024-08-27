@@ -8,9 +8,11 @@ import com.insyncwithfoo.pyright.configuration.langserverExecutablePathResolving
 import com.insyncwithfoo.pyright.configuration.makeFlexible
 import com.insyncwithfoo.pyright.configuration.reactiveLabel
 import com.insyncwithfoo.pyright.configuration.triggerChange
+import com.insyncwithfoo.pyright.configuration.workingDirectoryPathResolvingHint
 import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.resolvedAgainst
+import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.openapi.ui.emptyText
@@ -71,10 +73,18 @@ private fun Panel.makeProjectRunningModeInput(block: ButtonsGroup.() -> Unit) = 
 }
 
 
+private fun Row.makeWorkingDirectoryInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) = run {
+    val fileChooser = FileChooserDescriptorFactory.createSingleFolderDescriptor()
+    
+    textFieldWithBrowseButton(fileChooserDescriptor = fileChooser).makeFlexible().apply(block)
+}
+
+
 internal fun Configurable.configurationPanel(state: Configurations) = panel {
     val executablePathHintState = project.makeResolvablePathHintState(::executablePathResolvingHint)
     val configurationFilePathHintState = project.makeResolvablePathHintState(::configurationFilePathResolvingHint)
     val langserverExecutablePathHintState = project.makeResolvablePathHintState(::langserverExecutablePathResolvingHint)
+    val workingDirectoryPathHintState = project.makeResolvablePathHintState(::workingDirectoryPathResolvingHint)
     
     row {
         makeAutoSuggestExecutableInput { bindSelected(state::autoSuggestExecutable) }
@@ -114,6 +124,20 @@ internal fun Configurable.configurationPanel(state: Configurations) = panel {
     }
     row("") {
         reactiveLabel(langserverExecutablePathHintState.hint)
+    }
+    
+    row(message("configurations.workingDirectory.label")) {
+        makeWorkingDirectoryInput {
+            bindText(workingDirectoryPathHintState.path)
+            bindText(state::workingDirectory.toNonNullableProperty(""))
+            triggerChange()
+            
+            component.emptyText.text =
+                project.path?.toString() ?: message("configurations.projectConfigurationFile.placeholder")
+        }
+    }
+    row("") {
+        reactiveLabel(workingDirectoryPathHintState.hint)
     }
     
     makeProjectRunningModeInput {

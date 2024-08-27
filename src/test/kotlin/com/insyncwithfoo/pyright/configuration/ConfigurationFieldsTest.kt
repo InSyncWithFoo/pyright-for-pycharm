@@ -47,7 +47,7 @@ class ConfigurationFieldsTest : TestCase() {
     fun `test defaults - project`() {
         val configurations = ProjectConfigurations()
         
-        assertEquals(5, projectFields().size)
+        assertEquals(6, projectFields().size)
         
         configurations.run {
             assertEquals(null, projectExecutable)
@@ -55,6 +55,7 @@ class ConfigurationFieldsTest : TestCase() {
             assertEquals(true, autoSuggestExecutable)
             assertEquals(null, projectLangserverExecutable)
             assertEquals(ProjectRunningMode.USE_GLOBAL, projectRunningMode)
+            assertEquals(null, workingDirectory)
         }
     }
     

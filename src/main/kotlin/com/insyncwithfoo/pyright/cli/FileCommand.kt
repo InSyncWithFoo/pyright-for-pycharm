@@ -43,12 +43,10 @@ internal data class FileCommand(
     val executable: Path,
     @Serializable(with = PathSerializer::class)
     val target: Path,
-    val projectPath: String,
+    override val workingDirectory: String,
     val extraArguments: List<String>,
     override val environmentVariables: Map<String, String>
 ) : PyrightCommand() {
-    
-    override val workingDirectory by ::projectPath
     
     override val fragments: List<String>
         get() = listOf(
@@ -67,6 +65,7 @@ internal data class FileCommand(
             interpreterPath: Path
         ): FileCommand {
             val configurationFile = configurations.configurationFile
+            val workingDirectory = configurations.workingDirectory ?: projectPath.toString()
             
             val argumentForProject = configurationFile ?: projectPath
             val extraArguments: MutableList<String> = mutableListOf(
@@ -87,10 +86,10 @@ internal data class FileCommand(
             }
 
             if (configurations.locale != Locale.DEFAULT) {
-                environmentVariables.set("LC_ALL", configurations.locale.toString())
+                environmentVariables["LC_ALL"] = configurations.locale.toString()
             }
             
-            return FileCommand(executable, target, projectPath.toString(), extraArguments, environmentVariables)
+            return FileCommand(executable, target, workingDirectory, extraArguments, environmentVariables)
         }
         
         private fun create(module: Module, file: VirtualFile): FileCommand? {

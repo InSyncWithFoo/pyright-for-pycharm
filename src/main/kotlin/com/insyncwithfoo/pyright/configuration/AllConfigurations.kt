@@ -27,7 +27,8 @@ internal infix fun ApplicationConfigurations.mergeWith(other: ProjectConfigurati
         projectConfigurationFile = other.projectConfigurationFile,
         autoSuggestExecutable = other.autoSuggestExecutable,
         projectLangserverExecutable = other.projectLangserverExecutable,
-        projectRunningMode = other.projectRunningMode
+        projectRunningMode = other.projectRunningMode,
+        workingDirectory = other.workingDirectory
     )
 
 
@@ -48,7 +49,8 @@ internal data class AllConfigurations(
     val projectConfigurationFile: @SystemDependent String?,
     val autoSuggestExecutable: Boolean,
     val projectLangserverExecutable: @SystemDependent String?,
-    val projectRunningMode: ProjectRunningMode
+    val projectRunningMode: ProjectRunningMode,
+    val workingDirectory: @SystemDependent String?
 ) {
     
     val executable: @SystemDependent String?

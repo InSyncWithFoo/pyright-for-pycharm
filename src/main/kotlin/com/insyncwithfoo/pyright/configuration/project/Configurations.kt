@@ -17,4 +17,5 @@ internal class Configurations : BaseState() {
     var autoSuggestExecutable by property(true)
     var projectLangserverExecutable by string(null)
     var projectRunningMode by enum(RunningMode.USE_GLOBAL)
+    var workingDirectory by string(null)
 }

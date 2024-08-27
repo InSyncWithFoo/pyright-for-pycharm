@@ -83,3 +83,13 @@ internal fun configurationFilePathResolvingHint(path: Path): Hint {
             Hint.success(message("configurations.hint.fileFound"))
     }
 }
+
+
+internal fun workingDirectoryPathResolvingHint(path: Path) = when {
+    !path.exists() ->
+        Hint.warning(message("configurations.hint.directoryNotFound"))
+    !path.isDirectory() ->
+        Hint.error(message("configurations.hint.unexpectedFile"))
+    else ->
+        Hint.success(message("configurations.hint.directoryFound"))
+}
