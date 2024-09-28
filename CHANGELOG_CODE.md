@@ -14,7 +14,7 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 ### Added
 
 * The [`icons`][70-1] subpackage is added. (3842d880)
-* Global option "Locale" is added. (HEAD)
+* Global option "Locale" is added. (98068dd0)
 
 ### Changed
 

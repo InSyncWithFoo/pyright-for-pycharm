@@ -87,7 +87,7 @@ internal data class FileCommand(
             }
 
             if (configurations.locale != Locale.DEFAULT) {
-                environmentVariables.set("LC_ALL", configurations.locale.toString())
+                environmentVariables["LC_ALL"] = configurations.locale.toString()
             }
             
             return FileCommand(executable, target, projectPath.toString(), extraArguments, environmentVariables)

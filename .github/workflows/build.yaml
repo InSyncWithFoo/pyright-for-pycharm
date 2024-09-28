@@ -188,6 +188,7 @@ jobs:
       -
         name: Fetch sources
         uses: actions/checkout@v4
+        fetch-depth: 0
       -
         name: Set up Java
         uses: actions/setup-java@v4
@@ -196,7 +197,7 @@ jobs:
           java-version: 17
       -
         name: Run Qodana
-        uses: JetBrains/qodana-action@v2024.1.9
+        uses: JetBrains/qodana-action@v2024.2.3
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:

@@ -9,6 +9,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiFile
+import com.intellij.psi.util.startOffset
 import com.jetbrains.python.psi.PyUtil
 import com.jetbrains.python.psi.impl.PyPsiUtils
 
@@ -83,7 +84,7 @@ internal class SuppressQuickFix(
     override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
         val psiFile = descriptor.psiElement.containingFile
         val existingComment = psiFile.findSameLineComment(range.startOffset)
-            ?.let { ExistingPyrightIgnoreComment.create(it.text, it.textOffset) }
+            ?.let { ExistingPyrightIgnoreComment.create(it.text, it.startOffset) }
         
         when {
             existingComment == null -> psiFile.edit { it.appendNewCommentToLine() }
