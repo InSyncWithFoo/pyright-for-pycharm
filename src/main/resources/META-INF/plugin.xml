@@ -49,17 +49,19 @@
 		/>
 		
 		<localInspection
+			id="com.insyncwithfoo.pyright.commandline.PyrightInspection"
+			suppressId="com.insyncwithfoo.pyright.commandline.PyrightInspection"
+			shortName="com.insyncwithfoo.pyright.commandline.PyrightInspection"
+			
 			language="Python"
 			groupName="Python"
 			
-			shortName="PyrightInspection"
-			displayName="Pyright diagnostics"
-			suppressId="Pyright"
+			bundle="messages.pyright"
+			key="inspection.displayName"
 			
 			enabledByDefault="true"
 			level="WARNING"
-			
-			implementationClass="com.insyncwithfoo.pyright.PyrightInspection"
+			implementationClass="com.insyncwithfoo.pyright.commandline.PyrightInspection"
 		/>
 		
 		<externalAnnotator
