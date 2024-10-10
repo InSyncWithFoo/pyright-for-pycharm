@@ -33,15 +33,19 @@
 		/>
 		
 		<applicationConfigurable
-			groupId="tools"
-			displayName="Pyright (Global)"
-			instance="com.insyncwithfoo.pyright.configuration.application.Configurable"
+			id="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
+			parentId="tools"
+			bundle="messages.pyright"
+			key="configurations.displayName"
+			instance="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
 		/>
 		
 		<projectConfigurable
-			groupId="tools"
-			displayName="Pyright (Project)"
-			instance="com.insyncwithfoo.pyright.configuration.project.Configurable"
+			id="insyncwithfoo.ryecharm.configurations.main.Local"
+			parentId="insyncwithfoo.ryecharm.configurations.main.Global"
+			bundle="messages.pyright"
+			key="configurations.displayName.project"
+			instance="com.insyncwithfoo.pyright.configurations.PyrightProjectConfigurable"
 		/>
 		
 		<localInspection
