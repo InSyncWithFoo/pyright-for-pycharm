@@ -5,13 +5,9 @@ import com.intellij.openapi.project.Project
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.dsl.builder.AlignX
 import com.intellij.ui.dsl.builder.Cell
-import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.Row
-import com.intellij.ui.dsl.builder.RowLayout
-import com.intellij.ui.dsl.builder.TopGap
 import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.selected
-import javax.swing.JComponent
 import kotlin.reflect.KMutableProperty0
 import kotlin.reflect.full.declaredMemberProperties
 
