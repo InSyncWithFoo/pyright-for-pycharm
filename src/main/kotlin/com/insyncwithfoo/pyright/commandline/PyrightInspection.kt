@@ -1,11 +1,13 @@
 package com.insyncwithfoo.pyright.commandline
 
+import com.insyncwithfoo.pyright.inspectionProfileManager
 import com.insyncwithfoo.pyright.message
 import com.intellij.codeInspection.ex.ExternalAnnotatorBatchInspection
 import com.intellij.codeInspection.options.OptPane.dropdown
 import com.intellij.codeInspection.options.OptPane.group
 import com.intellij.codeInspection.options.OptPane.pane
 import com.intellij.lang.annotation.HighlightSeverity
+import com.intellij.openapi.project.Project
 import com.jetbrains.python.inspections.PyInspection
 import kotlin.reflect.KProperty0
 
@@ -19,7 +21,8 @@ private fun highlightSeverityOptions() = listOf(
 
 
 private fun highlightSeverityDropdown(label: String, property: KProperty0<String>) = dropdown(
-    property.name, label,
+    property.name,
+    label,
     highlightSeverityOptions(),
     { it.name },
     { it.displayCapitalizedName }
@@ -55,3 +58,15 @@ internal class PyrightInspection : PyInspection(), ExternalAnnotatorBatchInspect
     }
     
 }
+
+
+internal var Project.pyrightInspectionisEnabled: Boolean
+    @Deprecated("The getter must not be used.")
+    get() = throw RuntimeException()
+    set(enabled) {
+        val profile = inspectionProfileManager.currentProfile
+        val toolState = profile.allTools.find { it.tool.shortName == PyrightInspection.SHORT_NAME }
+        
+        toolState?.isEnabled = enabled
+        profile.profileChanged()
+    }
