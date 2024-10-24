@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright.icons
+package com.insyncwithfoo.pyright
 
 import com.intellij.openapi.util.IconLoader
 

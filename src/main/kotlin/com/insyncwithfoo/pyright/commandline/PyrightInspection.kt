@@ -61,7 +61,7 @@ internal class PyrightInspection : PyInspection(), ExternalAnnotatorBatchInspect
 
 
 internal var Project.pyrightInspectionisEnabled: Boolean
-    @Deprecated("The getter must not be used.")
+    @Deprecated("The getter must not be used.", level = DeprecationLevel.ERROR)
     get() = throw RuntimeException()
     set(enabled) {
         val profile = inspectionProfileManager.currentProfile

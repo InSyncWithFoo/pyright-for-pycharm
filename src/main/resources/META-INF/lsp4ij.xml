@@ -1,0 +1,19 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="com.redhat.devtools.lsp4ij">
+		<!--suppress PluginXmlCapitalization -->
+		<server
+			id="com.insyncwithfoo.pyright"
+			bundle="messages.pyright"
+			nameKey="languageServer.presentableName"
+			descriptionKey="languageServer.description"
+			factoryClass="com.insyncwithfoo.pyright.lsp4ij.PyrightServerFactory"
+		/>
+		
+		<languageMapping
+			serverId="com.insyncwithfoo.pyright"
+			language="Python"
+			languageId="python"
+			documentMatcher="com.insyncwithfoo.pyright.lsp4ij.PyrightServerDocumentMatcher"
+		/>
+	</extensions>
+</idea-plugin>

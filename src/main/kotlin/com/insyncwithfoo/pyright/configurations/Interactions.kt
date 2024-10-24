@@ -1,5 +1,6 @@
 package com.insyncwithfoo.pyright.configurations
 
+import com.insyncwithfoo.pyright.configurations.models.Overrides
 import com.insyncwithfoo.pyright.findExecutableInPath
 import com.insyncwithfoo.pyright.findExecutableInVenv
 import com.insyncwithfoo.pyright.interpreterDirectory
@@ -48,3 +49,13 @@ internal val Project.pyrightLangserverExecutable: Path?
             ?: findExecutableInVenv("pyright-langserver")
             ?: findExecutableInPath("pyright-langserver")
     }
+
+
+internal fun Project.changePyrightConfigurations(action: PyrightConfigurations.() -> Unit) {
+    PyrightLocalService.getInstance(this).state.apply(action)
+}
+
+
+internal fun Project.changePyrightOverrides(action: Overrides.() -> Unit) {
+    PyrightOverrideService.getInstance(this).state.names.apply(action)
+}

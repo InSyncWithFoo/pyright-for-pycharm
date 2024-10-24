@@ -45,14 +45,14 @@ internal val Project.psiDocumentManager: PsiDocumentManager
     get() = PsiDocumentManager.getInstance(this)
 
 
-private val Project.modules: Array<Module>
+internal val Project.modules: Array<Module>
     get() = moduleManager.modules
 
 
 /**
  * @see [pythonSdk]
  */
-private val Project.sdk: Sdk?
+internal val Project.sdk: Sdk?
     get() = rootManager.projectSdk?.takeIf { PythonSdkUtil.isPythonSdk(it) }
 
 
