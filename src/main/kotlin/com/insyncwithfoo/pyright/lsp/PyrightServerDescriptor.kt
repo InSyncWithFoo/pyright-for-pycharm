@@ -1,8 +1,22 @@
 package com.insyncwithfoo.pyright.lsp
 
+import com.insyncwithfoo.pyright.configurations.Locale
+import com.insyncwithfoo.pyright.configurations.WorkspaceFolders
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
+import com.insyncwithfoo.pyright.configurations.split
+import com.insyncwithfoo.pyright.message
+import com.insyncwithfoo.pyright.modules
+import com.insyncwithfoo.pyright.path
+import com.insyncwithfoo.pyright.wslDistribution
+import com.intellij.execution.configurations.GeneralCommandLine
+import com.intellij.execution.wsl.WSLCommandLineOptions
+import com.intellij.execution.wsl.WSLDistribution
 import com.intellij.execution.wsl.WslPath
+import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.module.Module
+import com.intellij.openapi.project.BaseProjectDirectories.Companion.getBaseDirectories
+import com.intellij.openapi.roots.ModuleRootManager
 import com.intellij.openapi.util.io.OSAgnosticPathUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServerDescriptor
@@ -49,10 +63,10 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     
     override val lspServerListener = Listener(project, module)
     
-    override val lspGoToDefinitionSupport = configurations.goToDefinitionSupport
-    override val lspHoverSupport = configurations.hoverSupport
-    override val lspCompletionSupport = CompletionSupport(project).takeIf { configurations.completionSupport }
-    override val lspDiagnosticsSupport = DiagnosticsSupport(project).takeIf { configurations.diagnosticsSupport }
+    override val lspGoToDefinitionSupport = configurations.gotoDefinition
+    override val lspHoverSupport = configurations.hover
+    override val lspCompletionSupport = CompletionSupport(project).takeIf { configurations.completion }
+    override val lspDiagnosticsSupport = DiagnosticsSupport(project).takeIf { configurations.diagnostics }
     
     private val wslDistribution by lazy { module?.wslDistribution }
     
@@ -110,11 +124,11 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     
     companion object {
         
-        private val LOGGER = Logger.getInstance(PyrightLSDescriptor::class.java)
+        private val LOGGER = Logger.getInstance(PyrightServerDescriptor::class.java)
         
         private fun getPresentableName(project: Project, module: Module?) = when {
-            module == null || project.hasOnlyOneModule -> message("languageServer.representableName.project")
-            else -> message("languageServer.representableName.module", module.name)
+            module == null || project.modules.size == 1 -> message("languageServer.presentableName.project")
+            else -> message("languageServer.presentableName.module", module.name)
         }
         
     }

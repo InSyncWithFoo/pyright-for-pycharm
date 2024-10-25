@@ -264,26 +264,26 @@ private fun PyrightPanel.makeComponent() = panel {
             autoSearchPathsInput { bindSelected(state::autoSearchPaths) }
             overrideCheckbox(state::autoSearchPaths)
         }
-        row {
+        row(message("configurations.targetedFileExtensions.label")) {
             targetedFileExtensionsInput { bindText(state::targetedFileExtensions) }
             overrideCheckbox(state::targetedFileExtensions)
         }
-        row {
+        row(message("configurations.workspaceFolders.label")) {
             workspaceFoldersInput { bindItem(state::workspaceFolders) }
             overrideCheckbox(state::workspaceFolders)
         }
-        row {
+        row(message("configurations.diagnosticMode.label")) {
             diagnosticModeInput { bindItem(state::diagnosticMode) }
             overrideCheckbox(state::diagnosticMode)
         }
         
         separator()
         
-        row {
+        row(message("configurations.logLevel.label")) {
             logLevelInput { bindItem(state::logLevel) }
             overrideCheckbox(state::logLevel)
         }
-        row {
+        row(message("configurations.locale.label")) {
             localeInput { bindItem(state::locale) }
             overrideCheckbox(state::locale)
         }
