@@ -1,10 +1,16 @@
 package com.insyncwithfoo.pyright.lsp
 
+import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
+import com.intellij.execution.wsl.WslPath
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.io.OSAgnosticPathUtil
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServerDescriptor
+import java.net.URI
+import java.nio.file.Path
 
 
-private fun makeFileUri(path: String): String {
+private fun makeFileURI(path: String): String {
     val (scheme, host, fragment) = Triple("file", "", null)
     return URI(scheme, host, path, fragment).toASCIIString()
 }
@@ -60,7 +66,7 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     override fun getFileUri(file: VirtualFile): String {
         return when {
             wslDistribution == null -> super.getFileUri(file)
-            else -> makeFileUri(wslDistribution!!.getWslPath(Path.of(file.path))!!)
+            else -> makeFileURI(wslDistribution!!.getWslPath(Path.of(file.path))!!)
         }
     }
     

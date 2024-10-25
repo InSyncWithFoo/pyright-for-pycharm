@@ -1,7 +1,9 @@
 package com.insyncwithfoo.pyright.configurations
 
+import com.insyncwithfoo.pyright.bindItem
 import com.insyncwithfoo.pyright.bindSelected
 import com.insyncwithfoo.pyright.bindText
+import com.insyncwithfoo.pyright.comboBox
 import com.insyncwithfoo.pyright.configurations.models.AdaptivePanel
 import com.insyncwithfoo.pyright.configurations.models.Overrides
 import com.insyncwithfoo.pyright.configurations.models.PanelBasedConfigurable
@@ -16,9 +18,11 @@ import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.radioButtonFor
 import com.insyncwithfoo.pyright.singleFileTextField
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.ui.components.JBCheckBox
+import com.intellij.ui.components.fields.ExpandableTextField
 import com.intellij.ui.dsl.builder.Cell
 import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.Row
@@ -54,7 +58,87 @@ private fun Panel.runningModeInputGroup(block: Panel.() -> Unit) =
     buttonsGroup(init = block)
 
 
-// TODO: Fix this
+private fun Row.diagnosticsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.diagnostics.label")).apply(block)
+
+
+private fun Row.useEditorFontForTooltipsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.useEditorFontForTooltips.label")).apply(block)
+
+
+private fun Row.prefixTooltipMessagesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.prefixTooltipMessages.label")).apply(block)
+
+
+private fun Row.linkErrorCodesInTooltipsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.linkErrorCodesInTooltips.label")).apply(block)
+
+
+private fun Row.taggedHintsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.taggedHints.label")).apply(block)
+
+
+private fun Row.hoverInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.hover.label")).apply(block)
+
+
+private fun Row.completionInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.completion.label")).apply(block)
+
+
+private fun Row.autoImportCompletionsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.autoImportCompletions.label")).apply(block)
+
+
+private fun Row.monkeypatchAutoImportDetailsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.monkeypatchAutoImportDetails.label")).apply(block)
+
+
+private fun Row.autocompleteParenthesesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.autocompleteParentheses.label")).apply(block)
+
+
+private fun Row.monkeypatchTrailingQuoteBugInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.monkeypatchTrailingQuoteBug.label")).apply(block)
+
+
+private fun Row.gotoDefinitionInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.gotoDefinition.label")).apply(block)
+
+
+private fun Row.autoSearchPathsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.autoSearchPaths.label")).apply(block)
+
+
+private fun Row.targetedFileExtensionsInput(block: Cell<ExpandableTextField>.() -> Unit) = run {
+    val parser = DelimitedFileExtensionList::split
+    val joiner = List<FileExtension>::join
+    
+    expandableTextField(parser, joiner).makeFlexible().apply(block)
+}
+
+
+private fun Row.workspaceFoldersInput(block: Cell<ComboBox<WorkspaceFolders>>.() -> Unit) =
+    comboBox<WorkspaceFolders>().apply(block)
+
+
+private fun Row.diagnosticModeInput(block: Cell<ComboBox<DiagnosticMode>>.() -> Unit) =
+    comboBox<DiagnosticMode>().apply(block)
+
+
+private fun Row.logLevelInput(block: Cell<ComboBox<LogLevel>>.() -> Unit) =
+    comboBox<LogLevel>().apply(block)
+
+
+private fun Row.localeInput(block: Cell<ComboBox<Locale>>.() -> Unit) =
+    comboBox<Locale>().apply(block)
+
+
+private fun Row.autoRestartServers(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.autoRestartServers.label")).apply(block)
+
+
+@Suppress("DialogTitleCapitalization")
 private fun PyrightPanel.makeComponent() = panel {
     
     row(message("configurations.executable.label")) {
@@ -107,7 +191,104 @@ private fun PyrightPanel.makeComponent() = panel {
     }
     runningModeInputGroup.bindSelected(state::runningMode)
     
-    separator()
+    group(message("configurations.groups.main")) {
+        
+        row {
+            autoRestartServers { bindSelected(state::autoRestartServers) }
+            overrideCheckbox(state::autoRestartServers)
+        }
+        
+        separator()
+        
+        row {
+            diagnosticsInput { bindSelected(state::diagnostics) }
+            overrideCheckbox(state::diagnostics)
+        }
+        indent {
+            row {
+                useEditorFontForTooltipsInput { bindSelected(state::useEditorFontForTooltips) }
+                overrideCheckbox(state::useEditorFontForTooltips)
+            }
+            row {
+                prefixTooltipMessagesInput { bindSelected(state::prefixTooltipMessages) }
+                overrideCheckbox(state::prefixTooltipMessages)
+            }
+            row {
+                linkErrorCodesInTooltipsInput { bindSelected(state::linkErrorCodesInTooltips) }
+                overrideCheckbox(state::linkErrorCodesInTooltips)
+            }
+            row {
+                taggedHintsInput { bindSelected(state::taggedHints) }
+                overrideCheckbox(state::taggedHints)
+            }
+        }
+        
+        row {
+            hoverInput { bindSelected(state::hover) }
+            overrideCheckbox(state::hover)
+        }
+        
+        row {
+            completionInput { bindSelected(state::completion) }
+            overrideCheckbox(state::completion)
+        }
+        indent {
+            row {
+                autoImportCompletionsInput { bindSelected(state::autoImportCompletions) }
+                overrideCheckbox(state::autoImportCompletions)
+            }
+            indent {
+                row {
+                    monkeypatchAutoImportDetailsInput { bindSelected(state::monkeypatchAutoImportDetails) }
+                    overrideCheckbox(state::monkeypatchAutoImportDetails)
+                }
+            }
+            row {
+                autocompleteParenthesesInput { bindSelected(state::autocompleteParentheses) }
+                overrideCheckbox(state::autocompleteParentheses)
+            }
+            row {
+                monkeypatchTrailingQuoteBugInput { bindSelected(state::monkeypatchTrailingQuoteBug) }
+                overrideCheckbox(state::monkeypatchTrailingQuoteBug)
+            }
+        }
+        
+        row {
+            gotoDefinitionInput { bindSelected(state::gotoDefinition) }
+            overrideCheckbox(state::gotoDefinition)
+        }
+        
+        separator()
+        
+        row {
+            autoSearchPathsInput { bindSelected(state::autoSearchPaths) }
+            overrideCheckbox(state::autoSearchPaths)
+        }
+        row {
+            targetedFileExtensionsInput { bindText(state::targetedFileExtensions) }
+            overrideCheckbox(state::targetedFileExtensions)
+        }
+        row {
+            workspaceFoldersInput { bindItem(state::workspaceFolders) }
+            overrideCheckbox(state::workspaceFolders)
+        }
+        row {
+            diagnosticModeInput { bindItem(state::diagnosticMode) }
+            overrideCheckbox(state::diagnosticMode)
+        }
+        
+        separator()
+        
+        row {
+            logLevelInput { bindItem(state::logLevel) }
+            overrideCheckbox(state::logLevel)
+        }
+        row {
+            localeInput { bindItem(state::locale) }
+            overrideCheckbox(state::locale)
+        }
+        
+    }
     
 }
 
