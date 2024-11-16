@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.configurations
 
 import com.insyncwithfoo.pyright.Labeled
+import com.insyncwithfoo.pyright.commandline.DiagnosticSeverity
 import com.insyncwithfoo.pyright.configurations.models.Copyable
 import com.insyncwithfoo.pyright.configurations.models.DisplayableState
 import com.insyncwithfoo.pyright.configurations.models.ProjectOverrideState
@@ -43,7 +44,18 @@ internal enum class RunningMode(override val label: String) : Labeled {
 }
 
 
-@Suppress("unused")
+internal enum class WorkspaceFolders(override val label: String) : Labeled {
+    PROJECT_BASE(message("configurations.workspaceFolders.projectBase")),
+    SOURCE_ROOTS(message("configurations.workspaceFolders.sourceRoots"));
+}
+
+
+internal enum class DiagnosticMode(val value: String, override val label: String) : Labeled {
+    OPEN_FILES_ONLY("openFilesOnly", message("configurations.diagnosticMode.openFilesOnly")),
+    WORKSPACE("workspace", message("configurations.diagnosticMode.workspace"));
+}
+
+
 internal enum class LogLevel(override val label: String) : Labeled {
     ERROR(message("configurations.logLevel.error")),
     WARNING(message("configurations.logLevel.warning")),
@@ -53,7 +65,6 @@ internal enum class LogLevel(override val label: String) : Labeled {
 
 
 // https://github.com/microsoft/pyright/blob/acc52c7420/packages/pyright-internal/src/localization/localize.ts#L12-L26
-@Suppress("unused")
 internal enum class Locale(override val label: String) : Labeled {
     DEFAULT(message("configurations.locale.default")),
     CS("cs"),
@@ -75,20 +86,6 @@ internal enum class Locale(override val label: String) : Labeled {
 }
 
 
-@Suppress("unused")
-internal enum class WorkspaceFolders(override val label: String) : Labeled {
-    PROJECT_BASE(message("configurations.workspaceFolders.projectBase")),
-    SOURCE_ROOTS(message("configurations.workspaceFolders.sourceRoots"));
-}
-
-
-@Suppress("unused")
-internal enum class DiagnosticMode(val value: String, override val label: String) : Labeled {
-    OPEN_FILES_ONLY("openFilesOnly", message("configurations.diagnosticMode.openFilesOnly")),
-    WORKSPACE("workspace", message("configurations.diagnosticMode.workspace"));
-}
-
-
 internal class PyrightConfigurations : DisplayableState(), Copyable {
     var executable by string(null)
     var smartExecutableResolution by property(false)
@@ -104,6 +101,7 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var prefixTooltipMessages by property(false)
     var linkErrorCodesInTooltips by property(false)
     var taggedHints by property(true)
+    var minimumSeverityLevel by enum(DiagnosticSeverity.INFORMATION)
     
     var hover by property(true)
     
@@ -122,6 +120,7 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     
     var logLevel by enum(LogLevel.INFORMATION)
     var locale by enum(Locale.DEFAULT)
+    var numberOfThreads by property(0)
     
     val targetedFileExtensionList: List<String>
         get() = targetedFileExtensions.orEmpty().split()

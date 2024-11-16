@@ -1,9 +1,11 @@
 package com.insyncwithfoo.pyright.configurations
 
+import com.insyncwithfoo.pyright.bindIntValue
 import com.insyncwithfoo.pyright.bindItem
 import com.insyncwithfoo.pyright.bindSelected
 import com.insyncwithfoo.pyright.bindText
 import com.insyncwithfoo.pyright.comboBox
+import com.insyncwithfoo.pyright.commandline.DiagnosticSeverity
 import com.insyncwithfoo.pyright.configurations.models.AdaptivePanel
 import com.insyncwithfoo.pyright.configurations.models.Overrides
 import com.insyncwithfoo.pyright.configurations.models.PanelBasedConfigurable
@@ -21,11 +23,13 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
+import com.intellij.ui.JBIntSpinner
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.fields.ExpandableTextField
 import com.intellij.ui.dsl.builder.Cell
 import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.Row
+import com.intellij.ui.dsl.builder.bindIntValue
 import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.panel
 
@@ -76,6 +80,10 @@ private fun Row.linkErrorCodesInTooltipsInput(block: Cell<JBCheckBox>.() -> Unit
 
 private fun Row.taggedHintsInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.taggedHints.label")).apply(block)
+
+
+private fun Row.minimumSeverityLevelInput(block: Cell<ComboBox<DiagnosticSeverity>>.() -> Unit) =
+    comboBox<DiagnosticSeverity>().apply(block)
 
 
 private fun Row.hoverInput(block: Cell<JBCheckBox>.() -> Unit) =
@@ -132,6 +140,12 @@ private fun Row.logLevelInput(block: Cell<ComboBox<LogLevel>>.() -> Unit) =
 
 private fun Row.localeInput(block: Cell<ComboBox<Locale>>.() -> Unit) =
     comboBox<Locale>().apply(block)
+
+
+private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) = run {
+    val comment = message("configurations.numberOfThreads.comment")
+    spinner(0..1_000_000, step = 1).comment(comment).apply(block)
+}
 
 
 private fun Row.autoRestartServers(block: Cell<JBCheckBox>.() -> Unit) =
@@ -221,6 +235,10 @@ private fun PyrightPanel.makeComponent() = panel {
                 taggedHintsInput { bindSelected(state::taggedHints) }
                 overrideCheckbox(state::taggedHints)
             }
+            row(message("configurations.minimumSeverityLevel.label")) {
+                minimumSeverityLevelInput { bindItem(state::minimumSeverityLevel) }
+                overrideCheckbox(state::minimumSeverityLevel)
+            }
         }
         
         row {
@@ -286,6 +304,10 @@ private fun PyrightPanel.makeComponent() = panel {
         row(message("configurations.locale.label")) {
             localeInput { bindItem(state::locale) }
             overrideCheckbox(state::locale)
+        }
+        row(message("configurations.numberOfThreads.label")) {
+            numberOfThreadsInput { bindIntValue(state::numberOfThreads) }
+            overrideCheckbox(state::numberOfThreads)
         }
         
     }

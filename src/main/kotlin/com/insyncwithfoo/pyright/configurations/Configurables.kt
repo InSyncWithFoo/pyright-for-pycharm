@@ -3,8 +3,23 @@ package com.insyncwithfoo.pyright.configurations
 import com.insyncwithfoo.pyright.configurations.models.PanelBasedConfigurable
 import com.insyncwithfoo.pyright.configurations.models.ProjectBasedConfigurable
 import com.insyncwithfoo.pyright.configurations.models.copy
+import com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider
+import com.insyncwithfoo.pyright.lsp4ij.SERVER_ID
 import com.insyncwithfoo.pyright.message
+import com.insyncwithfoo.pyright.openProjects
+import com.insyncwithfoo.pyright.restartNativeServers
+import com.insyncwithfoo.pyright.toggleLSP4IJServers
 import com.intellij.openapi.project.Project
+
+
+private fun Project.toggleServers() {
+    val configurations = pyrightConfigurations
+    
+    if (configurations.autoRestartServers) {
+        restartNativeServers<PyrightServerSupportProvider>()
+        toggleLSP4IJServers(SERVER_ID, restart = configurations.runningMode == RunningMode.LSP4IJ)
+    }
+}
 
 
 internal class PyrightConfigurable : PanelBasedConfigurable<PyrightConfigurations>() {
@@ -18,6 +33,10 @@ internal class PyrightConfigurable : PanelBasedConfigurable<PyrightConfiguration
     
     override fun afterApply() {
         syncStateWithService(state, service.state)
+        
+        openProjects.forEach { project ->
+            project.toggleServers()
+        }
     }
     
 }
@@ -37,6 +56,8 @@ internal class PyrightProjectConfigurable(override val project: Project) :
     override fun afterApply() {
         syncStateWithService(state, service.state)
         syncStateWithService(overrideState, overrideService.state)
+        
+        project.toggleServers()
     }
     
 }
