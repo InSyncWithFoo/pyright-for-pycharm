@@ -37,7 +37,7 @@ internal val Project.rootManager: ProjectRootManager
     get() = ProjectRootManager.getInstance(this)
 
 
-internal val Project.moduleManager: ModuleManager
+private val Project.moduleManager: ModuleManager
     get() = ModuleManager.getInstance(this)
 
 
@@ -52,12 +52,13 @@ internal val Project.modules: Array<Module>
 /**
  * @see [pythonSdk]
  */
-internal val Project.sdk: Sdk?
+private val Project.sdk: Sdk?
     get() = rootManager.projectSdk?.takeIf { PythonSdkUtil.isPythonSdk(it) }
 
 
 internal val Project.path: Path?
     get() = guessProjectDir()?.toNioPathOrNull()?.toNullIfNotExists()
+        ?: basePath?.toPathOrNull()?.toNullIfNotExists()
 
 
 internal val Project.interpreterPath: Path?
@@ -91,9 +92,9 @@ internal fun Project.findExecutableInVenv(nameWithoutExtension: String) =
         ?.find { it.nameWithoutExtension == nameWithoutExtension }
 
 
-internal fun Project.openLightFile(fileName: String, content: String) {
-    val fileType = FileTypeManager.getInstance().getFileTypeByFileName(fileName)
-    val file = LightVirtualFile(fileName, fileType, content)
+internal fun Project.openLightFile(filename: String, content: String) {
+    val fileType = FileTypeManager.getInstance().getFileTypeByFileName(filename)
+    val file = LightVirtualFile(filename, fileType, content)
     
     val openFileDescriptor = OpenFileDescriptor(this, file)
     
