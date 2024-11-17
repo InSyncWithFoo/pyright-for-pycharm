@@ -1,11 +1,12 @@
 package com.insyncwithfoo.pyright.commandline
 
+import com.insyncwithfoo.pyright.Labeled
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
 @Serializable
-internal data class Output(
+internal data class Result(
     val version: String,
     val time: String,
     val generalDiagnostics: List<Diagnostic>,
@@ -23,10 +24,13 @@ internal data class Diagnostic(
 )
 
 
-internal enum class DiagnosticSeverity {
-    @SerialName("error") ERROR,
-    @SerialName("warning") WARNING,
-    @SerialName("information") INFORMATION
+internal enum class DiagnosticSeverity(override val label: String) : Labeled {
+    @SerialName("error")
+    ERROR("Error"),
+    @SerialName("warning")
+    WARNING("Warning"),
+    @SerialName("information")
+    INFORMATION("Information");
 }
 
 
