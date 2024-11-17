@@ -29,11 +29,6 @@
 	<!-- Extension points defined by the plugin.
 		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
 	<extensions defaultExtensionNs="com.intellij">
-		<notificationGroup
-			displayType="STICKY_BALLOON"
-			id="Pyright notifications"
-		/>
-		
 		<applicationConfigurable
 			id="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
 			parentId="tools"
@@ -48,6 +43,30 @@
 			bundle="messages.pyright"
 			key="configurations.displayName.project"
 			instance="com.insyncwithfoo.pyright.configurations.PyrightProjectConfigurable"
+		/>
+	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<notificationGroup
+			id="com.insyncwithfoo.pyright.errors"
+			displayType="STICKY_BALLOON"
+			bundle="messages.pyright"
+			key="notifications.group.errors.displayName"
+		/>
+		
+		<notificationGroup
+			id="com.insyncwithfoo.pyright.information"
+			displayType="BALLOON"
+			bundle="messages.pyright"
+			key="notifications.group.information.displayName"
+		/>
+	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<externalAnnotator
+			id="com.insyncwithfoo.pyright.commandline.PyrightAnnotator"
+			language="Python"
+			implementationClass="com.insyncwithfoo.pyright.commandline.PyrightAnnotator"
 		/>
 		
 		<localInspection
@@ -66,14 +85,16 @@
 			implementationClass="com.insyncwithfoo.pyright.commandline.PyrightInspection"
 		/>
 		
-		<externalAnnotator
-			id="com.insyncwithfoo.pyright.commandline.PyrightAnnotator"
-			language="Python"
-			implementationClass="com.insyncwithfoo.pyright.commandline.PyrightAnnotator"
+		<fileIconProvider
+			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
 		/>
-		
-		<postStartupActivity
-			implementation="com.insyncwithfoo.pyright.PyrightProjectExecutableSuggester"
+	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<!-- Override native go-to-declaration implementation -->
+		<psi.implicitReferenceProvider
+			order="first"
+			implementation="com.intellij.platform.lsp.impl.navigation.LspImplicitReferenceProvider"
 		/>
 		
 		<codeInsight.parameterInfo
@@ -82,20 +103,5 @@
 			order="first"
 			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
 		/>
-		
-		<fileIconProvider
-			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
-		/>
 	</extensions>
-	
-	<actions>
-		<!--suppress PluginXmlCapitalization -->
-		<action
-			id="pyright.copyFileCommand"
-			class="com.insyncwithfoo.pyright.actions.CopyFileCommand"
-			text="Copy Pyright command"
-			description="Copy Pyright command that would be used for current file"
-			icon="AllIcons.Actions.Copy"
-		/>
-	</actions>
 </idea-plugin>
