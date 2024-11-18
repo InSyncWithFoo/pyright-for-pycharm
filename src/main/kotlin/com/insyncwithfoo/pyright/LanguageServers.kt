@@ -4,7 +4,6 @@ import com.intellij.openapi.project.Project
 import com.intellij.platform.lsp.api.LspServerManager
 import com.intellij.platform.lsp.api.LspServerSupportProvider
 import com.redhat.devtools.lsp4ij.LanguageServerManager
-import insyncwithfoo.ryecharm.isNormal
 
 
 @Suppress("UnstableApiUsage")

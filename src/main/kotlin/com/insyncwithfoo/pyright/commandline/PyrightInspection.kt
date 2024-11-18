@@ -8,6 +8,8 @@ import com.intellij.codeInspection.options.OptPane.group
 import com.intellij.codeInspection.options.OptPane.pane
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.project.Project
+import com.intellij.profile.codeInspection.InspectionProjectProfileManager
+import com.intellij.psi.PsiFile
 import com.jetbrains.python.inspections.PyInspection
 import kotlin.reflect.KProperty0
 
@@ -34,6 +36,14 @@ internal fun HighlightSeverity(name: String): HighlightSeverity {
 }
 
 
+internal fun PyrightInspection.highlightSeverityFor(severity: DiagnosticSeverity) =
+    when (severity) {
+        DiagnosticSeverity.ERROR -> HighlightSeverity(highlightSeverityForErrors)
+        DiagnosticSeverity.WARNING -> HighlightSeverity(highlightSeverityForWarnings)
+        DiagnosticSeverity.INFORMATION -> HighlightSeverity(highlightSeverityForInformation)
+    }
+
+
 internal class PyrightInspection : PyInspection(), ExternalAnnotatorBatchInspection {
     
     var highlightSeverityForErrors = HighlightSeverity.ERROR.name
@@ -58,6 +68,24 @@ internal class PyrightInspection : PyInspection(), ExternalAnnotatorBatchInspect
     }
     
 }
+
+
+internal val PsiFile.pyrightInspection: PyrightInspection
+    get() {
+        val profile = project.inspectionProfileManager.currentProfile
+        val entry = profile.getUnwrappedTool(PyrightInspection.SHORT_NAME, this)
+        
+        return entry as PyrightInspection
+    }
+
+
+internal val Project.pyrightInspection: PyrightInspection
+    get() {
+        val inspectionManager = InspectionProjectProfileManager.getInstance(this)
+        val profile = inspectionManager.currentProfile
+        
+        return profile.getInspectionTool(PyrightInspection.SHORT_NAME, this)!!.tool as PyrightInspection
+    }
 
 
 internal var Project.pyrightInspectionisEnabled: Boolean

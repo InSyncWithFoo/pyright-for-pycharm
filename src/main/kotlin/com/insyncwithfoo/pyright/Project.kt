@@ -52,7 +52,7 @@ internal val Project.modules: Array<Module>
 /**
  * @see [pythonSdk]
  */
-private val Project.sdk: Sdk?
+internal val Project.sdk: Sdk?
     get() = rootManager.projectSdk?.takeIf { PythonSdkUtil.isPythonSdk(it) }
 
 

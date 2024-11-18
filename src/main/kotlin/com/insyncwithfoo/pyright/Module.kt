@@ -10,7 +10,7 @@ import com.jetbrains.python.sdk.basePath
 import java.nio.file.Path
 
 
-private val Module?.sdk: Sdk?
+internal val Module?.sdk: Sdk?
     get() = PythonSdkUtil.findPythonSdk(this)
 
 

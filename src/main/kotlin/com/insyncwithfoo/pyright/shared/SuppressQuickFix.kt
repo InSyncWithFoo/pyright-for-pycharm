@@ -2,6 +2,8 @@ package com.insyncwithfoo.pyright.shared
 
 import com.insyncwithfoo.pyright.message
 import com.intellij.codeInsight.intention.IntentionAction
+import com.intellij.codeInspection.LocalQuickFix
+import com.intellij.codeInspection.ProblemDescriptor
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
@@ -21,9 +23,8 @@ private fun Document.appendToLine(line: Int, value: String) {
 }
 
 
-private fun PsiFile.findSameLineComment(rangeOffset: Int): PsiComment? {
-    return findElementAt(rangeOffset)?.let { PyPsiUtils.findSameLineComment(it) }
-}
+private fun PsiFile.findSameLineComment(rangeOffset: Int) =
+    findElementAt(rangeOffset)?.let { PyPsiUtils.findSameLineComment(it) }
 
 
 private fun PsiFile.edit(callback: (Document) -> Unit) {
@@ -34,7 +35,7 @@ private fun PsiFile.edit(callback: (Document) -> Unit) {
 internal class SuppressQuickFix(
     private val code: PyrightErrorCode?,
     private val range: TextRange
-) : IntentionAction {
+) : LocalQuickFix, IntentionAction {
     
     private fun Document.appendNewCommentToLine() {
         val lineNumber = getLineNumber(range.startOffset)
@@ -86,10 +87,16 @@ internal class SuppressQuickFix(
     }
     
     override fun invoke(project: Project, editor: Editor?, file: PsiFile?) {
-        if (editor == null || file == null) {
-            return
+        if (file != null) {
+            runOn(file)
         }
-        
+    }
+    
+    override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
+        runOn(descriptor.psiElement.containingFile)
+    }
+    
+    private fun runOn(file: PsiFile) {
         val existingComment = file.findSameLineComment(range.startOffset)
             ?.let { ExistingPyrightIgnoreComment.create(it.text, it.textOffset) }
         
@@ -98,7 +105,6 @@ internal class SuppressQuickFix(
             code == null -> file.edit { it.removeCommentCodeList(existingComment) }
             else -> file.edit { it.addNewCodeToExistingComment(existingComment) }
         }
-        
     }
     
 }
