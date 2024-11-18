@@ -16,4 +16,14 @@
 			documentMatcher="com.insyncwithfoo.pyright.lsp4ij.PyrightServerDocumentMatcher"
 		/>
 	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<!-- Override native implementation -->
+		<codeInsight.parameterInfo
+			id="PyrightLSPParameterInfoHandler"
+			language="Python"
+			order="first"
+			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
+		/>
+	</extensions>
 </idea-plugin>

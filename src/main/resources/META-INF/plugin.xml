@@ -86,22 +86,8 @@
 		/>
 		
 		<fileIconProvider
+			id="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
 			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
-		/>
-	</extensions>
-	
-	<extensions defaultExtensionNs="com.intellij">
-		<!-- Override native go-to-declaration implementation -->
-		<psi.implicitReferenceProvider
-			order="first"
-			implementation="com.intellij.platform.lsp.impl.navigation.LspImplicitReferenceProvider"
-		/>
-		
-		<codeInsight.parameterInfo
-			id="PyrightLSPParameterInfoHandler"
-			language="Python"
-			order="first"
-			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
 		/>
 	</extensions>
 </idea-plugin>

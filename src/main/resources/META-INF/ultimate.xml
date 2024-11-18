@@ -5,5 +5,11 @@
 			id="com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider"
 			implementation="com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider"
 		/>
+		
+		<!-- Override native implementation -->
+		<psi.implicitReferenceProvider
+			order="first"
+			implementation="com.intellij.platform.lsp.impl.navigation.LspImplicitReferenceProvider"
+		/>
 	</extensions>
 </idea-plugin>
