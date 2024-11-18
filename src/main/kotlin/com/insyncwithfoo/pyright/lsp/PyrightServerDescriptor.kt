@@ -3,6 +3,7 @@ package com.insyncwithfoo.pyright.lsp
 import com.insyncwithfoo.pyright.configurations.Locale
 import com.insyncwithfoo.pyright.configurations.WorkspaceFolders
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
+import com.insyncwithfoo.pyright.configurations.targetedFileExtensionList
 import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.modules
 import com.insyncwithfoo.pyright.path

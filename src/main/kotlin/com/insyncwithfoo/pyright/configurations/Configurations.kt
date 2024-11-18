@@ -121,10 +121,11 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var logLevel by enum(LogLevel.INFORMATION)
     var locale by enum(Locale.DEFAULT)
     var numberOfThreads by property(0)
-    
-    val targetedFileExtensionList: List<String>
-        get() = targetedFileExtensions.orEmpty().split()
 }
+
+
+internal val PyrightConfigurations.targetedFileExtensionList: List<String>
+    get() = targetedFileExtensions.orEmpty().split()
 
 
 internal class PyrightOverrides : DisplayableState(), ProjectOverrideState {
