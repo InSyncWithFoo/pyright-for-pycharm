@@ -1,4 +1,4 @@
-package com.insyncwithfoo.pyright.annotations
+package com.insyncwithfoo.pyright.shared
 
 import junit.framework.TestCase
 
