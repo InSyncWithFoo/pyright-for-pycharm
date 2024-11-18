@@ -7,30 +7,41 @@ import com.intellij.notification.BrowseNotificationAction
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.fileEditor.OpenFileDescriptor
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.util.ui.EmptyClipboardOwner
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
 
 
-internal fun Notification.addOpenPluginIssueTrackerAction(): Notification {
-    val issueTrackerActionText = message("notificationActions.openPluginIssueTracker")
-    val action = BrowseNotificationAction(
-        issueTrackerActionText,
-        "https://github.com/InSyncWithFoo/pyright-for-pycharm/issues"
-    )
-    
-    return addAction(action)
-}
+internal fun Notification.addAction(text: String, action: () -> Unit) =
+    addAction(NotificationAction.createSimple(text, action))
 
 
 internal fun Notification.addExpiringAction(text: String, action: () -> Unit) =
     addAction(NotificationAction.createSimpleExpiring(text, action))
 
 
-internal fun Notification.addAction(text: String, action: () -> Unit) =
-    addAction(NotificationAction.createSimple(text, action))
+internal fun Notification.addOpenBrowserAction(text: String, link: String) =
+    addAction(BrowseNotificationAction(text, link))
+
+
+internal fun Notification.addOpenPluginIssueTrackerAction() {
+    val text = message("notificationActions.openPluginIssueTracker")
+    val link = "https://github.com/InSyncWithFoo/pyright-for-pycharm/issues"
+    
+    addOpenBrowserAction(text, link)
+}
+
+
+internal fun Notification.addOpenPyrightIssueTrackerAction() {
+    val text = message("notificationActions.openPyrightIssueTracker")
+    val link = "https://github.com/microsoft/pyright/issues"
+    
+    addOpenBrowserAction(text, link)
+}
 
 
 internal fun Notification.addCopyTextAction(text: String, content: String) {
@@ -104,4 +115,29 @@ private fun Notification.addSeeStderrAction(content: String) {
 internal fun Notification.addSeeOutputActions(processOutput: ProcessOutput) {
     addSeeStdoutAction(processOutput.stdout)
     addSeeStderrAction(processOutput.stderr)
+}
+
+
+private class OpenFileAction(text: String, private val path: String) : NotificationAction(text) {
+    
+    override fun actionPerformed(event: AnActionEvent, notification: Notification) {
+        val project = event.project ?: return cannotOpenFile()
+        
+        val fileSystem = LocalFileSystem.getInstance()
+        val virtualFile = fileSystem.findFileByPath(path) ?: return cannotOpenFile(project)
+        
+        project.fileEditorManager.openFileEditor(OpenFileDescriptor(project, virtualFile), true)
+    }
+    
+    private fun cannotOpenFile(project: Project? = null) {
+        val text = message("notificationActions.openConfigurationFile.error.body", path)
+        
+        project.somethingIsWrong(text)
+    }
+    
+}
+
+
+internal fun Notification.addOpenFileAction(text: String, path: String) {
+    addAction(OpenFileAction(text, path))
 }
