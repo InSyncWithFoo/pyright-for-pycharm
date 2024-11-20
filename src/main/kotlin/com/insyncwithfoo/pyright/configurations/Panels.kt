@@ -142,10 +142,8 @@ private fun Row.localeInput(block: Cell<ComboBox<Locale>>.() -> Unit) =
     comboBox<Locale>().apply(block)
 
 
-private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) = run {
-    val comment = message("configurations.numberOfThreads.comment")
-    spinner(0..1_000_000, step = 1).comment(comment).apply(block)
-}
+private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) =
+    spinner(0..1_000_000, step = 1).apply(block)
 
 
 private fun Row.autoRestartServers(block: Cell<JBCheckBox>.() -> Unit) =

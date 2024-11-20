@@ -38,8 +38,8 @@
 		/>
 		
 		<projectConfigurable
-			id="insyncwithfoo.ryecharm.configurations.main.Local"
-			parentId="insyncwithfoo.ryecharm.configurations.main.Global"
+			id="com.insyncwithfoo.pyright.configurations.PyrightProjectConfigurable"
+			parentId="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
 			bundle="messages.pyright"
 			key="configurations.displayName.project"
 			instance="com.insyncwithfoo.pyright.configurations.PyrightProjectConfigurable"

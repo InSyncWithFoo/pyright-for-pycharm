@@ -4,7 +4,7 @@
 		<server
 			id="com.insyncwithfoo.pyright"
 			bundle="messages.pyright"
-			nameKey="languageServer.presentableName"
+			nameKey="languageServer.presentableName.project"
 			descriptionKey="languageServer.description"
 			factoryClass="com.insyncwithfoo.pyright.lsp4ij.PyrightServerFactory"
 		/>
