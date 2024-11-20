@@ -90,4 +90,28 @@
 			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
 		/>
 	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<postStartupActivity
+			order="first"
+			implementation="com.insyncwithfoo.pyright.configurations.converters.pyrightls.ConfigurationsConverter"
+		/>
+		
+		<postStartupActivity
+			order="first"
+			implementation="com.insyncwithfoo.pyright.configurations.converters.v1.ConfigurationsConverter"
+		/>
+	</extensions>
+	
+	<applicationListeners>
+		<listener
+			topic="com.intellij.ide.AppLifecycleListener"
+			class="com.insyncwithfoo.pyright.configurations.converters.pyrightls.ConfigurationsConverter"
+		/>
+		
+		<listener
+			topic="com.intellij.ide.AppLifecycleListener"
+			class="com.insyncwithfoo.pyright.configurations.converters.v1.ConfigurationsConverter"
+		/>
+	</applicationListeners>
 </idea-plugin>
