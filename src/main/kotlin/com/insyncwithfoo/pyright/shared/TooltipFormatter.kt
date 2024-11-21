@@ -28,9 +28,8 @@ private val PyrightErrorCode.documentationLink: String
 
 
 private fun PyrightErrorCode.toFormatted(font: String?, linkErrorCode: Boolean) =
-    HtmlChunk.span(this)
-        .letIf(linkErrorCode) { HtmlChunk.link(documentationLink, it) }
-        .withFont(font)
+    HtmlChunk.text(this)
+        .letIf(linkErrorCode) { HtmlChunk.link(documentationLink, it).withFont(font) }
         .toString()
 
 
@@ -52,5 +51,5 @@ internal fun Message.toFormattedTooltip(
         else -> " (${code.toFormatted(font?.name, linkErrorCode)})"
     }
     
-    return "${prefix}${this}${suffix}".toPreformattedBlock(font?.name).toString()
+    return "${prefix}${this}".toPreformattedBlock(font?.name).addRaw(suffix).toString()
 }
