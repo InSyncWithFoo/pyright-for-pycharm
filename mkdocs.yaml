@@ -1,5 +1,5 @@
 site_name: Pyright for PyCharm
-site_description: A PyCharm plugin that runs Pyright as you code
+site_description: The best of Pyright and PyCharm combined
 site_url: https://insyncwithfoo.github.io/pyright-for-pycharm
 
 repo_name: InSyncWithFoo/pyright-for-pycharm
@@ -34,7 +34,11 @@ theme:
   features:
     - content.action.edit
     - content.action.view
+    - navigation.expand
+    - navigation.footer
     - navigation.indexes
+    - navigation.instant
+    - navigation.tracking
     - search.suggest
 
 markdown_extensions:
@@ -81,6 +85,5 @@ validation:
   omitted_files: warn
   absolute_links: warn
   unrecognized_links: warn
-  anchors: warn
 
 strict: true
