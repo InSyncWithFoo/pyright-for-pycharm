@@ -2,6 +2,7 @@ package com.insyncwithfoo.pyright.configurations.converters.pyrightls
 
 import com.insyncwithfoo.pyright.configurations.PyrightGlobalService
 import com.insyncwithfoo.pyright.configurations.PyrightLocalService
+import com.insyncwithfoo.pyright.configurations.RunningMode
 import com.insyncwithfoo.pyright.configurations.changePyrightOverrides
 import com.insyncwithfoo.pyright.configurations.models.add
 import com.intellij.ide.AppLifecycleListener
@@ -14,6 +15,8 @@ import com.intellij.openapi.startup.ProjectActivity
 
 private fun migrateGlobal(legacy: LegacyGlobalConfigurations) {
     PyrightGlobalService.getInstance().state.apply {
+        runningMode = RunningMode.LSP
+        
         executable = legacy.globalExecutable
         useEditorFontForTooltips = legacy.useEditorFont
         prefixTooltipMessages = legacy.addTooltipPrefix

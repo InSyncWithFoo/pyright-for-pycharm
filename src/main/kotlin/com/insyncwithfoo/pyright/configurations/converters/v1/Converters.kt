@@ -14,6 +14,8 @@ import com.intellij.openapi.startup.ProjectActivity
 
 internal fun migrateGlobal(legacy: LegacyGlobalConfigurations) {
     PyrightGlobalService.getInstance().state.apply {
+        runningMode = legacy.globalRunningMode
+        
         executable = legacy.globalExecutable
         configurationFile = legacy.globalConfigurationFile
         useEditorFontForTooltips = legacy.useEditorFont
@@ -32,13 +34,11 @@ internal fun Project.migrateLocal(legacy: LegacyLocalConfigurations) {
         executable = legacy.projectExecutable
         configurationFile = legacy.projectConfigurationFile
         languageServerExecutable = legacy.projectLangserverExecutable
-        runningMode = legacy.projectRunningMode
         
         changePyrightOverrides {
             add(::executable.name)
             add(::configurationFile.name)
             add(::languageServerExecutable.name)
-            add(::runningMode.name)
         }
     }
 }
