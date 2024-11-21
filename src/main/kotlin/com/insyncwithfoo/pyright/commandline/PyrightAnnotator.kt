@@ -11,6 +11,7 @@ import com.insyncwithfoo.pyright.modules
 import com.insyncwithfoo.pyright.shared.SuppressQuickFix
 import com.insyncwithfoo.pyright.shared.getFormattedTooltip
 import com.insyncwithfoo.pyright.shared.isUnsuppressable
+import com.insyncwithfoo.pyright.shared.suffixedMessage
 import com.intellij.codeInspection.InspectionManager
 import com.intellij.codeInspection.LocalQuickFix
 import com.intellij.codeInspection.ProblemDescriptor
@@ -133,7 +134,7 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         val document = file.viewProvider.document ?: return
         
         result.generalDiagnostics.forEach { diagnostic ->
-            val message = diagnostic.message
+            val message = diagnostic.suffixedMessage
             
             val highlightSeverity = inspection.highlightSeverityFor(diagnostic.severity)
             val problemHighlightType = highlightSeverity.toProblemHighlightType()

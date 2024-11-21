@@ -9,7 +9,7 @@ private val unsuppressableErrorCodes = listOf("reportUnnecessaryTypeIgnoreCommen
 
 
 internal val LSPDiagnostic.codeAsString: String?
-    get() = code.get() as? String
+    get() = code?.get() as? String
 
 
 internal val Diagnostic.isUnsuppressable: Boolean
@@ -17,7 +17,7 @@ internal val Diagnostic.isUnsuppressable: Boolean
 
 
 internal val LSPDiagnostic.isUnsuppressable: Boolean
-    get() = code.get() in unsuppressableErrorCodes
+    get() = codeAsString in unsuppressableErrorCodes
 
 
 internal val Diagnostic.suffixedMessage: String
