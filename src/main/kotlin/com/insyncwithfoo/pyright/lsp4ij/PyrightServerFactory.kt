@@ -46,6 +46,11 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
         return PyrightServerClient(project)
     }
     
-    // TODO: Add features
+    @Suppress("UnstableApiUsage")
+    override fun createClientFeatures() = LSPClientFeatures().apply {
+        hoverFeature = HoverFeature()
+        diagnosticFeature = DiagnosticFeature()
+        completionFeature = CompletionFeature()
+    }
     
 }

@@ -1,6 +1,5 @@
 package com.insyncwithfoo.pyright.configurations
 
-import com.insyncwithfoo.pyright.bindIntValue
 import com.insyncwithfoo.pyright.bindItem
 import com.insyncwithfoo.pyright.bindSelected
 import com.insyncwithfoo.pyright.bindText

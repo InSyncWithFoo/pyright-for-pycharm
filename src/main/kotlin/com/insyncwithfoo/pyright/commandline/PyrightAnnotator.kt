@@ -10,6 +10,7 @@ import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.modules
 import com.insyncwithfoo.pyright.shared.SuppressQuickFix
 import com.insyncwithfoo.pyright.shared.getFormattedTooltip
+import com.insyncwithfoo.pyright.shared.getOffsetRange
 import com.insyncwithfoo.pyright.shared.isUnsuppressable
 import com.insyncwithfoo.pyright.shared.suffixedMessage
 import com.intellij.codeInspection.InspectionManager

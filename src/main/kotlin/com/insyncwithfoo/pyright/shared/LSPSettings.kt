@@ -1,11 +1,5 @@
 package com.insyncwithfoo.pyright.shared
 
-import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
-import com.insyncwithfoo.pyright.interpreterPath
-import com.insyncwithfoo.pyright.wslDistribution
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.module.Module
-
 
 private interface Builder
 

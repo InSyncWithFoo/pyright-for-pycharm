@@ -1,20 +1,18 @@
 package com.insyncwithfoo.pyright.lsp
 
-import com.insyncwithfoo.pyright.commandline.PyrightInspection
-import com.insyncwithfoo.pyright.commandline.pyrightInspectionisEnabled
 import com.insyncwithfoo.pyright.configurations.RunningMode
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
 import com.insyncwithfoo.pyright.configurations.pyrightLangserverExecutable
 import com.insyncwithfoo.pyright.isSupportedByPyright
 import com.insyncwithfoo.pyright.modules
-import com.intellij.codeInspection.ex.InspectionToolRegistrar
+import com.intellij.openapi.module.Module
 import com.intellij.openapi.module.ModuleUtilCore
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.module.Module
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.platform.lsp.api.LspServer
 import com.intellij.platform.lsp.api.LspServerSupportProvider
 import com.intellij.platform.lsp.api.LspServerSupportProvider.LspServerStarter
-import com.intellij.profile.codeInspection.ProjectInspectionProfileManager
+import com.intellij.platform.lsp.api.lsWidget.LspServerWidgetItem
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
 
@@ -30,7 +28,8 @@ private val PsiElement.module: Module?
 @Suppress("UnstableApiUsage")
 internal class PyrightServerSupportProvider : LspServerSupportProvider {
     
-    // TODO: Add widget
+    override fun createLspServerWidgetItem(lspServer: LspServer, currentFile: VirtualFile?) =
+        WidgetItem(lspServer, currentFile)
     
     override fun fileOpened(project: Project, file: VirtualFile, serverStarter: LspServerStarter) {
         val configurations = project.pyrightConfigurations

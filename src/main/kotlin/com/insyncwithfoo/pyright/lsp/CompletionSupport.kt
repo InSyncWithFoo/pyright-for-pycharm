@@ -1,19 +1,16 @@
 package com.insyncwithfoo.pyright.lsp
 
-import com.google.gson.JsonObject
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
+import com.insyncwithfoo.pyright.shared.completeWithParentheses
+import com.insyncwithfoo.pyright.shared.isAutoImportCompletion
+import com.insyncwithfoo.pyright.shared.isCallable
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.openapi.project.Project
 import com.intellij.platform.lsp.api.customization.LspCompletionSupport
 import org.eclipse.lsp4j.CompletionItem
-import org.eclipse.lsp4j.CompletionItemKind
-import org.eclipse.lsp4j.InsertTextFormat
 import org.eclipse.lsp4j.TextEdit
 import kotlin.math.min
-
-
-private const val CARET_POSITION = "\$0"
 
 private const val doubleQuote = "\""
 private const val singleQuote = "'"
@@ -23,21 +20,6 @@ private const val tripleSingleQuote = "'''"
 
 private val quoteSequences =
     listOf(tripleDoubleQuote, doubleQuote, tripleSingleQuote, singleQuote)
-
-
-private val CompletionItem.isCallable: Boolean
-    get() = kind in listOf(
-        CompletionItemKind.Method,
-        CompletionItemKind.Function,
-        CompletionItemKind.Constructor
-    )
-
-
-private val CompletionItem.isAutoImportCompletion: Boolean
-    get() {
-        val data = this.data
-        return data is JsonObject && data.has("autoImportText")
-    }
 
 
 private val CompletionItem.isQuoted: Boolean
@@ -59,19 +41,6 @@ private val CompletionParameters.followingCharacters: CharSequence
 
 private fun CompletionParameters.itemMightTriggerTrailingQuoteBug(item: CompletionItem): Boolean {
     return item.isQuoted && followingCharacters.startsWith(item.quoteSequence!!)
-}
-
-
-private fun CompletionItem.completeWithParentheses() {
-    val newInsertText = "$label($CARET_POSITION)"
-    
-    insertTextFormat = InsertTextFormat.Snippet
-    
-    when (val textEdit = this.textEdit?.get()) {
-        null -> insertText = newInsertText
-        is TextEdit -> textEdit.newText = newInsertText
-        // InsertReplaceEdit must not be messed with.
-    }
 }
 
 

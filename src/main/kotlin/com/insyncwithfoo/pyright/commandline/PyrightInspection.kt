@@ -11,6 +11,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiFile
 import com.jetbrains.python.inspections.PyInspection
+import org.eclipse.lsp4j.DiagnosticSeverity as LSPDiagnosticSeverity
 import kotlin.reflect.KProperty0
 
 
@@ -41,6 +42,15 @@ internal fun PyrightInspection.highlightSeverityFor(severity: DiagnosticSeverity
         DiagnosticSeverity.ERROR -> HighlightSeverity(highlightSeverityForErrors)
         DiagnosticSeverity.WARNING -> HighlightSeverity(highlightSeverityForWarnings)
         DiagnosticSeverity.INFORMATION -> HighlightSeverity(highlightSeverityForInformation)
+    }
+
+
+internal fun PyrightInspection.highlightSeverityFor(severity: LSPDiagnosticSeverity) =
+    when (severity) {
+        LSPDiagnosticSeverity.Error -> HighlightSeverity(highlightSeverityForErrors)
+        LSPDiagnosticSeverity.Warning -> HighlightSeverity(highlightSeverityForWarnings)
+        LSPDiagnosticSeverity.Information -> HighlightSeverity(highlightSeverityForInformation)
+        else -> null
     }
 
 

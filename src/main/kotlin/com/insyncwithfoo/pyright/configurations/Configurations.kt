@@ -114,7 +114,7 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var gotoDefinition by property(false)
     
     var autoSearchPaths by property(true)
-    var targetedFileExtensions by string(listOf("py", "pyi").join())
+    var targetedFileExtensions by string(listOf("py", "pyi", "pyw").join())
     var workspaceFolders by enum(WorkspaceFolders.PROJECT_BASE)
     var diagnosticMode by enum(DiagnosticMode.OPEN_FILES_ONLY)
     

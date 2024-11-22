@@ -1,8 +1,8 @@
 package com.insyncwithfoo.pyright
 
-import com.intellij.openapi.module.Module
 import com.intellij.execution.wsl.WSLDistribution
 import com.intellij.execution.wsl.target.WslTargetEnvironmentConfiguration
+import com.intellij.openapi.module.Module
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.projectRoots.Sdk
 import com.jetbrains.python.target.PyTargetAwareAdditionalData

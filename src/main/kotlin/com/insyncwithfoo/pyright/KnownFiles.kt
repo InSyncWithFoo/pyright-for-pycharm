@@ -1,5 +1,7 @@
 package com.insyncwithfoo.pyright
 
+import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
+import com.insyncwithfoo.pyright.configurations.targetedFileExtensionList
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiFile
@@ -14,9 +16,11 @@ private val PsiFile.isReST: Boolean
     get() = virtualFile?.extension == "rst"
 
 
-// TODO: Respect setting values
 internal fun VirtualFile.isSupportedByPyright(project: Project? = null): Boolean {
-    return extension == "py" || extension == "pyi"
+    val targeted = project?.pyrightConfigurations?.targetedFileExtensionList
+    val fallback = listOf("py", "pyi", "pyw")
+    
+    return extension in (targeted ?: fallback)
 }
 
 

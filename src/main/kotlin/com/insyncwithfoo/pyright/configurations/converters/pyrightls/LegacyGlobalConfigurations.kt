@@ -33,7 +33,7 @@ internal class LegacyLocalConfigurations : BaseState() {
     var projectExecutable by string(null)
     var autoSuggestExecutable by property(true)
     var workspaceFolders by enum(WorkspaceFolders.PROJECT_BASE)
-    var targetedFileExtensions by string(listOf("py", "pyi").join())
+    var targetedFileExtensions by string(listOf("py", "pyi", "pyw").join())
     var diagnosticMode by enum(DiagnosticMode.OPEN_FILES_ONLY)
     var autoSearchPaths by property(true)
 }
