@@ -30,6 +30,7 @@ import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.Row
 import com.intellij.ui.dsl.builder.bindIntValue
 import com.intellij.ui.dsl.builder.bindSelected
+import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.panel
 
 
@@ -105,8 +106,11 @@ private fun Row.autocompleteParenthesesInput(block: Cell<JBCheckBox>.() -> Unit)
     checkBox(message("configurations.autocompleteParentheses.label")).apply(block)
 
 
-private fun Row.monkeypatchTrailingQuoteBugInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.monkeypatchTrailingQuoteBug.label")).apply(block)
+private fun Row.monkeypatchTrailingQuoteBugInput(block: Cell<JBCheckBox>.() -> Unit) = run {
+    val comment = message("configurations.monkeypatchTrailingQuoteBug.comment")
+
+    checkBox(message("configurations.monkeypatchTrailingQuoteBug.label")).comment(comment).apply(block)
+}
 
 
 private fun Row.autoSearchPathsInput(block: Cell<JBCheckBox>.() -> Unit) =
@@ -271,7 +275,12 @@ private fun PyrightPanel.makeComponent() = panel {
             overrideCheckbox(state::autoSearchPaths)
         }
         row(message("configurations.targetedFileExtensions.label")) {
-            targetedFileExtensionsInput { bindText(state::targetedFileExtensions) }
+            targetedFileExtensionsInput {
+                bindText(
+                    { state.targetedFileExtensions.orEmpty().deduplicate() },
+                    { state.targetedFileExtensions = it.deduplicate() }
+                )
+            }
             overrideCheckbox(state::targetedFileExtensions)
         }
         row(message("configurations.workspaceFolders.label")) {
