@@ -41,7 +41,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(false, gotoDefinition)
             
             assertEquals(true, autoSearchPaths)
-            assertEquals("py|pyi", targetedFileExtensions)
+            assertEquals("py|pyi|pyw", targetedFileExtensions)
             assertEquals(WorkspaceFolders.PROJECT_BASE, workspaceFolders)
             assertEquals(DiagnosticMode.OPEN_FILES_ONLY, diagnosticMode)
             

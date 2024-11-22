@@ -12,7 +12,6 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServer
 import com.intellij.platform.lsp.api.LspServerSupportProvider
 import com.intellij.platform.lsp.api.LspServerSupportProvider.LspServerStarter
-import com.intellij.platform.lsp.api.lsWidget.LspServerWidgetItem
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
 
