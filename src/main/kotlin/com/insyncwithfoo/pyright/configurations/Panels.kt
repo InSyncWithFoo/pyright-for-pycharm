@@ -109,10 +109,6 @@ private fun Row.monkeypatchTrailingQuoteBugInput(block: Cell<JBCheckBox>.() -> U
     checkBox(message("configurations.monkeypatchTrailingQuoteBug.label")).apply(block)
 
 
-private fun Row.gotoDefinitionInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.gotoDefinition.label")).apply(block)
-
-
 private fun Row.autoSearchPathsInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.autoSearchPaths.label")).apply(block)
 
@@ -266,11 +262,6 @@ private fun PyrightPanel.makeComponent() = panel {
                 monkeypatchTrailingQuoteBugInput { bindSelected(state::monkeypatchTrailingQuoteBug) }
                 overrideCheckbox(state::monkeypatchTrailingQuoteBug)
             }
-        }
-        
-        row {
-            gotoDefinitionInput { bindSelected(state::gotoDefinition) }
-            overrideCheckbox(state::gotoDefinition)
         }
         
         separator()

@@ -111,8 +111,6 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var autocompleteParentheses by property(false)
     var monkeypatchTrailingQuoteBug by property(true)
     
-    var gotoDefinition by property(false)
-    
     var autoSearchPaths by property(true)
     var targetedFileExtensions by string(listOf("py", "pyi", "pyw").join())
     var workspaceFolders by enum(WorkspaceFolders.PROJECT_BASE)

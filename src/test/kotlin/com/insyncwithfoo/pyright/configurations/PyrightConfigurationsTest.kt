@@ -11,7 +11,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
     
     @Test
     fun `test shape`() {
-        assertEquals(27, fields.size)
+        assertEquals(26, fields.size)
         
         state.apply {
             assertEquals(null, executable)
@@ -37,8 +37,6 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(true, monkeypatchAutoImportDetails)
             assertEquals(false, autocompleteParentheses)
             assertEquals(true, monkeypatchTrailingQuoteBug)
-            
-            assertEquals(false, gotoDefinition)
             
             assertEquals(true, autoSearchPaths)
             assertEquals("py|pyi|pyw", targetedFileExtensions)

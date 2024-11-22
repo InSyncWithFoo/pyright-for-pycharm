@@ -23,7 +23,6 @@ private fun migrateGlobal(legacy: LegacyGlobalConfigurations) {
         linkErrorCodesInTooltips = legacy.linkErrorCodes
         hover = legacy.hoverSupport
         completion = legacy.completionSupport
-        gotoDefinition = legacy.goToDefinitionSupport
         logLevel = legacy.logLevel
         taggedHints = legacy.taggedHints
         autoImportCompletions = legacy.autoImportCompletions

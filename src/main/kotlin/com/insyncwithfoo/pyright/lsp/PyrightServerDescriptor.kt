@@ -63,7 +63,6 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     
     override val lspServerListener = Listener(project, module)
     
-    override val lspGoToDefinitionSupport = configurations.gotoDefinition
     override val lspHoverSupport = configurations.hover
     override val lspCompletionSupport = CompletionSupport(project).takeIf { configurations.completion }
     override val lspDiagnosticsSupport = DiagnosticsSupport(project).takeIf { configurations.diagnostics }
