@@ -6,29 +6,29 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A PyCharm plugin that runs Pyright as you code">
+        <meta name="description" content="The best of Pyright and PyCharm combined">
       
       
       
-        <link rel="canonical" href="https://insyncwithfoo.github.io/pyright-for-pycharm/actions/">
+        <link rel="canonical" href="https://insyncwithfoo.github.io/pyright-for-pycharm/migration-guide/">
       
       
-        <link rel="prev" href="../configurations/other/">
+        <link rel="prev" href="../how-to/">
       
       
-        <link rel="next" href="../features/">
+        <link rel="next" href="../faq/">
       
       
       <link rel="icon" href="../assets/icon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
-        <title>IDE actions - Pyright for PyCharm</title>
+        <title>Migration guide - Pyright for PyCharm</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#copy-pyright-command" class="md-skip">
+        <a href="#how-to-migrate-from-pyright-language-server" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              IDE actions
+              Migration guide
             
           </span>
         </div>
@@ -296,7 +296,9 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           
@@ -397,11 +399,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../configurations/other/" class="md-nav__link">
+      <a href="../configurations/others/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Other
+    Others
   </span>
   
 
@@ -413,71 +415,6 @@
             
           </ul>
         </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    IDE actions
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    IDE actions
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#copy-pyright-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Copy Pyright command
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -530,11 +467,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+      <a href="../how-to/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Logging
+    How-to guides
   </span>
   
 
@@ -547,18 +484,67 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../how-to/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Migration guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    How-to guides
+    Migration guide
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-if-i-modified-the-settings-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if I modified the settings file?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -600,6 +586,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -608,9 +596,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#copy-pyright-command" class="md-nav__link">
+  <a href="#what-if-i-modified-the-settings-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Copy Pyright command
+      What if I modified the settings file?
     </span>
   </a>
   
@@ -631,7 +619,7 @@
                   
 
   
-    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/actions.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/docs/migration-guide.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -640,28 +628,29 @@
     
       
     
-    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/raw/master/docs/actions.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/raw/master/docs/migration-guide.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-  <h1>IDE actions</h1>
-
-<p>The plugins provide some IDE actions that
-are accessible via the <i>Actions</i> panel.</p>
-<h2 id="copy-pyright-command">Copy Pyright command<a class="headerlink" href="#copy-pyright-command" title="Permanent link">#</a></h2>
-<p>This action copies the Pyright command
-that would be used for the current file to clipboard.</p>
-<p>It does not differentiate file types and
-thus will be available for every file
-even if the annotator doesn't run on the given file.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The copied command is not OS-dependent and
-may not work as-is when pasted into the shell.</p>
-</div>
+<h1 id="how-to-migrate-from-pyright-language-server">How to migrate from <i>Pyright Language Server</i><a class="headerlink" href="#how-to-migrate-from-pyright-language-server" title="Permanent link">#</a></h1>
+<p>Provided that you never modify the settings files manually,
+follow these three steps, in this <em>exact</em> order:</p>
+<ul>
+<li>Uninstall <i>Pyright Language Server</i></li>
+<li>Install <i>Pyright</i></li>
+<li>Restart IDE (<strong>important</strong>)</li>
+</ul>
+<p>Existing settings will be migrated automatically.
+Restarting the IDE is necessary for this to work correctly.</p>
+<h2 id="what-if-i-modified-the-settings-file">What if I modified the settings file?<a class="headerlink" href="#what-if-i-modified-the-settings-file" title="Permanent link">#</a></h2>
+<p>Look for the <code>pyright-langserver.xml</code> under
+the <code>.idea</code> subdirectory of your project.
+All old settings are stored in that file.</p>
+<p>The same applies for version 0.6.0 of the <i>Pyright</i> plugin:
+its settings are stored in <code>pyright.xml</code> along with 0.7.0's settings.</p>
 
 
 
@@ -686,6 +675,46 @@ may not work as-is when pasted into the shell.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../how-to/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How-to guides">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                How-to guides
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../faq/" class="md-footer__link md-footer__link--next" aria-label="Next: FAQ">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                FAQ
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -708,10 +737,10 @@ may not work as-is when pasted into the shell.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "navigation.indexes", "search.suggest"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.tracking", "search.suggest"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>

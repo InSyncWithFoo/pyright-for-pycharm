@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A PyCharm plugin that runs Pyright as you code">
+        <meta name="description" content="The best of Pyright and PyCharm combined">
       
       
       
         <link rel="canonical" href="https://insyncwithfoo.github.io/pyright-for-pycharm/faq/">
       
       
-        <link rel="prev" href="../how-to/">
+        <link rel="prev" href="../migration-guide/">
       
       
       
       <link rel="icon" href="../assets/icon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -294,7 +294,9 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           
@@ -395,11 +397,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../configurations/other/" class="md-nav__link">
+      <a href="../configurations/others/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Other
+    Others
   </span>
   
 
@@ -412,26 +414,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../actions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    IDE actions
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -483,11 +465,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+      <a href="../how-to/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Logging
+    How-to guides
   </span>
   
 
@@ -503,11 +485,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/" class="md-nav__link">
+      <a href="../migration-guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How-to guides
+    Migration guide
   </span>
   
 
@@ -623,6 +605,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#does-this-plugin-support-basedpyright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Does this plugin support Basedpyright?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#i-love-this-project-how-can-i-support-it" class="md-nav__link">
     <span class="md-ellipsis">
       I love this project. How can I support it?
@@ -720,6 +711,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#does-this-plugin-support-basedpyright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Does this plugin support Basedpyright?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#i-love-this-project-how-can-i-support-it" class="md-nav__link">
     <span class="md-ellipsis">
       I love this project. How can I support it?
@@ -764,9 +764,8 @@
 <p>This plugin contains no type checking logic.
 For type checking bugs, please report them to <a href="https://github.com/microsoft/pyright/issues">the Pyright issue tracker</a>.</p>
 <h2 id="whats-the-difference-between-the-pyright-and-pyright-python-files">What's the difference between the <code>pyright</code> and <code>pyright-python</code> files?<a class="headerlink" href="#whats-the-difference-between-the-pyright-and-pyright-python-files" title="Permanent link">#</a></h2>
-<p>Pyright is written in TypeScript and officially published on NPM,
-mainly for the purpose of better integration with VSCode.
-This requires a dependency on Node, which Python developers
+<p>Pyright is written in TypeScript and officially published on NPM.
+It requires a dependency on Node, which Python developers
 might not have on their development machines.</p>
 <p><a href="https://pypi.org/project/pyright/">The PyPI <code>pyright</code> package</a> was created to solve this problem.
 When installed, it places 4 proxy executables in
@@ -795,14 +794,16 @@ It does not support passing files from stdin.
 <p>Adding an option that makes the plugin run only on "manual" saves
 (the <em>Save All</em> action) is counter-productive, since that doesn't
 guarantee the annotator class is called. This is <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10">a known limitation</a>.</p>
-<p>Use <a href="../configurations/running-modes/">the LSP4IJ mode</a> instead.</p>
+<p>Use <a href="../configurations/running-modes/">one of the two other modes</a> instead.</p>
 <h2 id="is-the-command-line-watch-mode-watch-supported">Is the command-line watch mode (<code>--watch</code>) supported?<a class="headerlink" href="#is-the-command-line-watch-mode-watch-supported" title="Permanent link">#</a></h2>
-<p>No. Use LSP4IJ mode instead.</p>
+<p>No. Use one of the two language server modes instead.</p>
 <h2 id="what-does-this-command-line-option-do">What does this command line option do?<a class="headerlink" href="#what-does-this-command-line-option-do" title="Permanent link">#</a></h2>
 <p>Refer to <a href="https://microsoft.github.io/pyright/#/command-line">Pyright's documentation</a> for the meaning of these options.</p>
 <h2 id="is-this-plugin-affiliated-with-microsoftjetbrains">Is this plugin affiliated with Microsoft/JetBrains?<a class="headerlink" href="#is-this-plugin-affiliated-with-microsoftjetbrains" title="Permanent link">#</a></h2>
 <p>No, or at least not in a business or ownership sense.</p>
 <p>It was, however, created out of adoration of Pyright and JetBrains IDEs.</p>
+<h2 id="does-this-plugin-support-basedpyright">Does this plugin support Basedpyright?<a class="headerlink" href="#does-this-plugin-support-basedpyright" title="Permanent link">#</a></h2>
+<p>Only in <i>Command line</i> mode. See <a href="https://github.com/DetachHead/basedpyright/issues/801">this issue</a> for more information.</p>
 <h2 id="i-love-this-project-how-can-i-support-it">I love this project. How can I support it?<a class="headerlink" href="#i-love-this-project-how-can-i-support-it" title="Permanent link">#</a></h2>
 <p>You can consider <a href="https://github.com/sponsors/InSyncWithFoo">sponsoring it</a>.</p>
 <p>If you are feeling generous, see <a href="https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>
@@ -831,6 +832,30 @@ for how to contribute non-financially.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../migration-guide/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Migration guide">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Migration guide
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -853,10 +878,10 @@ for how to contribute non-financially.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "navigation.indexes", "search.suggest"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.tracking", "search.suggest"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>

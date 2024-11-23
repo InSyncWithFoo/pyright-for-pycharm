@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A PyCharm plugin that runs Pyright as you code">
+        <meta name="description" content="The best of Pyright and PyCharm combined">
       
       
       
@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/icon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -396,9 +396,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lsp4ij-mode" class="md-nav__link">
+  <a href="#lsp4ij-and-native-lsp-client-modes" class="md-nav__link">
     <span class="md-ellipsis">
-      LSP4IJ mode
+      LSP4IJ and Native LSP client modes
     </span>
   </a>
   
@@ -462,11 +462,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../other/" class="md-nav__link">
+      <a href="../others/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Other
+    Others
   </span>
   
 
@@ -479,26 +479,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../actions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    IDE actions
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -550,11 +530,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../logging/" class="md-nav__link">
+      <a href="../../how-to/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Logging
+    How-to guides
   </span>
   
 
@@ -570,11 +550,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to/" class="md-nav__link">
+      <a href="../../migration-guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How-to guides
+    Migration guide
   </span>
   
 
@@ -646,9 +626,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lsp4ij-mode" class="md-nav__link">
+  <a href="#lsp4ij-and-native-lsp-client-modes" class="md-nav__link">
     <span class="md-ellipsis">
-      LSP4IJ mode
+      LSP4IJ and Native LSP client modes
     </span>
   </a>
   
@@ -694,8 +674,6 @@
 the first also provides a few more features and options,
 some of which are supported or used by this plugin.</p>
 <p>Different running modes use different executables.</p>
-<p>To make the most of this plugin,
-you are recommended to specify both executables.</p>
 <h2 id="comparison-tables">Comparison tables<a class="headerlink" href="#comparison-tables" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -726,19 +704,14 @@ you are recommended to specify both executables.</p>
 <td>From disk</td>
 <td>File contents are sent via stdio</td>
 </tr>
-<tr>
-<td><a href="../../problems/#process-timed-out">Potentially infinite processes</a></td>
-<td>Long processes are <a href="../other/#process-timeout">forcibly destroyed</a></td>
-<td>Processes must be terminated manually</td>
-</tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Command line mode</th>
-<th>LSP4IJ mode</th>
+<th><i>Command line</i> mode</th>
+<th>LSP modes</th>
 </tr>
 </thead>
 <tbody>
@@ -779,10 +752,10 @@ in the form of visual annotations.</p>
 <a href="../../problems/">a notification</a> will be displayed.</p>
 <p>Due to backward compatibility, this is the default mode.
 However, for better performance, LSP4IJ mode is recommended.</p>
-<h2 id="lsp4ij-mode">LSP4IJ mode<a class="headerlink" href="#lsp4ij-mode" title="Permanent link">#</a></h2>
-<p>If this mode is selected, the language server will be invoked on project open.
-All LSP messages are then handled by <a href="https://github.com/redhat-developer/lsp4ij/blob/main/docs/LSPSupport.md">the various features</a>
-of <a href="https://github.com/redhat-developer/lsp4ij">the LSP4IJ plugin</a>, a third-party LSP client for JetBrains IDEs.</p>
+<h2 id="lsp4ij-and-native-lsp-client-modes"><i>LSP4IJ</i> and <i>Native LSP client</i> modes<a class="headerlink" href="#lsp4ij-and-native-lsp-client-modes" title="Permanent link">#</a></h2>
+<p>If these mode is selected, the language server will be invoked on project open.
+All LSP messages are then handled by the clients:
+either <a href="https://github.com/redhat-developer/lsp4ij">the LSP4IJ plugin</a>, or <a href="https://plugins.jetbrains.com/docs/intellij/language-server-protocol.html">the native client</a> built into the IDE.</p>
 <p><a href="https://github.com/redhat-developer/lsp4ij/blob/main/docs/UserDefinedLanguageServer.md">It is possible</a> to use Pyright with LSP4IJ directly,
 but doing so is not recommended.</p>
 
@@ -809,6 +782,46 @@ but doing so is not recommended.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../executables/" class="md-footer__link md-footer__link--next" aria-label="Next: Executables">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Executables
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -831,10 +844,10 @@ but doing so is not recommended.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "navigation.indexes", "search.suggest"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.action.view", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.tracking", "search.suggest"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
