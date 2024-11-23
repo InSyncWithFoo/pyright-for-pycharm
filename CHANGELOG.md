@@ -11,6 +11,11 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
+<i>This section is currently empty.</i>
+
+
+## [0.7.0] - 2024-11-23
+
 The plugin is rewritten with a lot of functional changes and new settings.
 If you encounter a bug, please [file an issue][0.7.0-1].
 
@@ -189,7 +194,8 @@ If you encounter a bug, please [file an issue][0.7.0-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.7.0..HEAD
+  [0.7.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..v0.7.0
   [0.6.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..v0.6.0
   [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
   [0.4.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.3.1..v0.4.0
