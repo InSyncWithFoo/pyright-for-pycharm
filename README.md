@@ -6,13 +6,10 @@
 [![Rating](https://img.shields.io/jetbrains/plugin/r/rating/24145)][7]
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/24145)][8]
 
-![](./docs/assets/demo.png)
-
 <!-- Plugin description -->
-Pyright integration for PyCharm.
+[Pyright][1] integration for PyCharm.
 
-This plugin runs [the Pyright type checker][1] on-the-fly
-and reroutes its diagnostics back to the IDE as you code.
+Provides Pyright diagnostics on-the-fly as you code, among other features.
 
 Warning: Depending on the running mode,
 it might save your files at very fast pace.
@@ -20,19 +17,15 @@ it might save your files at very fast pace.
 
 ## Usage
 
-Go to <b>Settings</b> | <b>Tools</b> |
-<b>Pyright (Global)</b> / <b>Pyright (Project)</b>
-and set the path to your Pyright executable(s).
+No initial configurations are necessary,
+given that you already [have Pyright installed][2].
 
-(Not sure what this means? See [the docs][3] for more information.)
-
-Save, return to your file and start making some modifications.
-You should see the annotations in a few seconds.
+See [the documentation][3] for more information.
 
 
   [1]: https://github.com/microsoft/pyright
-  [2]: https://github.com/InSyncWithFoo/pyright-langserver-for-pycharm
-  [3]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/running-modes/
+  [2]: https://insyncwithfoo.github.io/pyright-for-pycharm/how-to/#how-to-install-the-pyright-executables
+  [3]: https://insyncwithfoo.github.io/pyright-for-pycharm/
 <!-- Plugin description end -->
 
 
@@ -44,21 +37,15 @@ You can also download the ZIP files manually from [the <i>Releases</i> tab][9],
 and follow the instructions described [here][12].
 
 Currently supported versions:
-2024.1 (build 241.14494.241) - 2024.2.* (build 242.*).
+2024.2 (build 242.20224.347) and later.
 
 
 ## Credits
 
-Most of the code is derived from [@koxudaxi/ruff-pycharm-plugin][13].
-It is such a fortune that that plugin does almost the same thing
-and is also written in Kotlin, and hence easily understandable.
-
-The SVG and PNG logos are derived from [the README image][14]
-of the [@microsoft/pyright][1] repository,
-generated using Inkscape's autotrace feature.
-
-Some other files are based on or copied directly from
-[@JetBrains/intellij-platform-plugin-template][15].
+* [@JetBrains/intellij-community][13]
+* [@JetBrains/intellij-platform-plugin-template][14]
+* [@koxudaxi/ruff-pycharm-plugin][15]
+* [@microsoft/pyright][1]
 
 
   [4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
@@ -70,6 +57,6 @@ Some other files are based on or copied directly from
   [10]: https://github.com/InSyncWithFoo/pyright-for-pycharm/tree/build
   [11]: https://github.com/InSyncWithFoo/pyright-for-pycharm/actions/workflows/build.yaml
   [12]: https://www.jetbrains.com/help/pycharm/managing-plugins.html#install_plugin_from_disk
-  [13]: https://github.com/koxudaxi/ruff-pycharm-plugin
-  [14]: https://github.com/microsoft/pyright/blob/main/docs/img/PyrightLarge.png
-  [15]: https://github.com/JetBrains/intellij-platform-plugin-template
+  [13]: https://github.com/JetBrains/intellij-community
+  [14]: https://github.com/JetBrains/intellij-platform-plugin-template
+  [15]: https://github.com/koxudaxi/ruff-pycharm-plugin

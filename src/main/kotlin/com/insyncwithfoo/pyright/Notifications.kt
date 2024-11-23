@@ -1,27 +1,37 @@
 package com.insyncwithfoo.pyright
 
-import com.insyncwithfoo.pyright.icons.Icon
 import com.intellij.notification.Notification
-import com.intellij.notification.NotificationAction.createSimpleExpiring
 import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
-import com.intellij.notification.NotificationsManager
 import com.intellij.openapi.project.Project
 
 
-private const val ID = "Pyright notifications"
-private val ICON = Icon.COLORED_SMALL
+internal typealias ErrorNotificationGroup = NotificationGroup
+internal typealias InformationNotificationGroup = NotificationGroup
 
 
-internal fun Notification.prettify() = apply {
+private const val ERROR_GROUP_ID = "com.insyncwithfoo.pyright.errors"
+private const val INFORMATION_GROUP_ID = "com.insyncwithfoo.pyright.information"
+private val ICON = PyrightIcons.TINY_16
+
+
+private val notificationGroupManager: NotificationGroupManager
+    get() = NotificationGroupManager.getInstance()
+
+
+internal val errorNotificationGroup: ErrorNotificationGroup
+    get() = notificationGroupManager.getNotificationGroup(ERROR_GROUP_ID)
+
+
+internal val informationNotificationGroup: InformationNotificationGroup
+    get() = notificationGroupManager.getNotificationGroup(INFORMATION_GROUP_ID)
+
+
+private fun Notification.prettify() = this.apply {
     isImportant = false
     icon = ICON
 }
-
-
-internal fun Notification.addSimpleExpiringAction(text: String, action: () -> Unit) =
-    addAction(createSimpleExpiring(text, action))
 
 
 internal fun Notification.runThenNotify(project: Project, action: Notification.() -> Unit) {
@@ -30,17 +40,13 @@ internal fun Notification.runThenNotify(project: Project, action: Notification.(
 }
 
 
-internal fun pyrightNotificationGroup(): NotificationGroup {
-    val groupManager = NotificationGroupManager.getInstance()
-    return groupManager.getNotificationGroup(ID)
-}
+internal fun ErrorNotificationGroup.error(title: String, content: String) =
+    createNotification(title, content, NotificationType.ERROR).prettify()
 
 
-internal val Project.openingPyrightNotifications: List<Notification>
-    get() = NotificationsManager.getNotificationsManager()
-        .getNotificationsOfType(Notification::class.java, this)
-        .filter { it.groupId == ID }
+internal fun ErrorNotificationGroup.warning(title: String, content: String) =
+    createNotification(title, content, NotificationType.WARNING).prettify()
 
 
-internal fun NotificationGroup.createErrorNotification(title: String, content: String) =
-    createNotification(title, content, NotificationType.ERROR)
+internal fun InformationNotificationGroup.information(title: String, content: String) =
+    createNotification(title, content, NotificationType.INFORMATION).prettify()

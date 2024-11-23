@@ -1,5 +1,5 @@
 site_name: Pyright for PyCharm
-site_description: A PyCharm plugin that runs Pyright as you code
+site_description: The best of Pyright and PyCharm combined
 site_url: https://insyncwithfoo.github.io/pyright-for-pycharm
 
 repo_name: InSyncWithFoo/pyright-for-pycharm
@@ -34,7 +34,11 @@ theme:
   features:
     - content.action.edit
     - content.action.view
+    - navigation.expand
+    - navigation.footer
     - navigation.indexes
+    - navigation.instant
+    - navigation.tracking
     - search.suggest
 
 markdown_extensions:
@@ -69,18 +73,16 @@ nav:
     - Running modes: configurations/running-modes.md
     - Executables: configurations/executables.md
     - Inspection: configurations/inspection.md
-    - Other: configurations/other.md
-  - IDE actions: actions.md
+    - Others: configurations/others.md
   - Other features: features.md
   - Problems: problems.md
-  - Logging: logging.md
   - How-to guides: how-to.md
+  - Migration guide: migration-guide.md
   - FAQ: faq.md
 
 validation:
   omitted_files: warn
   absolute_links: warn
   unrecognized_links: warn
-  anchors: warn
 
 strict: true

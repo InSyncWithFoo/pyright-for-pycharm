@@ -1,11 +1,10 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.intellij.platform.gradle.Constants.Constraints
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
 plugins {
     alias(libs.plugins.kotlin)
-    alias(libs.plugins.intelliJPlatForm)
+    alias(libs.plugins.intelliJPlatform)
     alias(libs.plugins.changelog)
     alias(libs.plugins.qodana)
     alias(libs.plugins.kover)
@@ -15,9 +14,22 @@ plugins {
 group = providers.gradleProperty("pluginGroup").get()
 version = providers.gradleProperty("pluginVersion").get()
 
+idea {
+    module {
+        testResources.from(file("src/test/testData"))
+        
+        excludeDirs.add(file(".credentials"))
+        excludeDirs.add(file(".gradle"))
+        excludeDirs.add(file(".kotlin"))
+        excludeDirs.add(file(".sources"))
+        excludeDirs.add(file(".venv"))
+        excludeDirs.add(file("build"))
+    }
+}
+
 // Set the JVM language level used to build the project.
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 // Configure project's dependencies
@@ -27,6 +39,7 @@ repositories {
     // IntelliJ Platform Gradle Plugin Repositories Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-repositories-extension.html
     intellijPlatform {
         defaultRepositories()
+        jetbrainsRuntime()
     }
 }
 
@@ -35,6 +48,9 @@ dependencies {
     compileOnly(libs.kotlinxSerialization)
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
+    
+    // https://youtrack.jetbrains.com/issue/IJPL-157292
+    testImplementation("org.opentest4j:opentest4j:1.3.0")
     
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
@@ -50,6 +66,7 @@ dependencies {
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
         
+        jetbrainsRuntime()
         instrumentationTools()
         pluginVerifier()
         zipSigner()
@@ -106,8 +123,9 @@ intellijPlatform {
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
-        channels = providers.gradleProperty("pluginVersion")
-            .map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
+        channels = providers.gradleProperty("pluginVersion").map {
+            listOf("""(?<=-)([^-]+)(?=\.)""".toRegex().find(it)?.value ?: "default")
+        }
     }
     
     pluginVerification {
@@ -137,10 +155,11 @@ kover {
 tasks {
     runIde {
         // From https://app.slack.com/client/T5P9YATH9/C5U8BM1MK
-        systemProperty("ide.experimental.ui", "true")
-        systemProperty("projectView.hide.dot.idea", "false")
-        systemProperty("terminal.new.ui", "false")
+        systemProperty("ide.browser.jcef.headless.enabled", "true")
         systemProperty("ide.tree.painter.compact.default", "true")
+        systemProperty("idea.is.internal", "true")
+        systemProperty("projectView.hide.dot.idea", "false")
+        systemProperty("terminal.new.ui", "true")
     }
     
     wrapper {
@@ -154,19 +173,23 @@ tasks {
 
 // Configure UI tests plugin
 // Read more: https://github.com/JetBrains/intellij-ui-test-robot
-val runIdeForUiTests by intellijPlatformTesting.runIde.registering {
-    task {
-        jvmArgumentProviders += CommandLineArgumentProvider {
-            listOf(
-                "-Drobot-server.port=8082",
-                "-Dide.mac.message.dialogs.as.sheets=false",
-                "-Djb.privacy.policy.text=<!--999.999-->",
-                "-Djb.consents.confirmation.enabled=false",
-            )
+intellijPlatformTesting {
+    runIde {
+        register("runIdeForUiTests") {
+            task {
+                jvmArgumentProviders += CommandLineArgumentProvider {
+                    listOf(
+                        "-Drobot-server.port=8082",
+                        "-Dide.mac.message.dialogs.as.sheets=false",
+                        "-Djb.privacy.policy.text=<!--999.999-->",
+                        "-Djb.consents.confirmation.enabled=false",
+                    )
+                }
+            }
+            
+            plugins {
+                robotServerPlugin()
+            }
         }
-    }
-    
-    plugins {
-        robotServerPlugin(Constraints.LATEST_VERSION)
     }
 }

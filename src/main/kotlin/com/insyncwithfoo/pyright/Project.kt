@@ -1,103 +1,102 @@
 package com.insyncwithfoo.pyright
 
-import com.insyncwithfoo.pyright.configuration.AllConfigurations
-import com.insyncwithfoo.pyright.configuration.ConfigurationService
 import com.intellij.openapi.fileEditor.FileEditorManager
+import com.intellij.openapi.fileEditor.OpenFileDescriptor
+import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.module.Module
 import com.intellij.openapi.module.ModuleManager
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.openapi.project.guessProjectDir
 import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.roots.ProjectRootManager
-import com.intellij.openapi.ui.Messages
-import com.intellij.platform.ide.progress.withBackgroundProgress
-import com.intellij.profile.codeInspection.InspectionProjectProfileManager
+import com.intellij.openapi.vfs.toNioPathOrNull
+import com.intellij.profile.codeInspection.ProjectInspectionProfileManager
+import com.intellij.psi.PsiDocumentManager
+import com.intellij.testFramework.LightVirtualFile
 import com.jetbrains.python.sdk.PythonSdkUtil
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.runBlocking
+import com.jetbrains.python.sdk.pythonSdk
 import java.nio.file.Path
 import kotlin.io.path.listDirectoryEntries
+import kotlin.io.path.nameWithoutExtension
 
 
-private val <T> Array<T>.onlyElement: T?
-    get() = firstOrNull().takeIf { size == 1 }
+private val projectManager: ProjectManager
+    get() = ProjectManager.getInstance()
 
 
-private val Project.modules: Array<Module>
-    get() = ModuleManager.getInstance(this).modules
+internal val openProjects: Sequence<Project>
+    get() = projectManager.openProjects.asSequence()
 
 
-private val Project.sdk: Sdk?
-    get() = ProjectRootManager.getInstance(this).projectSdk
-        ?.takeIf { PythonSdkUtil.isPythonSdk(it) }
+internal val defaultProject: Project
+    get() = projectManager.defaultProject
+
+
+internal val Project.rootManager: ProjectRootManager
+    get() = ProjectRootManager.getInstance(this)
+
+
+private val Project.moduleManager: ModuleManager
+    get() = ModuleManager.getInstance(this)
+
+
+internal val Project.psiDocumentManager: PsiDocumentManager
+    get() = PsiDocumentManager.getInstance(this)
+
+
+internal val Project.modules: Array<Module>
+    get() = moduleManager.modules
+
+
+/**
+ * @see [pythonSdk]
+ */
+internal val Project.sdk: Sdk?
+    get() = rootManager.projectSdk?.takeIf { PythonSdkUtil.isPythonSdk(it) }
 
 
 internal val Project.path: Path?
-    get() = basePath?.let { Path.of(it) }
+    get() = guessProjectDir()?.toNioPathOrNull()?.toNullIfNotExists()
+        ?: basePath?.toPathOrNull()?.toNullIfNotExists()
 
 
 internal val Project.interpreterPath: Path?
-    get() = sdk?.homePath?.let { Path.of(it) }
+    get() = sdk?.homePath?.toPathIfItExists()
 
 
+internal val Project.interpreterDirectory: Path?
+    get() = interpreterPath?.parent
+
+
+/**
+ * Whether a project:
+ * * Is not the pseudo project used to store
+ *   default settings for newly created projects, and
+ * * Has not been disposed of.
+ */
 internal val Project.isNormal: Boolean
     get() = !this.isDefault && !this.isDisposed
-
-
-internal val Project.onlyModuleOrNull: Module?
-    get() = modules.onlyElement
 
 
 internal val Project.fileEditorManager: FileEditorManager
     get() = FileEditorManager.getInstance(this)
 
 
-internal val Project.inspectionProfileManager: InspectionProjectProfileManager
-    get() = InspectionProjectProfileManager.getInstance(this)
+internal val Project.inspectionProfileManager: ProjectInspectionProfileManager
+    get() = ProjectInspectionProfileManager.getInstance(this)
 
 
-internal val Project.pyrightConfigurations: AllConfigurations
-    get() = ConfigurationService.getInstance(this).state
+internal fun Project.findExecutableInVenv(nameWithoutExtension: String) =
+    interpreterDirectory?.listDirectoryEntries()
+        ?.find { it.nameWithoutExtension == nameWithoutExtension }
 
 
-internal val Project.pyrightExecutable: Path?
-    get() = pyrightConfigurations.executable?.toPathIfItExists(base = this.path)
-
-
-internal val Project.pyrightLSExecutable: Path?
-    get() = pyrightConfigurations.langserverExecutable?.toPathIfItExists(base = this.path)
-
-
-internal val Project.pyrightInspectionIsEnabled: Boolean
-    get() {
-        val profile = inspectionProfileManager.currentProfile
-        val pyrightInspection = profile.allTools.find { it.tool.shortName == PyrightInspection.SHORT_NAME }
-        
-        return pyrightInspection?.isEnabled ?: false
-    }
-
-
-internal fun Project.findPyrightExecutable(): Path? {
-    val interpreterDirectory = interpreterPath?.parent ?: return null
-    val children = interpreterDirectory.listDirectoryEntries()
+internal fun Project.openLightFile(filename: String, content: String) {
+    val fileType = FileTypeManager.getInstance().getFileTypeByFileName(filename)
+    val file = LightVirtualFile(filename, fileType, content)
     
-    return children.find { it.isProbablyPyrightExecutable }
-}
-
-
-internal fun Project?.somethingIsWrong(title: String, message: String) {
-    Messages.showErrorDialog(this, message, title)
-}
-
-
-internal fun Project?.somethingIsWrong(message: String) {
-    somethingIsWrong(title = message("messages.somethingIsWrong.title"), message)
-}
-
-
-internal fun <T> Project.runWithIndicator(
-    title: String,
-    cancellable: Boolean = false,
-    action: suspend CoroutineScope.() -> T
-) = runBlocking {
-    withBackgroundProgress(this@runWithIndicator, title, cancellable, action)
+    val openFileDescriptor = OpenFileDescriptor(this, file)
+    
+    fileEditorManager.openEditor(openFileDescriptor, true)
 }

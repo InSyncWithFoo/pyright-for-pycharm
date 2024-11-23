@@ -20,90 +20,98 @@
 	<depends>com.intellij.modules.lang</depends>
 	<depends>com.intellij.modules.python</depends>
 	<depends>com.intellij.modules.platform</depends>
-	<depends>com.redhat.devtools.lsp4ij</depends>
+	
+	<depends optional="true" config-file="lsp4ij.xml">com.redhat.devtools.lsp4ij</depends>
+	<depends optional="true" config-file="ultimate.xml">com.intellij.modules.ultimate</depends>
 	
 	<!-- <resource-bundle>messages.pyright</resource-bundle> -->
 	
 	<!-- Extension points defined by the plugin.
 		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
 	<extensions defaultExtensionNs="com.intellij">
-		<notificationGroup
-			displayType="STICKY_BALLOON"
-			id="Pyright notifications"
-		/>
-		
 		<applicationConfigurable
-			groupId="tools"
-			displayName="Pyright (Global)"
-			instance="com.insyncwithfoo.pyright.configuration.application.Configurable"
+			id="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
+			parentId="tools"
+			bundle="messages.pyright"
+			key="configurations.displayName"
+			instance="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
 		/>
 		
 		<projectConfigurable
-			groupId="tools"
-			displayName="Pyright (Project)"
-			instance="com.insyncwithfoo.pyright.configuration.project.Configurable"
+			id="com.insyncwithfoo.pyright.configurations.PyrightProjectConfigurable"
+			parentId="com.insyncwithfoo.pyright.configurations.PyrightConfigurable"
+			bundle="messages.pyright"
+			key="configurations.displayName.project"
+			instance="com.insyncwithfoo.pyright.configurations.PyrightProjectConfigurable"
+		/>
+	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<notificationGroup
+			id="com.insyncwithfoo.pyright.errors"
+			displayType="STICKY_BALLOON"
+			bundle="messages.pyright"
+			key="notifications.group.errors.displayName"
+		/>
+		
+		<notificationGroup
+			id="com.insyncwithfoo.pyright.information"
+			displayType="BALLOON"
+			bundle="messages.pyright"
+			key="notifications.group.information.displayName"
+		/>
+	</extensions>
+	
+	<extensions defaultExtensionNs="com.intellij">
+		<externalAnnotator
+			id="com.insyncwithfoo.pyright.commandline.PyrightAnnotator"
+			language="Python"
+			implementationClass="com.insyncwithfoo.pyright.commandline.PyrightAnnotator"
 		/>
 		
 		<localInspection
+			id="com.insyncwithfoo.pyright.commandline.PyrightInspection"
+			suppressId="com.insyncwithfoo.pyright.commandline.PyrightInspection"
+			shortName="com.insyncwithfoo.pyright.commandline.PyrightInspection"
+			
 			language="Python"
 			groupName="Python"
 			
-			shortName="PyrightInspection"
-			displayName="Pyright diagnostics"
-			suppressId="Pyright"
+			bundle="messages.pyright"
+			key="inspection.displayName"
 			
 			enabledByDefault="true"
 			level="WARNING"
-			
-			implementationClass="com.insyncwithfoo.pyright.PyrightInspection"
-		/>
-		
-		<externalAnnotator
-			language="Python"
-			implementationClass="com.insyncwithfoo.pyright.cli.PyrightExternalAnnotator"
-		/>
-		
-		<postStartupActivity
-			implementation="com.insyncwithfoo.pyright.PyrightProjectExecutableSuggester"
-		/>
-		
-		<codeInsight.parameterInfo
-			id="PyrightLSPParameterInfoHandler"
-			language="Python"
-			order="first"
-			implementationClass="com.redhat.devtools.lsp4ij.features.signatureHelp.LSPParameterInfoHandler"
+			implementationClass="com.insyncwithfoo.pyright.commandline.PyrightInspection"
 		/>
 		
 		<fileIconProvider
-			implementation="com.insyncwithfoo.pyright.icons.PyrightConfigFileIconProvider"
+			id="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
+			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
 		/>
 	</extensions>
 	
-	<actions>
-		<!--suppress PluginXmlCapitalization -->
-		<action
-			id="pyright.copyFileCommand"
-			class="com.insyncwithfoo.pyright.actions.CopyFileCommand"
-			text="Copy Pyright command"
-			description="Copy Pyright command that would be used for current file"
-			icon="AllIcons.Actions.Copy"
+	<extensions defaultExtensionNs="com.intellij">
+		<postStartupActivity
+			order="first"
+			implementation="com.insyncwithfoo.pyright.configurations.converters.pyrightls.ConfigurationsConverter"
 		/>
-	</actions>
-	
-	<extensions defaultExtensionNs="com.redhat.devtools.lsp4ij">
-		<server
-			id="pyright"
-			name="Pyright"
-			factoryClass="com.insyncwithfoo.pyright.lsp4ij.PyrightLanguageServerFactory"
-		>
-			<description><![CDATA[]]></description>
-		</server>
 		
-		<languageMapping
-			language="Python"
-			languageId="python"
-			serverId="pyright"
-			documentMatcher="com.insyncwithfoo.pyright.lsp4ij.PyrightDocumentMatcher"
+		<postStartupActivity
+			order="first"
+			implementation="com.insyncwithfoo.pyright.configurations.converters.v1.ConfigurationsConverter"
 		/>
 	</extensions>
+	
+	<applicationListeners>
+		<listener
+			topic="com.intellij.ide.AppLifecycleListener"
+			class="com.insyncwithfoo.pyright.configurations.converters.pyrightls.ConfigurationsConverter"
+		/>
+		
+		<listener
+			topic="com.intellij.ide.AppLifecycleListener"
+			class="com.insyncwithfoo.pyright.configurations.converters.v1.ConfigurationsConverter"
+		/>
+	</applicationListeners>
 </idea-plugin>

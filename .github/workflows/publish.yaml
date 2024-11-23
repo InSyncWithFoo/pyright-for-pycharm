@@ -7,12 +7,12 @@ name: Publish
 on:
   release:
     types:
+      - prereleased
       - released
 
 jobs:
   publish:
     name: Publish
-    if: github.event.release.tag_name != 'v0.1.0'
     runs-on: ubuntu-latest
     environment: jetbrains-marketplace
     
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 17
+          java-version: 21
       -
         name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4

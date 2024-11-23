@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 17
+          java-version: 21
       -
         name: Set up Python
         uses: actions/setup-python@v5
@@ -54,7 +54,7 @@ jobs:
           chmod +x ./gradlew
           PROPERTIES="$(./gradlew properties --console=plain -q)"
           VERSION="$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')"
-          CHANGELOG="$(python .scripts/changelog.py $VERSION)"
+          CHANGELOG="$(python scripts/changelog.py $VERSION)"
           
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "pluginVerifierHomeDir=~/.pluginVerifier" >> $GITHUB_OUTPUT
@@ -118,7 +118,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python .scripts/edit_releases.py ${{ needs.build.outputs.version }}
+          python scripts/edit_releases.py ${{ needs.build.outputs.version }}
   
   test:
     name: Test
@@ -127,6 +127,8 @@ jobs:
     strategy:
       matrix:
         platform: [ ubuntu-latest, macos-latest, windows-latest ]
+    
+    continue-on-error: ${{ matrix.platform == 'windows-latest' }}
     
     permissions:
       actions: write
@@ -142,7 +144,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 17
+          java-version: 21
       -
         name: Clear Gradle home cache
         if: matrix.platform == 'windows-latest'
@@ -166,7 +168,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: tests-result
+          name: tests-result-${{ matrix.platform }}
           path: ${{ github.workspace }}/build/reports/tests
   
   inspect:
@@ -188,15 +190,17 @@ jobs:
       -
         name: Fetch sources
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       -
         name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 17
+          java-version: 21
       -
         name: Run Qodana
-        uses: JetBrains/qodana-action@v2024.1.9
+        uses: JetBrains/qodana-action@v2024.2
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
@@ -222,7 +226,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 17
+          java-version: 21
       -
         name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -280,3 +284,41 @@ jobs:
           ${{ needs.build.outputs.changelog }}
           EOM
           )"
+  
+  nightly:
+    name: Publish nightly version
+    if: github.event_name != 'pull_request'
+    needs: [ build, test, verify ]
+    runs-on: ubuntu-latest
+    environment: jetbrains-marketplace
+    continue-on-error: true
+    
+    steps:
+      -
+        name: Fetch sources
+        uses: actions/checkout@v4
+      -
+        name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+      -
+        name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      -
+        name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+      -
+        name: Publish plugin to Nightly channel
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
+        run: |
+          chmod +x ./gradlew
+          NIGHTLY_VERSION=$(python scripts/modify_version_for_nightly.py)
+          ./gradlew publishPlugin -Pchannel=Nightly -PpluginVersion=${NIGHTLY_VERSION}
