@@ -1,9 +1,10 @@
 ## Inspection entry
 
-This plugin can be disabled by disabling
-the inspection <i>Pyright diagnostics</i>,
+Technically, the plugin can be disabled by disabling
+the <i>Pyright diagnostics</i> inspection,
 which can be found under <b>Editor</b> | <b>Inspections</b>.
-However, this is not recommended for other purposes than debugging.
+However, <strong>this is not recommended</strong>
+for any purposes other than debugging.
 
 
 ### Highlight severity levels

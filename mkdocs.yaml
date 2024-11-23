@@ -73,12 +73,11 @@ nav:
     - Running modes: configurations/running-modes.md
     - Executables: configurations/executables.md
     - Inspection: configurations/inspection.md
-    - Other: configurations/other.md
-  - IDE actions: actions.md
+    - Others: configurations/others.md
   - Other features: features.md
   - Problems: problems.md
-  - Logging: logging.md
   - How-to guides: how-to.md
+  - Migration guide: migration-guide.md
   - FAQ: faq.md
 
 validation:

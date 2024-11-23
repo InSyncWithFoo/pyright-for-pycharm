@@ -9,9 +9,8 @@ For type checking bugs, please report them to [the Pyright issue tracker][1].
 
 ## What's the difference between the `pyright` and `pyright-python` files?
 
-Pyright is written in TypeScript and officially published on NPM,
-mainly for the purpose of better integration with VSCode.
-This requires a dependency on Node, which Python developers
+Pyright is written in TypeScript and officially published on NPM.
+It requires a dependency on Node, which Python developers
 might not have on their development machines.
 
 [The PyPI `pyright` package][2] was created to solve this problem.
@@ -47,12 +46,12 @@ Adding an option that makes the plugin run only on "manual" saves
 (the *Save All* action) is counter-productive, since that doesn't
 guarantee the annotator class is called. This is [a known limitation][5].
 
-Use [the LSP4IJ mode][6] instead.
+Use [one of the two other modes][6] instead.
 
 
 ## Is the command-line watch mode (`--watch`) supported?
 
-No. Use LSP4IJ mode instead.
+No. Use one of the two language server modes instead.
 
 
 ## What does this command line option do?
@@ -67,11 +66,16 @@ No, or at least not in a business or ownership sense.
 It was, however, created out of adoration of Pyright and JetBrains IDEs.
 
 
+## Does this plugin support Basedpyright?
+
+Only in <i>Command line</i> mode. See [this issue][8] for more information.
+
+
 ## I love this project. How can I support it?
 
-You can consider [sponsoring it][8].
+You can consider [sponsoring it][9].
 
-If you are feeling generous, see [`CONTRIBUTING.md`][9]
+If you are feeling generous, see [`CONTRIBUTING.md`][10]
 for how to contribute non-financially.
 
 
@@ -82,5 +86,6 @@ for how to contribute non-financially.
   [5]: https://github.com/InSyncWithFoo/pyright-for-pycharm/issues/10
   [6]: configurations/running-modes.md
   [7]: https://microsoft.github.io/pyright/#/command-line
-  [8]: https://github.com/sponsors/InSyncWithFoo
-  [9]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md
+  [8]: https://github.com/DetachHead/basedpyright/issues/801
+  [9]: https://github.com/sponsors/InSyncWithFoo
+  [10]: https://github.com/InSyncWithFoo/pyright-for-pycharm/blob/master/CONTRIBUTING.md

@@ -1,4 +1,8 @@
-## Executable and language server executable
+# Executable and language server executable
+
+The plugin will automatically search for executables to use
+(in PATH and the parent directory of the current project's interpreter).
+However, they can also be manually configured if so desired.
 
 The `pyright` (or `pyright-python`) and
 `pyright-langserver` (or `pyright-python-langserver`) files
@@ -34,9 +38,6 @@ see the following pages for more information:
 * <i>[Where does pip install its packages?][5]</i> - <i>Stack Overflow</i>
 * <i>[folders][6]</i> - <i>npm Docs</i>
 
-If a relative path is specified, it would be interpreted
-as relative to the project directory.
-
 The executables are used as-is with no additional checks.
 This is useful if you want to use a Pyright fork or a custom script.
 
@@ -46,7 +47,21 @@ This is useful if you want to use a Pyright fork or a custom script.
     with the latest version of Pyright.
 
 
-### Configuration files
+## Resolving strategy
+
+If a relative path is specified, it would be interpreted
+as relative to the project directory.
+
+The plugin also supports a "smart" resolving strategy via the
+"Resolve against interpreter directory, ignoring extension" setting.
+
+!!! tip "How to always use the Pyright executables from virtual environments?"
+
+    Set "Executable" to `pyright` and "Language server executable" to
+    `pyright-langserver`, then enable the two checkboxes.
+
+
+## Configuration file
 
 | Used by running mode(s) | Default                  | Corresponding CLI option |
 |-------------------------|--------------------------|--------------------------|
@@ -65,39 +80,9 @@ the project's root directory is used.
 
 !!! note
 
-    This configuration is [deliberately][7] unsupported by LSP.
+    This configuration is [deliberately][7] unsupported in LSP modes.
     The language server will search for the configuration file(s)
     inside the root directory of the workspace.
-
-
-### Always use global
-
-| Used by running mode(s) | Default |
-|-------------------------|---------|
-| N/A                     | `false` |
-
-Enable this setting to always use
-the global executables and configuration file.
-
-
-### Auto-suggest executable
-
-| Used by running mode(s) | Default |
-|-------------------------|---------|
-| N/A                     | `true`  |
-
-Enable this setting to automatically find and
-suggest an executable for the current project on open.
-See [the corresponding feature][8] for more information.
-
-
-### UI hints
-
-As a path field is edited, the small hint under the field
-will show whether the path is valid or invalid.
-
-This is only used to give a general hint;
-a path can still be saved even if it is marked as invalid.
 
 
   [1]: running-modes.md
@@ -107,4 +92,3 @@ a path can still be saved even if it is marked as invalid.
   [5]: https://stackoverflow.com/q/29980798
   [6]: https://docs.npmjs.com/cli/v10/configuring-npm/folders#executables
   [7]: https://github.com/microsoft/pyright/discussions/7650
-  [8]: ../features.md#executable-suggestion
