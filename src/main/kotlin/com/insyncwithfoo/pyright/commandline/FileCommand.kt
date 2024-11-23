@@ -32,6 +32,7 @@ internal data class FileCommand(
         get() = GeneralCommandLine(fragments).apply {
             withCharset(Charsets.UTF_8)
             withWorkingDirectory(projectPath.toPathIfItExists())
+            withEnvironment(environmentVariables)
         }
     
     private val processHandler: CapturingProcessHandler

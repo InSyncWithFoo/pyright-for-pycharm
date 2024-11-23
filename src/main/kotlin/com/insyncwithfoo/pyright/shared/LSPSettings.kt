@@ -23,7 +23,7 @@ internal data class Python(
 ) : Builder
 
 
-internal class Pyright(
+internal data class Pyright(
     var disableTaggedHints: Boolean? = null
 ) : Builder
 

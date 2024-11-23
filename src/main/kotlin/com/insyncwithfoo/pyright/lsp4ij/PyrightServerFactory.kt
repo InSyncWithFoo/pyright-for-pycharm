@@ -14,7 +14,7 @@ import com.redhat.devtools.lsp4ij.client.features.LSPClientFeatures
 import com.redhat.devtools.lsp4ij.server.StreamConnectionProvider
 
 
-internal const val SERVER_ID = "pyright"
+internal const val SERVER_ID = "com.insyncwithfoo.pyright"
 
 
 internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnablementSupport {

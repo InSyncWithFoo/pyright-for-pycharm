@@ -9,28 +9,25 @@ import com.redhat.devtools.lsp4ij.server.ProcessStreamConnectionProvider
 
 
 internal class PyrightServerConnectionProvider(
-    private val project: Project,
     commands: List<String>,
-    workingDirectory: String?
-) : ProcessStreamConnectionProvider(commands, workingDirectory) {
-    
-    init {
-        val configurations = project.pyrightConfigurations
-        
-        userEnvironmentVariables = when {
-            configurations.locale == Locale.DEFAULT -> emptyMap()
-            else -> mapOf("LC_ALL" to configurations.locale.toString())
-        }
-    }
+    workingDirectory: String?,
+    environmentVariables: Map<String, String>
+) : ProcessStreamConnectionProvider(commands, workingDirectory, environmentVariables) {
     
     companion object {
         fun create(project: Project): PyrightServerConnectionProvider {
+            val configurations = project.pyrightConfigurations
             val executable = project.pyrightLangserverExecutable!!
             
             val commands: List<String> = listOf(executable.toString(), "--stdio")
             val workingDirectory = project.path?.toString()
             
-            return PyrightServerConnectionProvider(project, commands, workingDirectory)
+            val environmentVariables = when {
+                configurations.locale == Locale.DEFAULT -> emptyMap()
+                else -> mapOf("LC_ALL" to configurations.locale.toString())
+            }
+            
+            return PyrightServerConnectionProvider(commands, workingDirectory, environmentVariables)
         }
     }
     
