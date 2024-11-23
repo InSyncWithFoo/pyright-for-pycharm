@@ -11,13 +11,26 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 ## [Unreleased]
 
+The plugin is rewritten with a lot of functional changes and new settings.
+If you encounter a bug, please [file an issue][0.7.0-1].
+
+
+### Added
+
+* Pyright can now be configured to emit localized messages.
+* Pyright's logo is now used as the icon for `pyrightconfig.json` files.
+* Many new settings are added. Most of them were taken from
+  the old <i>Pyright Language Server</i> plugin without change.
+  See [the documentation][0.7.0-2] for more information.
+
+
+  [0.7.0-1]: https://github.com/InSyncWithFoo/pyright-for-pycharm/issues
+  [0.7.0-2]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/others/
+
+
 ### Added
 
 * The icon for `pyrightconfig.json` is now replaced with Pyright's logo.
-
-### Changed
-
-* The error-reporting logic is further enhanced.
 
 
 ## [0.6.0] - 2024-07-21

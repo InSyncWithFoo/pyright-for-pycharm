@@ -42,6 +42,8 @@ Currently supported versions:
 
 ## Credits
 
+Parts of this repository were taken or derived from:
+
 * [@JetBrains/intellij-community][13]
 * [@JetBrains/intellij-platform-plugin-template][14]
 * [@koxudaxi/ruff-pycharm-plugin][15]
