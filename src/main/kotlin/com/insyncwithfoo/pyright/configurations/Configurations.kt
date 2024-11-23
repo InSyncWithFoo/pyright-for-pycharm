@@ -50,12 +50,14 @@ internal enum class WorkspaceFolders(override val label: String) : Labeled {
 }
 
 
+@Suppress("unused")
 internal enum class DiagnosticMode(val value: String, override val label: String) : Labeled {
     OPEN_FILES_ONLY("openFilesOnly", message("configurations.diagnosticMode.openFilesOnly")),
     WORKSPACE("workspace", message("configurations.diagnosticMode.workspace"));
 }
 
 
+@Suppress("unused")
 internal enum class LogLevel(override val label: String) : Labeled {
     ERROR(message("configurations.logLevel.error")),
     WARNING(message("configurations.logLevel.warning")),
@@ -65,6 +67,7 @@ internal enum class LogLevel(override val label: String) : Labeled {
 
 
 // https://github.com/microsoft/pyright/blob/acc52c7420/packages/pyright-internal/src/localization/localize.ts#L12-L26
+@Suppress("unused")
 internal enum class Locale(override val label: String) : Labeled {
     DEFAULT(message("configurations.locale.default")),
     CS("cs"),
