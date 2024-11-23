@@ -102,16 +102,16 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var diagnostics by property(true)
     var useEditorFontForTooltips by property(false)
     var prefixTooltipMessages by property(false)
-    var linkErrorCodesInTooltips by property(false)
+    var linkErrorCodesInTooltips by property(true)
     var taggedHints by property(true)
     var minimumSeverityLevel by enum(DiagnosticSeverity.INFORMATION)
     
     var hover by property(true)
     
-    var completion by property(false)
+    var completion by property(true)
     var autoImportCompletions by property(true)
     var monkeypatchAutoImportDetails by property(true)
-    var autocompleteParentheses by property(false)
+    var autocompleteParentheses by property(true)
     var monkeypatchTrailingQuoteBug by property(true)
     
     var autoSearchPaths by property(true)

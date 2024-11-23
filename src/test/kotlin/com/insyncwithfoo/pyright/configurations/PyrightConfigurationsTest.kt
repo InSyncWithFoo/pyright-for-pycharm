@@ -26,16 +26,16 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(true, diagnostics)
             assertEquals(false, useEditorFontForTooltips)
             assertEquals(false, prefixTooltipMessages)
-            assertEquals(false, linkErrorCodesInTooltips)
+            assertEquals(true, linkErrorCodesInTooltips)
             assertEquals(true, taggedHints)
             assertEquals(DiagnosticSeverity.INFORMATION, minimumSeverityLevel)
             
             assertEquals(true, hover)
             
-            assertEquals(false, completion)
+            assertEquals(true, completion)
             assertEquals(true, autoImportCompletions)
             assertEquals(true, monkeypatchAutoImportDetails)
-            assertEquals(false, autocompleteParentheses)
+            assertEquals(true, autocompleteParentheses)
             assertEquals(true, monkeypatchTrailingQuoteBug)
             
             assertEquals(true, autoSearchPaths)
