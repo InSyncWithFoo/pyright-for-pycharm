@@ -23,7 +23,18 @@ internal val Module.path: Path?
 
 
 internal val Module.interpreterPath: Path?
-    get() = sdk?.homePath?.let { Path.of(it) } ?: project.interpreterPath
+    get() = sdk?.path ?: project.interpreterPath
+
+
+internal val Module.osDependentInterpreterPath: String?
+    get() {
+        val interpreterPath = this.interpreterPath?.toString()
+        
+        return when (wslDistribution) {
+            null -> interpreterPath
+            else -> interpreterPath?.replace("\\", "/")
+        }
+    }
 
 
 internal val PsiElement.module: Module?

@@ -1,41 +1,27 @@
 package com.insyncwithfoo.pyright.lsp
 
+import com.insyncwithfoo.pyright.asFileURI
 import com.insyncwithfoo.pyright.configurations.Locale
 import com.insyncwithfoo.pyright.configurations.WorkspaceFolders
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
 import com.insyncwithfoo.pyright.configurations.targetedFileExtensionList
+import com.insyncwithfoo.pyright.getPureLinuxOrWindowsPath
 import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.modules
 import com.insyncwithfoo.pyright.path
+import com.insyncwithfoo.pyright.pathIsAbsoluteDos
 import com.insyncwithfoo.pyright.wslDistribution
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.wsl.WSLCommandLineOptions
-import com.intellij.execution.wsl.WSLDistribution
-import com.intellij.execution.wsl.WslPath
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.module.Module
 import com.intellij.openapi.project.BaseProjectDirectories.Companion.getBaseDirectories
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ModuleRootManager
-import com.intellij.openapi.util.io.OSAgnosticPathUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServerDescriptor
 import java.net.URI
 import java.nio.file.Path
-
-
-private fun makeFileURI(path: String): String {
-    val (scheme, host, fragment) = Triple("file", "", null)
-    return URI(scheme, host, path, fragment).toASCIIString()
-}
-
-
-private val Path.isUncPath: Boolean
-    get() = WslPath.parseWindowsUncPath(this.toString()) != null
-
-
-private val URI.pathIsAbsoluteDos: Boolean
-    get() = OSAgnosticPathUtil.isAbsoluteDosPath(Path.of(this).toString())
 
 
 private fun Project.getModuleSourceRoots(): Collection<VirtualFile> =
@@ -70,6 +56,8 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     private val wslDistribution by lazy { module?.wslDistribution }
     
     init {
+        LOGGER.info("Executable: $executable")
+        LOGGER.info("WSL distro: $wslDistribution")
         LOGGER.info(configurations.toString())
     }
     
@@ -79,7 +67,7 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     override fun getFileUri(file: VirtualFile): String {
         return when {
             wslDistribution == null -> super.getFileUri(file)
-            else -> makeFileURI(wslDistribution!!.getWslPath(Path.of(file.path))!!)
+            else -> wslDistribution!!.getWslPath(Path.of(file.path))!!.asFileURI()
         }
     }
     
@@ -114,11 +102,6 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
         }
         
         wslDistribution?.patchCommandLine(this, project, WSLCommandLineOptions())
-    }
-    
-    private fun WSLDistribution?.getPureLinuxOrWindowsPath(path: Path) = when {
-        this != null && path.isUncPath -> this.getWslPath(path)!!
-        else -> path.toString()
     }
     
     companion object {
