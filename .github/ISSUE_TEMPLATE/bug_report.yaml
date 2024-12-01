@@ -27,7 +27,8 @@ body:
     attributes:
       label: Relevant log output or stack trace
       description: |
-        Please copy and paste any relevant log output from your log file.
+        Please copy and paste any relevant log output from
+        [your log file](https://insyncwithfoo.github.io/pyright-for-pycharm/how-to/#how-do-i-find-the-ide-log-files).
         Add the full stack trace if available.
         
         *This will be automatically formatted into code, so there is no need for backticks.*

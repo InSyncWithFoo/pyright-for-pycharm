@@ -33,11 +33,6 @@ If you encounter a bug, please [file an issue][0.7.0-1].
   [0.7.0-2]: https://insyncwithfoo.github.io/pyright-for-pycharm/configurations/others/
 
 
-### Added
-
-* The icon for `pyrightconfig.json` is now replaced with Pyright's logo.
-
-
 ## [0.6.0] - 2024-07-21
 
 ### Added

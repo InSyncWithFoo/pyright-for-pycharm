@@ -32,6 +32,7 @@ import com.intellij.ui.dsl.builder.bindIntValue
 import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.bindText
 import com.intellij.ui.dsl.builder.panel
+import com.intellij.ui.dsl.builder.toNonNullableProperty
 
 
 private class PyrightPanel(state: PyrightConfigurations, overrides: Overrides?, project: Project?) :
@@ -183,7 +184,7 @@ private fun PyrightPanel.makeComponent() = panel {
     }
     
     row(message("configurations.configurationFile.label")) {
-        configurationFileInput { bindText(state::configurationFile) }
+        configurationFileInput { bindText(state::configurationFile.toNonNullableProperty("")) }
         overrideCheckbox(state::configurationFile)
     }
     
