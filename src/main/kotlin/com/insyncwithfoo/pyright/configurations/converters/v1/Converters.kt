@@ -31,14 +31,34 @@ internal fun migrateGlobal(legacy: LegacyGlobalConfigurations) {
 
 internal fun Project.migrateLocal(legacy: LegacyLocalConfigurations) {
     PyrightLocalService.getInstance(this).state.apply {
-        executable = legacy.projectExecutable
-        configurationFile = legacy.projectConfigurationFile
-        languageServerExecutable = legacy.projectLangserverExecutable
+        val (legacyExecutable, legacyConfigurationFile, legacyLangserverExecutable) = Triple(
+            legacy.projectExecutable,
+            legacy.projectConfigurationFile,
+            legacy.projectLangserverExecutable
+        );
         
-        changePyrightOverrides {
-            add(::executable.name)
-            add(::configurationFile.name)
-            add(::languageServerExecutable.name)
+        if (legacyExecutable != null && legacyExecutable != executable) {
+            executable = legacyExecutable
+            
+            changePyrightOverrides {
+                add(::executable.name)
+            }
+        }
+        
+        if (legacyConfigurationFile != null && legacyConfigurationFile != configurationFile) {
+            configurationFile = legacyConfigurationFile
+            
+            changePyrightOverrides {
+                add(::configurationFile.name)
+            }
+        }
+        
+        if (legacyLangserverExecutable != null && legacyLangserverExecutable != languageServerExecutable) {
+            languageServerExecutable = legacyLangserverExecutable
+            
+            changePyrightOverrides {
+                add(::languageServerExecutable.name)
+            }
         }
     }
 }
