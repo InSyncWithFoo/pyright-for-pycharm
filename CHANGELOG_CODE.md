@@ -14,6 +14,11 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 <i>This section is currently empty.</i>
 
 
+## [0.8.0] - 2024-12-23
+
+* A few dependencies were updated.
+
+
 ## [0.7.0] - 2024-11-23
 
 * Many dependencies were updated as the result of #77 and #79.
@@ -409,7 +414,8 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.7.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.8.0..HEAD
+  [0.8.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.7.0..v0.8.0
   [0.7.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..v0.7.0
   [0.6.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.5.0..v0.6.0
   [0.5.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.4.0..v0.5.0
