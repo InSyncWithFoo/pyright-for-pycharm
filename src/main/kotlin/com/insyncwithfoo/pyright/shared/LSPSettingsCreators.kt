@@ -1,6 +1,7 @@
 package com.insyncwithfoo.pyright.shared
 
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
+import com.insyncwithfoo.pyright.modules
 import com.insyncwithfoo.pyright.osDependentInterpreterPath
 import com.intellij.openapi.module.Module
 import com.intellij.openapi.project.Project
@@ -10,7 +11,7 @@ internal fun Project.createLSPSettingsObject(module: Module? = null) = Settings(
     val configurations = pyrightConfigurations
     
     python {
-        pythonPath = module?.osDependentInterpreterPath
+        pythonPath = (module ?: modules.singleOrNull())?.osDependentInterpreterPath
         
         analysis {
             logLevel = configurations.logLevel.label
