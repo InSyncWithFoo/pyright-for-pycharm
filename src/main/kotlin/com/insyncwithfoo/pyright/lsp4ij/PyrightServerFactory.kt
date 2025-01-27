@@ -52,7 +52,7 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
     }
     
     @Suppress("UnstableApiUsage")
-    override fun createClientFeatures() {
+    override fun createClientFeatures(): LSPClientFeatures {
         val features = object : LSPClientFeatures() {
             override fun getFileUri(file: VirtualFile): URI {
                 val uri = FileUriSupport.DEFAULT.getFileUri(file).toString()
