@@ -12,9 +12,10 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.redhat.devtools.lsp4ij.LanguageServerEnablementSupport
 import com.redhat.devtools.lsp4ij.LanguageServerFactory
 import com.redhat.devtools.lsp4ij.client.LanguageClientImpl
-import com.redhat.devtools.lsp4ij.client.features.LSPClientFeatures
 import com.redhat.devtools.lsp4ij.client.features.FileUriSupport
+import com.redhat.devtools.lsp4ij.client.features.LSPClientFeatures
 import com.redhat.devtools.lsp4ij.server.StreamConnectionProvider
+import java.net.URI
 
 
 internal const val SERVER_ID = "com.insyncwithfoo.pyright"
@@ -58,13 +59,13 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
         }
         
         override fun getFileUri(file: VirtualFile): URI {
-            val uri = FileUriSupport.DEFAULT.getFileUri(file)
+            val uri = FileUriSupport.DEFAULT.getFileUri(file).toString()
             
             val prefix = "file:///"
             if (uri.startsWith(prefix) && OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length))) {
-                return prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2)
+                return URI.create(prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2))
             }
-            return uri
+            return URI.create(uri)
         }
     }
     
