@@ -52,25 +52,27 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
     }
     
     @Suppress("UnstableApiUsage")
-    override fun createClientFeatures() = object : LSPClientFeatures() {
-        init {
+    override fun createClientFeatures() {
+        val features = object : LSPClientFeatures() {
+            override fun getFileUri(file: VirtualFile): URI {
+                val uri = FileUriSupport.DEFAULT.getFileUri(file).toString()
+                val prefix = "file:///"
+                
+                thisLogger().warn(uri)
+                thisLogger().warn(OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length)).toString())
+                thisLogger().warn(prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2))
+                
+                if (uri.startsWith(prefix) && OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length))) {
+                    return URI.create(prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2))
+                }
+                return URI.create(uri)
+            }
+        }
+        
+        return features.apply {
             hoverFeature = HoverFeature()
             diagnosticFeature = DiagnosticFeature()
             completionFeature = CompletionFeature()
-        }
-        
-        override fun getFileUri(file: VirtualFile): URI {
-            val uri = FileUriSupport.DEFAULT.getFileUri(file).toString()
-            val prefix = "file:///"
-            
-            thisLogger().warn(uri)
-            thisLogger().warn(OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length)).toString())
-            thisLogger().warn(prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2))
-            
-            if (uri.startsWith(prefix) && OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length))) {
-                return URI.create(prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2))
-            }
-            return URI.create(uri)
         }
     }
     
