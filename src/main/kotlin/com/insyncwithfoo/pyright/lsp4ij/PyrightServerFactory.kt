@@ -64,7 +64,7 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
             val prefix = "file:///"
             
             thisLogger().warn(uri)
-            thisLogger().warn(OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length)))
+            thisLogger().warn(OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length)).toString())
             thisLogger().warn(prefix + uri[prefix.length].lowercase() + "%3A" + uri.substring(prefix.length + 2))
             
             if (uri.startsWith(prefix) && OSAgnosticPathUtil.startsWithWindowsDrive(uri.substring(prefix.length))) {
