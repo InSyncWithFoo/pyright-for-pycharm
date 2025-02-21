@@ -8,7 +8,9 @@ import com.redhat.devtools.lsp4ij.client.features.LSPHoverFeature
 @Suppress("UnstableApiUsage")
 internal class HoverFeature : LSPHoverFeature() {
     
-    private val configurations = project.pyrightConfigurations
+    private val configurations by lazy {
+        project.pyrightConfigurations
+    }
     
     override fun isEnabled(file: PsiFile) =
         configurations.hover

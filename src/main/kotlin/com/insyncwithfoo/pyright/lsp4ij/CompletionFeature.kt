@@ -13,7 +13,9 @@ import org.eclipse.lsp4j.CompletionItem
 @Suppress("UnstableApiUsage")
 internal class CompletionFeature : LSPCompletionFeature() {
     
-    private val configurations = project.pyrightConfigurations
+    private val configurations by lazy {
+        project.pyrightConfigurations
+    }
     
     override fun isEnabled(file: PsiFile) =
         configurations.completion

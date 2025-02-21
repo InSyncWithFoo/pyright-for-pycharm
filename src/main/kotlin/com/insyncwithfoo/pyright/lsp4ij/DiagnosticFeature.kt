@@ -20,7 +20,9 @@ import org.eclipse.lsp4j.Diagnostic
 @Suppress("UnstableApiUsage")
 internal class DiagnosticFeature : LSPDiagnosticFeature() {
     
-    private val configurations = project.pyrightConfigurations
+    private val configurations by lazy {
+        project.pyrightConfigurations
+    }
     
     override fun isEnabled(file: PsiFile) =
         configurations.diagnostics
