@@ -9,7 +9,7 @@ Make sure that:
   (<b>Project</b> | <b>Python Interpreter</b>).
 * [The executable][1] is given and is correct.
 * The plugin itself is enabled (<b>Plugins</b>).
-* [The inspection entry][2] is enabled.
+* [The inspection entry][2] is enabled (legacy, <i>Command line</i> mode only).
 
 Other things to try:
 
