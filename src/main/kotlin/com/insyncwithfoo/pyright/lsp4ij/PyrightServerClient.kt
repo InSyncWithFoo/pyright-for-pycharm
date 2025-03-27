@@ -12,7 +12,7 @@ internal class PyrightServerClient(project: Project) : LanguageClientImpl(projec
     override fun createSettings() =
         project.createLSPSettingsObject().also { thisLogger().info(it.toString()) }
     
-    override fun handleServerStatusChanged(serverStatus: ServerStatus?) {
+    override fun handleServerStatusChanged(serverStatus: ServerStatus) {
         if (serverStatus == ServerStatus.started) {
             triggerChangeConfiguration()
         }
