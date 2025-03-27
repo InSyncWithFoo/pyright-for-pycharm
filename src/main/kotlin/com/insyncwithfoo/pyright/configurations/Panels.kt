@@ -23,6 +23,7 @@ import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.ui.JBIntSpinner
+import com.intellij.ui.RawCommandLineEditor
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.fields.ExpandableTextField
 import com.intellij.ui.dsl.builder.Cell
@@ -53,6 +54,13 @@ private fun Row.languageServerExecutableInput(block: Cell<TextFieldWithBrowseBut
 
 private fun Row.smartLanguageServerExecutableResolutionInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.smartLanguageServerExecutableResolution.label")).apply(block)
+
+
+private fun Row.startLanguageServerCommandInput(block: Cell<RawCommandLineEditor>.() -> Unit) = run {
+    val comment = message("configurations.startLanguageServerCommand.comment")
+    
+    cell(RawCommandLineEditor()).comment(comment).makeFlexible().apply(block)
+}
 
 
 private fun Row.configurationFileInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
@@ -181,6 +189,11 @@ private fun PyrightPanel.makeComponent() = panel {
     row("") {
         smartLanguageServerExecutableResolutionInput { bindSelected(state::smartLanguageServerExecutableResolution) }
         overrideCheckbox(state::smartLanguageServerExecutableResolution)
+    }
+    
+    row(message("configurations.startLanguageServerCommand.label")) {
+        startLanguageServerCommandInput { bindText(state::startLanguageServerCommand) }
+        overrideCheckbox(state::startLanguageServerCommand)
     }
     
     row(message("configurations.configurationFile.label")) {

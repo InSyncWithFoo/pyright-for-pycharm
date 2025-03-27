@@ -41,9 +41,18 @@ private fun Project.getWorkspaceFolders(): Collection<VirtualFile> =
     getWorkspaceFolders(pyrightConfigurations.workspaceFolders)
 
 
+private sealed interface ServerRunner {
+    data class Executable(val executable: Path) : ServerRunner
+    data class Command(val command: List<String>) : ServerRunner
+}
+
+
 @Suppress("UnstableApiUsage")
-internal class PyrightServerDescriptor(project: Project, module: Module?, private val executable: Path) :
-    LspServerDescriptor(project, getPresentableName(project, module), *project.getWorkspaceFolders().toTypedArray()) {
+internal class PyrightServerDescriptor private constructor(
+    project: Project,
+    module: Module?,
+    private val runner: ServerRunner
+) : LspServerDescriptor(project, getPresentableName(project, module), *project.getWorkspaceFolders().toTypedArray()) {
     
     private val configurations = project.pyrightConfigurations
     
@@ -56,7 +65,11 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     private val wslDistribution by lazy { module?.wslDistribution }
     
     init {
-        LOGGER.info("Executable: $executable")
+        when (runner) {
+            is ServerRunner.Executable -> LOGGER.info("Executable: ${runner.executable}")
+            is ServerRunner.Command -> LOGGER.info("Command: ${runner.command}")
+        }
+        
         LOGGER.info("WSL distro: $wslDistribution")
         LOGGER.info(configurations.toString())
     }
@@ -83,25 +96,42 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
         return super.findFileByUri(virtualFileUri.toString())
     }
     
-    override fun createCommandLine() = GeneralCommandLine().apply {
-        val projectPath = project.path
+    override fun createCommandLine(): GeneralCommandLine {
+        val commandLine = when (runner) {
+            is ServerRunner.Executable -> createCommandLineFromExecutable(runner.executable)
+            is ServerRunner.Command -> createCommandLineFromArguments(runner.command)
+        }
+        
+        return commandLine.apply {
+            val projectPath = project.path
+            
+            withCharset(Charsets.UTF_8)
+            withParentEnvironmentType(GeneralCommandLine.ParentEnvironmentType.CONSOLE)
+            
+            if (configurations.locale != Locale.DEFAULT) {
+                withEnvironment("LC_ALL", configurations.locale.toString())
+            }
+            
+            if (projectPath != null) {
+                withWorkDirectory(projectPath.toString())
+            }
+        }
+    }
+    
+    private fun createCommandLineFromExecutable(executable: Path) = GeneralCommandLine().apply {
         val exePath = wslDistribution.getPureLinuxOrWindowsPath(executable)
         
         withExePath(exePath)
         addParameter("--stdio")
         
-        withCharset(Charsets.UTF_8)
-        withParentEnvironmentType(GeneralCommandLine.ParentEnvironmentType.CONSOLE)
-        
-        if (projectPath != null) {
-            withWorkDirectory(projectPath.toString())
-        }
-        
-        if (configurations.locale != Locale.DEFAULT) {
-            withEnvironment("LC_ALL", configurations.locale.toString())
-        }
-        
         wslDistribution?.patchCommandLine(this, project, WSLCommandLineOptions())
+    }
+    
+    private fun createCommandLineFromArguments(arguments: List<String>) = GeneralCommandLine().apply {
+        val (executable, rest) = Pair(arguments[0], arguments.drop(1))
+        
+        withExePath(executable)
+        addParameters(rest)
     }
     
     companion object {
@@ -111,6 +141,16 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
         private fun getPresentableName(project: Project, module: Module?) = when {
             module == null || project.modules.size == 1 -> message("languageServer.presentableName.project")
             else -> message("languageServer.presentableName.module", module.name)
+        }
+        
+        fun fromExecutable(project: Project, module: Module?, executable: Path): PyrightServerDescriptor {
+            val runner = ServerRunner.Executable(executable)
+            return PyrightServerDescriptor(project, module, runner)
+        }
+        
+        fun fromCommand(project: Project, module: Module?, command: List<String>): PyrightServerDescriptor {
+            val runner = ServerRunner.Command(command)
+            return PyrightServerDescriptor(project, module, runner)
         }
         
     }

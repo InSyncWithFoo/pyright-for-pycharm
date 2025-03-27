@@ -14,6 +14,7 @@ import com.intellij.platform.lsp.api.LspServerSupportProvider
 import com.intellij.platform.lsp.api.LspServerSupportProvider.LspServerStarter
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
+import com.intellij.util.execution.ParametersListUtil
 
 
 private val Project.psiManager: PsiManager
@@ -35,12 +36,30 @@ internal class PyrightServerSupportProvider : LspServerSupportProvider {
         val runningModeIsLSP = configurations.runningMode == RunningMode.LSP
         val psiFile = project.psiManager.findFile(file) ?: return
         
-        if (runningModeIsLSP && file.isSupportedByPyright(project)) {
-            val executable = project.pyrightLangserverExecutable ?: return
-            val descriptor = PyrightServerDescriptor(project, psiFile.module, executable)
-            
-            serverStarter.ensureServerStarted(descriptor)
+        if (!runningModeIsLSP || !file.isSupportedByPyright(project)) {
+            return
         }
+        
+        val rawCommand = configurations.startLanguageServerCommand.orEmpty()
+        val (keepQuotes, supportSingleQuotes, keepEmptyParameters) = Triple(false, true, true)
+        val command = try {
+            ParametersListUtil.parse(rawCommand, keepQuotes, supportSingleQuotes, keepEmptyParameters)
+                .takeIf { it.isNotEmpty() }
+        } catch (_: Exception) {
+            null
+        }
+        
+        val module = psiFile.module
+        
+        val descriptor = when {
+            command != null -> PyrightServerDescriptor.fromCommand(project, module, command)
+            else -> {
+                val executable = project.pyrightLangserverExecutable ?: return
+                PyrightServerDescriptor.fromExecutable(project, module, executable)
+            }
+        }
+        
+        serverStarter.ensureServerStarted(descriptor)
     }
     
 }

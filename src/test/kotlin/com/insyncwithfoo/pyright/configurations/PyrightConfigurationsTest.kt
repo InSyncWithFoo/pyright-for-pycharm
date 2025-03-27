@@ -11,13 +11,14 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
     
     @Test
     fun `test shape`() {
-        assertEquals(26, fields.size)
+        assertEquals(27, fields.size)
         
         state.apply {
             assertEquals(null, executable)
             assertEquals(false, smartExecutableResolution)
             assertEquals(null, languageServerExecutable)
             assertEquals(false, smartLanguageServerExecutableResolution)
+            assertEquals(null, startLanguageServerCommand)
             assertEquals(null, configurationFile)
             assertEquals(RunningMode.COMMAND_LINE, runningMode)
             

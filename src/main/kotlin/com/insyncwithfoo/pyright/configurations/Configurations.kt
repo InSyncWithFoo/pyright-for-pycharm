@@ -94,6 +94,7 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var smartExecutableResolution by property(false)
     var languageServerExecutable by string(null)
     var smartLanguageServerExecutableResolution by property(false)
+    var startLanguageServerCommand by string(null)
     var configurationFile by string(null)
     var runningMode by enum(RunningMode.COMMAND_LINE)
     
