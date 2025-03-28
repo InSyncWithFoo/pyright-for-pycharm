@@ -63,6 +63,10 @@ private fun Panel.runningModeInputGroup(block: Panel.() -> Unit) =
     buttonsGroup(init = block)
 
 
+private fun Row.autoRestartServers(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.autoRestartServers.label")).apply(block)
+
+
 private fun Row.diagnosticsInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.diagnostics.label")).apply(block)
 
@@ -146,8 +150,8 @@ private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) =
     spinner(0..1_000_000, step = 1).apply(block)
 
 
-private fun Row.autoRestartServers(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configurations.autoRestartServers.label")).apply(block)
+private fun Row.useSchemaFromStoreInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.useSchemaFromStore.label")).apply(block)
 
 
 @Suppress("DialogTitleCapitalization")
@@ -308,6 +312,13 @@ private fun PyrightPanel.makeComponent() = panel {
             overrideCheckbox(state::numberOfThreads)
         }
         
+    }
+    
+    advancedSettingsGroup {
+        row {
+            useSchemaFromStoreInput { bindSelected(state::useSchemaFromStore) }
+            overrideCheckbox(state::useSchemaFromStore)
+        }
     }
     
 }

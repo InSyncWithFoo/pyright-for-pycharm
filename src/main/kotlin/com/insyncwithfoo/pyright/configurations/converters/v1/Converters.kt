@@ -35,7 +35,7 @@ internal fun Project.migrateLocal(legacy: LegacyLocalConfigurations) {
             legacy.projectExecutable,
             legacy.projectConfigurationFile,
             legacy.projectLangserverExecutable
-        );
+        )
         
         if (legacyExecutable != null && legacyExecutable != executable) {
             executable = legacyExecutable

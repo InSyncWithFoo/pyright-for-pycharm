@@ -5,6 +5,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.dsl.builder.AlignX
 import com.intellij.ui.dsl.builder.Cell
+import com.intellij.ui.dsl.builder.Panel
 import com.intellij.ui.dsl.builder.Row
 import com.intellij.ui.dsl.builder.bindSelected
 import com.intellij.ui.dsl.builder.selected
@@ -68,6 +69,11 @@ internal abstract class AdaptivePanel<S>(val state: S, private val overrides: Ov
         }
         
         toggleOtherCellsBasedOn(checkbox)
+    }
+    
+    @Suppress("DialogTitleCapitalization")
+    fun Panel.advancedSettingsGroup(init: Panel.() -> Unit) {
+        collapsibleGroup(message("configurations.groups.advanced"), init = init)
     }
     
 }

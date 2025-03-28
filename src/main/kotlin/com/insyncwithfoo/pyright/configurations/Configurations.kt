@@ -122,6 +122,8 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var logLevel by enum(LogLevel.INFORMATION)
     var locale by enum(Locale.DEFAULT)
     var numberOfThreads by property(0)
+    
+    var useSchemaFromStore by property(false)
 }
 
 

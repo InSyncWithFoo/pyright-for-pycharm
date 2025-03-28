@@ -1,0 +1,9 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="JavaScript">
+		<JsonSchema.ProviderFactory
+			id="com.insyncwithfoo.pyright.misc.PyrightConfigSchemaProviderFactory"
+			order="first"
+			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigSchemaProviderFactory"
+		/>
+	</extensions>
+</idea-plugin>
