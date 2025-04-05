@@ -68,7 +68,7 @@ It was, however, created out of adoration of Pyright and JetBrains IDEs.
 
 ## Does this plugin support Basedpyright?
 
-Only in <i>Command line</i> mode. See [this issue][8] for more information.
+Yes. [See here for setup instructions](https://docs.basedpyright.com/latest/installation/ides/#pycharm).
 
 
 ## I love this project. How can I support it?
