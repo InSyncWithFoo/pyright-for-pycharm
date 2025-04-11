@@ -1,7 +1,7 @@
 package com.insyncwithfoo.pyright.shared
 
 
-private interface Builder
+internal interface Builder
 
 
 internal operator fun <T : Builder> T.invoke(block: T.() -> Unit) {
