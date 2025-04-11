@@ -5,27 +5,34 @@ import com.insyncwithfoo.pyright.findExecutableInPath
 import com.insyncwithfoo.pyright.findExecutableInVenv
 import com.insyncwithfoo.pyright.interpreterDirectory
 import com.insyncwithfoo.pyright.path
-import com.insyncwithfoo.pyright.removeExtension
 import com.insyncwithfoo.pyright.toNullIfNotExists
 import com.insyncwithfoo.pyright.toPathOrNull
 import com.intellij.openapi.project.Project
 import java.nio.file.Path
+import kotlin.io.path.isDirectory
+import kotlin.io.path.listDirectoryEntries
+import kotlin.io.path.nameWithoutExtension
 
 
 internal fun Project.resolveExecutable(settingValue: String?, smartResolution: Boolean): Path? {
-    val executable = settingValue?.toPathOrNull()
+    val executable = settingValue?.toPathOrNull() ?: return null
     
-    if (executable?.isAbsolute == true) {
+    if (executable.isAbsolute) {
         return executable.toNullIfNotExists()
     }
     
-    val resolutionBase = when {
-        smartResolution -> interpreterDirectory
-        else -> this.path
+    if (!smartResolution) {
+        return this.path?.resolve(executable)
     }
-    val resolved = executable?.removeExtension()?.let { resolutionBase?.resolve(it) }
     
-    return resolved?.toNullIfNotExists()
+    val resolutionBase = when (val parent = executable.parent) {
+        null -> interpreterDirectory
+        else -> interpreterDirectory?.resolve(parent)
+    }
+    
+    return resolutionBase?.takeIf { it.isDirectory() }
+        ?.listDirectoryEntries()
+        ?.find { it.nameWithoutExtension == executable.nameWithoutExtension }
 }
 
 
