@@ -5,7 +5,7 @@ import com.insyncwithfoo.pyright.configurations.changePyrightConfigurations
 import com.insyncwithfoo.pyright.configurations.changePyrightOverrides
 import com.insyncwithfoo.pyright.configurations.models.add
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
-import com.insyncwithfoo.pyright.configurations.pyrightExecutable
+import com.insyncwithfoo.pyright.configurations.pyrightLangserverExecutable
 import com.intellij.openapi.project.Project
 import com.redhat.devtools.lsp4ij.LanguageServerEnablementSupport
 import com.redhat.devtools.lsp4ij.LanguageServerFactory
@@ -22,7 +22,7 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
     override fun isEnabled(project: Project): Boolean {
         val configurations = project.pyrightConfigurations
         val runningModeIsLSP4IJ = configurations.runningMode == RunningMode.LSP4IJ
-        val executable = project.pyrightExecutable
+        val executable = project.pyrightLangserverExecutable
         
         return runningModeIsLSP4IJ && executable != null
     }
