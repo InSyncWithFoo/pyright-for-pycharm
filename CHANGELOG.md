@@ -14,6 +14,16 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 <i>This section is currently empty.</i>
 
 
+## [0.10.0] - 2025-04-13
+
+
+### Fixed
+
+* Previously, the plugin would not resolve executables correctly.
+  This has been fixed.
+* 
+
+
 ## [0.9.0] - 2025-02-24
 
 ### Fixed
@@ -210,7 +220,8 @@ If you encounter a bug, please [file an issue][0.7.0-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.9.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.10.0..HEAD
+  [0.10.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.9.0..v0.10.0
   [0.9.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.8.0..v0.9.0
   [0.8.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.7.0..v0.8.0
   [0.7.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.6.0..v0.7.0
