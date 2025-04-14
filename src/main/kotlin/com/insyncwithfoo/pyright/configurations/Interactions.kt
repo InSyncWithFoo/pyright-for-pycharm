@@ -14,6 +14,26 @@ import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.nameWithoutExtension
 
 
+private val EXECUTABLE_NAMES = listOf("pyright", "basedpyright")
+private val LANGSERVER_EXECUTABLE_NAMES = listOf("pyright-langserver", "basedpyright-langserver")
+
+
+internal fun findPyrightExecutableInPath() =
+    EXECUTABLE_NAMES.firstNotNullOfOrNull { findExecutableInPath(it) }
+
+
+internal fun findPyrightLangserverExecutableInPath() =
+    LANGSERVER_EXECUTABLE_NAMES.firstNotNullOfOrNull { findExecutableInPath(it) }
+
+
+internal fun Project.findPyrightExecutableInVenv() =
+    EXECUTABLE_NAMES.firstNotNullOfOrNull { findExecutableInVenv(it) }
+
+
+internal fun Project.findPyrightLangserverExecutableInVenv() =
+    LANGSERVER_EXECUTABLE_NAMES.firstNotNullOfOrNull { findExecutableInVenv(it) }
+
+
 internal fun Project.resolveExecutable(settingValue: String?, smartResolution: Boolean): Path? {
     val executable = settingValue?.toPathOrNull() ?: return null
     
@@ -42,8 +62,8 @@ internal val Project.pyrightExecutable: Path?
         val executable = configurations.executable
         
         return resolveExecutable(executable, configurations.smartExecutableResolution)
-            ?: findExecutableInVenv("pyright")
-            ?: findExecutableInPath("pyright")
+            ?: findPyrightExecutableInVenv()
+            ?: findPyrightExecutableInPath()
     }
 
 
@@ -53,8 +73,8 @@ internal val Project.pyrightLangserverExecutable: Path?
         val executable = configurations.languageServerExecutable
         
         return resolveExecutable(executable, configurations.smartLanguageServerExecutableResolution)
-            ?: findExecutableInVenv("pyright-langserver")
-            ?: findExecutableInPath("pyright-langserver")
+            ?: findPyrightLangserverExecutableInVenv()
+            ?: findPyrightLangserverExecutableInPath()
     }
 
 

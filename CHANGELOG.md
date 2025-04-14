@@ -21,7 +21,6 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 
 * Previously, the plugin would not resolve executables correctly.
   This has been fixed.
-* 
 
 
 ## [0.9.0] - 2025-02-24

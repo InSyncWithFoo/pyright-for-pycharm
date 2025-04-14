@@ -10,8 +10,6 @@ import com.insyncwithfoo.pyright.configurations.models.Overrides
 import com.insyncwithfoo.pyright.configurations.models.PanelBasedConfigurable
 import com.insyncwithfoo.pyright.configurations.models.projectAndOverrides
 import com.insyncwithfoo.pyright.emptyText
-import com.insyncwithfoo.pyright.findExecutableInPath
-import com.insyncwithfoo.pyright.findExecutableInVenv
 import com.insyncwithfoo.pyright.lsp4ijIsAvailable
 import com.insyncwithfoo.pyright.lspIsAvailable
 import com.insyncwithfoo.pyright.makeFlexible
@@ -159,8 +157,8 @@ private fun PyrightPanel.makeComponent() = panel {
     
     row(message("configurations.executable.label")) {
         executableInput {
-            val detectedExecutable = project?.findExecutableInVenv("pyright")?.toString()
-                ?: findExecutableInPath("pyright")?.toString()
+            val detectedExecutable = project?.findPyrightExecutableInVenv()?.toString()
+                ?: findPyrightExecutableInPath()?.toString()
             
             bindText(state::executable) { detectedExecutable.orEmpty() }
             emptyText = detectedExecutable ?: message("configurations.executable.placeholder")
@@ -174,8 +172,8 @@ private fun PyrightPanel.makeComponent() = panel {
     
     row(message("configurations.languageServerExecutable.label")) {
         languageServerExecutableInput {
-            val detectedExecutable = project?.findExecutableInVenv("pyright-langserver")?.toString()
-                ?: findExecutableInPath("pyright-langserver")?.toString()
+            val detectedExecutable = project?.findPyrightLangserverExecutableInVenv()?.toString()
+                ?: findPyrightLangserverExecutableInPath()?.toString()
             
             bindText(state::languageServerExecutable) { detectedExecutable.orEmpty() }
             emptyText = detectedExecutable ?: message("configurations.executable.placeholder")
