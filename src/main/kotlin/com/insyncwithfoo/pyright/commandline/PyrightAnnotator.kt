@@ -136,13 +136,13 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         
         result.generalDiagnostics.forEach { diagnostic ->
             val message = diagnostic.suffixedMessage
+            val range = document.getOffsetRange(diagnostic.range) ?: return@forEach
             
             val highlightSeverity = inspection.highlightSeverityFor(diagnostic.severity)
             val problemHighlightType = highlightSeverity.toProblemHighlightType()
             val builder = holder.newAnnotation(highlightSeverity, message)
             
             val tooltip = diagnostic.getFormattedTooltip(configurations)
-            val range = document.getOffsetRange(diagnostic.range)
             
             builder.needsUpdateOnTyping()
             builder.tooltip(tooltip)
@@ -158,7 +158,7 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
     
     private fun Diagnostic.makeSuppressFix(document: Document) = when {
         this.isUnsuppressable -> null
-        else -> SuppressQuickFix(rule, document.getOffsetRange(range))
+        else -> document.getOffsetRange(range)?.let { SuppressQuickFix(rule, it) }
     }
     
     private fun AnnotationBuilder.registerQuickFix(

@@ -43,13 +43,18 @@ internal class DiagnosticFeature : LSPDiagnosticFeature() {
         fixes: MutableList<IntentionAction>,
         holder: AnnotationHolder
     ) {
-        val range = document.getOffsetRange(diagnostic.range)
-        
-        val suppressFix = when {
-            diagnostic.isUnsuppressable -> null
-            else -> SuppressQuickFix(diagnostic.codeAsString, range)
+        val newFixes = when (val range = document.getOffsetRange(diagnostic.range)) {
+            null -> fixes
+            
+            else -> {
+                val suppressFix = when {
+                    diagnostic.isUnsuppressable -> null
+                    else -> SuppressQuickFix(diagnostic.codeAsString, range)
+                }
+                
+                fixes + listOfNotNull(suppressFix)
+            }
         }
-        val newFixes = fixes + listOfNotNull(suppressFix)
         
         super.createAnnotation(diagnostic, document, newFixes, holder)
     }
