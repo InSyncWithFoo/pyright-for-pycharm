@@ -152,6 +152,17 @@ private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) =
 private fun Row.useSchemaFromStoreInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.useSchemaFromStore.label")).apply(block)
 
+private fun Row.inlayHintsVariableTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configuration.inlayHintsVariableTypes.label")).apply(block)
+
+private fun Row.inlayHintsCallArgumentNamesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configuration.inlayHintsCallArgumentNames.label")).apply(block)
+
+private fun Row.inlayHintsFunctionReturnTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configuration.inlayHintsFunctionReturnTypes.label")).apply(block)
+
+private fun Row.inlayHintsGenericTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configuration.inlayHintsGenericTypes.label")).apply(block)
 
 @Suppress("DialogTitleCapitalization")
 private fun PyrightPanel.makeComponent() = panel {
@@ -313,6 +324,24 @@ private fun PyrightPanel.makeComponent() = panel {
         row {
             useSchemaFromStoreInput { bindSelected(state::useSchemaFromStore) }
             overrideCheckbox(state::useSchemaFromStore)
+        }
+    }
+    collapsibleGroup(message("configurations.groups.basedpyright")) {
+        row {
+            inlayHintsVariableTypesInput { bindSelected(state::inlayHintsVariableTypes) }
+            overrideCheckbox(state::inlayHintsVariableTypes)
+        }
+        row {
+            inlayHintsCallArgumentNamesInput { bindSelected(state::inlayHintsCallArgumentNames) }
+            overrideCheckbox(state::inlayHintsCallArgumentNames)
+        }
+        row {
+            inlayHintsFunctionReturnTypesInput { bindSelected(state::inlayHintsFunctionReturnTypes) }
+            overrideCheckbox(state::inlayHintsFunctionReturnTypes)
+        }
+        row {
+            inlayHintsGenericTypesInput { bindSelected(state::inlayHintsGenericTypes) }
+            overrideCheckbox(state::inlayHintsGenericTypes)
         }
     }
     

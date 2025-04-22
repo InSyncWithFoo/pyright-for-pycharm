@@ -9,11 +9,20 @@ internal operator fun <T : Builder> T.invoke(block: T.() -> Unit) {
 }
 
 
+internal data class InlayHints(
+    var variableTypes: Boolean = true,
+    var callArgumentNames: Boolean = true,
+    var functionReturnTypes: Boolean = true,
+    var genericTypes: Boolean = false,
+) : Builder
+
+
 internal data class Analysis(
     var logLevel: String? = null,
     var autoImportCompletions: Boolean? = null,
     var diagnosticMode: String? = null,
-    var autoSearchPaths: Boolean = true
+    var autoSearchPaths: Boolean = true,
+    var inlayHints: InlayHints = InlayHints()
 ) : Builder
 
 
