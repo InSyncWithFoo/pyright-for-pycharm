@@ -21,7 +21,6 @@ import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
 import com.intellij.lang.annotation.HighlightSeverity
-import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.module.Module
@@ -29,6 +28,7 @@ import com.intellij.openapi.module.ModuleUtilCore
 import com.intellij.openapi.progress.runBlockingCancellable
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.vfs.toNioPathOrNull
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
@@ -137,18 +137,18 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         result.generalDiagnostics.forEach { diagnostic ->
             val message = diagnostic.suffixedMessage
             
+            val range = document.getOffsetRange(diagnostic.range) ?: return@forEach
+            val tooltip = diagnostic.getFormattedTooltip(configurations)
+            
             val highlightSeverity = inspection.highlightSeverityFor(diagnostic.severity)
             val problemHighlightType = highlightSeverity.toProblemHighlightType()
             val builder = holder.newAnnotation(highlightSeverity, message)
-            
-            val tooltip = diagnostic.getFormattedTooltip(configurations)
-            val range = document.getOffsetRange(diagnostic.range)
             
             builder.needsUpdateOnTyping()
             builder.tooltip(tooltip)
             builder.range(range)
             
-            diagnostic.makeSuppressFix(document)?.let {
+            diagnostic.makeSuppressFix(range)?.let {
                 builder.registerQuickFix(file, message, it, problemHighlightType)
             }
             
@@ -156,9 +156,9 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         }
     }
     
-    private fun Diagnostic.makeSuppressFix(document: Document) = when {
+    private fun Diagnostic.makeSuppressFix(range: TextRange) = when {
         this.isUnsuppressable -> null
-        else -> SuppressQuickFix(rule, document.getOffsetRange(range))
+        else -> SuppressQuickFix(rule, range)
     }
     
     private fun AnnotationBuilder.registerQuickFix(
