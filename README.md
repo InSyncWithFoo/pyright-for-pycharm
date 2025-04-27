@@ -37,7 +37,7 @@ You can also download the ZIP files manually from [the <i>Releases</i> tab][9],
 and follow the instructions described [here][12].
 
 Currently supported versions:
-2024.2 (build 242.20224.347) and later.
+2025.1 (build 251.23774.444) and later.
 
 
 ## Credits
