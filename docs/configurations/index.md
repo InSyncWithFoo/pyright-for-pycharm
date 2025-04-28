@@ -14,11 +14,6 @@ Override settings are stored in the `pyright-overrides.xml` file
 in the same directory. This file should not be committed,
 as its purpose is to allow overriding project defaults.
 
-!!! note
-
-    To configure highlight severity levels,
-    use [the inspection entry][3]'s corresponding pane.
-
 
 ## Minimum requirements
 
@@ -28,4 +23,3 @@ Note that different [running modes][2] require different executables.
 
   [1]: executables.md
   [2]: running-modes.md
-  [3]: inspection.md

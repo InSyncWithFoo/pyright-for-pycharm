@@ -9,18 +9,17 @@ Make sure that:
   (<b>Project</b> | <b>Python Interpreter</b>).
 * [The executable][1] is given and is correct.
 * The plugin itself is enabled (<b>Plugins</b>).
-* [The inspection entry][2] is enabled (legacy, <i>Command line</i> mode only).
 
 Other things to try:
 
 * Reinstall the plugin or update to the latest version.
 * Reopen the files, reopen the project or restart the IDE.
-* [Restart the language server][3].
+* [Restart the language server][2].
 * Restart your machine.
 * Reinstall/reset the IDE.
 
 If the problem persists, please report it to
-[the plugin's issue tracker][4].
+[the plugin's issue tracker][3].
 
 
 ## Fatal error
@@ -29,7 +28,7 @@ This most likely suggests a Pyright bug.
 
 Disable the plugin immediately to avoid hardware problems.
 Try to narrow the problem as much as possible,
-then report it to [Pyright's issue tracker][5].
+then report it to [Pyright's issue tracker][4].
 
 
 ## Cannot parse configuration file
@@ -45,9 +44,9 @@ which is reported to be invalid.
 This most likely means that the executable you provide
 doesn't support the options used by the plugin.
 
-If you are using [the official NPM package][6] or
-[the community-maintained PyPI package][7],
-please report the problem to [the plugin's issue tracker][4]
+If you are using [the official NPM package][5] or
+[the community-maintained PyPI package][6],
+please report the problem to [the plugin's issue tracker][3]
 along with the version of Pyright you are using, which can be
 retrieved by running `<path-to-pyright> --version` in your terminal.
 
@@ -57,7 +56,7 @@ retrieved by running `<path-to-pyright> --version` in your terminal.
 This most likely mean that there is an error while running the executable,
 which causes the output to be invalid as JSON and thus cannot be parsed.
 It could also mean that the output is valid JSON,
-but does not follow [the officially documented schemas][8].
+but does not follow [the officially documented schemas][7].
 
 Update Pyright to the latest version may help.
 For custom executables, maintain compatibility with said version.
@@ -66,7 +65,7 @@ For custom executables, maintain compatibility with said version.
 ### Other inspections are taking too long
 
 Since the command line mode invokes a command-line tool,
-it must be registered as an [`ExternalAnnotator`][9].
+it must be registered as an [`ExternalAnnotator`][8].
 Inspectors of this kind will only run
 when all other background tasks have finished.
 
@@ -79,7 +78,7 @@ Unlike Mypy, Pyright does not cache previous results.
 As such, everytime it runs on a given <em>file</em>,
 it also has to reprocess all other files that file depends on.
 
-For better performance, use LSP4IJ mode instead.
+For better performance, use [a LSP mode][9] instead.
 
 
 ### Your code triggers a Pyright bug
@@ -90,11 +89,11 @@ If this seems to be the case, treat it as a fatal error.
 
 
   [1]: configurations/executables.md
-  [2]: configurations/inspection.md
-  [3]: how-to.md#how-to-restart-the-language-server
-  [4]: https://github.com/InSyncWithFoo/pyright-for-pycharm/issues
-  [5]: https://github.com/microsoft/pyright/issues
-  [6]: https://www.npmjs.com/package/pyright
-  [7]: https://pypi.org/project/pyright/
-  [8]: https://microsoft.github.io/pyright/#/command-line?id=json-output
-  [9]: https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator
+  [2]: how-to.md#how-to-restart-the-language-server
+  [3]: https://github.com/InSyncWithFoo/pyright-for-pycharm/issues
+  [4]: https://github.com/microsoft/pyright/issues
+  [5]: https://www.npmjs.com/package/pyright
+  [6]: https://pypi.org/project/pyright/
+  [7]: https://microsoft.github.io/pyright/#/command-line?id=json-output
+  [8]: https://plugins.jetbrains.com/docs/intellij/syntax-highlighting-and-error-highlighting.html#external-annotator
+  [9]: configurations/running-modes.md

@@ -51,6 +51,14 @@ private val PsiElement.module: Module?
     get() = ModuleUtilCore.findModuleForPsiElement(this) ?: project.modules.singleOrNull()
 
 
+internal fun DiagnosticSeverity.toHighlightSeverity() =
+    when (this) {
+        DiagnosticSeverity.ERROR -> HighlightSeverity.ERROR
+        DiagnosticSeverity.WARNING -> HighlightSeverity.WARNING
+        DiagnosticSeverity.INFORMATION -> HighlightSeverity.WEAK_WARNING
+    }
+
+
 private fun HighlightSeverity.toProblemHighlightType() =
     ProblemHighlightType.valueOf(this.name.replace(" ", "_"))
 
@@ -58,21 +66,17 @@ private fun HighlightSeverity.toProblemHighlightType() =
 internal data class InitialInfo(
     val module: Module,
     val configurations: PyrightConfigurations,
-    val inspection: PyrightInspection,
     val path: Path
 )
 
 
 internal data class AnnotationResult(
     val configurations: PyrightConfigurations,
-    val inspection: PyrightInspection,
     val result: Result
 )
 
 
 internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResult>(), DumbAware {
-    
-    override fun getPairedBatchInspectionShortName() = PyrightInspection.SHORT_NAME
     
     override fun collectInformation(file: PsiFile, editor: Editor, hasErrors: Boolean): InitialInfo? {
         if (!file.isSupportedByPyright) {
@@ -98,14 +102,13 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         
         val module = file.module ?: return null
         val path = file.virtualFile?.toNioPathOrNull() ?: return null
-        val inspection = file.pyrightInspection
         
-        return InitialInfo(module, configurations, inspection, path)
+        return InitialInfo(module, configurations, path)
     }
     
     @Suppress("UnstableApiUsage")
     override fun doAnnotate(collectedInfo: InitialInfo?): AnnotationResult? {
-        val (module, configurations, inspection, path) = collectedInfo ?: return null
+        val (module, configurations, path) = collectedInfo ?: return null
         val command = FileCommand.create(module, path) ?: return null
         val project = module.project
         
@@ -127,11 +130,11 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
             return null
         }
         
-        return AnnotationResult(configurations, inspection, result)
+        return AnnotationResult(configurations, result)
     }
     
     override fun apply(file: PsiFile, annotationResult: AnnotationResult?, holder: AnnotationHolder) {
-        val (configurations, inspection, result) = annotationResult ?: return
+        val (configurations, result) = annotationResult ?: return
         val document = file.viewProvider.document ?: return
         
         result.generalDiagnostics.forEach { diagnostic ->
@@ -140,7 +143,7 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
             val range = document.getOffsetRange(diagnostic.range) ?: return@forEach
             val tooltip = diagnostic.getFormattedTooltip(configurations)
             
-            val highlightSeverity = inspection.highlightSeverityFor(diagnostic.severity)
+            val highlightSeverity = diagnostic.severity.toHighlightSeverity()
             val problemHighlightType = highlightSeverity.toProblemHighlightType()
             val builder = holder.newAnnotation(highlightSeverity, message)
             

@@ -72,7 +72,6 @@ nav:
     - Overview: configurations/index.md
     - Running modes: configurations/running-modes.md
     - Executables: configurations/executables.md
-    - Inspection: configurations/inspection.md
     - Others: configurations/others.md
   - Other features: features.md
   - Problems: problems.md
