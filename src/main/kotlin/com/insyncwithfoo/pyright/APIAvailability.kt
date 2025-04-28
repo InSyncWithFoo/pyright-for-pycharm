@@ -14,7 +14,6 @@ internal val lsp4ijIsAvailable: Boolean
     }
 
 
-@Suppress("UnstableApiUsage")
 internal val lspIsAvailable by lazy {
     try {
         LspServerSupportProvider

@@ -6,12 +6,10 @@ import com.intellij.platform.lsp.api.LspServerSupportProvider
 import com.redhat.devtools.lsp4ij.LanguageServerManager
 
 
-@Suppress("UnstableApiUsage")
 internal val Project.lspServerManager: LspServerManager
     get() = LspServerManager.getInstance(this)
 
 
-@Suppress("UnstableApiUsage")
 internal inline fun <reified T : LspServerSupportProvider> Project.restartNativeServers() {
     if (lspIsAvailable && this.isNormal) {
         lspServerManager.stopAndRestartIfNeeded(T::class.java)

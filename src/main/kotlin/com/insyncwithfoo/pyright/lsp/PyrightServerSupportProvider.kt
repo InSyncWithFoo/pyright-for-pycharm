@@ -24,7 +24,6 @@ private val PsiElement.module: Module?
     get() = ModuleUtilCore.findModuleForPsiElement(this) ?: project.modules.singleOrNull()
 
 
-@Suppress("UnstableApiUsage")
 internal class PyrightServerSupportProvider : LspServerSupportProvider {
     
     override fun createLspServerWidgetItem(lspServer: LspServer, currentFile: VirtualFile?) =

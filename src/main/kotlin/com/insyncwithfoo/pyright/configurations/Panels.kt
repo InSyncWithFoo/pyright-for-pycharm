@@ -15,6 +15,7 @@ import com.insyncwithfoo.pyright.lspIsAvailable
 import com.insyncwithfoo.pyright.makeFlexible
 import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.radioButtonFor
+import com.insyncwithfoo.pyright.radioButtonForPotentiallyUnavailable
 import com.insyncwithfoo.pyright.singleFileTextField
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
@@ -193,12 +194,8 @@ private fun PyrightPanel.makeComponent() = panel {
     val runningModeInputGroup = runningModeInputGroup {
         row(message("configurations.runningMode.label")) {
             radioButtonFor(RunningMode.COMMAND_LINE)
-            radioButtonFor(RunningMode.LSP4IJ) { label ->
-                message("configurations.runningMode.unavailable", label).takeUnless { lsp4ijIsAvailable }
-            }
-            radioButtonFor(RunningMode.LSP) { label ->
-                message("configurations.runningMode.unavailable", label).takeUnless { lspIsAvailable }
-            }
+            radioButtonForPotentiallyUnavailable(RunningMode.LSP4IJ) { lsp4ijIsAvailable }
+            radioButtonForPotentiallyUnavailable(RunningMode.LSP) { lspIsAvailable }
             
             overrideCheckbox(state::runningMode)
         }

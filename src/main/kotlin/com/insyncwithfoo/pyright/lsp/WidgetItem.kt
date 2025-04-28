@@ -7,6 +7,5 @@ import com.intellij.platform.lsp.api.LspServer
 import com.intellij.platform.lsp.api.lsWidget.LspServerWidgetItem
 
 
-@Suppress("UnstableApiUsage")
 internal class WidgetItem(lspServer: LspServer, currentFile: VirtualFile?) :
     LspServerWidgetItem(lspServer, currentFile, PyrightIcons.TINY_16_WHITE, PyrightConfigurable::class.java)

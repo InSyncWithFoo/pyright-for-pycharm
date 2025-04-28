@@ -12,16 +12,22 @@ import com.intellij.ui.dsl.builder.bindText
 import javax.swing.JComponent
 
 
-internal fun Row.singleFileTextField() =
-    textFieldWithBrowseButton(fileChooserDescriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor())
+@Suppress("UnstableApiUsage")
+internal fun Row.singleFileTextField(): Cell<TextFieldWithBrowseButton> {
+    val fileChooserDescriptor = FileChooserDescriptorFactory.singleFile()
+    val (project, fileChosen) = Pair(null, null)
+    
+    return textFieldWithBrowseButton(fileChooserDescriptor, project, fileChosen)
+}
 
 
-internal fun Row.singleFolderTextField() =
-    textFieldWithBrowseButton(fileChooserDescriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor())
-
-
-internal fun <C : JComponent> Cell<C>.applyReturningComponent(block: Cell<C>.() -> Unit) =
-    this.apply(block).component
+@Suppress("UnstableApiUsage")
+internal fun Row.singleFolderTextField(): Cell<TextFieldWithBrowseButton> {
+    val fileChooserDescriptor = FileChooserDescriptorFactory.singleDir()
+    val (project, fileChosen) = Pair(null, null)
+    
+    return textFieldWithBrowseButton(fileChooserDescriptor, project, fileChosen)
+}
 
 
 internal fun <C : JComponent> Cell<C>.makeFlexible() = apply {
@@ -71,5 +77,11 @@ internal fun Row.radioButtonFor(item: Labeled) =
     radioButton(item.label, item)
 
 
-internal fun Row.radioButtonFor(item: Labeled, getContextDependentLabel: (String) -> String?) =
-    radioButton(getContextDependentLabel(item.label) ?: item.label, item)
+internal fun Row.radioButtonForPotentiallyUnavailable(item: Labeled, itemIsAvailable: () -> Boolean) = run {
+    val label = when (itemIsAvailable()) {
+        true -> item.label
+        else -> message("configurations.unavailable", item.label)
+    }
+    
+    radioButton(label, item)
+}

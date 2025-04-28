@@ -61,7 +61,6 @@ private fun CompletionItem.removeTrailingQuoteSequence() {
 }
 
 
-@Suppress("UnstableApiUsage")
 internal class CompletionSupport(project: Project) : LspCompletionSupport() {
     
     private val configurations = project.pyrightConfigurations

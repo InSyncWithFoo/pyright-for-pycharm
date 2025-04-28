@@ -9,7 +9,6 @@ import org.eclipse.lsp4j.DidChangeConfigurationParams
 import org.eclipse.lsp4j.InitializeResult
 
 
-@Suppress("UnstableApiUsage")
 internal class Listener(val project: Project, private val module: Module? = null) : LspServerListener {
     
     override fun serverInitialized(params: InitializeResult) {

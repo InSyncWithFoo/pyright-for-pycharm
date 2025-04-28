@@ -18,7 +18,6 @@ import org.eclipse.lsp4j.Diagnostic
 import org.eclipse.lsp4j.DiagnosticSeverity
 
 
-@Suppress("UnstableApiUsage")
 internal class DiagnosticsSupport(private val project: Project) : LspDiagnosticsSupport() {
     
     override fun getHighlightSeverity(diagnostic: Diagnostic): HighlightSeverity? {
