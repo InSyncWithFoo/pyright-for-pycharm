@@ -287,8 +287,6 @@
       
         
       
-        
-      
     
     
     
@@ -362,27 +360,6 @@
   
   <span class="md-ellipsis">
     Executables
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../configurations/inspection/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Inspection
   </span>
   
 
@@ -761,7 +738,6 @@
   (<b>Project</b> | <b>Python Interpreter</b>).</li>
 <li><a href="../configurations/executables/">The executable</a> is given and is correct.</li>
 <li>The plugin itself is enabled (<b>Plugins</b>).</li>
-<li><a href="../configurations/inspection/">The inspection entry</a> is enabled (legacy, <i>Command line</i> mode only).</li>
 </ul>
 <p>Other things to try:</p>
 <ul>
@@ -807,7 +783,7 @@ when all other background tasks have finished.</p>
 <p>Unlike Mypy, Pyright does not cache previous results.
 As such, everytime it runs on a given <em>file</em>,
 it also has to reprocess all other files that file depends on.</p>
-<p>For better performance, use LSP4IJ mode instead.</p>
+<p>For better performance, use <a href="../configurations/running-modes/">a LSP mode</a> instead.</p>
 <h3 id="your-code-triggers-a-pyright-bug">Your code triggers a Pyright bug<a class="headerlink" href="#your-code-triggers-a-pyright-bug" title="Permanent link">#</a></h3>
 <p>In some rare cases, Pyright might be stuck in an infinite loop or similar.</p>
 <p>If this seems to be the case, treat it as a fatal error.</p>
