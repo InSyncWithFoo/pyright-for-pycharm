@@ -6,9 +6,6 @@
 Whether the language server should be
 automatically restarted on configuration change.
 
-[Highlight severity level settings][1]
-will not trigger this behaviour.
-
 Default: `true`
 
 !!! note
@@ -198,7 +195,7 @@ Uncheck this option to use the IDE's native implementation
 when applying quoted completions,
 which may insert extraneous trailing quotes.
 
-Upstream issue: [IJPL-155741][2].
+Upstream issue: [IJPL-155741][1].
 
 Default: `true`
 
@@ -240,7 +237,7 @@ Default: `py`, `pyi`, `pyw`
 !!! note
 
     Presumably, due to a limitation/bug of IntelliJ,
-    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][3])
+    characters like "🔥" (U+1F525 Fire, the extension for [Mojo][2])
     cannot be serialized correctly into setting files
     and therefore will not persist between IDE sessions.
 
@@ -251,7 +248,7 @@ Default: `py`, `pyi`, `pyw`
 ## Workspace folders
 
 The folders defined by this option will be passed
-to the language server as "[workspace folders][4]".
+to the language server as "[workspace folders][3]".
 Pyright will only recognize `pyproject.toml`/`pyrightconfig.json` files
 which are direct children of these folders.
 
@@ -285,10 +282,10 @@ Default: <i>Open files only</i>
 !!! note
 
     Language server logs are not recorded in `idea.log` by default.
-    You need to manually [enable it][6].
+    You need to manually [enable it][5].
 
 Modify this option to make the language server
-emit more or less [log messages][7].
+emit more or less log messages.
 
 This corresponds to the `python.analysis.logLevel` setting.
 
@@ -324,9 +321,8 @@ Default: <i>0</i>
     Modifying it will cause an error for older versions.
 
 
-  [1]: inspection.md#highlight-severity-levels
-  [2]: https://youtrack.jetbrains.com/issue/IJPL-155741
-  [3]: https://www.modular.com/mojo
-  [4]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
-  [5]: https://www.jetbrains.com/help/pycharm/content-root.html
-  [6]: ../how-to.md#how-to-enable-language-server-logging
+  [1]: https://youtrack.jetbrains.com/issue/IJPL-155741
+  [2]: https://www.modular.com/mojo
+  [3]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_workspaceFolders
+  [4]: https://www.jetbrains.com/help/pycharm/content-root.html
+  [5]: ../how-to.md#how-to-enable-language-server-logging

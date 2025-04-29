@@ -1,7 +1,5 @@
 package com.insyncwithfoo.pyright.lsp4ij
 
-import com.insyncwithfoo.pyright.commandline.highlightSeverityFor
-import com.insyncwithfoo.pyright.commandline.pyrightInspection
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
 import com.insyncwithfoo.pyright.shared.SuppressQuickFix
 import com.insyncwithfoo.pyright.shared.codeAsString
@@ -32,10 +30,6 @@ internal class DiagnosticFeature : LSPDiagnosticFeature() {
     
     override fun getTooltip(diagnostic: Diagnostic) =
         diagnostic.getFormattedTooltip(configurations)
-    
-    override fun getHighlightSeverity(diagnostic: Diagnostic) =
-        project.pyrightInspection.highlightSeverityFor(diagnostic.severity)
-            ?: super.getHighlightSeverity(diagnostic)
     
     override fun createAnnotation(
         diagnostic: Diagnostic,

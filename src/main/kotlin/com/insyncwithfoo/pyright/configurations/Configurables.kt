@@ -1,6 +1,5 @@
 package com.insyncwithfoo.pyright.configurations
 
-import com.insyncwithfoo.pyright.commandline.pyrightInspectionisEnabled
 import com.insyncwithfoo.pyright.configurations.models.PanelBasedConfigurable
 import com.insyncwithfoo.pyright.configurations.models.ProjectBasedConfigurable
 import com.insyncwithfoo.pyright.configurations.models.copy
@@ -36,8 +35,6 @@ internal class PyrightConfigurable : PanelBasedConfigurable<PyrightConfiguration
         syncStateWithService(state, service.state)
         
         openProjects.forEach { project ->
-            project.pyrightInspectionisEnabled = state.runningMode == RunningMode.COMMAND_LINE
-            
             project.toggleServers()
         }
     }
@@ -59,8 +56,6 @@ internal class PyrightProjectConfigurable(override val project: Project) :
     override fun afterApply() {
         syncStateWithService(state, service.state)
         syncStateWithService(overrideState, overrideService.state)
-        
-        project.pyrightInspectionisEnabled = state.runningMode == RunningMode.COMMAND_LINE
         
         project.toggleServers()
     }
