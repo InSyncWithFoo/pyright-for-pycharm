@@ -12,6 +12,17 @@ internal class PyrightServerClient(project: Project) : LanguageClientImpl(projec
     override fun createSettings() =
         project.createLSPSettingsObject().also { thisLogger().info(it.toString()) }
     
+    override fun findSettings(section: String?): Any? {
+        val settings = project.createLSPSettingsObject()
+        
+        return when (section) {
+            "python" -> settings
+            "python.analysis" -> settings.python.analysis
+            "pyright" -> settings.pyright
+            else -> null
+        }
+    }
+    
     override fun handleServerStatusChanged(serverStatus: ServerStatus) {
         if (serverStatus == ServerStatus.started) {
             triggerChangeConfiguration()
