@@ -16,7 +16,7 @@ internal class PyrightServerClient(project: Project) : LanguageClientImpl(projec
         val settings = project.createLSPSettingsObject()
         
         return when (section) {
-            "python" -> settings
+            "python" -> settings.python
             "python.analysis" -> settings.python.analysis
             "pyright" -> settings.pyright
             else -> null
