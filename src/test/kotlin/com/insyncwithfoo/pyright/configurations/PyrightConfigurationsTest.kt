@@ -48,6 +48,12 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(0, numberOfThreads)
             
             assertEquals(false, useSchemaFromStore)
+            
+            // basedpyright only
+            assertEquals(true, inlayHintsVariableTypes)
+            assertEquals(true, inlayHintsCallArgumentNames)
+            assertEquals(true, inlayHintsFunctionReturnTypes)
+            assertEquals(false, inlayHintsGenericTypes)
         }
     }
     
