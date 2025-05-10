@@ -11,7 +11,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
     
     @Test
     fun `test shape`() {
-        assertEquals(27, fields.size)
+        assertEquals(33, fields.size)
         
         state.apply {
             assertEquals(null, executable)
@@ -48,6 +48,14 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(0, numberOfThreads)
             
             assertEquals(false, useSchemaFromStore)
+            
+            // basedpyright only
+            assertEquals(true, inlayHintsVariableTypes)
+            assertEquals(true, inlayHintsCallArgumentNames)
+            assertEquals(true, inlayHintsFunctionReturnTypes)
+            assertEquals(false, inlayHintsGenericTypes)
+            assertEquals(false, useTypingExtensions)
+            assertEquals(10, fileEnumerationTimeout)
         }
     }
     

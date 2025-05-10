@@ -153,6 +153,30 @@ private fun Row.useSchemaFromStoreInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.useSchemaFromStore.label")).apply(block)
 
 
+private fun Row.inlayHintsVariableTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.inlayHintsVariableTypes.label")).apply(block)
+
+
+private fun Row.inlayHintsCallArgumentNamesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.inlayHintsCallArgumentNames.label")).apply(block)
+
+
+private fun Row.inlayHintsFunctionReturnTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.inlayHintsFunctionReturnTypes.label")).apply(block)
+
+
+private fun Row.inlayHintsGenericTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.inlayHintsGenericTypes.label")).apply(block)
+
+
+private fun Row.useTypingExtensionsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.useTypingExtensions.label")).apply(block)
+
+
+private fun Row.fileEnumerationTimeoutInput(block: Cell<JBIntSpinner>.() -> Unit) =
+    spinner(0..1_000_000, step = 1).apply(block)
+
+
 @Suppress("DialogTitleCapitalization")
 private fun PyrightPanel.makeComponent() = panel {
     
@@ -313,6 +337,33 @@ private fun PyrightPanel.makeComponent() = panel {
         row {
             useSchemaFromStoreInput { bindSelected(state::useSchemaFromStore) }
             overrideCheckbox(state::useSchemaFromStore)
+        }
+    }
+    
+    collapsibleGroup(message("configurations.groups.basedpyright")) {
+        row {
+            inlayHintsVariableTypesInput { bindSelected(state::inlayHintsVariableTypes) }
+            overrideCheckbox(state::inlayHintsVariableTypes)
+        }
+        row {
+            inlayHintsCallArgumentNamesInput { bindSelected(state::inlayHintsCallArgumentNames) }
+            overrideCheckbox(state::inlayHintsCallArgumentNames)
+        }
+        row {
+            inlayHintsFunctionReturnTypesInput { bindSelected(state::inlayHintsFunctionReturnTypes) }
+            overrideCheckbox(state::inlayHintsFunctionReturnTypes)
+        }
+        row {
+            inlayHintsGenericTypesInput { bindSelected(state::inlayHintsGenericTypes) }
+            overrideCheckbox(state::inlayHintsGenericTypes)
+        }
+        row {
+            useTypingExtensionsInput { bindSelected(state::useTypingExtensions) }
+            overrideCheckbox(state::useTypingExtensions)
+        }
+        row(message("configurations.fileEnumerationTimeout.label")) {
+            fileEnumerationTimeoutInput { bindIntValue(state::fileEnumerationTimeout) }
+            overrideCheckbox(state::fileEnumerationTimeout)
         }
     }
     

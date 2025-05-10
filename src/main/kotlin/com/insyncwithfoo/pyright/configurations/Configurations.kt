@@ -124,6 +124,14 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var numberOfThreads by property(0)
     
     var useSchemaFromStore by property(false)
+    
+    // basedpyright only
+    var inlayHintsVariableTypes by property(true)
+    var inlayHintsCallArgumentNames by property(true)
+    var inlayHintsFunctionReturnTypes by property(true)
+    var inlayHintsGenericTypes by property(false)
+    var useTypingExtensions by property(false)
+    var fileEnumerationTimeout by property(10)
 }
 
 
