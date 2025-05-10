@@ -54,6 +54,8 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(true, inlayHintsCallArgumentNames)
             assertEquals(true, inlayHintsFunctionReturnTypes)
             assertEquals(false, inlayHintsGenericTypes)
+            assertEquals(false, useTypingExtensions)
+            assertEquals(10, fileEnumerationTimeout)
         }
     }
     

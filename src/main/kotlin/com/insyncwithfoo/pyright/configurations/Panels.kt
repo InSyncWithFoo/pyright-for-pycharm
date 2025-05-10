@@ -153,16 +153,22 @@ private fun Row.useSchemaFromStoreInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.useSchemaFromStore.label")).apply(block)
 
 private fun Row.inlayHintsVariableTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configuration.inlayHintsVariableTypes.label")).apply(block)
+    checkBox(message("configurations.inlayHintsVariableTypes.label")).apply(block)
 
 private fun Row.inlayHintsCallArgumentNamesInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configuration.inlayHintsCallArgumentNames.label")).apply(block)
+    checkBox(message("configurations.inlayHintsCallArgumentNames.label")).apply(block)
 
 private fun Row.inlayHintsFunctionReturnTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configuration.inlayHintsFunctionReturnTypes.label")).apply(block)
+    checkBox(message("configurations.inlayHintsFunctionReturnTypes.label")).apply(block)
 
 private fun Row.inlayHintsGenericTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
-    checkBox(message("configuration.inlayHintsGenericTypes.label")).apply(block)
+    checkBox(message("configurations.inlayHintsGenericTypes.label")).apply(block)
+
+private fun Row.useTypingExtensionsInput(block: Cell<JBCheckBox>.() -> Unit) =
+    checkBox(message("configurations.useTypingExtensions.label")).apply(block)
+
+private fun Row.fileEnumerationTimeoutInput(block: Cell<JBIntSpinner>.() -> Unit) =
+    spinner(0..1_000_000, step = 1).apply(block)
 
 @Suppress("DialogTitleCapitalization")
 private fun PyrightPanel.makeComponent() = panel {
@@ -342,6 +348,14 @@ private fun PyrightPanel.makeComponent() = panel {
         row {
             inlayHintsGenericTypesInput { bindSelected(state::inlayHintsGenericTypes) }
             overrideCheckbox(state::inlayHintsGenericTypes)
+        }
+        row {
+            useTypingExtensionsInput { bindSelected(state::useTypingExtensions) }
+            overrideCheckbox(state::useTypingExtensions)
+        }
+        row(message("configurations.fileEnumerationTimeout.label")) {
+            fileEnumerationTimeoutInput { bindIntValue(state::fileEnumerationTimeout) }
+            overrideCheckbox(state::fileEnumerationTimeout)
         }
     }
     
