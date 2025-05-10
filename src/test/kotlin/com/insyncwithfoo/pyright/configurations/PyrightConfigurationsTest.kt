@@ -11,7 +11,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
     
     @Test
     fun `test shape`() {
-        assertEquals(27, fields.size)
+        assertEquals(33, fields.size)
         
         state.apply {
             assertEquals(null, executable)
