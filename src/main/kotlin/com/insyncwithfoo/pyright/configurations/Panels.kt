@@ -152,23 +152,30 @@ private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) =
 private fun Row.useSchemaFromStoreInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.useSchemaFromStore.label")).apply(block)
 
+
 private fun Row.inlayHintsVariableTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.inlayHintsVariableTypes.label")).apply(block)
+
 
 private fun Row.inlayHintsCallArgumentNamesInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.inlayHintsCallArgumentNames.label")).apply(block)
 
+
 private fun Row.inlayHintsFunctionReturnTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.inlayHintsFunctionReturnTypes.label")).apply(block)
+
 
 private fun Row.inlayHintsGenericTypesInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.inlayHintsGenericTypes.label")).apply(block)
 
+
 private fun Row.useTypingExtensionsInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.useTypingExtensions.label")).apply(block)
 
+
 private fun Row.fileEnumerationTimeoutInput(block: Cell<JBIntSpinner>.() -> Unit) =
     spinner(0..1_000_000, step = 1).apply(block)
+
 
 @Suppress("DialogTitleCapitalization")
 private fun PyrightPanel.makeComponent() = panel {
@@ -332,6 +339,7 @@ private fun PyrightPanel.makeComponent() = panel {
             overrideCheckbox(state::useSchemaFromStore)
         }
     }
+    
     collapsibleGroup(message("configurations.groups.basedpyright")) {
         row {
             inlayHintsVariableTypesInput { bindSelected(state::inlayHintsVariableTypes) }

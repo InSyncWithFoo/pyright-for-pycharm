@@ -130,8 +130,8 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var inlayHintsCallArgumentNames by property(true)
     var inlayHintsFunctionReturnTypes by property(true)
     var inlayHintsGenericTypes by property(false)
-    var useTypingExtensions  by property(false)
-    var fileEnumerationTimeout   by property(10)
+    var useTypingExtensions by property(false)
+    var fileEnumerationTimeout by property(10)
 }
 
 
