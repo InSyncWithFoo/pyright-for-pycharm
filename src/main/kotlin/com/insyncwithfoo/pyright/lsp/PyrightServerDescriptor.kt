@@ -22,6 +22,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServerDescriptor
 import java.net.URI
 import java.nio.file.Path
+import org.eclipse.lsp4j.ClientCapabilities
 
 
 private fun Project.getModuleSourceRoots(): Collection<VirtualFile> =
@@ -51,6 +52,13 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     override val lspHoverSupport = configurations.hover
     override val lspCompletionSupport = CompletionSupport(project).takeIf { configurations.completion }
     override val lspDiagnosticsSupport = DiagnosticsSupport(project).takeIf { configurations.diagnostics }
+    
+    override val clientCapabilities: ClientCapabilities
+        get() = super.clientCapabilities.apply {
+            textDocument.apply {
+                diagnostic = null
+            }
+        }
     
     private val wslDistribution by lazy { module?.wslDistribution }
     
