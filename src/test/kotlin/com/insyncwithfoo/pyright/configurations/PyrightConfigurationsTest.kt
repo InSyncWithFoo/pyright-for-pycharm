@@ -19,7 +19,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(null, languageServerExecutable)
             assertEquals(false, smartLanguageServerExecutableResolution)
             assertEquals(null, configurationFile)
-            assertEquals(RunningMode.COMMAND_LINE, runningMode)
+            assertEquals(RunningMode.LSP, runningMode)
             
             assertEquals(true, autoRestartServers)
             

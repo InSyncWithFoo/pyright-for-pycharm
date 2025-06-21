@@ -42,9 +42,6 @@ This mode requires two things to work correctly:
 If any of these requirements are not met,
 [a notification][3] will be displayed.
 
-Due to backward compatibility, this is the default mode.
-However, for better performance, LSP4IJ mode is recommended.
-
 
 ## <i>LSP4IJ</i> and <i>Native LSP client</i> modes
 
@@ -57,7 +54,7 @@ either [the LSP4IJ plugin][4], or [the native client][5] built into the IDE.
 but doing so is not recommended.
 
 The differences between them are that of the client libraries.
-To use the native client, you must be using a paid IDE.
+To use the native client, you must be using a paid IDE, or the unified PyCharm.
 On the other hand, LSP4IJ can be installed on any IDE.
 
 
@@ -67,11 +64,11 @@ On the other hand, LSP4IJ can be installed on any IDE.
 | Can be used on      | Paid IDEs                | All IDEs                  |
 | Supported features* | [Few][7]                 | [Much wider range][8]     |
 | UI integrations     | Better                   | Good                      |
-| API stability       | Unstable                 | Unstable                  |
+| API stability       | Stable                   | Unstable                  |
 
 
 !!! warning
-    On a (paid) IDE with both clients available, a `LinkageError`
+    On an IDE with both clients available, a `LinkageError`
     will be thrown if <i>Native LSP client</i> is selected.
     This is [a known limitation][9].
 
