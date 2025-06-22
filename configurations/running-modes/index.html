@@ -707,8 +707,6 @@ in the form of visual annotations.</p>
 </ul>
 <p>If any of these requirements are not met,
 <a href="../../problems/">a notification</a> will be displayed.</p>
-<p>Due to backward compatibility, this is the default mode.
-However, for better performance, LSP4IJ mode is recommended.</p>
 <h2 id="lsp4ij-and-native-lsp-client-modes"><i>LSP4IJ</i> and <i>Native LSP client</i> modes<a class="headerlink" href="#lsp4ij-and-native-lsp-client-modes" title="Permanent link">#</a></h2>
 <p>If either of these mode is selected,
 the language server will be invoked on file open.
@@ -717,7 +715,7 @@ either <a href="https://github.com/redhat-developer/lsp4ij">the LSP4IJ plugin</a
 <p><a href="https://github.com/redhat-developer/lsp4ij/blob/main/docs/UserDefinedLanguageServer.md">It is possible</a> to use Pyright with LSP4IJ directly,
 but doing so is not recommended.</p>
 <p>The differences between them are that of the client libraries.
-To use the native client, you must be using a paid IDE.
+To use the native client, you must be using a paid IDE, or the unified PyCharm.
 On the other hand, LSP4IJ can be installed on any IDE.</p>
 <table>
 <thead>
@@ -750,14 +748,14 @@ On the other hand, LSP4IJ can be installed on any IDE.</p>
 </tr>
 <tr>
 <td>API stability</td>
-<td>Unstable</td>
+<td>Stable</td>
 <td>Unstable</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>On a (paid) IDE with both clients available, a <code>LinkageError</code>
+<p>On an IDE with both clients available, a <code>LinkageError</code>
 will be thrown if <i>Native LSP client</i> is selected.
 This is <a href="https://github.com/redhat-developer/lsp4ij/issues/459">a known limitation</a>.</p>
 </div>
