@@ -66,7 +66,7 @@ No, or at least not in a business or ownership sense.
 It was, however, created out of adoration of Pyright and JetBrains IDEs.
 
 
-## Does this plugin support Basedpyright?
+## Does this plugin support BasedPyright?
 
 Yes. [See here for setup instructions][8].
 

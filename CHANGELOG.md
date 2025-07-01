@@ -14,8 +14,39 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 <i>This section is currently empty.</i>
 
 
-## [0.10.0] - 2025-04-13
+## [0.11.0] - 2025-07-01
 
+### Added
+
+* The plugin will now attempt to detect BasedPyright executables
+  if Pyright ones cannot be found.
+
+
+### Changed
+
+* The default running mode is now <i>Native client</i>.
+
+
+### Removed
+
+* 2025.1.1.1 and older are no longer supported.
+  The plugin can no longer be installed on PyCharm Community Edition
+  (and IntelliJ IDEA Community Edition). Use the unified PyCharm instead.
+* `PyrightInspection` has been removed to avoid confusion.
+
+
+### Fixed
+
+* Previously, in some cases, the language server might crash
+  when analyzing large files. This has been fixed.
+* Previously, the native client did not support `textDocument/diagnostic`.
+  2025.1.2 added support for it, but the client does not send such requests
+  by default, resulting in no diagnostics being displayed.
+  Now, the plugin will request that the server
+  use `textDocument/publishDiagnostics` exclusively.
+
+
+## [0.10.0] - 2025-04-13
 
 ### Fixed
 
@@ -219,7 +250,8 @@ If you encounter a bug, please [file an issue][0.7.0-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.10.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.11.0..HEAD
+  [0.11.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.10.0..v0.11.0
   [0.10.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.9.0..v0.10.0
   [0.9.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.8.0..v0.9.0
   [0.8.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.7.0..v0.8.0

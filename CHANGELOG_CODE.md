@@ -14,6 +14,13 @@ For user-facing changes, see [`CHANGELOG.md`][_-1].
 <i>This section is currently empty.</i>
 
 
+## [0.11.0] - 2025-07-01
+
+Contributors:
+
+* @DetachHead
+
+
 ## [0.10.0] - 2025-04-13
 
 Contributors:
@@ -426,7 +433,8 @@ Contributors:
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.10.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.11.0..HEAD
+  [0.11.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.10.0..v0.11.0
   [0.10.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.9.0..v0.10.0
   [0.9.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.8.0..v0.9.0
   [0.8.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.7.0..v0.8.0
