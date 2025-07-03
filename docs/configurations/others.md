@@ -281,7 +281,7 @@ Default: <i>Open files only</i>
 
 !!! note
 
-    Language server logs are not recorded in `idea.log` by default.
+    Language server logs are not recorded IDE log files by default.
     You need to manually [enable it][5].
 
 Modify this option to make the language server

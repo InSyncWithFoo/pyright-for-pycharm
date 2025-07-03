@@ -60,6 +60,11 @@ Note that it might be up to 10 MB in size.
 
 Alternatively, navigate to the directories documented [here][2].
 
+!!! note
+
+    For 2025.2 and later, language server logs are recorded separately
+    in files under the `language-services` subdirectory.
+
 
 ## How to enable language server logging
 
