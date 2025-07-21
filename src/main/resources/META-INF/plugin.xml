@@ -25,6 +25,7 @@
 	<depends optional="true" config-file="lsp4ij.xml">com.redhat.devtools.lsp4ij</depends>
 	
 	<incompatible-with>com.intellij.modules.pycharm.community</incompatible-with>
+	<incompatible-with>com.intellij.modules.idea.community</incompatible-with>
 	
 	<!-- <resource-bundle>messages.pyright</resource-bundle> -->
 	
