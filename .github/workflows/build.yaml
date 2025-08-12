@@ -28,7 +28,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Gradle wrapper validation
         uses: gradle/actions/wrapper-validation@v4
@@ -107,7 +107,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Set up Python
         uses: actions/setup-python@v5
@@ -138,7 +138,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Set up Java
         uses: actions/setup-java@v4
@@ -189,7 +189,7 @@ jobs:
           large-packages: false
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       -
@@ -220,7 +220,7 @@ jobs:
           large-packages: false
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Set up Java
         uses: actions/setup-java@v4
@@ -262,7 +262,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: build
       -
@@ -297,7 +297,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Set up Java
         uses: actions/setup-java@v4
