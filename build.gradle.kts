@@ -49,9 +49,6 @@ dependencies {
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
     
-    // https://youtrack.jetbrains.com/issue/IJPL-157292
-    testImplementation("org.opentest4j:opentest4j:1.3.0")
-    
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
         create(
@@ -65,6 +62,9 @@ dependencies {
         
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
+        
+        // Module Dependencies. Uses `platformBundledModules` property from the gradle.properties file for bundled IntelliJ Platform modules.
+        bundledModules(providers.gradleProperty("platformBundledModules").map { it.split(',') })
         
         jetbrainsRuntime()
         testFramework(TestFrameworkType.Platform)
@@ -105,7 +105,6 @@ intellijPlatform {
         
         ideaVersion {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
-            untilBuild = providers.gradleProperty("pluginUntilBuild")
         }
     }
     
