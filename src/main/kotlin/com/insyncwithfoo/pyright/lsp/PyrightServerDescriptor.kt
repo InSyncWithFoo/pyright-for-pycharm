@@ -10,6 +10,7 @@ import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.modules
 import com.insyncwithfoo.pyright.path
 import com.insyncwithfoo.pyright.pathIsAbsoluteDos
+import com.insyncwithfoo.pyright.shared.createLSPSettingsObject
 import com.insyncwithfoo.pyright.wslDistribution
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.wsl.WSLCommandLineOptions
@@ -30,6 +31,7 @@ import com.intellij.platform.lsp.api.customization.LspHoverDisabled
 import java.net.URI
 import java.nio.file.Path
 import org.eclipse.lsp4j.ClientCapabilities
+import org.eclipse.lsp4j.ConfigurationItem
 
 
 private fun Project.getModuleSourceRoots(): Collection<VirtualFile> =
@@ -134,6 +136,17 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
         }
         
         wslDistribution?.patchCommandLine(this, project, WSLCommandLineOptions())
+    }
+    
+    override fun getWorkspaceConfiguration(item: ConfigurationItem): Any? {
+        val settings = project.createLSPSettingsObject()
+        
+        return when (item.section) {
+            "python" -> settings.python
+            "python.analysis" -> settings.python.analysis
+            "pyright" -> settings.pyright
+            else -> null
+        }
     }
     
     companion object {
