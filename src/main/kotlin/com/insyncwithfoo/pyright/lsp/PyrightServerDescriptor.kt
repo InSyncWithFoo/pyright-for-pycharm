@@ -20,6 +20,13 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ModuleRootManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServerDescriptor
+import com.intellij.platform.lsp.api.customization.LspCompletionCustomizer
+import com.intellij.platform.lsp.api.customization.LspCompletionDisabled
+import com.intellij.platform.lsp.api.customization.LspCustomization
+import com.intellij.platform.lsp.api.customization.LspDiagnosticsCustomizer
+import com.intellij.platform.lsp.api.customization.LspDiagnosticsDisabled
+import com.intellij.platform.lsp.api.customization.LspHoverCustomizer
+import com.intellij.platform.lsp.api.customization.LspHoverDisabled
 import java.net.URI
 import java.nio.file.Path
 import org.eclipse.lsp4j.ClientCapabilities
@@ -49,9 +56,27 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     
     override val lspServerListener = Listener(project, module)
     
-    override val lspHoverSupport = configurations.hover
-    override val lspCompletionSupport = CompletionSupport(project).takeIf { configurations.completion }
-    override val lspDiagnosticsSupport = DiagnosticsSupport(project).takeIf { configurations.diagnostics }
+    override val lspCustomization = object : LspCustomization() {
+        
+        override val hoverCustomizer: LspHoverCustomizer
+            get() = when (configurations.hover) {
+                true -> super.hoverCustomizer
+                else -> LspHoverDisabled
+            }
+        
+        override val completionCustomizer: LspCompletionCustomizer
+            get() = when (configurations.completion) {
+                true -> super.completionCustomizer
+                else -> LspCompletionDisabled
+            }
+        
+        override val diagnosticsCustomizer: LspDiagnosticsCustomizer
+            get() = when (configurations.diagnostics) {
+                true -> DiagnosticsSupport(project)
+                else -> LspDiagnosticsDisabled
+            }
+        
+    }
     
     override val clientCapabilities: ClientCapabilities
         get() = super.clientCapabilities.apply {
