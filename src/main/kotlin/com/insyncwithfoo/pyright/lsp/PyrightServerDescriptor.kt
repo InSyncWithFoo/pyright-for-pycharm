@@ -80,6 +80,9 @@ internal class PyrightServerDescriptor(project: Project, module: Module?, privat
     
     override val clientCapabilities: ClientCapabilities
         get() = super.clientCapabilities.apply {
+            workspace.apply {
+                configuration = false
+            }
             textDocument.apply {
                 diagnostic = null
             }
