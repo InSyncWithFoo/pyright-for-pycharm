@@ -14,6 +14,21 @@ For code changes, see [`CHANGELOG_CODE.md`][_-1].
 <i>This section is currently empty.</i>
 
 
+## [0.12.0] - 2025-08-19
+
+### Removed
+
+* 2025.1.* are no longer supported.
+
+
+### Fixed
+
+* In 2025.2, due to a change in the native LSP client,
+  Pyright would fail to recognize the project's interpreter
+  and thus emit false positive `reportMissingImports` errors.
+  This has been fixed.
+
+
 ## [0.11.0] - 2025-07-01
 
 ### Added
@@ -250,7 +265,8 @@ If you encounter a bug, please [file an issue][0.7.0-1].
 * Project initialized.
 
 
-  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.11.0..HEAD
+  [Unreleased]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.12.0..HEAD
+  [0.12.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.11.0..v0.12.0
   [0.11.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.10.0..v0.11.0
   [0.10.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.9.0..v0.10.0
   [0.9.0]: https://github.com/InSyncWithFoo/pyright-for-pycharm/compare/v0.8.0..v0.9.0
