@@ -37,7 +37,7 @@ private fun Document.getOffset(endpoint: Position) =
 // From https://github.com/redhat-developer/lsp4ij/blob/c352be8146/src/main/java/com/redhat/devtools/lsp4ij/LSPIJUtils.java#L801-L824
 private fun Document.getOffsetRange(start: Int, end: Int): TextRange? {
     try {
-        if (start > end || end > textLength) {
+        if (end !in start..textLength) {
             return null
         }
         
@@ -46,7 +46,7 @@ private fun Document.getOffsetRange(start: Int, end: Int): TextRange? {
         }
         
         return TextRange(start, end)
-    } catch (error: IndexOutOfBoundsException) {
+    } catch (_: IndexOutOfBoundsException) {
         return null
     }
 }

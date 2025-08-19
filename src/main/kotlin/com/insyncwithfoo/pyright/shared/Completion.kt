@@ -7,7 +7,7 @@ import org.eclipse.lsp4j.InsertTextFormat
 import org.eclipse.lsp4j.TextEdit
 
 
-private const val CARET_POSITION = "\$0"
+private const val CARET_POSITION = $$"$0"
 
 
 internal val CompletionItem.isCallable: Boolean

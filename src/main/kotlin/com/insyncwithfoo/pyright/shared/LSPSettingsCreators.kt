@@ -18,6 +18,7 @@ internal fun Project.createLSPSettingsObject(module: Module? = null) = Settings(
             autoImportCompletions = configurations.autoImportCompletions
             diagnosticMode = configurations.diagnosticMode.value
             autoSearchPaths = configurations.autoSearchPaths
+            
             inlayHints {
                 variableTypes = configurations.inlayHintsVariableTypes
                 callArgumentNames = configurations.inlayHintsCallArgumentNames
