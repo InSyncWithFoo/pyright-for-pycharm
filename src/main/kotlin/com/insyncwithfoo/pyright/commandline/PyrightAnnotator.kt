@@ -21,6 +21,7 @@ import com.intellij.lang.annotation.AnnotationBuilder
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
 import com.intellij.lang.annotation.HighlightSeverity
+import com.intellij.ide.scratch.ScratchUtil
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.module.Module
@@ -85,8 +86,10 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         
         val project = file.project
         val configurations = project.pyrightConfigurations
+        val virtualFile = file.virtualFile ?: return null
         
-        if (configurations.runningMode != RunningMode.COMMAND_LINE) {
+        // TODO: Make this configurable
+        if (configurations.runningMode != RunningMode.COMMAND_LINE && !ScratchUtil.isScratch(virtualFile)) {
             return null
         }
         
@@ -101,7 +104,7 @@ internal class PyrightAnnotator : ExternalAnnotator<InitialInfo, AnnotationResul
         }
         
         val module = file.module ?: return null
-        val path = file.virtualFile?.toNioPathOrNull() ?: return null
+        val path = virtualFile.toNioPathOrNull() ?: return null
         
         return InitialInfo(module, configurations, path)
     }
