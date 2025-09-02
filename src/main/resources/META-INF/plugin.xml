@@ -22,6 +22,7 @@
 	<depends>com.intellij.modules.platform</depends>
 	
 	<depends optional="true" config-file="json.xml">com.intellij.modules.json</depends>
+	<depends optional="true" config-file="lsp.xml">com.intellij.modules.lsp</depends>
 	<depends optional="true" config-file="lsp4ij.xml">com.redhat.devtools.lsp4ij</depends>
 	
 	<!-- <resource-bundle>messages.pyright</resource-bundle> -->
@@ -72,11 +73,6 @@
 		<fileIconProvider
 			id="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
 			implementation="com.insyncwithfoo.pyright.misc.PyrightConfigFileIconProvider"
-		/>
-		
-		<platform.lsp.serverSupportProvider
-			id="com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider"
-			implementation="com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider"
 		/>
 	</extensions>
 </idea-plugin>

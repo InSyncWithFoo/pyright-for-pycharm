@@ -1,0 +1,8 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="com.intellij">
+		<platform.lsp.serverSupportProvider
+			id="com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider"
+			implementation="com.insyncwithfoo.pyright.lsp.PyrightServerSupportProvider"
+		/>
+	</extensions>
+</idea-plugin>
