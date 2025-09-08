@@ -7,6 +7,12 @@ import com.intellij.openapi.util.SystemInfo
 import com.intellij.platform.lsp.api.LspServerSupportProvider
 
 
+// https://stackoverflow.com/q/79750919
+private inline fun <reified C> load() {
+    C::class.qualifiedName
+}
+
+
 internal val lsp4ijIsAvailable: Boolean
     get() {
         val pluginID = PluginId.getId("com.redhat.devtools.lsp4ij")
@@ -16,7 +22,7 @@ internal val lsp4ijIsAvailable: Boolean
 
 internal val lspIsAvailable by lazy {
     try {
-        LspServerSupportProvider
+        load<LspServerSupportProvider>()
         true
     } catch (_: NoClassDefFoundError) {
         false
@@ -24,10 +30,9 @@ internal val lspIsAvailable by lazy {
 }
 
 
-@Suppress("UNUSED_EXPRESSION")
 internal val wslIsSupported by lazy {
     SystemInfo.isWindows && try {
-        WslTargetEnvironmentConfiguration::class
+        load<WslTargetEnvironmentConfiguration>()
         true
     } catch (_: NoClassDefFoundError) {
         false
