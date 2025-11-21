@@ -27,7 +27,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       -
         name: Set up Java
         uses: actions/setup-java@v5
@@ -99,7 +99,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       -
         name: Set up Python
         uses: actions/setup-python@v6
@@ -129,7 +129,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       -
         name: Set up Java
         uses: actions/setup-java@v5
@@ -181,7 +181,7 @@ jobs:
           large-packages: false
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       -
@@ -212,7 +212,7 @@ jobs:
           large-packages: false
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       -
         name: Set up Java
         uses: actions/setup-java@v5
@@ -249,7 +249,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: build
       -
@@ -284,7 +284,7 @@ jobs:
     steps:
       -
         name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       -
         name: Set up Java
         uses: actions/setup-java@v5
