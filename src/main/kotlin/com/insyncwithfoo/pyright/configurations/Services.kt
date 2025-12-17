@@ -51,4 +51,4 @@ internal val globalPyrightConfigurations: PyrightConfigurations
 
 
 internal val Project.pyrightConfigurations: PyrightConfigurations
-    get() = getMergedState<PyrightGlobalService, PyrightLocalService, PyrightOverrideService, _>()
+    get() = getMergedState<PyrightGlobalService, PyrightLocalService, PyrightOverrideService, _, _>()
