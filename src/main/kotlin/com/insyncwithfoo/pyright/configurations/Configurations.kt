@@ -123,6 +123,7 @@ internal class PyrightConfigurations : DisplayableState(), Copyable {
     var locale by enum(Locale.DEFAULT)
     var numberOfThreads by property(0)
     
+    var interpreter by string(null)
     var useSchemaFromStore by property(false)
     
     // basedpyright only

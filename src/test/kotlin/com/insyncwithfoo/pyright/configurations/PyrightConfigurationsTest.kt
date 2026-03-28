@@ -11,7 +11,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
     
     @Test
     fun `test shape`() {
-        assertEquals(33, fields.size)
+        assertEquals(34, fields.size)
         
         state.apply {
             assertEquals(null, executable)
@@ -47,6 +47,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(Locale.DEFAULT, locale)
             assertEquals(0, numberOfThreads)
             
+            assertEquals(null, interpreter)
             assertEquals(false, useSchemaFromStore)
             
             // basedpyright only
