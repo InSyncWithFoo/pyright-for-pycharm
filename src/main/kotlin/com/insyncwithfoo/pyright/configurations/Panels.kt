@@ -339,7 +339,7 @@ private fun PyrightPanel.makeComponent() = panel {
     
     advancedSettingsGroup {
         row(message("configurations.interpreter.label")) {
-            interpreterInput { bindSelected(state::interpreter) }
+            interpreterInput { bindText(state::interpreter.toNonNullableProperty("")) }
             overrideCheckbox(state::interpreter)
         }
         row {
