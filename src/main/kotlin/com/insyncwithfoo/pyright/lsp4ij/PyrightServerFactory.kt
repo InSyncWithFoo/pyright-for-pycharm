@@ -10,7 +10,6 @@ import com.intellij.openapi.project.Project
 import com.redhat.devtools.lsp4ij.LanguageServerEnablementSupport
 import com.redhat.devtools.lsp4ij.LanguageServerFactory
 import com.redhat.devtools.lsp4ij.client.LanguageClientImpl
-import com.redhat.devtools.lsp4ij.client.features.LSPClientFeatures
 import com.redhat.devtools.lsp4ij.server.StreamConnectionProvider
 
 
@@ -47,7 +46,7 @@ internal class PyrightServerFactory : LanguageServerFactory, LanguageServerEnabl
     }
     
     @Suppress("UnstableApiUsage")
-    override fun createClientFeatures() = LSPClientFeatures().apply {
+    override fun createClientFeatures() = PyrightClientFeatures().apply {
         hoverFeature = HoverFeature()
         diagnosticFeature = DiagnosticFeature()
         completionFeature = CompletionFeature()

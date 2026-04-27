@@ -2,9 +2,9 @@ package com.insyncwithfoo.pyright.lsp
 
 import com.insyncwithfoo.pyright.asFileURI
 import com.insyncwithfoo.pyright.configurations.Locale
-import com.insyncwithfoo.pyright.configurations.WorkspaceFolders
 import com.insyncwithfoo.pyright.configurations.pyrightConfigurations
 import com.insyncwithfoo.pyright.configurations.targetedFileExtensionList
+import com.insyncwithfoo.pyright.getPyrightWorkspaceFolders
 import com.insyncwithfoo.pyright.getPureLinuxOrWindowsPath
 import com.insyncwithfoo.pyright.message
 import com.insyncwithfoo.pyright.modules
@@ -15,9 +15,7 @@ import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.wsl.WSLCommandLineOptions
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.module.Module
-import com.intellij.openapi.project.BaseProjectDirectories.Companion.getBaseDirectories
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.roots.ModuleRootManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.lsp.api.LspServerDescriptor
 import com.intellij.platform.lsp.api.customization.LspCompletionCustomizer
@@ -32,25 +30,8 @@ import java.nio.file.Path
 import org.eclipse.lsp4j.ClientCapabilities
 
 
-private fun Project.getModuleSourceRoots(): Collection<VirtualFile> =
-    modules.flatMap { module ->
-        ModuleRootManager.getInstance(module).sourceRoots.asIterable()
-    }
-
-
-private fun Project.getWorkspaceFolders(type: WorkspaceFolders): Collection<VirtualFile> =
-    when (type) {
-        WorkspaceFolders.PROJECT_BASE -> getBaseDirectories()
-        WorkspaceFolders.SOURCE_ROOTS -> getModuleSourceRoots()
-    }
-
-
-private fun Project.getWorkspaceFolders(): Collection<VirtualFile> =
-    getWorkspaceFolders(pyrightConfigurations.workspaceFolders)
-
-
 internal class PyrightServerDescriptor(project: Project, module: Module?, private val executable: Path) :
-    LspServerDescriptor(project, getPresentableName(project, module), *project.getWorkspaceFolders().toTypedArray()) {
+    LspServerDescriptor(project, getPresentableName(project, module), *project.getPyrightWorkspaceFolders().toTypedArray()) {
     
     private val configurations = project.pyrightConfigurations
     

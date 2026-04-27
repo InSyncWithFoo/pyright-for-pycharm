@@ -11,7 +11,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
     
     @Test
     fun `test shape`() {
-        assertEquals(33, fields.size)
+        assertEquals(34, fields.size)
         
         state.apply {
             assertEquals(null, executable)
@@ -19,6 +19,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(null, languageServerExecutable)
             assertEquals(false, smartLanguageServerExecutableResolution)
             assertEquals(null, configurationFile)
+            assertEquals(false, useConfigurationFileInLSPModes)
             assertEquals(RunningMode.LSP, runningMode)
             
             assertEquals(true, autoRestartServers)
