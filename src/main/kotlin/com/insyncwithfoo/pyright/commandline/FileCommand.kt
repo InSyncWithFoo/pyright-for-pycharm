@@ -114,7 +114,7 @@ internal data class FileCommand(
             
             val target = wslDistribution.resolve(path.toNullIfNotExists()) ?: return null
             val executable = wslDistribution.resolve(project.pyrightExecutable) ?: return null
-            val interpreterPath = module.osDependentInterpreterPath ?: return null
+            val interpreterPath = configurations.interpreter ?: module.osDependentInterpreterPath ?: return null
             
             val configurationFile = wslDistribution.resolve(configurations.configurationFile)
             val argumentForProject = configurationFile ?: wslDistribution.resolve(projectPath) ?: return null

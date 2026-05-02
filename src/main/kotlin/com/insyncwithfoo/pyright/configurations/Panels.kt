@@ -153,6 +153,10 @@ private fun Row.numberOfThreadsInput(block: Cell<JBIntSpinner>.() -> Unit) =
     spinner(0..1_000_000, step = 1).apply(block)
 
 
+private fun Row.interpreterInput(block: Cell<TextFieldWithBrowseButton>.() -> Unit) =
+    singleFileTextField().makeFlexible().apply(block)
+
+
 private fun Row.useSchemaFromStoreInput(block: Cell<JBCheckBox>.() -> Unit) =
     checkBox(message("configurations.useSchemaFromStore.label")).apply(block)
 
@@ -342,6 +346,10 @@ private fun PyrightPanel.makeComponent() = panel {
     }
     
     advancedSettingsGroup {
+        row(message("configurations.interpreter.label")) {
+            interpreterInput { bindText(state::interpreter.toNonNullableProperty("")) }
+            overrideCheckbox(state::interpreter)
+        }
         row {
             useSchemaFromStoreInput { bindSelected(state::useSchemaFromStore) }
             overrideCheckbox(state::useSchemaFromStore)

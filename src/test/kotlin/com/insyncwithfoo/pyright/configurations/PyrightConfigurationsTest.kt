@@ -48,6 +48,7 @@ internal class PyrightConfigurationsTest : ConfigurationsTest<PyrightConfigurati
             assertEquals(Locale.DEFAULT, locale)
             assertEquals(0, numberOfThreads)
             
+            assertEquals(null, interpreter)
             assertEquals(false, useSchemaFromStore)
             
             // basedpyright only

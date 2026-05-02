@@ -11,7 +11,7 @@ internal fun Project.createLSPSettingsObject(module: Module? = null) = Settings(
     val configurations = pyrightConfigurations
     
     python {
-        pythonPath = (module ?: modules.singleOrNull())?.osDependentInterpreterPath
+        pythonPath = configurations.interpreter ?: (module ?: modules.singleOrNull())?.osDependentInterpreterPath
         
         analysis {
             logLevel = configurations.logLevel.label
